@@ -194,6 +194,7 @@ input[type=search],input[type=password]{font:inherit;color:var(--ink);background
         <div class="fixtures" id="fixList" role="listbox" aria-label="Fixtures"></div>
         <div class="sheet" id="sheet" hidden></div>
         <p class="hint" id="resNote">Loading results…</p>
+        <label class="chk" style="padding:0"><input type="checkbox" id="auto" checked> Write the script automatically when I pick a match</label>
       </div>
 
       <div class="field">
@@ -201,11 +202,11 @@ input[type=search],input[type=password]{font:inherit;color:var(--ink);background
         <select id="tpl"></select>
       </div>
       <div class="field">
-        <label for="brief">Your paragraph</label>
+        <label for="brief">Your paragraph <span class="soft">(optional: add your angle, then press Write the script)</span></label>
         <textarea id="brief" placeholder="What happened, the question it raised, and the point you want to make."></textarea>
       </div>
       <div class="field">
-        <label for="facts">Facts and stats <span class="soft">(filled in when you press “Use this match”)</span></label>
+        <label for="facts">Facts and stats <span class="soft">(filled in when you pick a match)</span></label>
         <textarea id="facts" placeholder="Score, scorers, substitutions, xG, PPDA… Only these numbers will be used. Gaps become [STAT] placeholders."></textarea>
       </div>
       <div class="row2">
@@ -361,12 +362,21 @@ const $ = id => document.getElementById(id);
 const KEY = "touchline-script-desk-v2", KKEY = "touchline-api-key";
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ if(v==null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){} }
-let S = Object.assign({template:"lfc-review",length:9,wpm:150,brief:"",facts:"",extra:"",model:"claude-sonnet-5-5",result:null},
+let S = Object.assign({template:"lfc-review",length:9,wpm:150,brief:"",facts:"",extra:"",model:"claude-sonnet-5-5",result:null,byMatch:{},order:[],cur:"",auto:true,factsAuto:""},
   (()=>{ try{ return JSON.parse(lsGet(KEY)||"{}"); }catch(e){ return {}; } })());
+S.byMatch = S.byMatch||{}; S.order = S.order||[];
+if(S.cur && S.byMatch[S.cur]){ const r=S.byMatch[S.cur]; Object.assign(S,{brief:r.brief||"",extra:r.extra||"",result:r.result||null,template:r.template||S.template,length:r.length||S.length,facts:r.facts||S.facts,factsAuto:r.factsAuto||S.factsAuto}); }
 if(!["claude-sonnet-5-5","claude-opus-5-5"].includes(S.model)) S.model="claude-sonnet-5-5";
 let tab = "board", ctl = null, apiKey = lsGet(KKEY) || "";
 let saveT = null;
-function save(){ clearTimeout(saveT); saveT=setTimeout(()=>lsSet(KEY, JSON.stringify(S)),300); }
+/* Each match you open keeps its own script, paragraph and facts (latest 25). */
+function stash(){
+  if(!S.cur) return;
+  S.byMatch[S.cur]={brief:S.brief,extra:S.extra,result:S.result,template:S.template,length:S.length,facts:S.facts,factsAuto:S.factsAuto,at:Date.now()};
+  S.order=[S.cur].concat((S.order||[]).filter(x=>x!==S.cur)).slice(0,25);
+  Object.keys(S.byMatch).forEach(k=>{ if(!S.order.includes(k)) delete S.byMatch[k]; });
+}
+function save(){ clearTimeout(saveT); saveT=setTimeout(()=>{ stash(); lsSet(KEY, JSON.stringify(Object.assign({},S,{result:S.cur?null:S.result}))); },300); }
 
 
 /* ---------- Helpers ---------- */
@@ -384,6 +394,10 @@ function downloadFile(filename, text){
 }
 
 /* ---------- Brief form ---------- */
+function syncForm(){
+  $("tpl").value=S.template; $("len").value=String(S.length); $("wpm").value=S.wpm||150;
+  $("brief").value=S.brief||""; $("facts").value=S.facts||""; $("extra").value=S.extra||"";
+}
 function initForm(){
   $("tpl").innerHTML = TEMPLATES.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join("");
   $("len").innerHTML = LENGTHS.map(l=>`<option value="${l[0]}">${l[1]}</option>`).join("");
@@ -395,6 +409,8 @@ function initForm(){
   ["brief","facts","extra"].forEach(id=>$(id).addEventListener("input",()=>{ S[id]=$(id).value; save(); }));
   $("briefForm").addEventListener("submit",e=>{ e.preventDefault(); generate(); });
   $("stop").addEventListener("click",()=>ctl&&ctl.abort());
+  $("auto").checked = S.auto!==false;
+  $("auto").addEventListener("change",()=>{ S.auto=$("auto").checked; save(); });
   initKey();
 }
 function initKey(){
@@ -440,7 +456,7 @@ Visuals are original only: tactics boards with numbered dots, charts and tables.
 For each segment choose ONE layout id from: ${LAYOUT_IDS.filter(x=>x!=="vertical").join(", ")}${t.id==="short"?", vertical (use vertical for every segment of a Short)":""}.
 
 BRIEF FROM THE CREATOR:
-"""${(S.brief||"").slice(0,6000)}"""
+"""${((S.brief||"").trim()||"No paragraph written. Choose the single most interesting question these facts raise, and build the script around it.").slice(0,6000)}"""
 
 FACTS AND STATS PROVIDED (the only numbers you may use):
 """${(S.facts||"none").slice(0,6000)}"""
@@ -505,17 +521,19 @@ function applyReply(text){
   setStatus(`Done: ${r.segments.length} sections. Edit any line below; changes save in this browser.`);
 }
 async function generate(){
-  if(!(S.brief||"").trim()){ setStatus("Write a paragraph first: what happened and the point you want to make.",true); $("brief").focus(); return; }
+  if(!(S.brief||"").trim() && !(S.facts||"").trim()){ setStatus("Pick a match, or write a paragraph: what happened and the point you want to make.",true); $("brief").focus(); return; }
   if(!apiKey){ setStatus(ERR.no_key,true); $("keyBox").open=true; $("apiKey").focus(); return; }
-  ctl = new AbortController();
+  const my = new AbortController(); ctl = my;
   $("go").disabled=true; $("stop").hidden=false; setStatus("Thinking…");
   try{
-    const text = await callClaude(buildPrompt(),{signal:ctl.signal,max:14000,onText:t=>setStatus(`Writing… ${t.length.toLocaleString("en-GB")} characters`)});
+    const text = await callClaude(buildPrompt(),{signal:my.signal,max:14000,onText:t=>{ if(ctl===my) setStatus(`Writing… ${t.length.toLocaleString("en-GB")} characters`); }});
+    if(ctl!==my) return;
     applyReply(text);
   }catch(e){
+    if(ctl!==my) return;
     if(e&&e.code==="cancelled") setStatus("Stopped.");
     else setStatus(ERR[e&&e.code]||(e&&e.message)||ERR.network,true);
-  }finally{ $("go").disabled=false; $("stop").hidden=true; ctl=null; }
+  }finally{ if(ctl===my){ $("go").disabled=false; $("stop").hidden=true; ctl=null; } }
 }
 async function rewriteSeg(i, instr, btn){
   if(!apiKey){ toast("Add your Claude API key first"); return; }
@@ -692,8 +710,29 @@ function factsFor(r){
 function compList(){ return [...new Set(RESULTS.map(r=>r.competition).filter(Boolean))].sort((a,b)=>{ const ia=COMP_ORDER.indexOf(a), ib=COMP_ORDER.indexOf(b); return ((ia<0?99:ia)-(ib<0?99:ib)) || a.localeCompare(b); }); }
 
 /* ---------- Fixture picker (results.json, refreshed every 3 hours by GitHub) ---------- */
-let RESULTS = [];
+let RESULTS = [], autoT = null;
 const PICK = {comp:"", date:"", id:""};
+/* Picking a match loads its facts and its saved script, or writes a new one. */
+function openMatch(id){
+  const r=RESULTS.find(x=>x._id===id); if(!r) return;
+  if(ctl){ ctl.abort(); ctl=null; $("go").disabled=false; $("stop").hidden=true; }
+  stash();
+  S.cur=id; PICK.id=id;
+  const rec=S.byMatch[id], lfc=r.home==="Liverpool"||r.away==="Liverpool";
+  const newFacts=factsFor(r);
+  S.template = (rec&&rec.template)||(lfc?"lfc-review":"result");
+  S.length = (rec&&rec.length)||tplById(S.template).len;
+  S.brief = rec?rec.brief:""; S.extra = rec?rec.extra:""; S.result = rec?rec.result:null;
+  const changed = !!(rec&&rec.result&&rec.factsAuto&&rec.factsAuto!==newFacts);
+  S.facts=newFacts; S.factsAuto=newFacts;
+  syncForm(); renderAll(); renderSheet(); save();
+  if(window.matchMedia("(max-width:900px)").matches) $("summary").scrollIntoView({behavior:"smooth",block:"start"});
+  if(rec&&rec.result){
+    setStatus(changed?"Loaded your saved script. This match has new data since it was written: press Write the script to refresh it.":"Loaded your saved script for this match.", changed);
+  }else if(S.auto!==false && apiKey){ generate(); }
+  else if(!apiKey){ setStatus("Match loaded. Add your Claude API key below to write the script.", true); $("keyBox").open=true; }
+  else setStatus("Match loaded. Press Write the script.");
+}
 function renderPicker(){
   const cs=$("resComp"), ds=$("resDate"), fl=$("fixList"), note=$("resNote"), q=($("teamQ").value||"").trim().toLowerCase();
   if(!RESULTS.length){ cs.innerHTML=""; ds.innerHTML=""; fl.innerHTML=""; $("sheet").hidden=true; return; }
@@ -707,13 +746,13 @@ function renderPicker(){
   let fx;
   if(q) fx=RESULTS.filter(r=>(r.home+" "+r.away).toLowerCase().includes(q)).sort((a,b)=>b.date.localeCompare(a.date)||koMin(b.kickoff)-koMin(a.kickoff)).slice(0,60);
   else fx=inComp.filter(r=>r.date===PICK.date).sort((a,b)=>(koMin(a.kickoff)-koMin(b.kickoff))||a.home.localeCompare(b.home));
-  if(!fx.some(r=>r._id===PICK.id)) PICK.id = fx.length?fx[0]._id:"";
+  if(!fx.some(r=>r._id===PICK.id)) PICK.id = fx.some(r=>r._id===S.cur)?S.cur:"";
   fl.innerHTML = fx.length ? fx.map(r=>{
     const flag = r.stats_pending?" · score only":needsDetails(r)?" · no scorers yet":"";
     const sub = q ? `${dayLabel(r.date).replace(/,? \d{4}$/,"")} · ${r.competition||""}${flag}` : `${koTime(r.kickoff)||""}${flag}`;
     return `<button type="button" class="fix" role="option" aria-selected="${r._id===PICK.id}" data-id="${esc(r._id)}"><span class="fx-t">${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span class="fx-t r">${esc(r.away)}</span><small>${esc(sub)}</small></button>`;
   }).join("") : `<p class="hint">No matches found.</p>`;
-  fl.querySelectorAll(".fix").forEach(b=>b.addEventListener("click",()=>{ PICK.id=b.dataset.id; fl.querySelectorAll(".fix").forEach(x=>x.setAttribute("aria-selected",x===b)); renderSheet(); }));
+  fl.querySelectorAll(".fix").forEach(b=>b.addEventListener("click",()=>{ PICK.id=b.dataset.id; fl.querySelectorAll(".fix").forEach(x=>x.setAttribute("aria-selected",x===b)); renderSheet(); clearTimeout(autoT); autoT=setTimeout(()=>openMatch(PICK.id),600); }));
   note.textContent = q ? `Showing matches for “${$("teamQ").value.trim()}” across every date.` : `${RESULTS.length} results across ${cl.length} competitions.`;
   renderSheet();
 }
@@ -732,10 +771,10 @@ function renderSheet(){
   el.innerHTML = `<div class="sheet-head"><span>${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span>${esc(r.away)}</span></div>
     <p class="hint">${esc(r.competition||"")} · ${esc(r.kickoff||dayLabel(r.date))}</p>
     <span class="k">Goals</span>${gh}${reds}${stats}${squads}
-    <button class="btn primary" type="button" id="useMatch">Use this match</button>`;
-  $("useMatch").onclick=()=>useResult(r._id);
+    <button class="btn primary" type="button" id="useMatch">${r._id===S.cur?"Open this match again":"Open this match now"}</button>`;
+  $("useMatch").onclick=()=>{ clearTimeout(autoT); openMatch(r._id); };
 }
-async function loadResults(){
+async function loadResults(quiet){
   try{
     const res=await fetch("data/results.json?ts="+Date.now(),{cache:"no-store"});
     if(!res.ok) throw new Error("HTTP "+res.status);
@@ -743,8 +782,12 @@ async function loadResults(){
     RESULTS=(d.results||[]).map(r=>Object.assign({_id:r.date+"|"+r.home+"|"+r.away},r)).filter(r=>r.date&&r.home&&r.away);
     const u=d.updated_at?new Date(d.updated_at):null;
     $("upd").textContent=`${RESULTS.length} matches`+(u&&!isNaN(u)?` · newest result saved ${u.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"})}`:"");
+    const cur=RESULTS.find(x=>x._id===S.cur);
+    if(cur && !PICK.id){ PICK.id=cur._id; PICK.comp=cur.competition; PICK.date=cur.date; }
     renderPicker();
+    if(cur && S.factsAuto){ const f=factsFor(cur); if(f!==S.factsAuto){ S.facts=f; S.factsAuto=f; $("facts").value=f; save(); if(S.result) setStatus("New data arrived for this match. Press Write the script to refresh the script.",true); } }
   }catch(e){
+    if(quiet && RESULTS.length) return;
     $("upd").textContent="Results didn't load";
     $("resNote").textContent="Results couldn't load. Open the website address instead of the file on your computer.";
     $("resNote").classList.add("err");
@@ -757,17 +800,9 @@ function initPicker(){
   $("teamQ").addEventListener("keydown",e=>{ if(e.key==="Enter") e.preventDefault(); });
 }
 
-function useResult(id){
-  const r=RESULTS.find(x=>x._id===id); if(!r) return;
-  S.facts=factsFor(r); $("facts").value=S.facts;
-  const lfc = r.home==="Liverpool"||r.away==="Liverpool";
-  if(!["lfc-review","result","pl-review","five","tactical"].includes(S.template) || (S.template==="lfc-review"&&!lfc)){ S.template="result"; $("tpl").value="result"; S.length=tplById("result").len; $("len").value=String(S.length); }
-  save(); toast("Match added to Facts");
-  if(window.matchMedia("(max-width:900px)").matches) $("brief").scrollIntoView({behavior:"smooth",block:"center"});
-}
 
 document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.tab; if(tab==="read") renderRead(); if(tab==="shorts") renderShorts(); if(tab==="pack") renderPack(); renderTabs(); }));
-initForm(); initPicker(); renderAll(); loadResults();
+initForm(); initPicker(); renderAll(); loadResults(); setInterval(()=>loadResults(true),600000);
 })();
 
 </script>
