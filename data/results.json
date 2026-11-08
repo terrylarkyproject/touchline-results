@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-08T16:07:02Z",
+ "updated_at": "2026-11-08T19:50:46Z",
  "tables_at": "2026-11-08",
- "count": 136,
+ "count": 147,
  "results": [
   {
    "match_id": "espn:401874810",
@@ -360,6 +360,197 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401874808",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 5:00pm",
+   "competition": "Serie A",
+   "home": "Inter",
+   "away": "Como",
+   "home_score": 2,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 12,
+     "team": "Inter",
+     "scorer": "Pio Esposito",
+     "assist": "Djed Spence"
+    },
+    {
+     "min": 19,
+     "team": "Inter",
+     "scorer": "Marcus Thuram"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Inter",
+     "mins": [
+      72,
+      73,
+      81,
+      87,
+      88
+     ]
+    },
+    {
+     "team": "Como",
+     "mins": [
+      45,
+      45,
+      74,
+      74,
+      74
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Como",
+     "on": "Samuele Ricci",
+     "off": "Máximo Perrone"
+    },
+    {
+     "min": 45,
+     "team": "Como",
+     "on": "Ivan Smolcic",
+     "off": "Martin Baturina"
+    },
+    {
+     "min": 72,
+     "team": "Inter",
+     "on": "Henrikh Mkhitaryan",
+     "off": "Piotr Zielinski"
+    },
+    {
+     "min": 73,
+     "team": "Inter",
+     "on": "Ange-Yoan Bonny",
+     "off": "Francesco Pio Esposito"
+    },
+    {
+     "min": 74,
+     "team": "Como",
+     "on": "Maxence Caqueret",
+     "off": "Lucas da Cunha"
+    },
+    {
+     "min": 74,
+     "team": "Como",
+     "on": "Mattia Liberali",
+     "off": "Yan Couto"
+    },
+    {
+     "min": 74,
+     "team": "Como",
+     "on": "Kaiki",
+     "off": "Álex Valle"
+    },
+    {
+     "min": 81,
+     "team": "Inter",
+     "on": "Petar Sucic",
+     "off": "Hakan Çalhanoglu"
+    },
+    {
+     "min": 87,
+     "team": "Inter",
+     "on": "Andy Diouf",
+     "off": "Federico Dimarco"
+    },
+    {
+     "min": 88,
+     "team": "Inter",
+     "on": "Benjamin Pavard",
+     "off": "Marcus Thuram"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 43,
+     "away": 57
+    },
+    {
+     "label": "Shots",
+     "home": 14,
+     "away": 5
+    },
+    {
+     "label": "Shots on target",
+     "home": 4,
+     "away": 1
+    },
+    {
+     "label": "Corners",
+     "home": 4,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 13,
+     "away": 6
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 0
+    },
+    {
+     "label": "Offsides",
+     "home": 8,
+     "away": 3
+    }
+   ],
+   "players": [
+    {
+     "team": "Inter",
+     "names": [
+      "Josep Martínez",
+      "Alessandro Bastoni",
+      "Carlos Augusto",
+      "Manuel Akanji",
+      "Piotr Zielinski",
+      "Nicolò Barella",
+      "Hakan Çalhanoglu",
+      "Federico Dimarco",
+      "Djed Spence",
+      "Marcus Thuram",
+      "Pio Esposito",
+      "Henrikh Mkhitaryan",
+      "Petar Sucic",
+      "Benjamin Pavard",
+      "Andy Diouf",
+      "Ange-Yoan Bonny"
+     ]
+    },
+    {
+     "team": "Como",
+     "names": [
+      "Robert Sánchez",
+      "Marc-Oliver Kempf",
+      "Jacobo Ramón",
+      "Álex Valle",
+      "Yan Couto",
+      "Nico Paz",
+      "Luis Milla",
+      "Máximo Perrone",
+      "Tasos Douvikas",
+      "Martin Baturina",
+      "Lucas Da Cunha",
+      "Ivan Smolcic",
+      "Kaiki",
+      "Maxence Caqueret",
+      "Samuele Ricci",
+      "Mattia Liberali"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
   },
   {
    "match_id": "espn:401875018",
@@ -728,6 +919,233 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T16:07:02Z"
+  },
+  {
+   "match_id": "espn:401879240",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 4:30pm",
+   "competition": "Premier League",
+   "home": "Manchester United",
+   "away": "Aston Villa",
+   "home_score": 4,
+   "away_score": 4,
+   "goals": [
+    {
+     "min": 1,
+     "team": "Aston Villa",
+     "scorer": "Alysson",
+     "assist": "John McGinn"
+    },
+    {
+     "min": 4,
+     "team": "Aston Villa",
+     "scorer": "Nicolas Jackson"
+    },
+    {
+     "min": 16,
+     "team": "Manchester United",
+     "scorer": "Bruno Fernandes",
+     "penalty": true
+    },
+    {
+     "min": 44,
+     "team": "Manchester United",
+     "scorer": "Youri Tielemans",
+     "assist": "Noussair Mazraoui"
+    },
+    {
+     "min": 48,
+     "team": "Aston Villa",
+     "scorer": "John McGinn",
+     "penalty": true
+    },
+    {
+     "min": 53,
+     "team": "Aston Villa",
+     "scorer": "Leon Goretzka",
+     "assist": "Nicolas Jackson"
+    },
+    {
+     "min": 90,
+     "team": "Manchester United",
+     "scorer": "Joshua Zirkzee",
+     "assist": "Patrick Dorgu"
+    },
+    {
+     "min": 90,
+     "team": "Manchester United",
+     "scorer": "Patrick Dorgu",
+     "assist": "Patrick Dorgu"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Manchester United",
+     "mins": [
+      45,
+      66,
+      66,
+      66,
+      83
+     ]
+    },
+    {
+     "team": "Aston Villa",
+     "mins": [
+      71,
+      71,
+      78,
+      78,
+      86
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Manchester United",
+     "on": "Ayden Heaven",
+     "off": "Harry Maguire"
+    },
+    {
+     "min": 66,
+     "team": "Manchester United",
+     "on": "Mason Mount",
+     "off": "Youri Tielemans"
+    },
+    {
+     "min": 66,
+     "team": "Manchester United",
+     "on": "Patrick Dorgu",
+     "off": "Diogo Dalot"
+    },
+    {
+     "min": 66,
+     "team": "Manchester United",
+     "on": "Shea Lacey",
+     "off": "Amad Diallo"
+    },
+    {
+     "min": 71,
+     "team": "Aston Villa",
+     "on": "George Hemmings",
+     "off": "John McGinn"
+    },
+    {
+     "min": 71,
+     "team": "Aston Villa",
+     "on": "Ross Barkley",
+     "off": "Alysson"
+    },
+    {
+     "min": 78,
+     "team": "Aston Villa",
+     "on": "João Gomes",
+     "off": "Johan Manzambi"
+    },
+    {
+     "min": 78,
+     "team": "Aston Villa",
+     "on": "Ibrahim Mbaye",
+     "off": "Leon Goretzka"
+    },
+    {
+     "min": 83,
+     "team": "Manchester United",
+     "on": "Joshua Zirkzee",
+     "off": "Bryan Mbeumo"
+    },
+    {
+     "min": 86,
+     "team": "Aston Villa",
+     "on": "Brian Madjo",
+     "off": "Nicolas Jackson"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 55.7,
+     "away": 44.3
+    },
+    {
+     "label": "Shots",
+     "home": 26,
+     "away": 12
+    },
+    {
+     "label": "Shots on target",
+     "home": 9,
+     "away": 6
+    },
+    {
+     "label": "Corners",
+     "home": 8,
+     "away": 1
+    },
+    {
+     "label": "Fouls",
+     "home": 18,
+     "away": 9
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Manchester United",
+     "names": [
+      "Senne Lammens",
+      "Harry Maguire",
+      "Leny Yoro",
+      "Diogo Dalot",
+      "Noussair Mazraoui",
+      "Bruno Fernandes",
+      "Kobbie Mainoo",
+      "Youri Tielemans",
+      "Bryan Mbeumo",
+      "Matheus Cunha",
+      "Amad Diallo",
+      "Mason Mount",
+      "Patrick Dorgu",
+      "Joshua Zirkzee",
+      "Ayden Heaven",
+      "Shea Lacey"
+     ]
+    },
+    {
+     "team": "Aston Villa",
+     "names": [
+      "Zion Suzuki",
+      "Pau Torres",
+      "Victor Lindelöf",
+      "Ian Maatsen",
+      "Taylor Harwood-Bellis",
+      "John McGinn",
+      "Leon Goretzka",
+      "Boubacar Kamara",
+      "Nicolas Jackson",
+      "Johan Manzambi",
+      "Alysson",
+      "Ibrahim Mbaye",
+      "Brian Madjo",
+      "George Hemmings",
+      "Ross Barkley",
+      "João Gomes"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
   },
   {
    "match_id": "espn:401878759",
@@ -2804,6 +3222,1110 @@
    "fetched_at": "2026-11-08T15:59:57Z"
   },
   {
+   "match_id": "espn:401876408",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 4:15pm",
+   "competition": "Ligue 1",
+   "home": "Le Mans",
+   "away": "AS Monaco",
+   "home_score": 1,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 40,
+     "team": "AS Monaco",
+     "scorer": "Mamadou Coulibaly"
+    },
+    {
+     "min": 90,
+     "team": "Le Mans",
+     "scorer": "Erwan Colas"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Le Mans",
+     "mins": [
+      66,
+      66,
+      74,
+      74,
+      85
+     ]
+    },
+    {
+     "team": "AS Monaco",
+     "mins": [
+      54,
+      54,
+      54,
+      67,
+      88
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 54,
+     "team": "AS Monaco",
+     "on": "Paris Brunner",
+     "off": "Aleksandr Golovin"
+    },
+    {
+     "min": 54,
+     "team": "AS Monaco",
+     "on": "Takumi Minamino",
+     "off": "Mathys Detourbet"
+    },
+    {
+     "min": 54,
+     "team": "AS Monaco",
+     "on": "Folarin Balogun",
+     "off": "Matthis Abline"
+    },
+    {
+     "min": 66,
+     "team": "Le Mans",
+     "on": "Adnane Kharroubi",
+     "off": "Jean Vercruysse"
+    },
+    {
+     "min": 66,
+     "team": "Le Mans",
+     "on": "Erwan Colas",
+     "off": "Dame Gueye"
+    },
+    {
+     "min": 67,
+     "team": "AS Monaco",
+     "on": "Jordan Teze",
+     "off": "Mamadou Coulibaly"
+    },
+    {
+     "min": 74,
+     "team": "Le Mans",
+     "on": "Antoine Rabillard",
+     "off": "Daouda Traoré"
+    },
+    {
+     "min": 74,
+     "team": "Le Mans",
+     "on": "William Harhouz",
+     "off": "Louis Mafouta"
+    },
+    {
+     "min": 85,
+     "team": "Le Mans",
+     "on": "Noa Boissé",
+     "off": "Lucas Buadés"
+    },
+    {
+     "min": 88,
+     "team": "AS Monaco",
+     "on": "Christian Mawissa",
+     "off": "Flávio Nazinho"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 48.2,
+     "away": 51.8
+    },
+    {
+     "label": "Shots",
+     "home": 19,
+     "away": 5
+    },
+    {
+     "label": "Shots on target",
+     "home": 5,
+     "away": 3
+    },
+    {
+     "label": "Corners",
+     "home": 8,
+     "away": 7
+    },
+    {
+     "label": "Fouls",
+     "home": 16,
+     "away": 8
+    },
+    {
+     "label": "Yellow cards",
+     "home": 0,
+     "away": 0
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 3
+    }
+   ],
+   "players": [
+    {
+     "team": "Le Mans",
+     "names": [
+      "Nicolas Kocik",
+      "Samuel Yohou",
+      "Harold Voyer",
+      "Rayan Bamba",
+      "Lucas Bretelle",
+      "Jean Vercruysse",
+      "Daouda Traoré",
+      "Lucas Calodat",
+      "Lucas Buades",
+      "Dame Guèye",
+      "Louis Mafouta",
+      "Antoine Rabillard",
+      "Erwan Colas",
+      "Noa Boissé",
+      "Adnane Hamza Kharroubi",
+      "William Harhouz"
+     ]
+    },
+    {
+     "team": "AS Monaco",
+     "names": [
+      "Lukas Hradecky",
+      "Eric Dier",
+      "Sadibou Sané",
+      "Názinho",
+      "Vanderson",
+      "Aleksandr Golovin",
+      "Lamine Camara",
+      "Denis Zakaria",
+      "Matthis Abline",
+      "Mathys Detourbet",
+      "Mamadou Coulibaly",
+      "Paris Brunner",
+      "Takumi Minamino",
+      "Christian Mawissa",
+      "Jordan Teze",
+      "Folarin Balogun"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401876409",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 4:15pm",
+   "competition": "Ligue 1",
+   "home": "Le Havre AC",
+   "away": "Lorient",
+   "home_score": 0,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 18,
+     "team": "Lorient",
+     "scorer": "Isaak Touré",
+     "assist": "Arsène Kouassi"
+    },
+    {
+     "min": 90,
+     "team": "Lorient",
+     "scorer": "Jean-Victor Makengo",
+     "assist": "Mamadou Koné"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Le Havre AC",
+     "mins": [
+      45,
+      74,
+      80,
+      84,
+      84
+     ]
+    },
+    {
+     "team": "Lorient",
+     "mins": [
+      66,
+      66,
+      72
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Le Havre AC",
+     "on": "Amir Richardson",
+     "off": "Mbwana Samatta"
+    },
+    {
+     "min": 66,
+     "team": "Lorient",
+     "on": "Mamadou Koné",
+     "off": "Aiyegun Tosin"
+    },
+    {
+     "min": 66,
+     "team": "Lorient",
+     "on": "Souleymane Faye",
+     "off": "Gabin Bernardeau"
+    },
+    {
+     "min": 72,
+     "team": "Lorient",
+     "on": "Nosa Obaretin",
+     "off": "Isaak Touré"
+    },
+    {
+     "min": 74,
+     "team": "Le Havre AC",
+     "on": "Ismaïl Bouneb",
+     "off": "Kaito Mizuta"
+    },
+    {
+     "min": 80,
+     "team": "Le Havre AC",
+     "on": "Lamine N'Diaye",
+     "off": "Enzo Koffi"
+    },
+    {
+     "min": 84,
+     "team": "Le Havre AC",
+     "on": "Hakim Dongopandji",
+     "off": "Rayan Fofana"
+    },
+    {
+     "min": 84,
+     "team": "Le Havre AC",
+     "on": "Daren Mosengo",
+     "off": "Junior Mwanga"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 53.9,
+     "away": 46.1
+    },
+    {
+     "label": "Shots",
+     "home": 21,
+     "away": 7
+    },
+    {
+     "label": "Shots on target",
+     "home": 5,
+     "away": 3
+    },
+    {
+     "label": "Corners",
+     "home": 5,
+     "away": 0
+    },
+    {
+     "label": "Fouls",
+     "home": 16,
+     "away": 19
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 3
+    },
+    {
+     "label": "Offsides",
+     "home": 0,
+     "away": 3
+    }
+   ],
+   "players": [
+    {
+     "team": "Le Havre AC",
+     "names": [
+      "Arnaud Bodart",
+      "Ahmed Touba",
+      "Enzo Koffi",
+      "Vincent Sasso",
+      "Junior Mwanga",
+      "Simon Ebonog",
+      "Mbwana Samatta",
+      "Djibril Ouziad",
+      "Josh Maja",
+      "Kaito Mizuta",
+      "Rayan Fofana",
+      "Mouhamed N'Diaye",
+      "Ismail Bouneb",
+      "Amir Richardson",
+      "Hakim Dongopandji",
+      "Daren Mosengo"
+     ]
+    },
+    {
+     "team": "Lorient",
+     "names": [
+      "Yvon Mvogo",
+      "Montassar Talbi",
+      "Isaak Touré",
+      "Nathaniel Adjei",
+      "Arthur Avom",
+      "Noah Cadiou",
+      "Arsène Kouassi",
+      "Dembo Sylla",
+      "Tosin Aiyegun",
+      "Gabin Bernardeau",
+      "Jean-Victor Makengo",
+      "Nosa Obaretin",
+      "Souleymane Faye",
+      "Mamadou Koné"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401876410",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 4:15pm",
+   "competition": "Ligue 1",
+   "home": "Brest",
+   "away": "Lyon",
+   "home_score": 2,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 22,
+     "team": "Brest",
+     "scorer": "Noah Edjouma",
+     "assist": "Kamory Doumbia"
+    },
+    {
+     "min": 90,
+     "team": "Brest",
+     "scorer": "Ludovic Ajorque",
+     "penalty": true
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Brest",
+     "mins": [
+      66,
+      67,
+      73
+     ]
+    },
+    {
+     "team": "Lyon",
+     "mins": [
+      58,
+      67,
+      67,
+      78,
+      79
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 58,
+     "team": "Lyon",
+     "on": "Mads Bidstrup",
+     "off": "Noah Nartey"
+    },
+    {
+     "min": 66,
+     "team": "Brest",
+     "on": "Pathé Mboup",
+     "off": "Mama Baldé"
+    },
+    {
+     "min": 67,
+     "team": "Brest",
+     "on": "Giovani Versini",
+     "off": "Noah Edjouma"
+    },
+    {
+     "min": 67,
+     "team": "Lyon",
+     "on": "Ernest Nuamah",
+     "off": "Kaïl Boudache"
+    },
+    {
+     "min": 67,
+     "team": "Lyon",
+     "on": "Abner Vinícius",
+     "off": "Nicolás Tagliafico"
+    },
+    {
+     "min": 73,
+     "team": "Brest",
+     "on": "Mamady Diambou",
+     "off": "Kamory Doumbia"
+    },
+    {
+     "min": 78,
+     "team": "Lyon",
+     "on": "Julien Duranville",
+     "off": "Keito Nakamura"
+    },
+    {
+     "min": 79,
+     "team": "Lyon",
+     "on": "Alejandro Gomes Rodríguez",
+     "off": "Khalis Merah"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 31.1,
+     "away": 68.9
+    },
+    {
+     "label": "Shots",
+     "home": 13,
+     "away": 10
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 2
+    },
+    {
+     "label": "Corners",
+     "home": 1,
+     "away": 8
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 10
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 2
+    }
+   ],
+   "players": [
+    {
+     "team": "Brest",
+     "names": [
+      "Egil Selvik",
+      "Gautier Lloris",
+      "Lucas Tousart",
+      "Bradley Locko",
+      "Kenny Lala",
+      "Kamory Doumbia",
+      "Hugo Magnetti",
+      "Joris Chotard",
+      "Ludovic Ajorque",
+      "Mama Baldé",
+      "Noah Edjouma",
+      "Mamady Diambou",
+      "Giovani Versini",
+      "Pathé Mboup"
+     ]
+    },
+    {
+     "team": "Lyon",
+     "names": [
+      "Dominik Greif",
+      "Moussa Niakhaté",
+      "Ruben Kluivert",
+      "Nicolás Tagliafico",
+      "Zachary Athekame",
+      "Tanner Tessmann",
+      "Corentin Tolisso",
+      "Noah Nartey",
+      "Khalis Merah",
+      "Keito Nakamura",
+      "Kail Boudache",
+      "Mads Bidstrup",
+      "Julien Duranville",
+      "Ernest Nuamah",
+      "Abner",
+      "Alejandro Rodríguez"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401876412",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 4:15pm",
+   "competition": "Ligue 1",
+   "home": "Angers",
+   "away": "Nice",
+   "home_score": 0,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 2,
+     "team": "Nice",
+     "scorer": "Sofiane Diop",
+     "assist": "Mohammed Amoura"
+    },
+    {
+     "min": 78,
+     "team": "Nice",
+     "scorer": "Jonathan Clauss",
+     "assist": "Gauthier Hein"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Angers",
+     "mins": [
+      68,
+      83,
+      83,
+      83,
+      86
+     ]
+    },
+    {
+     "team": "Nice",
+     "mins": [
+      45,
+      72,
+      72,
+      79,
+      85
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Nice",
+     "on": "Xavier Mandza",
+     "off": "Mohamed Abdelmonem"
+    },
+    {
+     "min": 68,
+     "team": "Angers",
+     "on": "Harouna Djibirin",
+     "off": "Jim Allevinah"
+    },
+    {
+     "min": 72,
+     "team": "Nice",
+     "on": "Gauthier Hein",
+     "off": "Sofiane Diop"
+    },
+    {
+     "min": 72,
+     "team": "Nice",
+     "on": "Axel Witsel",
+     "off": "Djibril Coulibaly"
+    },
+    {
+     "min": 79,
+     "team": "Nice",
+     "on": "Nathan Ngoumou",
+     "off": "Elye Wahi"
+    },
+    {
+     "min": 83,
+     "team": "Angers",
+     "on": "Anthony Bermont",
+     "off": "Branco van den Boomen"
+    },
+    {
+     "min": 83,
+     "team": "Angers",
+     "on": "Lilian Raolisoa",
+     "off": "Carlens Arcus"
+    },
+    {
+     "min": 83,
+     "team": "Angers",
+     "on": "Usman Simbakoli",
+     "off": "Prosper Peter"
+    },
+    {
+     "min": 85,
+     "team": "Nice",
+     "on": "Morgan Sanson",
+     "off": "Hicham Boudaoui"
+    },
+    {
+     "min": 86,
+     "team": "Angers",
+     "on": "Louis Mouton",
+     "off": "Yassin Belkhdim"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 51.6,
+     "away": 48.4
+    },
+    {
+     "label": "Shots",
+     "home": 12,
+     "away": 16
+    },
+    {
+     "label": "Shots on target",
+     "home": 4,
+     "away": 8
+    },
+    {
+     "label": "Corners",
+     "home": 6,
+     "away": 4
+    },
+    {
+     "label": "Fouls",
+     "home": 10,
+     "away": 6
+    },
+    {
+     "label": "Yellow cards",
+     "home": 3,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 0,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Angers",
+     "names": [
+      "Anthony Lopes",
+      "Jordan Lefort",
+      "Ousmane Camara",
+      "Joseph Kalulu Kyatengwa",
+      "Carlens Arcus",
+      "Branco van den Boomen",
+      "Haris Belkebla",
+      "Yassin Belkhdim",
+      "Prosper Peter",
+      "Amine Sbaï",
+      "Jim Allevinah",
+      "Louis Mouton",
+      "Harouna Djibirin",
+      "Mamadou Simbakoli",
+      "Lilian Raolisoa",
+      "Anthony Bermont"
+     ]
+    },
+    {
+     "team": "Nice",
+     "names": [
+      "Yehvann Diouf",
+      "Youssouf Ndayishimiye",
+      "Mohamed Abdelmoneim",
+      "Alidu Seidu",
+      "Hicham Boudaoui",
+      "Djibril Coulibaly",
+      "Niels Nkounkou",
+      "Jonathan Clauss",
+      "Elye Wahi",
+      "Mohamed Amoura",
+      "Sofiane Diop",
+      "Nathan N'Goumou",
+      "Axel Witsel",
+      "Morgan Sanson",
+      "Xavier Junior Mandza Tsiendi",
+      "Gauthier Hein"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401882807",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 5:30pm",
+   "competition": "La Liga",
+   "home": "Villarreal",
+   "away": "Getafe",
+   "home_score": 2,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 80,
+     "team": "Villarreal",
+     "scorer": "Tajon Buchanan",
+     "assist": "Nicolas Pepe"
+    },
+    {
+     "min": 90,
+     "team": "Villarreal",
+     "scorer": "Carlos Romero",
+     "assist": "Ayoze Pérez"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Villarreal",
+     "mins": [
+      63,
+      64,
+      64,
+      76,
+      84
+     ]
+    },
+    {
+     "team": "Getafe",
+     "mins": [
+      45,
+      81,
+      81,
+      81
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Getafe",
+     "on": "Ramón Terrats",
+     "off": "Mario Martín"
+    },
+    {
+     "min": 63,
+     "team": "Villarreal",
+     "on": "Ayoze Pérez",
+     "off": "Alberto Moleiro"
+    },
+    {
+     "min": 64,
+     "team": "Villarreal",
+     "on": "Santi Comesaña",
+     "off": "Carlos Maciá"
+    },
+    {
+     "min": 64,
+     "team": "Villarreal",
+     "on": "Alex Freeman",
+     "off": "Santiago Mouriño"
+    },
+    {
+     "min": 76,
+     "team": "Villarreal",
+     "on": "Nicolas Pepe",
+     "off": "Tani Oluwaseyi"
+    },
+    {
+     "min": 81,
+     "team": "Getafe",
+     "on": "Iván Azón",
+     "off": "Orel Mangala"
+    },
+    {
+     "min": 81,
+     "team": "Getafe",
+     "on": "Francho Serrano",
+     "off": "Enes Ünal"
+    },
+    {
+     "min": 81,
+     "team": "Getafe",
+     "on": "Kiko Femenía",
+     "off": "Andrés García"
+    },
+    {
+     "min": 84,
+     "team": "Villarreal",
+     "on": "Nathan Saliba",
+     "off": "Georges Mikautadze"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 72.4,
+     "away": 27.6
+    },
+    {
+     "label": "Shots",
+     "home": 22,
+     "away": 9
+    },
+    {
+     "label": "Shots on target",
+     "home": 7,
+     "away": 1
+    },
+    {
+     "label": "Corners",
+     "home": 9,
+     "away": 4
+    },
+    {
+     "label": "Fouls",
+     "home": 6,
+     "away": 13
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Villarreal",
+     "names": [
+      "Péter Gulácsi",
+      "Renato Veiga",
+      "Logan Costa",
+      "Carlos Romero",
+      "Santiago Mouriño",
+      "Alberto Moleiro",
+      "Pape Gueye",
+      "Carlos Macià",
+      "Georges Mikautadze",
+      "Tani Oluwaseyi",
+      "Tajon Buchanan",
+      "Nicolas Pépé",
+      "Alex Freeman",
+      "Nathan Saliba",
+      "Santi Comesaña",
+      "Ayoze Pérez"
+     ]
+    },
+    {
+     "team": "Getafe",
+     "names": [
+      "David Soria",
+      "Djené",
+      "Sebastián Boselli",
+      "Nemanja Gudelj",
+      "Johan Mojica",
+      "Dani Carvajal",
+      "Mario Martín",
+      "Orel Mangala",
+      "Martín Satriano",
+      "Andrés García",
+      "Enes Ünal",
+      "Francho Serrano",
+      "Ramón Terrats",
+      "Kiko Femenía",
+      "Ivan Azón"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401882810",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 3:15pm",
+   "competition": "La Liga",
+   "home": "Real Sociedad",
+   "away": "Rayo Vallecano",
+   "home_score": 1,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 67,
+     "team": "Real Sociedad",
+     "scorer": "Orri Óskarsson",
+     "assist": "Ander Barrenetxea"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Real Sociedad",
+     "mins": [
+      62,
+      62,
+      71,
+      72,
+      84
+     ]
+    },
+    {
+     "team": "Rayo Vallecano",
+     "mins": [
+      79,
+      79,
+      79,
+      80,
+      89
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 62,
+     "team": "Real Sociedad",
+     "on": "Gonçalo Guedes",
+     "off": "Takefusa Kubo"
+    },
+    {
+     "min": 62,
+     "team": "Real Sociedad",
+     "on": "Héctor Fort",
+     "off": "Jon Aramburu"
+    },
+    {
+     "min": 71,
+     "team": "Real Sociedad",
+     "on": "Job Ochieng",
+     "off": "Ander Barrenetxea"
+    },
+    {
+     "min": 72,
+     "team": "Real Sociedad",
+     "on": "Jon Gorrotxategi",
+     "off": "Beñat Turrientes"
+    },
+    {
+     "min": 79,
+     "team": "Rayo Vallecano",
+     "on": "Jozhua Vertrouwd",
+     "off": "Adrià Pedrosa"
+    },
+    {
+     "min": 79,
+     "team": "Rayo Vallecano",
+     "on": "Gnangoro",
+     "off": "Unai López"
+    },
+    {
+     "min": 79,
+     "team": "Rayo Vallecano",
+     "on": "Isi Palazón",
+     "off": "Mujaid Sadick"
+    },
+    {
+     "min": 80,
+     "team": "Rayo Vallecano",
+     "on": "Randy Nteka",
+     "off": "Sergio Camello"
+    },
+    {
+     "min": 84,
+     "team": "Real Sociedad",
+     "on": "Sergio Gómez",
+     "off": "Aihen Muñoz"
+    },
+    {
+     "min": 89,
+     "team": "Rayo Vallecano",
+     "on": "Alemão",
+     "off": "Jozhua Vertrouwd"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 50.8,
+     "away": 49.2
+    },
+    {
+     "label": "Shots",
+     "home": 17,
+     "away": 11
+    },
+    {
+     "label": "Shots on target",
+     "home": 3,
+     "away": 3
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 6
+    },
+    {
+     "label": "Fouls",
+     "home": 11,
+     "away": 8
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 2
+    }
+   ],
+   "players": [
+    {
+     "team": "Real Sociedad",
+     "names": [
+      "Álex Remiro",
+      "Igor Zubeldia",
+      "Jon Martín",
+      "Aihen Muñoz",
+      "Jon Aramburu",
+      "Luka Sucic",
+      "Carlos Soler",
+      "Beñat Turrientes",
+      "Orri Óskarsson",
+      "Ander Barrenetxea",
+      "Takefusa Kubo",
+      "Jon Gorrotxategi",
+      "Sergio Gómez",
+      "Héctor Fort",
+      "Job Ochieng",
+      "Gonçalo Guedes"
+     ]
+    },
+    {
+     "team": "Rayo Vallecano",
+     "names": [
+      "Emil Audero",
+      "Mujaid Sadick",
+      "Florian Lejeune",
+      "Adrià Pedrosa",
+      "Andrei Ratiu",
+      "Pedro Díaz",
+      "Pathé Ciss",
+      "Unai López",
+      "Sergio Camello",
+      "Giorgi Tsitaishvili",
+      "Jorge de Frutos",
+      "Alexandre Alemão",
+      "Isi Palazón",
+      "Gnangoro Bouare Samake",
+      "Jozhua Vertrouwd",
+      "Randy Nteka"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
    "match_id": "espn:401882814",
    "date": "2026-11-08",
    "kickoff": "Sun 8 Nov 2026, 1:00pm",
@@ -2993,6 +4515,558 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401882815",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 5:30pm",
+   "competition": "La Liga",
+   "home": "Celta Vigo",
+   "away": "Levante",
+   "home_score": 0,
+   "away_score": 0,
+   "goals": [],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Celta Vigo",
+     "mins": [
+      45,
+      45,
+      64,
+      76,
+      76
+     ]
+    },
+    {
+     "team": "Levante",
+     "mins": [
+      45,
+      45,
+      45,
+      56,
+      77
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Celta Vigo",
+     "on": "Hugo Álvarez",
+     "off": "Javi Rodríguez"
+    },
+    {
+     "min": 45,
+     "team": "Levante",
+     "on": "Adrián de la Fuente",
+     "off": "Ifeanyi Ndukwe"
+    },
+    {
+     "min": 45,
+     "team": "Levante",
+     "on": "Iván Romero",
+     "off": "Karl Etta Eyong"
+    },
+    {
+     "min": 45,
+     "team": "Levante",
+     "on": "Oriol Rey",
+     "off": "Hugo Sotelo"
+    },
+    {
+     "min": 45,
+     "team": "Celta Vigo",
+     "on": "Javi Galán",
+     "off": "Javi Rueda"
+    },
+    {
+     "min": 56,
+     "team": "Levante",
+     "on": "Víctor García",
+     "off": "Thiago Fernández"
+    },
+    {
+     "min": 64,
+     "team": "Celta Vigo",
+     "on": "Hugo Burcio",
+     "off": "Andrés Antañón"
+    },
+    {
+     "min": 76,
+     "team": "Celta Vigo",
+     "on": "Williot Swedberg",
+     "off": "Couhaib Driouech"
+    },
+    {
+     "min": 76,
+     "team": "Celta Vigo",
+     "on": "Hugo González",
+     "off": "Iago Aspas"
+    },
+    {
+     "min": 77,
+     "team": "Levante",
+     "on": "Marc Santos",
+     "off": "Nacho Pérez"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 58.7,
+     "away": 41.3
+    },
+    {
+     "label": "Shots",
+     "home": 23,
+     "away": 6
+    },
+    {
+     "label": "Shots on target",
+     "home": 8,
+     "away": 0
+    },
+    {
+     "label": "Corners",
+     "home": 6,
+     "away": 1
+    },
+    {
+     "label": "Fouls",
+     "home": 8,
+     "away": 9
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 10,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Celta Vigo",
+     "names": [
+      "Andrei Radu",
+      "Sebastián Cáceres",
+      "Marcos Alonso",
+      "Javi Rodríguez",
+      "Ilaix Moriba",
+      "Andrés Antañón",
+      "Sergio Carreira",
+      "Javi Rueda",
+      "Pablo Durán",
+      "Couhaib Driouech",
+      "Iago Aspas",
+      "Hugo Gonzalez",
+      "Williot Swedberg",
+      "Hugo Álvarez",
+      "Hugo Burcio",
+      "Javi Galán"
+     ]
+    },
+    {
+     "team": "Levante",
+     "names": [
+      "Mathew Ryan",
+      "Ifeanyi Ndukwe",
+      "Aïssa Mandi",
+      "Nacho Pérez",
+      "Jeremy Toljan",
+      "Dani Requena",
+      "Hugo Sotelo",
+      "Jon Ander Olasagasti",
+      "Etta Eyong",
+      "Thiago Fernández",
+      "Roger Brugué",
+      "Víctor García",
+      "Adrián de la Fuente",
+      "Marc Santos Gavilán",
+      "Orio Rey",
+      "Iván Romero"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401884741",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 4:30pm",
+   "competition": "Bundesliga",
+   "home": "SC Freiburg",
+   "away": "1. FC Union Berlin",
+   "home_score": 2,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 55,
+     "team": "SC Freiburg",
+     "scorer": "Rani Khedira",
+     "own_goal": true
+    },
+    {
+     "min": 67,
+     "team": "SC Freiburg",
+     "scorer": "Yuito Suzuki",
+     "assist": "Derry Scherhant"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "SC Freiburg",
+     "mins": [
+      68,
+      68,
+      75,
+      85,
+      85
+     ]
+    },
+    {
+     "team": "1. FC Union Berlin",
+     "mins": [
+      45,
+      45,
+      68,
+      77,
+      85
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "1. FC Union Berlin",
+     "on": "Jeong Woo-Yeong",
+     "off": "Kastriot Imeri"
+    },
+    {
+     "min": 45,
+     "team": "1. FC Union Berlin",
+     "on": "Oliver Burke",
+     "off": "Tim Skarke"
+    },
+    {
+     "min": 68,
+     "team": "SC Freiburg",
+     "on": "Keisuke Goto",
+     "off": "Igor Matanovic"
+    },
+    {
+     "min": 68,
+     "team": "1. FC Union Berlin",
+     "on": "Andrej Ilic",
+     "off": "Livan Burcu"
+    },
+    {
+     "min": 68,
+     "team": "SC Freiburg",
+     "on": "Vincenzo Grifo",
+     "off": "Derry Scherhant"
+    },
+    {
+     "min": 75,
+     "team": "SC Freiburg",
+     "on": "Patrick Osterhage",
+     "off": "Yannik Engelhardt"
+    },
+    {
+     "min": 77,
+     "team": "1. FC Union Berlin",
+     "on": "Linus Güther",
+     "off": "Michel Aebischer"
+    },
+    {
+     "min": 85,
+     "team": "SC Freiburg",
+     "on": "Lukas Kübler",
+     "off": "Philipp Treu"
+    },
+    {
+     "min": 85,
+     "team": "SC Freiburg",
+     "on": "Lucas Höler",
+     "off": "Yuito Suzuki"
+    },
+    {
+     "min": 85,
+     "team": "1. FC Union Berlin",
+     "on": "Tom Rothe",
+     "off": "Derrick Köhn"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 59.2,
+     "away": 40.8
+    },
+    {
+     "label": "Shots",
+     "home": 20,
+     "away": 4
+    },
+    {
+     "label": "Shots on target",
+     "home": 9,
+     "away": 0
+    },
+    {
+     "label": "Corners",
+     "home": 5,
+     "away": 1
+    },
+    {
+     "label": "Fouls",
+     "home": 10,
+     "away": 17
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 0,
+     "away": 3
+    }
+   ],
+   "players": [
+    {
+     "team": "SC Freiburg",
+     "names": [
+      "Mio Backhaus",
+      "Philipp Lienhart",
+      "Matthias Ginter",
+      "Jordy Makengo",
+      "Philipp Treu",
+      "Yuito Suzuki",
+      "Yannick Engelhardt",
+      "Maximilian Eggestein",
+      "Igor Matanovic",
+      "Derry Scherhant",
+      "Niklas Beste",
+      "Patrick Osterhage",
+      "Vincenzo Grifo",
+      "Lucas Höler",
+      "Lukas Kübler",
+      "Keisuke Goto"
+     ]
+    },
+    {
+     "team": "1. FC Union Berlin",
+     "names": [
+      "Frederik Ronnow",
+      "Marvin Friedrich",
+      "Zeno Van Den Bosch",
+      "Rani Khedira",
+      "Derrick Köhn",
+      "Janik Haberer",
+      "András Schäfer",
+      "Michel Aebischer",
+      "Kastriot Imeri",
+      "Livan Burcu",
+      "Tim Skarke",
+      "Tom Rothe",
+      "Jeong Woo-Yeong",
+      "Oliver Burke",
+      "Linus Güther",
+      "Andrej Ilić"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401884738",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:30pm",
+   "competition": "Bundesliga",
+   "home": "FC Cologne",
+   "away": "Bayer Leverkusen",
+   "home_score": 1,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 7,
+     "team": "Bayer Leverkusen",
+     "scorer": "Aleix García"
+    },
+    {
+     "min": 85,
+     "team": "Bayer Leverkusen",
+     "scorer": "Patrik Schick",
+     "assist": "Ibrahim Maza"
+    },
+    {
+     "min": 90,
+     "team": "FC Cologne",
+     "scorer": "Said El Mala",
+     "assist": "Malek El Mala"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "FC Cologne",
+     "mins": [
+      74,
+      75,
+      75,
+      84,
+      84
+     ]
+    },
+    {
+     "team": "Bayer Leverkusen",
+     "mins": [
+      76,
+      88,
+      88
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 74,
+     "team": "FC Cologne",
+     "on": "Ísak Jóhannesson",
+     "off": "Tom Krauß"
+    },
+    {
+     "min": 75,
+     "team": "FC Cologne",
+     "on": "Malek El Mala",
+     "off": "Marius Bülter"
+    },
+    {
+     "min": 75,
+     "team": "FC Cologne",
+     "on": "Reigan Heskey",
+     "off": "Linton Maina"
+    },
+    {
+     "min": 76,
+     "team": "Bayer Leverkusen",
+     "on": "Jonas Hofmann",
+     "off": "Malik Tillman"
+    },
+    {
+     "min": 84,
+     "team": "FC Cologne",
+     "on": "Luca Waldschmidt",
+     "off": "Mikey Moore"
+    },
+    {
+     "min": 84,
+     "team": "FC Cologne",
+     "on": "Alessio Castro-Montes",
+     "off": "Sebastian Sebulonsen"
+    },
+    {
+     "min": 88,
+     "team": "Bayer Leverkusen",
+     "on": "Loïc Badé",
+     "off": "Facundo Medina"
+    },
+    {
+     "min": 88,
+     "team": "Bayer Leverkusen",
+     "on": "Robert Andrich",
+     "off": "Ibrahim Maza"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 38.3,
+     "away": 61.7
+    },
+    {
+     "label": "Shots",
+     "home": 12,
+     "away": 14
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 8
+    },
+    {
+     "label": "Corners",
+     "home": 2,
+     "away": 6
+    },
+    {
+     "label": "Fouls",
+     "home": 12,
+     "away": 12
+    },
+    {
+     "label": "Yellow cards",
+     "home": 6,
+     "away": 5
+    },
+    {
+     "label": "Offsides",
+     "home": 1,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "FC Cologne",
+     "names": [
+      "Marvin Schwäbe",
+      "Jahmai Simpson-Pusey",
+      "Tom Krauss",
+      "Joel Schmied",
+      "Mikey Moore",
+      "Linton Maina",
+      "Paul Okon-Engstler",
+      "Borna Sosa",
+      "Sebastian Sebulonsen",
+      "Said El Mala",
+      "Marius Bulter",
+      "Alessio Castro-Montes",
+      "Malek El Mala",
+      "Luca Waldschmidt",
+      "Reigan Heskey",
+      "Ísak Jóhannesson"
+     ]
+    },
+    {
+     "team": "Bayer Leverkusen",
+     "names": [
+      "Mark Flekken",
+      "Facundo Medina",
+      "Edmond Tapsoba",
+      "Miguel Gutiérrez",
+      "Jarell Quansah",
+      "Malik Tillman",
+      "Aleix García",
+      "Ezequiel Fernández",
+      "Patrik Schick",
+      "Ibrahim Maza",
+      "Afonso Moreira",
+      "Robert Andrich",
+      "Loïc Badé",
+      "Jonas Hofmann"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T19:50:46Z"
   },
   {
    "match_id": "espn:401874811",
@@ -25111,6 +27185,16 @@
     },
     {
      "pos": 10,
+     "team": "Aston Villa",
+     "p": 10,
+     "w": 3,
+     "d": 4,
+     "l": 3,
+     "gd": -3,
+     "pts": 13
+    },
+    {
+     "pos": 11,
      "team": "Tottenham Hotspur",
      "p": 10,
      "w": 3,
@@ -25120,22 +27204,12 @@
      "pts": 12
     },
     {
-     "pos": 11,
+     "pos": 12,
      "team": "Newcastle United",
      "p": 10,
      "w": 3,
      "d": 3,
      "l": 4,
-     "gd": -3,
-     "pts": 12
-    },
-    {
-     "pos": 12,
-     "team": "Aston Villa",
-     "p": 9,
-     "w": 3,
-     "d": 3,
-     "l": 3,
      "gd": -3,
      "pts": 12
     },
@@ -25191,6 +27265,16 @@
     },
     {
      "pos": 18,
+     "team": "Manchester United",
+     "p": 10,
+     "w": 1,
+     "d": 5,
+     "l": 4,
+     "gd": -5,
+     "pts": 8
+    },
+    {
+     "pos": 19,
      "team": "Sunderland",
      "p": 10,
      "w": 2,
@@ -25198,16 +27282,6 @@
      "l": 6,
      "gd": -9,
      "pts": 8
-    },
-    {
-     "pos": 19,
-     "team": "Manchester United",
-     "p": 9,
-     "w": 1,
-     "d": 4,
-     "l": 4,
-     "gd": -5,
-     "pts": 7
     },
     {
      "pos": 20,
@@ -25268,12 +27342,12 @@
     {
      "pos": 5,
      "team": "Real Sociedad",
-     "p": 11,
-     "w": 6,
+     "p": 12,
+     "w": 7,
      "d": 1,
      "l": 4,
-     "gd": 0,
-     "pts": 19
+     "gd": 1,
+     "pts": 22
     },
     {
      "pos": 6,
@@ -25297,6 +27371,16 @@
     },
     {
      "pos": 8,
+     "team": "Villarreal",
+     "p": 12,
+     "w": 4,
+     "d": 3,
+     "l": 5,
+     "gd": 2,
+     "pts": 15
+    },
+    {
+     "pos": 9,
      "team": "Deportivo",
      "p": 12,
      "w": 3,
@@ -25306,7 +27390,7 @@
      "pts": 15
     },
     {
-     "pos": 9,
+     "pos": 10,
      "team": "Racing Santander",
      "p": 12,
      "w": 4,
@@ -25316,7 +27400,17 @@
      "pts": 14
     },
     {
-     "pos": 10,
+     "pos": 11,
+     "team": "Celta Vigo",
+     "p": 12,
+     "w": 2,
+     "d": 7,
+     "l": 3,
+     "gd": 0,
+     "pts": 13
+    },
+    {
+     "pos": 12,
      "team": "Alaves",
      "p": 12,
      "w": 3,
@@ -25324,26 +27418,6 @@
      "l": 5,
      "gd": -2,
      "pts": 13
-    },
-    {
-     "pos": 11,
-     "team": "Villarreal",
-     "p": 11,
-     "w": 3,
-     "d": 3,
-     "l": 5,
-     "gd": 0,
-     "pts": 12
-    },
-    {
-     "pos": 12,
-     "team": "Celta Vigo",
-     "p": 11,
-     "w": 2,
-     "d": 6,
-     "l": 3,
-     "gd": 0,
-     "pts": 12
     },
     {
      "pos": 13,
@@ -25358,21 +27432,21 @@
     {
      "pos": 14,
      "team": "Rayo Vallecano",
-     "p": 10,
+     "p": 11,
      "w": 3,
      "d": 3,
-     "l": 4,
-     "gd": -5,
+     "l": 5,
+     "gd": -6,
      "pts": 12
     },
     {
      "pos": 15,
      "team": "Getafe",
-     "p": 11,
+     "p": 12,
      "w": 3,
      "d": 3,
-     "l": 5,
-     "gd": -8,
+     "l": 6,
+     "gd": -10,
      "pts": 12
     },
     {
@@ -25388,12 +27462,12 @@
     {
      "pos": 17,
      "team": "Levante",
-     "p": 11,
+     "p": 12,
      "w": 2,
-     "d": 4,
+     "d": 5,
      "l": 5,
      "gd": -5,
-     "pts": 10
+     "pts": 11
     },
     {
      "pos": 18,
@@ -25443,6 +27517,16 @@
     },
     {
      "pos": 2,
+     "team": "Inter",
+     "p": 11,
+     "w": 9,
+     "d": 1,
+     "l": 1,
+     "gd": 15,
+     "pts": 28
+    },
+    {
+     "pos": 3,
      "team": "AS Roma",
      "p": 11,
      "w": 8,
@@ -25450,16 +27534,6 @@
      "l": 0,
      "gd": 21,
      "pts": 27
-    },
-    {
-     "pos": 3,
-     "team": "Inter",
-     "p": 10,
-     "w": 8,
-     "d": 1,
-     "l": 1,
-     "gd": 13,
-     "pts": 25
     },
     {
      "pos": 4,
@@ -25474,11 +27548,11 @@
     {
      "pos": 5,
      "team": "Como",
-     "p": 10,
+     "p": 11,
      "w": 7,
      "d": 2,
-     "l": 1,
-     "gd": 10,
+     "l": 2,
+     "gd": 8,
      "pts": 23
     },
     {
@@ -25659,6 +27733,16 @@
     },
     {
      "pos": 3,
+     "team": "SC Freiburg",
+     "p": 9,
+     "w": 6,
+     "d": 1,
+     "l": 2,
+     "gd": 10,
+     "pts": 19
+    },
+    {
+     "pos": 4,
      "team": "RB Leipzig",
      "p": 9,
      "w": 6,
@@ -25668,17 +27752,17 @@
      "pts": 18
     },
     {
-     "pos": 4,
-     "team": "SC Freiburg",
-     "p": 8,
+     "pos": 5,
+     "team": "Bayer Leverkusen",
+     "p": 9,
      "w": 5,
      "d": 1,
-     "l": 2,
-     "gd": 8,
+     "l": 3,
+     "gd": 3,
      "pts": 16
     },
     {
-     "pos": 5,
+     "pos": 6,
      "team": "Werder Bremen",
      "p": 9,
      "w": 4,
@@ -25686,16 +27770,6 @@
      "l": 2,
      "gd": 2,
      "pts": 15
-    },
-    {
-     "pos": 6,
-     "team": "Bayer Leverkusen",
-     "p": 8,
-     "w": 4,
-     "d": 1,
-     "l": 3,
-     "gd": 2,
-     "pts": 13
     },
     {
      "pos": 7,
@@ -25780,21 +27854,21 @@
     {
      "pos": 15,
      "team": "FC Cologne",
-     "p": 8,
+     "p": 9,
      "w": 2,
      "d": 3,
-     "l": 3,
-     "gd": -3,
+     "l": 4,
+     "gd": -4,
      "pts": 9
     },
     {
      "pos": 16,
      "team": "1. FC Union Berlin",
-     "p": 8,
+     "p": 9,
      "w": 1,
      "d": 4,
-     "l": 3,
-     "gd": -12,
+     "l": 4,
+     "gd": -14,
      "pts": 7
     },
     {
@@ -25856,15 +27930,35 @@
     {
      "pos": 4,
      "team": "Lyon",
-     "p": 9,
+     "p": 10,
      "w": 5,
      "d": 2,
-     "l": 2,
-     "gd": 8,
+     "l": 3,
+     "gd": 6,
      "pts": 17
     },
     {
      "pos": 5,
+     "team": "Nice",
+     "p": 10,
+     "w": 5,
+     "d": 2,
+     "l": 3,
+     "gd": 3,
+     "pts": 17
+    },
+    {
+     "pos": 6,
+     "team": "AS Monaco",
+     "p": 10,
+     "w": 4,
+     "d": 4,
+     "l": 2,
+     "gd": 2,
+     "pts": 16
+    },
+    {
+     "pos": 7,
      "team": "Stade Rennais",
      "p": 10,
      "w": 5,
@@ -25874,7 +27968,7 @@
      "pts": 16
     },
     {
-     "pos": 6,
+     "pos": 8,
      "team": "Marseille",
      "p": 9,
      "w": 5,
@@ -25884,27 +27978,27 @@
      "pts": 15
     },
     {
-     "pos": 7,
-     "team": "AS Monaco",
-     "p": 9,
+     "pos": 9,
+     "team": "Brest",
+     "p": 10,
      "w": 4,
      "d": 3,
-     "l": 2,
-     "gd": 2,
+     "l": 3,
+     "gd": 6,
      "pts": 15
     },
     {
-     "pos": 8,
-     "team": "Nice",
-     "p": 9,
+     "pos": 10,
+     "team": "Lorient",
+     "p": 10,
      "w": 4,
-     "d": 2,
+     "d": 3,
      "l": 3,
      "gd": 1,
-     "pts": 14
+     "pts": 15
     },
     {
-     "pos": 9,
+     "pos": 11,
      "team": "Lens",
      "p": 9,
      "w": 4,
@@ -25914,7 +28008,7 @@
      "pts": 13
     },
     {
-     "pos": 10,
+     "pos": 12,
      "team": "Toulouse",
      "p": 10,
      "w": 3,
@@ -25922,26 +28016,6 @@
      "l": 3,
      "gd": 1,
      "pts": 13
-    },
-    {
-     "pos": 11,
-     "team": "Brest",
-     "p": 9,
-     "w": 3,
-     "d": 3,
-     "l": 3,
-     "gd": 4,
-     "pts": 12
-    },
-    {
-     "pos": 12,
-     "team": "Lorient",
-     "p": 9,
-     "w": 3,
-     "d": 3,
-     "l": 3,
-     "gd": -1,
-     "pts": 12
     },
     {
      "pos": 13,
@@ -25965,17 +28039,17 @@
     },
     {
      "pos": 15,
-     "team": "Angers",
-     "p": 9,
-     "w": 2,
-     "d": 2,
-     "l": 5,
-     "gd": -8,
+     "team": "Le Mans",
+     "p": 10,
+     "w": 1,
+     "d": 5,
+     "l": 4,
+     "gd": -7,
      "pts": 8
     },
     {
      "pos": 16,
-     "team": "Troyes",
+     "team": "Angers",
      "p": 10,
      "w": 2,
      "d": 2,
@@ -25985,22 +28059,22 @@
     },
     {
      "pos": 17,
-     "team": "Le Mans",
-     "p": 9,
-     "w": 1,
-     "d": 4,
-     "l": 4,
-     "gd": -7,
-     "pts": 7
+     "team": "Troyes",
+     "p": 10,
+     "w": 2,
+     "d": 2,
+     "l": 6,
+     "gd": -10,
+     "pts": 8
     },
     {
      "pos": 18,
      "team": "Le Havre AC",
-     "p": 9,
+     "p": 10,
      "w": 0,
      "d": 2,
-     "l": 7,
-     "gd": -11,
+     "l": 8,
+     "gd": -13,
      "pts": 2
     }
    ]
@@ -26685,90 +28759,6 @@
   }
  ],
  "fixtures": [
-  {
-   "competition": "Ligue 1",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 4:15pm",
-   "home": "Angers",
-   "away": "Nice"
-  },
-  {
-   "competition": "Ligue 1",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 4:15pm",
-   "home": "Brest",
-   "away": "Lyon"
-  },
-  {
-   "competition": "Ligue 1",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 4:15pm",
-   "home": "Le Havre AC",
-   "away": "Lorient"
-  },
-  {
-   "competition": "Ligue 1",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 4:15pm",
-   "home": "Le Mans",
-   "away": "AS Monaco"
-  },
-  {
-   "competition": "Premier League",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 4:30pm",
-   "home": "Manchester United",
-   "away": "Aston Villa"
-  },
-  {
-   "competition": "Bundesliga",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 4:30pm",
-   "home": "SC Freiburg",
-   "away": "1. FC Union Berlin"
-  },
-  {
-   "competition": "Serie A",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 5:00pm",
-   "home": "Inter",
-   "away": "Como"
-  },
-  {
-   "competition": "La Liga",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 5:30pm",
-   "home": "Celta Vigo",
-   "away": "Levante"
-  },
-  {
-   "competition": "La Liga",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 5:30pm",
-   "home": "Villarreal",
-   "away": "Getafe"
-  },
-  {
-   "competition": "Bundesliga",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 6:30pm",
-   "home": "TSG Hoffenheim",
-   "away": "Schalke 04"
-  },
-  {
-   "competition": "Serie A",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 7:45pm",
-   "home": "Fiorentina",
-   "away": "Juventus"
-  },
-  {
-   "competition": "Ligue 1",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 7:45pm",
-   "home": "Lens",
-   "away": "Marseille"
-  },
   {
    "competition": "La Liga",
    "date": "2026-11-08",
