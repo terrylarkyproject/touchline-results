@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-08T15:59:57Z",
+ "updated_at": "2026-11-08T16:07:02Z",
  "tables_at": "2026-11-08",
- "count": 135,
+ "count": 136,
  "results": [
   {
    "match_id": "espn:401874810",
@@ -550,6 +550,184 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401879239",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:00pm",
+   "competition": "Premier League",
+   "home": "Sunderland",
+   "away": "Chelsea",
+   "home_score": 1,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 36,
+     "team": "Sunderland",
+     "scorer": "Enzo Le Fée",
+     "penalty": true
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Sunderland",
+     "mins": [
+      4,
+      67,
+      88,
+      88
+     ]
+    },
+    {
+     "team": "Chelsea",
+     "mins": [
+      45,
+      62,
+      62,
+      79,
+      87
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 4,
+     "team": "Sunderland",
+     "on": "Jules Ahoka",
+     "off": "Granit Xhaka"
+    },
+    {
+     "min": 45,
+     "team": "Chelsea",
+     "on": "Estêvão",
+     "off": "Levi Colwill"
+    },
+    {
+     "min": 62,
+     "team": "Chelsea",
+     "on": "Danny Welbeck",
+     "off": "Pedro Neto"
+    },
+    {
+     "min": 62,
+     "team": "Chelsea",
+     "on": "Malo Gusto",
+     "off": "Marco Palestra"
+    },
+    {
+     "min": 67,
+     "team": "Sunderland",
+     "on": "Wilson Isidor",
+     "off": "Brian Brobbey"
+    },
+    {
+     "min": 79,
+     "team": "Chelsea",
+     "on": "Geovany Quenda",
+     "off": "Pep Chavarría"
+    },
+    {
+     "min": 87,
+     "team": "Chelsea",
+     "on": "Emmanuel Emegha",
+     "off": "Jordan Henderson"
+    },
+    {
+     "min": 88,
+     "team": "Sunderland",
+     "on": "Nilson Angulo",
+     "off": "Chemsdine Talbi"
+    },
+    {
+     "min": 88,
+     "team": "Sunderland",
+     "on": "Chris Rigg",
+     "off": "Enzo Le Fée"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 31.3,
+     "away": 68.7
+    },
+    {
+     "label": "Shots",
+     "home": 9,
+     "away": 10
+    },
+    {
+     "label": "Shots on target",
+     "home": 2,
+     "away": 4
+    },
+    {
+     "label": "Corners",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 17,
+     "away": 8
+    },
+    {
+     "label": "Yellow cards",
+     "home": 5,
+     "away": 4
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Sunderland",
+     "names": [
+      "Robin Roefs",
+      "Luke O'Nien",
+      "Nordi Mukiele",
+      "Reinildo Mandava",
+      "Thomas Meunier",
+      "Enzo Le Fée",
+      "Noah Sadiki",
+      "Granit Xhaka",
+      "Brian Brobbey",
+      "Chemsdine Talbi",
+      "Trai Hume",
+      "Chris Rigg",
+      "Nilson Angulo",
+      "Jules Ahoka",
+      "Wilson Isidor"
+     ]
+    },
+    {
+     "team": "Chelsea",
+     "names": [
+      "Mike Penders",
+      "Levi Colwill",
+      "Wesley Fofana",
+      "Pep Chavarría",
+      "Marco Palestra",
+      "Romeo Lavia",
+      "Jordan Henderson",
+      "Moisés Caicedo",
+      "Pedro Neto",
+      "Morgan Rogers",
+      "Cole Palmer",
+      "Emmanuel Emegha",
+      "Malo Gusto",
+      "Geovany Quenda",
+      "Danny Welbeck",
+      "Estêvão"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T16:07:02Z"
   },
   {
    "match_id": "espn:401878759",
@@ -24884,11 +25062,11 @@
     {
      "pos": 5,
      "team": "Chelsea",
-     "p": 9,
+     "p": 10,
      "w": 5,
      "d": 1,
-     "l": 3,
-     "gd": 4,
+     "l": 4,
+     "gd": 3,
      "pts": 16
     },
     {
@@ -25013,6 +25191,16 @@
     },
     {
      "pos": 18,
+     "team": "Sunderland",
+     "p": 10,
+     "w": 2,
+     "d": 2,
+     "l": 6,
+     "gd": -9,
+     "pts": 8
+    },
+    {
+     "pos": 19,
      "team": "Manchester United",
      "p": 9,
      "w": 1,
@@ -25022,7 +25210,7 @@
      "pts": 7
     },
     {
-     "pos": 19,
+     "pos": 20,
      "team": "Crystal Palace",
      "p": 10,
      "w": 2,
@@ -25030,16 +25218,6 @@
      "l": 7,
      "gd": -14,
      "pts": 7
-    },
-    {
-     "pos": 20,
-     "team": "Sunderland",
-     "p": 9,
-     "w": 1,
-     "d": 2,
-     "l": 6,
-     "gd": -10,
-     "pts": 5
     }
    ]
   },
@@ -25285,6 +25463,16 @@
     },
     {
      "pos": 4,
+     "team": "AC Milan",
+     "p": 11,
+     "w": 7,
+     "d": 3,
+     "l": 1,
+     "gd": 10,
+     "pts": 24
+    },
+    {
+     "pos": 5,
      "team": "Como",
      "p": 10,
      "w": 7,
@@ -25292,16 +25480,6 @@
      "l": 1,
      "gd": 10,
      "pts": 23
-    },
-    {
-     "pos": 5,
-     "team": "AC Milan",
-     "p": 10,
-     "w": 6,
-     "d": 3,
-     "l": 1,
-     "gd": 9,
-     "pts": 21
     },
     {
      "pos": 6,
@@ -25376,11 +25554,11 @@
     {
      "pos": 13,
      "team": "Genoa",
-     "p": 10,
+     "p": 11,
      "w": 4,
      "d": 1,
-     "l": 5,
-     "gd": -4,
+     "l": 6,
+     "gd": -5,
      "pts": 13
     },
     {
