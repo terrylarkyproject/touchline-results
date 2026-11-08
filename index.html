@@ -619,7 +619,7 @@ JSON rules: voiceover word counts add up to about ${W}; start/end times run cons
 }
 
 /* ---------- Claude (direct from this page, using your own key) ---------- */
-const ERR = {invalid_json:"The reply wasn't in the expected shape. Press Write the script to try again.",no_key:"Add your Claude API key below first.",bad_key:"Anthropic rejected that key. Check it in the key box below.",no_credit:"Your Anthropic account has no credit left. Add some at console.anthropic.com.",rate_limited:"Too many requests right now. Try again in a minute.",busy:"Claude is busy. Press Write the script to try again.",network:"Couldn't reach Anthropic. Check your connection and try again.",too_long:"The script was cut off for length. Choose a shorter target and try again.",bad_request:"Anthropic refused the request."};
+const ERR = {invalid_json:"The reply wasn't in the expected shape. Press Write the script to try again.",no_key:"Add your Claude API key below first.",bad_key:"Anthropic rejected that key. Check it in the key box below.",no_credit:"Your Anthropic account has no credit left. Add some at console.anthropic.com.",rate_limited:"Too many requests right now. Try again in a minute.",busy:"Claude is busy. Press Write the script to try again.",network:"Couldn't reach Anthropic. Check your connection and try again.",too_long:"Claude ran out of room before the script was finished. Press Write the script to try again; if it happens twice, pick Sonnet 5.5 or a shorter target.",bad_request:"Anthropic refused the request."};
 function apiError(e){
   if(e&&e.name==="AbortError") return {code:"cancelled"};
   if(e&&e.code) return e;
@@ -632,7 +632,7 @@ async function callClaude(prompt, opts){
   try{
     res = await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal:opts.signal,
       headers:{"content-type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
-      body:JSON.stringify({model:S.model,max_tokens:opts.max||14000,stream:true,messages:[{role:"user",content:prompt}]})});
+      body:JSON.stringify({model:S.model,max_tokens:opts.max||32000,output_config:{effort:opts.effort||"medium"},stream:true,messages:[{role:"user",content:prompt}]})});
   }catch(e){ throw apiError(e); }
   if(!res.ok){
     let msg=""; try{ const j=await res.json(); msg=(j.error&&j.error.message)||""; }catch(_){}
@@ -653,6 +653,7 @@ async function callClaude(prompt, opts){
         const line=chunk.split("\n").find(l=>l.startsWith("data:")); if(!line) continue;
         let ev; try{ ev=JSON.parse(line.slice(5).trim()); }catch(_){ continue; }
         if(ev.type==="content_block_delta"&&ev.delta&&ev.delta.type==="text_delta"){ text+=ev.delta.text; if(opts.onText) opts.onText(text); }
+        else if(ev.type==="content_block_start"&&ev.content_block&&ev.content_block.type==="thinking"){ if(opts.onThink) opts.onThink(); }
         else if(ev.type==="message_delta"&&ev.delta&&ev.delta.stop_reason){ stop=ev.delta.stop_reason; }
         else if(ev.type==="error"){ throw {code:(ev.error&&ev.error.type==="overloaded_error")?"busy":"bad_request",message:ev.error&&ev.error.message}; }
       }
@@ -678,7 +679,7 @@ async function generate(){
   const my = new AbortController(); ctl = my;
   $("go").disabled=true; $("stop").hidden=false; setStatus("Thinking…");
   try{
-    const text = await callClaude(buildPrompt(),{signal:my.signal,max:14000,onText:t=>{ if(ctl===my) setStatus(`Writing… ${t.length.toLocaleString("en-GB")} characters`); }});
+    const text = await callClaude(buildPrompt(),{signal:my.signal,max:32000,effort:"medium",onText:t=>{ if(ctl===my) setStatus(`Writing… ${t.length.toLocaleString("en-GB")} characters`); },onThink:()=>{ if(ctl===my) setStatus("Planning the script…"); }});
     if(ctl!==my) return;
     applyReply(text);
   }catch(e){
@@ -692,7 +693,7 @@ async function rewriteSeg(i, instr, btn){
   const seg=S.result.segments[i]; const all=S.result.segments.map((s,j)=>`${j===i?">>> ":""}[${s.label}] ${s.voiceover}`).join("\n\n");
   btn.disabled=true; const old=btn.textContent; btn.textContent="Rewriting…";
   try{
-    const txt = await callClaude(`${RULES}\n\nYou are editing one section of a narrated football analysis script for "The Touchline Notebook" (UK English, calm, spoken). The full script is below; the section to rewrite is marked >>>.\n\n${all.slice(0,20000)}\n\nFACTS PROVIDED (only numbers allowed):\n"""${(S.facts||"none").slice(0,4000)}"""\n\n${SECTION_RULES}\n\nRewrite ONLY the section "${seg.label}" at roughly the same length (${words(seg.voiceover)} words).${instr?` Creator's instruction: ${instr.slice(0,400)}`:""}\nReply with only JSON: {"voiceover":"string","on_screen":["1-4 strings"],"stats":["strings or [STAT: ...] placeholders"]}`,{max:3000});
+    const txt = await callClaude(`${RULES}\n\nYou are editing one section of a narrated football analysis script for "The Touchline Notebook" (UK English, calm, spoken). The full script is below; the section to rewrite is marked >>>.\n\n${all.slice(0,20000)}\n\nFACTS PROVIDED (only numbers allowed):\n"""${(S.facts||"none").slice(0,4000)}"""\n\n${SECTION_RULES}\n\nRewrite ONLY the section "${seg.label}" at roughly the same length (${words(seg.voiceover)} words).${instr?` Creator's instruction: ${instr.slice(0,400)}`:""}\nReply with only JSON: {"voiceover":"string","on_screen":["1-4 strings"],"stats":["strings or [STAT: ...] placeholders"]}`,{max:12000,effort:"low"});
     const r = extractJSON(txt);
     if(r&&r.voiceover){ seg.voiceover=String(r.voiceover); if(Array.isArray(r.on_screen)) seg.on_screen=r.on_screen.map(String); if(Array.isArray(r.stats)) seg.stats=r.stats.map(String); save(); renderAll(); toast("Section rewritten"); }
   }catch(e){ const x=apiError(e); toast(ERR[x.code]||"Rewrite failed. Try again."); btn.disabled=false; btn.textContent=old; }
