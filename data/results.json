@@ -1,0 +1,3513 @@
+{
+ "updated_at": "2026-11-08T00:00:00Z",
+ "count": 78,
+ "results": [
+  {
+   "away": "Udinese",
+   "away_score": 1,
+   "competition": "Serie A",
+   "date": "2026-11-06",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Venezia",
+   "home_score": 2,
+   "kickoff": "Fri 6 Nov 2026, 7:45pm",
+   "match_id": "sr:sport_event:71945404",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Coventry City",
+   "away_score": 1,
+   "competition": "Premier League",
+   "date": "2026-11-06",
+   "details_source": "Everton FC, 6 Nov 2026 (https://www.evertonfc.com/news/2026/november/06/coventry-report)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 52,
+     "scorer": "Yann Gboho",
+     "team": "Coventry City"
+    },
+    {
+     "assist": "Vitalii Mykolenko",
+     "min": 56,
+     "scorer": "Thierno Barry",
+     "team": "Everton"
+    },
+    {
+     "assist": "Tyrique George",
+     "min": 61,
+     "scorer": "Thierno Barry",
+     "team": "Everton"
+    },
+    {
+     "assist": "Thierno Barry",
+     "min": 81,
+     "scorer": "Kiernan Dewsbury-Hall",
+     "team": "Everton"
+    }
+   ],
+   "home": "Everton",
+   "home_score": 3,
+   "kickoff": "Fri 6 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:72221378",
+   "players": [
+    {
+     "names": [
+      "Jordan Pickford",
+      "Merlin Rohl",
+      "James Tarkowski",
+      "Jarrad Branthwaite",
+      "Vitaliy Mykolenko",
+      "Harrison Armstrong",
+      "James Garner",
+      "Tyler Dibling",
+      "Kiernan Dewsbury-Hall",
+      "Tyrique George",
+      "Thierno Barry",
+      "Braiden Graham",
+      "Carlos Alcaraz",
+      "Hayden Hackney",
+      "Brennan Johnson"
+     ],
+     "team": "Everton"
+    },
+    {
+     "names": [
+      "Carl Rushworth",
+      "Milan Van Ewijk",
+      "Stephen Mfuni",
+      "Ethan Pinnock",
+      "Jay DaSilva",
+      "Caleb Yirenkyi",
+      "Victor Torp",
+      "Tatsuhiro Sakamoto",
+      "Jack Rudoni",
+      "Yann Gboho",
+      "Taiwo Awoniyi",
+      "Daniel Bentley",
+      "Sidiki Cherif",
+      "Ellis Reco Simms",
+      "Kaine Hayden"
+     ],
+     "team": "Coventry City"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 51,
+     "home": 49,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 13,
+     "home": 12,
+     "label": "Shots"
+    },
+    {
+     "away": 4,
+     "home": 7,
+     "label": "Shots on target"
+    },
+    {
+     "away": 2,
+     "home": 2,
+     "label": "Corners"
+    },
+    {
+     "away": 6,
+     "home": 9,
+     "label": "Fouls"
+    },
+    {
+     "away": 1,
+     "home": 1,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 0,
+     "home": 1,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      73,
+      73,
+      73,
+      89,
+      90
+     ],
+     "team": "Everton"
+    },
+    {
+     "mins": [
+      73,
+      86,
+      87,
+      87,
+      87
+     ],
+     "team": "Coventry City"
+    }
+   ]
+  },
+  {
+   "away": "Strasbourg",
+   "away_score": 1,
+   "competition": "Ligue 1",
+   "date": "2026-11-06",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Toulouse",
+   "home_score": 3,
+   "kickoff": "Fri 6 Nov 2026, 7:45pm",
+   "match_id": "sr:sport_event:72036290",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Alaves",
+   "away_score": 0,
+   "competition": "La Liga",
+   "date": "2026-11-06",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Sevilla",
+   "home_score": 0,
+   "kickoff": "Fri 6 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:72478700",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Borussia Monchengladbach",
+   "away_score": 1,
+   "competition": "Bundesliga",
+   "date": "2026-11-06",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Hamburg",
+   "home_score": 3,
+   "kickoff": "Fri 6 Nov 2026, 7:30pm",
+   "match_id": "sr:sport_event:72513304",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Sabah",
+   "away_score": 1,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Viking",
+   "home_score": 4,
+   "kickoff": "Wed 4 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74166012",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Arsenal",
+   "away_score": 2,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Slavia Prague",
+   "home_score": 1,
+   "kickoff": "Wed 4 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74166010",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Manchester City",
+   "away_score": 3,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "RB Leipzig",
+   "home_score": 2,
+   "kickoff": "Wed 4 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74166006",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Napoli",
+   "away_score": 1,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Porto",
+   "home_score": 4,
+   "kickoff": "Wed 4 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74166002",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Club Brugge",
+   "away_score": 2,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "PSV Eindhoven",
+   "home_score": 1,
+   "kickoff": "Wed 4 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74166004",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Como",
+   "away_score": 9,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Lens",
+   "home_score": 1,
+   "kickoff": "Wed 4 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74166008",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Liverpool",
+   "away_score": 2,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 25,
+     "team": "Liverpool"
+    },
+    {
+     "min": 29,
+     "team": "Fenerbahce"
+    },
+    {
+     "min": 69,
+     "team": "Liverpool"
+    },
+    {
+     "min": 73,
+     "team": "Fenerbahce"
+    },
+    {
+     "min": 79,
+     "team": "Fenerbahce"
+    }
+   ],
+   "home": "Fenerbahce",
+   "home_score": 3,
+   "kickoff": "Wed 4 Nov 2026, 5:45pm",
+   "match_id": "sr:sport_event:74165998",
+   "players": [
+    {
+     "names": [
+      "Ederson",
+      "Nelson Semedo",
+      "Milan Skriniar",
+      "Kojo Peprah Oppong",
+      "Archie Brown",
+      "Matteo Guendouzi",
+      "N'Golo Kante",
+      "Ismail Yuksek",
+      "Mason Greenwood",
+      "Romelu Lukaku",
+      "Irfan Can Kahveci",
+      "Mert Gunok",
+      "Vedat Muriqi",
+      "Tarik Cetin",
+      "Yigit Efe Demir"
+     ],
+     "team": "Fenerbahce"
+    },
+    {
+     "names": [
+      "Alisson",
+      "Joe Gomez",
+      "Jeremy Jacquet",
+      "Virgil Van Dijk",
+      "Kostas Tsimikas",
+      "Alexis Mac Allister",
+      "Treymaurice Nyoni",
+      "Victor Munoz",
+      "Dominik Szoboszlai",
+      "Rio Ngumoha",
+      "Bradley Barcola",
+      "Jayden Danns",
+      "Freddie Woodman",
+      "Lewis Koumas",
+      "Giorgi Mamardashvili"
+     ],
+     "team": "Liverpool"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 62,
+     "home": 38,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 18,
+     "home": 14,
+     "label": "Shots"
+    },
+    {
+     "away": 7,
+     "home": 6,
+     "label": "Shots on target"
+    },
+    {
+     "away": 12,
+     "home": 4,
+     "label": "Corners"
+    },
+    {
+     "away": 12,
+     "home": 13,
+     "label": "Fouls"
+    },
+    {
+     "away": 1,
+     "home": 1,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 2,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      63,
+      75,
+      75,
+      89
+     ],
+     "team": "Fenerbahce"
+    },
+    {
+     "mins": [
+      66,
+      66,
+      66,
+      76,
+      85
+     ],
+     "team": "Liverpool"
+    }
+   ]
+  },
+  {
+   "away": "Real Betis",
+   "away_score": 1,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Borussia Dortmund",
+   "home_score": 2,
+   "kickoff": "Wed 4 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74166000",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Real Madrid",
+   "away_score": 3,
+   "competition": "Champions League",
+   "date": "2026-11-04",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "AEK Athens",
+   "home_score": 2,
+   "kickoff": "Wed 4 Nov 2026, 5:45pm",
+   "match_id": "sr:sport_event:74165996",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Paris Saint-Germain",
+   "away_score": 6,
+   "competition": "Champions League",
+   "date": "2026-11-03",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Villarreal",
+   "home_score": 0,
+   "kickoff": "Tue 3 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:74165994",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Fiorentina",
+   "away_score": 4,
+   "competition": "Serie A",
+   "date": "2026-11-02",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Sassuolo",
+   "home_score": 2,
+   "kickoff": "Mon 2 Nov 2026, 5:30pm",
+   "match_id": "sr:sport_event:71945382",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Parma",
+   "away_score": 3,
+   "competition": "Serie A",
+   "date": "2026-11-02",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Atalanta",
+   "home_score": 0,
+   "kickoff": "Mon 2 Nov 2026, 7:45pm",
+   "match_id": "sr:sport_event:71945366",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Everton",
+   "away_score": 1,
+   "competition": "Premier League",
+   "date": "2026-11-02",
+   "details_source": "Sky Sports, 2 Nov 2026 (https://www.skysports.com/football/news/13605474/newcastle-0-1-everton-toffees-earn-first-away-league-win-of-season-as-magpies-booed-off-after-jacob-ramsey-sees-red)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 49,
+     "scorer": "Thierno Barry",
+     "team": "Everton"
+    }
+   ],
+   "home": "Newcastle United",
+   "home_score": 0,
+   "kickoff": "Mon 2 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:72221368",
+   "players": [
+    {
+     "names": [
+      "Lukas Hornicek",
+      "Amar Dedic",
+      "Fabian Schar",
+      "Dan Burn",
+      "Lewis Hall",
+      "Nico Gonzalez",
+      "Joelinton",
+      "Anthony Elanga",
+      "Joe Willock",
+      "Harvey Barnes",
+      "William Osula",
+      "Bazoumana Toure",
+      "Sean Steur",
+      "Aladji Bamba",
+      "Jacob Ramsey"
+     ],
+     "team": "Newcastle United"
+    },
+    {
+     "names": [
+      "Jordan Pickford",
+      "Jake O'Brien",
+      "James Tarkowski",
+      "Jarrad Branthwaite",
+      "Vitaliy Mykolenko",
+      "Harrison Armstrong",
+      "James Garner",
+      "Merlin Rohl",
+      "Kiernan Dewsbury-Hall",
+      "Tyrique George",
+      "Thierno Barry",
+      "Braiden Graham",
+      "Tyler Dibling",
+      "Carlos Alcaraz",
+      "Hayden Hackney"
+     ],
+     "team": "Everton"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 48,
+     "home": 52,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 15,
+     "home": 13,
+     "label": "Shots"
+    },
+    {
+     "away": 5,
+     "home": 2,
+     "label": "Shots on target"
+    },
+    {
+     "away": 5,
+     "home": 4,
+     "label": "Corners"
+    },
+    {
+     "away": 9,
+     "home": 13,
+     "label": "Fouls"
+    },
+    {
+     "away": 2,
+     "home": 3,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 2,
+     "home": 0,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      64,
+      64,
+      76,
+      76,
+      87
+     ],
+     "team": "Newcastle United"
+    },
+    {
+     "mins": [
+      80,
+      82,
+      90
+     ],
+     "team": "Everton"
+    }
+   ]
+  },
+  {
+   "away": "Houston Dynamo",
+   "away_score": 1,
+   "competition": "MLS",
+   "date": "2026-11-02",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Portland Timbers",
+   "home_score": 3,
+   "kickoff": "Mon 2 Nov 2026, 2:45am",
+   "match_id": "sr:sport_event:66299786",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Inter Miami",
+   "away_score": 2,
+   "competition": "MLS",
+   "date": "2026-11-02",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "New England Revolution",
+   "home_score": 1,
+   "kickoff": "Mon 2 Nov 2026, 12:00am",
+   "match_id": "sr:sport_event:66299784",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Minnesota United",
+   "away_score": 3,
+   "competition": "MLS",
+   "date": "2026-11-02",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "LAFC",
+   "home_score": 1,
+   "kickoff": "Mon 2 Nov 2026, 1:30am",
+   "match_id": "sr:sport_event:66299780",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Brest",
+   "away_score": 2,
+   "competition": "Ligue 1",
+   "date": "2026-11-02",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Lorient",
+   "home_score": 0,
+   "kickoff": "Mon 2 Nov 2026, 7:45pm",
+   "match_id": "sr:sport_event:72036260",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Osasuna",
+   "away_score": 1,
+   "competition": "La Liga",
+   "date": "2026-11-02",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Deportivo La Coruna",
+   "home_score": 2,
+   "kickoff": "Mon 2 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:72478670",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Genoa",
+   "away_score": 2,
+   "competition": "Serie A",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Lecce",
+   "home_score": 1,
+   "kickoff": "Sun 1 Nov 2026, 5:00pm",
+   "match_id": "sr:sport_event:71945378",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Cagliari",
+   "away_score": 1,
+   "competition": "Serie A",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Lazio",
+   "home_score": 2,
+   "kickoff": "Sun 1 Nov 2026, 2:00pm",
+   "match_id": "sr:sport_event:71945376",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Napoli",
+   "away_score": 0,
+   "competition": "Serie A",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Juventus",
+   "home_score": 2,
+   "kickoff": "Sun 1 Nov 2026, 7:45pm",
+   "match_id": "sr:sport_event:71945374",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Torino",
+   "away_score": 0,
+   "competition": "Serie A",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Frosinone",
+   "home_score": 2,
+   "kickoff": "Sun 1 Nov 2026, 2:00pm",
+   "match_id": "sr:sport_event:71945372",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Venezia",
+   "away_score": 0,
+   "competition": "Serie A",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Como",
+   "home_score": 1,
+   "kickoff": "Sun 1 Nov 2026, 11:30am",
+   "match_id": "sr:sport_event:71945370",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Arsenal",
+   "away_score": 1,
+   "competition": "Premier League",
+   "date": "2026-11-01",
+   "details_source": "The National, 2 Nov 2026 (https://www.thenationalnews.com/sport/football/2026/11/02/liverpool-v-arsenal-ratings-van-dijk-8-isak-6-gabriel-9-havertz-7/)",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "assist": "Declan Rice",
+     "min": 16,
+     "scorer": "Kai Havertz",
+     "team": "Arsenal"
+    }
+   ],
+   "home": "Liverpool",
+   "home_score": 0,
+   "kickoff": "Sun 1 Nov 2026, 4:30pm",
+   "match_id": "sr:sport_event:72221364",
+   "players": [
+    {
+     "names": [
+      "Alisson",
+      "Ronald Araujo",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Milos Kerkez",
+      "Alexis Mac Allister",
+      "Treymaurice Nyoni",
+      "Bradley Barcola",
+      "Florian Wirtz",
+      "Cody Gakpo",
+      "Alexander Isak",
+      "Lewis Koumas",
+      "Victor Munoz",
+      "Rio Ngumoha",
+      "Joe Gomez"
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "names": [
+      "David Raya",
+      "Jurrien Timber",
+      "Ezri Konsa",
+      "Gabriel Magalhaes",
+      "Riccardo Calafiori",
+      "Declan Rice",
+      "Bruno Guimaraes",
+      "Noni Madueke",
+      "Martin Odegaard",
+      "Christos Tzolis",
+      "Kai Havertz",
+      "Myles Lewis-Skelly",
+      "Kepa Arrizabalaga",
+      "Cristhian Mosquera",
+      "Piero Hincapie"
+     ],
+     "team": "Arsenal"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 43,
+     "home": 57,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 8,
+     "home": 14,
+     "label": "Shots"
+    },
+    {
+     "away": 3,
+     "home": 2,
+     "label": "Shots on target"
+    },
+    {
+     "away": 4,
+     "home": 7,
+     "label": "Corners"
+    },
+    {
+     "away": 9,
+     "home": 18,
+     "label": "Fouls"
+    },
+    {
+     "away": 4,
+     "home": 4,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 3,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      59,
+      67,
+      81,
+      81,
+      81
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "mins": [
+      62,
+      84,
+      84,
+      88
+     ],
+     "team": "Arsenal"
+    }
+   ]
+  },
+  {
+   "away": "Seattle Sounders",
+   "away_score": 1,
+   "competition": "MLS",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Vancouver Whitecaps",
+   "home_score": 5,
+   "kickoff": "Sun 1 Nov 2026, 8:30pm",
+   "match_id": "sr:sport_event:66299778",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "New York Red Bulls",
+   "away_score": 2,
+   "competition": "MLS",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Nashville SC",
+   "home_score": 3,
+   "kickoff": "Sun 1 Nov 2026, 9:30pm",
+   "match_id": "sr:sport_event:66299760",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Chicago Fire",
+   "away_score": 4,
+   "competition": "MLS",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Colorado Rapids",
+   "home_score": 2,
+   "kickoff": "Sun 1 Nov 2026, 1:30am",
+   "match_id": "sr:sport_event:66299772",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Toronto FC",
+   "away_score": 1,
+   "competition": "MLS",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Atlanta United",
+   "home_score": 3,
+   "kickoff": "Sun 1 Nov 2026, 9:30pm",
+   "match_id": "sr:sport_event:66299782",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Auxerre",
+   "away_score": 1,
+   "competition": "Ligue 1",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Strasbourg",
+   "home_score": 5,
+   "kickoff": "Sun 1 Nov 2026, 2:00pm",
+   "match_id": "sr:sport_event:72036270",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Monaco",
+   "away_score": 1,
+   "competition": "Ligue 1",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Paris FC",
+   "home_score": 3,
+   "kickoff": "Sun 1 Nov 2026, 4:15pm",
+   "match_id": "sr:sport_event:72036268",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Toulouse",
+   "away_score": 0,
+   "competition": "Ligue 1",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Marseille",
+   "home_score": 2,
+   "kickoff": "Sun 1 Nov 2026, 7:45pm",
+   "match_id": "sr:sport_event:72036264",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Angers",
+   "away_score": 0,
+   "competition": "Ligue 1",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Lyon",
+   "home_score": 2,
+   "kickoff": "Sun 1 Nov 2026, 4:15pm",
+   "match_id": "sr:sport_event:72036262",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Real Madrid",
+   "away_score": 3,
+   "competition": "La Liga",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Racing Santander",
+   "home_score": 0,
+   "kickoff": "Sun 1 Nov 2026, 3:15pm",
+   "match_id": "sr:sport_event:72478680",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Sevilla",
+   "away_score": 1,
+   "competition": "La Liga",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Getafe",
+   "home_score": 3,
+   "kickoff": "Sun 1 Nov 2026, 1:00pm",
+   "match_id": "sr:sport_event:72478676",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Valencia",
+   "away_score": 1,
+   "competition": "La Liga",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Elche",
+   "home_score": 0,
+   "kickoff": "Sun 1 Nov 2026, 5:30pm",
+   "match_id": "sr:sport_event:72478672",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Real Sociedad",
+   "away_score": 1,
+   "competition": "La Liga",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Athletic Bilbao",
+   "home_score": 2,
+   "kickoff": "Sun 1 Nov 2026, 8:00pm",
+   "match_id": "sr:sport_event:72478666",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Cologne",
+   "away_score": 1,
+   "competition": "Bundesliga",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Union Berlin",
+   "home_score": 1,
+   "kickoff": "Sun 1 Nov 2026, 2:30pm",
+   "match_id": "sr:sport_event:72513282",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Hamburg",
+   "away_score": 1,
+   "competition": "Bundesliga",
+   "date": "2026-11-01",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Eintracht Frankfurt",
+   "home_score": 3,
+   "kickoff": "Sun 1 Nov 2026, 4:30pm",
+   "match_id": "sr:sport_event:72513278",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Roma",
+   "away_score": 5,
+   "competition": "Serie A",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Udinese",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 5:00pm",
+   "match_id": "sr:sport_event:71945384",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Inter",
+   "away_score": 1,
+   "competition": "Serie A",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "AC Milan",
+   "home_score": 3,
+   "kickoff": "Sat 31 Oct 2026, 7:45pm",
+   "match_id": "sr:sport_event:71945380",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Crystal Palace",
+   "away_score": 0,
+   "competition": "Premier League",
+   "date": "2026-10-31",
+   "details_source": "Sky Sports, 31 Oct 2026 (https://www.skysports.com/football/tottenham-hotspur-vs-crystal-palace/report/559533)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 25,
+     "scorer": "Archie Gray",
+     "team": "Tottenham Hotspur"
+    },
+    {
+     "min": 73,
+     "scorer": "Jan Paul van Hecke",
+     "team": "Tottenham Hotspur"
+    }
+   ],
+   "home": "Tottenham Hotspur",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 5:30pm",
+   "match_id": "sr:sport_event:72221370",
+   "players": [
+    {
+     "names": [
+      "Antonin Kinsky",
+      "Archie Gray",
+      "Jan-Paul van Hecke",
+      "Micky van de Ven",
+      "Andy Robertson",
+      "Mateus Fernandes",
+      "Sandro Tonali",
+      "Mohammed Kudus",
+      "Omar Marmoush",
+      "Mathys Tel",
+      "Dominic Solanke",
+      "Luca Williams-Barnet",
+      "Destiny Udogie",
+      "Martin Dubravka",
+      "Pedro Porro"
+     ],
+     "team": "Tottenham Hotspur"
+    },
+    {
+     "names": [
+      "Dean Henderson",
+      "Chris Richards",
+      "Axel Disasi",
+      "Jaydee Canvot",
+      "Oscar Mingueza",
+      "Adam Wharton",
+      "Daichi Kamada",
+      "Tyrick Mitchell",
+      "Dwight McNeil",
+      "Yeremy Pino",
+      "Jean-Philippe Mateta",
+      "Dario Osorio",
+      "Anan Khalaili",
+      "Evann Guessand",
+      "Cheick Doucoure"
+     ],
+     "team": "Crystal Palace"
+    }
+   ],
+   "red_cards": [
+    {
+     "min": 13,
+     "player": "Jean-Philippe Mateta",
+     "team": "Crystal Palace"
+    }
+   ],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 21,
+     "home": 79,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 2,
+     "home": 28,
+     "label": "Shots"
+    },
+    {
+     "away": 1,
+     "home": 7,
+     "label": "Shots on target"
+    },
+    {
+     "away": 0,
+     "home": 19,
+     "label": "Corners"
+    },
+    {
+     "away": 10,
+     "home": 8,
+     "label": "Fouls"
+    },
+    {
+     "away": 1,
+     "home": 1,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 1,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      46,
+      66,
+      77,
+      77,
+      88
+     ],
+     "team": "Tottenham Hotspur"
+    },
+    {
+     "mins": [
+      60,
+      60,
+      77,
+      88,
+      88
+     ],
+     "team": "Crystal Palace"
+    }
+   ]
+  },
+  {
+   "away": "Brighton & Hove Albion",
+   "away_score": 1,
+   "competition": "Premier League",
+   "date": "2026-10-31",
+   "details_source": "ESPN, 31 Oct 2026 (https://www.espn.com/soccer/report/_/gameId/401879245)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 11,
+     "scorer": "Yasin Ayari",
+     "team": "Brighton & Hove Albion"
+    }
+   ],
+   "home": "Manchester City",
+   "home_score": 0,
+   "kickoff": "Sat 31 Oct 2026, 3:00pm",
+   "match_id": "sr:sport_event:72221366",
+   "players": [
+    {
+     "names": [
+      "Gianluigi Donnarumma",
+      "Matheus Nunes",
+      "Abdukodir Khusanov",
+      "Ruben Dias",
+      "Josko Gvardiol",
+      "Elliot Anderson",
+      "Ayyoub Bouaddi",
+      "Iliman Ndiaye",
+      "Enzo Fernandez",
+      "Jeremy Doku",
+      "Erling Haaland",
+      "Vitor Reis",
+      "Allan",
+      "Geronimo Rulli",
+      "Nico O'Reilly"
+     ],
+     "team": "Manchester City"
+    },
+    {
+     "names": [
+      "Bart Verbruggen",
+      "Costinha",
+      "Luka Vuskovic",
+      "Lewis Dunk",
+      "Olivier Boscagli",
+      "Pascal Gross",
+      "Chema Andres",
+      "Diego Gomez",
+      "Yasin Ayari",
+      "Maxim De Cuyper",
+      "Charalampos Kostoulas",
+      "Malick Yalcouye",
+      "Matt O'Riley",
+      "Jack Hinshelwood",
+      "Jason Steele"
+     ],
+     "team": "Brighton & Hove Albion"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 39,
+     "home": 61,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 7,
+     "home": 19,
+     "label": "Shots"
+    },
+    {
+     "away": 3,
+     "home": 6,
+     "label": "Shots on target"
+    },
+    {
+     "away": 2,
+     "home": 8,
+     "label": "Corners"
+    },
+    {
+     "away": 12,
+     "home": 9,
+     "label": "Fouls"
+    },
+    {
+     "away": 3,
+     "home": 0,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 2,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      55,
+      64,
+      79,
+      79
+     ],
+     "team": "Manchester City"
+    },
+    {
+     "mins": [
+      64,
+      64,
+      72,
+      72,
+      84
+     ],
+     "team": "Brighton & Hove Albion"
+    }
+   ]
+  },
+  {
+   "away": "Ipswich Town",
+   "away_score": 2,
+   "competition": "Premier League",
+   "date": "2026-10-31",
+   "details_source": "Sky Sports, 31 Oct 2026 (https://www.skysports.com/football/news/13606108/hull-city-2-2-ipswich-stunning-julio-enciso-strike-earns-visitors-point-as-tigers-winless-run-extends-to-seven-games)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "assist": "Abdoul Ouattara",
+     "min": 22,
+     "scorer": "Florentino",
+     "team": "Ipswich Town"
+    },
+    {
+     "assist": "Oli McBurnie",
+     "min": 58,
+     "scorer": "Tim Iroegbunam",
+     "team": "Hull City"
+    },
+    {
+     "min": 68,
+     "scorer": "Oli McBurnie",
+     "team": "Hull City"
+    },
+    {
+     "min": 74,
+     "scorer": "Julio Enciso",
+     "team": "Ipswich Town"
+    }
+   ],
+   "home": "Hull City",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 3:00pm",
+   "match_id": "sr:sport_event:72221362",
+   "players": [
+    {
+     "names": [
+      "Konstantinos Tzolakis",
+      "Lewie Coyle",
+      "Semi Ajayi",
+      "John Egan",
+      "Nobel Mendy",
+      "Ryan Giles",
+      "Mohamed Belloumi",
+      "Tim Iroegbunam",
+      "Regan Slater",
+      "Elliot Stroud",
+      "Oli McBurnie",
+      "Lucas Herrington",
+      "Christos Mouzakitis",
+      "Brooke Norton-Cuffy",
+      "Mohamed-Ali Cho"
+     ],
+     "team": "Hull City"
+    },
+    {
+     "names": [
+      "Christian Walton",
+      "Abdoul Ouattara",
+      "Issa Diop",
+      "Dara O'Shea",
+      "Leif Davis",
+      "Exequiel Palacios",
+      "Florentino Luis",
+      "Abdul Fatawu",
+      "Julio Enciso",
+      "Jaden Philogene",
+      "Emersonn",
+      "Marcelino Nunez",
+      "Jacob Greaves",
+      "Jack Clarke",
+      "Kjell Scherpen"
+     ],
+     "team": "Ipswich Town"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 66,
+     "home": 34,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 14,
+     "home": 7,
+     "label": "Shots"
+    },
+    {
+     "away": 3,
+     "home": 2,
+     "label": "Shots on target"
+    },
+    {
+     "away": 3,
+     "home": 6,
+     "label": "Corners"
+    },
+    {
+     "away": 12,
+     "home": 13,
+     "label": "Fouls"
+    },
+    {
+     "away": 3,
+     "home": 3,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 3,
+     "home": 4,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      46,
+      60,
+      77,
+      77,
+      90
+     ],
+     "team": "Hull City"
+    },
+    {
+     "mins": [
+      70,
+      70,
+      70,
+      77,
+      90
+     ],
+     "team": "Ipswich Town"
+    }
+   ]
+  },
+  {
+   "away": "Sunderland",
+   "away_score": 1,
+   "competition": "Premier League",
+   "date": "2026-10-31",
+   "details_source": "Sky Sports, 31 Oct 2026 (https://www.skysports.com/football/news/13606096/coventry-3-1-sunderland-frank-lampards-side-climb-out-of-premier-league-relegation-zone-with-win-over-rock-bottom-black-cats)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 17,
+     "scorer": "Tatsuhiro Sakamoto",
+     "team": "Coventry City"
+    },
+    {
+     "min": 37,
+     "scorer": "Taiwo Awoniyi",
+     "team": "Coventry City"
+    },
+    {
+     "min": 52,
+     "scorer": "Jack Rudoni",
+     "team": "Coventry City"
+    },
+    {
+     "min": 67,
+     "penalty": true,
+     "scorer": "Enzo Le Fee",
+     "team": "Sunderland"
+    }
+   ],
+   "home": "Coventry City",
+   "home_score": 3,
+   "kickoff": "Sat 31 Oct 2026, 3:00pm",
+   "match_id": "sr:sport_event:72221360",
+   "players": [
+    {
+     "names": [
+      "Carl Rushworth",
+      "Milan Van Ewijk",
+      "Stephen Mfuni",
+      "Ethan Pinnock",
+      "Jay DaSilva",
+      "Caleb Yirenkyi",
+      "Victor Torp",
+      "Tatsuhiro Sakamoto",
+      "Jack Rudoni",
+      "Yann Gboho",
+      "Taiwo Awoniyi",
+      "Matt Grimes",
+      "Sidiki Cherif",
+      "Gustavo Hamer",
+      "Ellis Reco Simms"
+     ],
+     "team": "Coventry City"
+    },
+    {
+     "names": [
+      "Robin Roefs",
+      "Trai Hume",
+      "Omar Alderete",
+      "Luke O'Nien",
+      "Reinildo Mandava",
+      "Noah Sadiki",
+      "Granit Xhaka",
+      "Chris Rigg",
+      "Enzo Le Fee",
+      "Nilson Angulo",
+      "Brian Brobbey",
+      "Jocelin Ta Bi",
+      "Jules Ahoka",
+      "Dayann Methalie",
+      "Thomas Meunier"
+     ],
+     "team": "Sunderland"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 58,
+     "home": 42,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 17,
+     "home": 10,
+     "label": "Shots"
+    },
+    {
+     "away": 3,
+     "home": 6,
+     "label": "Shots on target"
+    },
+    {
+     "away": 4,
+     "home": 4,
+     "label": "Corners"
+    },
+    {
+     "away": 9,
+     "home": 15,
+     "label": "Fouls"
+    },
+    {
+     "away": 1,
+     "home": 2,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 1,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      72,
+      72,
+      83
+     ],
+     "team": "Coventry City"
+    },
+    {
+     "mins": [
+      57,
+      57,
+      75,
+      75
+     ],
+     "team": "Sunderland"
+    }
+   ]
+  },
+  {
+   "away": "Nottingham Forest",
+   "away_score": 0,
+   "competition": "Premier League",
+   "date": "2026-10-31",
+   "details_source": "Brentford FC, 31 Oct 2026 (https://www.brentfordfc.com/en/news/match-reports-brentford-2-nottingham-forest-0-premier-league-31-10-2026-igor-thiago)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 30,
+     "own_goal": true,
+     "scorer": "Nikola Milenković",
+     "team": "Brentford"
+    },
+    {
+     "min": 76,
+     "scorer": "Igor Thiago",
+     "team": "Brentford"
+    }
+   ],
+   "home": "Brentford",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 3:00pm",
+   "match_id": "sr:sport_event:72221356",
+   "players": [
+    {
+     "names": [
+      "Caoimhin Kelleher",
+      "Michael Kayode",
+      "Sepp Van den Berg",
+      "Kristoffer Ajer",
+      "Keane Lewis-Potter",
+      "Mamadou Sangare",
+      "Vitaly Janelt",
+      "Dango Ouattara",
+      "Mathias Jensen",
+      "Kevin Schade",
+      "Igor Thiago",
+      "El Hadji Malick Diouf",
+      "Jannik Schuster",
+      "Gustavo Nunes",
+      "Jaidon Anthony"
+     ],
+     "team": "Brentford"
+    },
+    {
+     "names": [
+      "Matz Sels",
+      "Jair Cunha",
+      "Nikola Milenkovic",
+      "Murillo",
+      "Ola Aina",
+      "James McAtee",
+      "Xaver Schlager",
+      "Neco Williams",
+      "Morgan Gibbs-White",
+      "Dan Ndoye",
+      "Liam Delap",
+      "Ousmane Diomande",
+      "Chris Wood",
+      "Luca Netz",
+      "Arnaud Kalimuendo"
+     ],
+     "team": "Nottingham Forest"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 58,
+     "home": 42,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 12,
+     "home": 7,
+     "label": "Shots"
+    },
+    {
+     "away": 2,
+     "home": 1,
+     "label": "Shots on target"
+    },
+    {
+     "away": 4,
+     "home": 3,
+     "label": "Corners"
+    },
+    {
+     "away": 17,
+     "home": 6,
+     "label": "Fouls"
+    },
+    {
+     "away": 3,
+     "home": 1,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 1,
+     "home": 1,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      62,
+      62,
+      72,
+      84
+     ],
+     "team": "Brentford"
+    },
+    {
+     "mins": [
+      46,
+      46,
+      65,
+      65
+     ],
+     "team": "Nottingham Forest"
+    }
+   ]
+  },
+  {
+   "away": "Fulham",
+   "away_score": 1,
+   "competition": "Premier League",
+   "date": "2026-10-31",
+   "details_source": "Sky Sports, 31 Oct 2026 (https://www.skysports.com/football/news/13606363/aston-villa-1-1-fulham-zion-suzuki-concedes-own-goal-as-nicholas-jackson-scores-after-john-mcginns-penalty-miss-in-draw-with-fulham)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 39,
+     "scorer": "Nicholas Jackson",
+     "team": "Aston Villa"
+    },
+    {
+     "min": 64,
+     "own_goal": true,
+     "scorer": "Zion Suzuki",
+     "team": "Fulham"
+    }
+   ],
+   "home": "Aston Villa",
+   "home_score": 1,
+   "kickoff": "Sat 31 Oct 2026, 8:00pm",
+   "match_id": "sr:sport_event:72221352",
+   "players": [
+    {
+     "names": [
+      "Zion Suzuki",
+      "Matty Cash",
+      "Victor Lindelof",
+      "Pau Torres",
+      "Ian Maatsen",
+      "Boubacar Kamara",
+      "Leon Goretzka",
+      "Alysson",
+      "John McGinn",
+      "Johan Manzambi",
+      "Nicolas Jackson",
+      "Brian Madjo",
+      "Ibrahim Mbaye",
+      "Taylor Harwood-Bellis",
+      "Joao Gomes"
+     ],
+     "team": "Aston Villa"
+    },
+    {
+     "names": [
+      "Bernd Leno",
+      "Timothy Castagne",
+      "David Affengruber",
+      "Calvin Bassey",
+      "Antonee Robinson",
+      "Sander Berge",
+      "Shea Charles",
+      "Oscar Bobb",
+      "Joshua King",
+      "Alex Iwobi",
+      "Gonzalo Garcia",
+      "Cesar Palacios",
+      "Manuel Angel",
+      "Hugo Larsson",
+      "Kevin"
+     ],
+     "team": "Fulham"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 56,
+     "home": 44,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 15,
+     "home": 15,
+     "label": "Shots"
+    },
+    {
+     "away": 4,
+     "home": 5,
+     "label": "Shots on target"
+    },
+    {
+     "away": 7,
+     "home": 7,
+     "label": "Corners"
+    },
+    {
+     "away": 11,
+     "home": 7,
+     "label": "Fouls"
+    },
+    {
+     "away": 3,
+     "home": 1,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 4,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      67,
+      67,
+      67,
+      79,
+      88
+     ],
+     "team": "Aston Villa"
+    },
+    {
+     "mins": [
+      75,
+      79,
+      79,
+      87,
+      87
+     ],
+     "team": "Fulham"
+    }
+   ]
+  },
+  {
+   "away": "Leeds United",
+   "away_score": 0,
+   "competition": "Premier League",
+   "date": "2026-10-31",
+   "details_source": "Sky Sports, 31 Oct 2026 (https://www.skysports.com/football/news/13593277/bournemouth-2-0-leeds-cherries-punish-james-trafford-horror-show-to-make-it-six-wins-on-the-spin)",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [
+    {
+     "min": 31,
+     "scorer": "Evanilson",
+     "team": "AFC Bournemouth"
+    },
+    {
+     "assist": "Junior Eli Kroupi",
+     "min": 90,
+     "scorer": "Amine Adli",
+     "team": "AFC Bournemouth"
+    }
+   ],
+   "home": "AFC Bournemouth",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 3:00pm",
+   "match_id": "sr:sport_event:72221354",
+   "players": [
+    {
+     "names": [
+      "Djordje Petrovic",
+      "Adam Smith",
+      "James Hill",
+      "Antonio Silva",
+      "Adrien Truffert",
+      "Tyler Adams",
+      "Ryan Christie",
+      "Rayan",
+      "Justin Kluivert",
+      "Marcus Tavernier",
+      "Evanilson",
+      "Ben Gannon-Doak",
+      "Julio Soler",
+      "Eli Junior Kroupi",
+      "Alvaro Rodriguez"
+     ],
+     "team": "AFC Bournemouth"
+    },
+    {
+     "names": [
+      "James Trafford",
+      "James Justin",
+      "Nico Elvedi",
+      "Tarik Muharemovic",
+      "Jayden Bogle",
+      "Ethan Ampadu",
+      "Ao Tanaka",
+      "Gabriel Gudmundsson",
+      "Harry Wilson",
+      "Daniel James",
+      "Dominic Calvert-Lewin",
+      "Jean Matteo Bahoya",
+      "Melvin Bard",
+      "Brenden Aaronson",
+      "Jaka Bijol"
+     ],
+     "team": "Leeds United"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 56,
+     "home": 44,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 7,
+     "home": 10,
+     "label": "Shots"
+    },
+    {
+     "away": 0,
+     "home": 6,
+     "label": "Shots on target"
+    },
+    {
+     "away": 4,
+     "home": 4,
+     "label": "Corners"
+    },
+    {
+     "away": 15,
+     "home": 12,
+     "label": "Fouls"
+    },
+    {
+     "away": 2,
+     "home": 2,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 1,
+     "home": 0,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      68,
+      68,
+      76,
+      88,
+      88
+     ],
+     "team": "AFC Bournemouth"
+    },
+    {
+     "mins": [
+      65,
+      65,
+      65,
+      84,
+      84
+     ],
+     "team": "Leeds United"
+    }
+   ]
+  },
+  {
+   "away": "San Diego FC",
+   "away_score": 1,
+   "competition": "MLS",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "St. Louis City",
+   "home_score": 0,
+   "kickoff": "Sat 31 Oct 2026, 7:00pm",
+   "match_id": "sr:sport_event:66299770",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Real Salt Lake",
+   "away_score": 1,
+   "competition": "MLS",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "San Jose Earthquakes",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 9:00pm",
+   "match_id": "sr:sport_event:66299776",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Austin FC",
+   "away_score": 1,
+   "competition": "MLS",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "LA Galaxy",
+   "home_score": 4,
+   "kickoff": "Sat 31 Oct 2026, 9:00pm",
+   "match_id": "sr:sport_event:66299774",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Le Mans",
+   "away_score": 0,
+   "competition": "Ligue 1",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Troyes",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 7:45pm",
+   "match_id": "sr:sport_event:72036272",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Malaga",
+   "away_score": 1,
+   "competition": "La Liga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Real Betis",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 5:30pm",
+   "match_id": "sr:sport_event:72478668",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Celta Vigo",
+   "away_score": 0,
+   "competition": "La Liga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Rayo Vallecano",
+   "home_score": 3,
+   "kickoff": "Sat 31 Oct 2026, 3:15pm",
+   "match_id": "sr:sport_event:72478682",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Atletico Madrid",
+   "away_score": 2,
+   "competition": "La Liga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Levante",
+   "home_score": 0,
+   "kickoff": "Sat 31 Oct 2026, 1:00pm",
+   "match_id": "sr:sport_event:72478678",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Alaves",
+   "away_score": 1,
+   "competition": "La Liga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Barcelona",
+   "home_score": 6,
+   "kickoff": "Sat 31 Oct 2026, 8:00pm",
+   "match_id": "sr:sport_event:72478674",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Hoffenheim",
+   "away_score": 0,
+   "competition": "Bundesliga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Werder Bremen",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 2:30pm",
+   "match_id": "sr:sport_event:72513286",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "RB Leipzig",
+   "away_score": 2,
+   "competition": "Bundesliga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Schalke 04",
+   "home_score": 0,
+   "kickoff": "Sat 31 Oct 2026, 2:30pm",
+   "match_id": "sr:sport_event:72513288",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Paderborn",
+   "away_score": 0,
+   "competition": "Bundesliga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Borussia Monchengladbach",
+   "home_score": 0,
+   "kickoff": "Sat 31 Oct 2026, 2:30pm",
+   "match_id": "sr:sport_event:72513284",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Borussia Dortmund",
+   "away_score": 2,
+   "competition": "Bundesliga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Bayern Munich",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 5:30pm",
+   "match_id": "sr:sport_event:72513274",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "VfB Stuttgart",
+   "away_score": 4,
+   "competition": "Bundesliga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Bayer Leverkusen",
+   "home_score": 2,
+   "kickoff": "Sat 31 Oct 2026, 2:30pm",
+   "match_id": "sr:sport_event:72513276",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Freiburg",
+   "away_score": 2,
+   "competition": "Bundesliga",
+   "date": "2026-10-31",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Augsburg",
+   "home_score": 1,
+   "kickoff": "Sat 31 Oct 2026, 2:30pm",
+   "match_id": "sr:sport_event:72513280",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Rennes",
+   "away_score": 2,
+   "competition": "Ligue 1",
+   "date": "2026-10-30",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Nice",
+   "home_score": 5,
+   "kickoff": "Fri 30 Oct 2026, 6:00pm",
+   "match_id": "sr:sport_event:72036266",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Lens",
+   "away_score": 0,
+   "competition": "Ligue 1",
+   "date": "2026-10-30",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Lille",
+   "home_score": 1,
+   "kickoff": "Fri 30 Oct 2026, 8:05pm",
+   "match_id": "sr:sport_event:72036258",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Paris Saint-Germain",
+   "away_score": 5,
+   "competition": "Ligue 1",
+   "date": "2026-10-30",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "Le Havre",
+   "home_score": 1,
+   "kickoff": "Fri 30 Oct 2026, 6:00pm",
+   "match_id": "sr:sport_event:72036256",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Mainz",
+   "away_score": 1,
+   "competition": "Bundesliga",
+   "date": "2026-10-30",
+   "fetched_at": "2026-11-07T06:50:00Z",
+   "goals": [],
+   "home": "SV Elversberg",
+   "home_score": 4,
+   "kickoff": "Fri 30 Oct 2026, 7:30pm",
+   "match_id": "sr:sport_event:72513290",
+   "players": [],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [],
+   "stats_pending": true,
+   "subs": []
+  },
+  {
+   "away": "Brighton & Hove Albion",
+   "away_score": 0,
+   "competition": "Premier League",
+   "date": "2026-10-25",
+   "details_source": "Sky Sports, 25 Oct 2026 (https://www.skysports.com/football/news/13601424/liverpool-2-0-brighton-alexander-isak-continues-goalscoring-hot-streak-as-reds-win-at-anfield)",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "min": 17,
+     "own_goal": true,
+     "scorer": "Pascal Gross",
+     "team": "Liverpool"
+    },
+    {
+     "assist": "Bradley Barcola",
+     "min": 21,
+     "scorer": "Alexander Isak",
+     "team": "Liverpool"
+    }
+   ],
+   "home": "Liverpool",
+   "home_score": 2,
+   "kickoff": "Sun 25 Oct 2026, 2:00pm",
+   "match_id": "sr:sport_event:72221346",
+   "players": [
+    {
+     "names": [
+      "Alisson",
+      "Ronald Araujo",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Milos Kerkez",
+      "Ryan Gravenberch",
+      "Alexis Mac Allister",
+      "Cody Gakpo",
+      "Florian Wirtz",
+      "Bradley Barcola",
+      "Alexander Isak",
+      "Treymaurice Nyoni",
+      "Rio Ngumoha",
+      "Lewis Koumas",
+      "Wataru Endo"
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "names": [
+      "Bart Verbruggen",
+      "Ferdi Kadioglu",
+      "Luka Vuskovic",
+      "Lewis Dunk",
+      "Olivier Boscagli",
+      "Pascal Gross",
+      "Chema Andres",
+      "Diego Gomez",
+      "Yasin Ayari",
+      "Maxim De Cuyper",
+      "Charalampos Kostoulas",
+      "Ibrahim Osman",
+      "Jason Steele",
+      "Malick Yalcouye",
+      "Jack Hinshelwood"
+     ],
+     "team": "Brighton & Hove Albion"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 64,
+     "home": 36,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 16,
+     "home": 11,
+     "label": "Shots"
+    },
+    {
+     "away": 1,
+     "home": 4,
+     "label": "Shots on target"
+    },
+    {
+     "away": 2,
+     "home": 4,
+     "label": "Corners"
+    },
+    {
+     "away": 9,
+     "home": 13,
+     "label": "Fouls"
+    },
+    {
+     "away": 2,
+     "home": 0,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 3,
+     "home": 3,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      65,
+      77,
+      77,
+      87
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "mins": [
+      6,
+      46,
+      54,
+      75
+     ],
+     "team": "Brighton & Hove Albion"
+    }
+   ]
+  },
+  {
+   "away": "Liverpool",
+   "away_score": 2,
+   "competition": "Premier League",
+   "date": "2026-10-17",
+   "details_source": "Sky Sports, 17 Oct 2026 (https://www.skysports.com/football/news/13598754/brentford-1-2-liverpool-alexander-isak-scores-winner-as-yehor-yarmoliuk-and-vitaly-janelt-sent-off-for-bees)",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "assist": "Igor Thiago",
+     "min": 44,
+     "scorer": "Keane Lewis-Potter",
+     "team": "Brentford"
+    },
+    {
+     "assist": "Florian Wirtz",
+     "min": 62,
+     "scorer": "Victor Munoz",
+     "team": "Liverpool"
+    },
+    {
+     "assist": "Bradley Barcola",
+     "min": 70,
+     "scorer": "Alexander Isak",
+     "team": "Liverpool"
+    }
+   ],
+   "home": "Brentford",
+   "home_score": 1,
+   "kickoff": "Sat 17 Oct 2026, 3:00pm",
+   "match_id": "sr:sport_event:72221314",
+   "players": [
+    {
+     "names": [
+      "Caoimhin Kelleher",
+      "Michael Kayode",
+      "Kristoffer Ajer",
+      "Sepp van den Berg",
+      "Keane Lewis-Potter",
+      "Yehor Yarmoliuk",
+      "Vitaly Janelt",
+      "Dango Ouattara",
+      "Mathias Jensen",
+      "Jaidon Anthony",
+      "Igor Thiago",
+      "El Hadji Malick Diouf",
+      "Callum Wilson",
+      "Fabio Carvalho",
+      "Mamadou Sangare"
+     ],
+     "team": "Brentford"
+    },
+    {
+     "names": [
+      "Alisson",
+      "Ronald Araujo",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Milos Kerkez",
+      "Dominik Szoboszlai",
+      "Alexis Mac Allister",
+      "Victor Munoz",
+      "Florian Wirtz",
+      "Bradley Barcola",
+      "Alexander Isak",
+      "Rio Ngumoha",
+      "Lewis Koumas",
+      "Treymaurice Nyoni",
+      "Jeremie Frimpong"
+     ],
+     "team": "Liverpool"
+    }
+   ],
+   "red_cards": [
+    {
+     "min": 45,
+     "player": "Yehor Yarmoliuk",
+     "team": "Brentford"
+    }
+   ],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 60,
+     "home": 40,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 22,
+     "home": 9,
+     "label": "Shots"
+    },
+    {
+     "away": 5,
+     "home": 2,
+     "label": "Shots on target"
+    },
+    {
+     "away": 9,
+     "home": 3,
+     "label": "Corners"
+    },
+    {
+     "away": 13,
+     "home": 7,
+     "label": "Fouls"
+    },
+    {
+     "away": 3,
+     "home": 3,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 2,
+     "home": 0,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      46,
+      46,
+      72,
+      77,
+      78
+     ],
+     "team": "Brentford"
+    },
+    {
+     "mins": [
+      32,
+      46,
+      53,
+      79,
+      79
+     ],
+     "team": "Liverpool"
+    }
+   ]
+  },
+  {
+   "away": "Manchester City",
+   "away_score": 3,
+   "competition": "Premier League",
+   "date": "2026-10-11",
+   "details_source": "Liverpool FC, 11 Oct 2026 (https://www.liverpoolfc.com/news/match-report-liverpool-man-city-premier-league-anfield)",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "min": 65,
+     "scorer": "Erling Haaland",
+     "team": "Manchester City"
+    },
+    {
+     "min": 68,
+     "scorer": "Jeremy Doku",
+     "team": "Manchester City"
+    },
+    {
+     "assist": "Josko Gvardiol",
+     "min": 78,
+     "scorer": "Rayan Cherki",
+     "team": "Manchester City"
+    }
+   ],
+   "home": "Liverpool",
+   "home_score": 0,
+   "kickoff": "Sun 11 Oct 2026, 4:30pm",
+   "match_id": "sr:sport_event:72221306",
+   "players": [
+    {
+     "names": [
+      "Alisson",
+      "Ronald Araujo",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Milos Kerkez",
+      "Ryan Gravenberch",
+      "Alexis Mac Allister",
+      "Bradley Barcola",
+      "Florian Wirtz",
+      "Victor Munoz",
+      "Lewis Koumas",
+      "Treymaurice Nyoni",
+      "Rio Ngumoha",
+      "James McConnell",
+      "Jeremie Frimpong"
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "names": [
+      "Gianluigi Donnarumma",
+      "Matheus Nunes",
+      "Ruben Dias",
+      "Marc Guehi",
+      "Nico O'Reilly",
+      "Elliot Anderson",
+      "Enzo Fernandez",
+      "Antoine Semenyo",
+      "Rayan Cherki",
+      "Iliman Ndiaye",
+      "Erling Haaland",
+      "Vitor Reis",
+      "Ayyoub Bouaddi",
+      "Geronimo Rulli",
+      "Allan"
+     ],
+     "team": "Manchester City"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 65,
+     "home": 35,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 15,
+     "home": 10,
+     "label": "Shots"
+    },
+    {
+     "away": 4,
+     "home": 5,
+     "label": "Shots on target"
+    },
+    {
+     "away": 6,
+     "home": 5,
+     "label": "Corners"
+    },
+    {
+     "away": 14,
+     "home": 18,
+     "label": "Fouls"
+    },
+    {
+     "away": 2,
+     "home": 3,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 2,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      66,
+      75,
+      75,
+      88,
+      88
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "mins": [
+      56,
+      66,
+      80,
+      80
+     ],
+     "team": "Manchester City"
+    }
+   ]
+  },
+  {
+   "away": "Liverpool",
+   "away_score": 1,
+   "competition": "Premier League",
+   "date": "2026-09-20",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "min": 57,
+     "team": "Liverpool"
+    }
+   ],
+   "home": "AFC Bournemouth",
+   "home_score": 0,
+   "kickoff": "Sun 20 Sep 2026, 2:00pm",
+   "match_id": "sr:sport_event:72221272",
+   "players": [
+    {
+     "names": [
+      "Djordje Petrovic",
+      "Adam Smith",
+      "James Hill",
+      "Antonio Silva",
+      "Adrien Truffert",
+      "Tyler Adams",
+      "Alex Scott",
+      "Rayan",
+      "Ryan Christie",
+      "Marcus Tavernier",
+      "Evanilson",
+      "Alex Toth",
+      "Ben Gannon-Doak",
+      "Julio Soler",
+      "Daniel Jebbison"
+     ],
+     "team": "AFC Bournemouth"
+    },
+    {
+     "names": [
+      "Alisson",
+      "Ronald Araujo",
+      "Virgil van Dijk",
+      "Jeremy Jacquet",
+      "Milos Kerkez",
+      "Alexis Mac Allister",
+      "Dominik Szoboszlai",
+      "Bradley Barcola",
+      "Florian Wirtz",
+      "Cody Gakpo",
+      "Alexander Isak",
+      "Joe Gomez",
+      "Treymaurice Nyoni",
+      "Victor Munoz",
+      "Rio Ngumoha"
+     ],
+     "team": "Liverpool"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 54,
+     "home": 46,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 11,
+     "home": 8,
+     "label": "Shots"
+    },
+    {
+     "away": 3,
+     "home": 2,
+     "label": "Shots on target"
+    },
+    {
+     "away": 3,
+     "home": 3,
+     "label": "Corners"
+    },
+    {
+     "away": 13,
+     "home": 11,
+     "label": "Fouls"
+    },
+    {
+     "away": 2,
+     "home": 1,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 2,
+     "home": 4,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      75,
+      75,
+      75,
+      88,
+      88
+     ],
+     "team": "AFC Bournemouth"
+    },
+    {
+     "mins": [
+      71,
+      71,
+      81,
+      81
+     ],
+     "team": "Liverpool"
+    }
+   ]
+  },
+  {
+   "away": "Fulham",
+   "away_score": 0,
+   "competition": "Premier League",
+   "date": "2026-09-12",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [],
+   "home": "Liverpool",
+   "home_score": 0,
+   "kickoff": "Sat 12 Sep 2026, 3:00pm",
+   "match_id": "sr:sport_event:72221264",
+   "players": [
+    {
+     "names": [
+      "Alisson",
+      "Ronald Araujo",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Kostas Tsimikas",
+      "Dominik Szoboszlai",
+      "Ryan Gravenberch",
+      "Victor Munoz",
+      "Florian Wirtz",
+      "Bradley Barcola",
+      "Alexander Isak",
+      "Rio Ngumoha",
+      "Treymaurice Nyoni",
+      "Lewis Koumas",
+      "Milos Kerkez"
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "names": [
+      "Bernd Leno",
+      "Timothy Castagne",
+      "David Affengruber",
+      "Calvin Bassey",
+      "Antonee Robinson",
+      "Sander Berge",
+      "Shea Charles",
+      "Oscar Bobb",
+      "Joshua King",
+      "Alex Iwobi",
+      "Gonzalo Garcia",
+      "Cesar Palacios",
+      "Manuel Angel",
+      "Hugo Larsson",
+      "Kevin"
+     ],
+     "team": "Fulham"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 44,
+     "home": 56,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 10,
+     "home": 14,
+     "label": "Shots"
+    },
+    {
+     "away": 4,
+     "home": 2,
+     "label": "Shots on target"
+    },
+    {
+     "away": 8,
+     "home": 5,
+     "label": "Corners"
+    },
+    {
+     "away": 8,
+     "home": 11,
+     "label": "Fouls"
+    },
+    {
+     "away": 1,
+     "home": 0,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 1,
+     "home": 1,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      46,
+      60,
+      60,
+      72,
+      72
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "mins": [
+      63,
+      72,
+      77,
+      77,
+      77
+     ],
+     "team": "Fulham"
+    }
+   ]
+  },
+  {
+   "away": "Liverpool",
+   "away_score": 2,
+   "competition": "Premier League",
+   "date": "2026-09-04",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "min": 6,
+     "team": "Liverpool"
+    },
+    {
+     "min": 9,
+     "team": "Liverpool"
+    }
+   ],
+   "home": "Ipswich Town",
+   "home_score": 0,
+   "kickoff": "Fri 4 Sep 2026, 8:00pm",
+   "match_id": "sr:sport_event:72221244",
+   "players": [
+    {
+     "names": [
+      "Kjell Scherpen",
+      "Dara O'Shea",
+      "Issa Diop",
+      "Jacob Greaves",
+      "Leif Davis",
+      "Sasa Lukic",
+      "Exequiel Palacios",
+      "Abdul Fatawu",
+      "Julio Enciso",
+      "Daizen Maeda",
+      "Emersonn",
+      "Abdoul Ouattara",
+      "Kasey McAteer",
+      "Marcelino Nunez",
+      "Christian Walton"
+     ],
+     "team": "Ipswich Town"
+    },
+    {
+     "names": [
+      "Alisson",
+      "Ronald Araujo",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Milos Kerkez",
+      "Alexis Mac Allister",
+      "Dominik Szoboszlai",
+      "Cody Gakpo",
+      "Florian Wirtz",
+      "Victor Munoz",
+      "Alexander Isak",
+      "Wataru Endo",
+      "Lewis Koumas",
+      "Treymaurice Nyoni",
+      "Rio Ngumoha"
+     ],
+     "team": "Liverpool"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 56,
+     "home": 44,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 10,
+     "home": 14,
+     "label": "Shots"
+    },
+    {
+     "away": 7,
+     "home": 5,
+     "label": "Shots on target"
+    },
+    {
+     "away": 3,
+     "home": 4,
+     "label": "Corners"
+    },
+    {
+     "away": 13,
+     "home": 6,
+     "label": "Fouls"
+    },
+    {
+     "away": 3,
+     "home": 1,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 5,
+     "home": 5,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      66,
+      66,
+      79,
+      79
+     ],
+     "team": "Ipswich Town"
+    },
+    {
+     "mins": [
+      64,
+      64,
+      84,
+      90
+     ],
+     "team": "Liverpool"
+    }
+   ]
+  },
+  {
+   "away": "Nottingham Forest",
+   "away_score": 2,
+   "competition": "Premier League",
+   "date": "2026-08-29",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "min": 24,
+     "team": "Nottingham Forest"
+    },
+    {
+     "min": 60,
+     "team": "Liverpool"
+    },
+    {
+     "min": 70,
+     "team": "Nottingham Forest"
+    },
+    {
+     "min": 82,
+     "team": "Liverpool"
+    }
+   ],
+   "home": "Liverpool",
+   "home_score": 2,
+   "kickoff": "Sat 29 Aug 2026, 12:30pm",
+   "match_id": "sr:sport_event:72221224",
+   "players": [
+    {
+     "names": [
+      "Alisson",
+      "Jeremie Frimpong",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Milos Kerkez",
+      "Dominik Szoboszlai",
+      "Alexis Mac Allister",
+      "Victor Munoz",
+      "Florian Wirtz",
+      "Cody Gakpo",
+      "Alexander Isak",
+      "Kostas Tsimikas",
+      "Treymaurice Nyoni",
+      "Wataru Endo",
+      "Rio Ngumoha"
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "names": [
+      "Matz Sels",
+      "Jair Cunha",
+      "Nikola Milenkovic",
+      "Murillo",
+      "Ola Aina",
+      "James McAtee",
+      "Xaver Schlager",
+      "Neco Williams",
+      "Dan Ndoye",
+      "Morgan Gibbs-White",
+      "Igor Jesus",
+      "Zach Abbott",
+      "Ousmane Diomande",
+      "John Victor",
+      "Nicolas Dominguez"
+     ],
+     "team": "Nottingham Forest"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 31,
+     "home": 69,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 10,
+     "home": 10,
+     "label": "Shots"
+    },
+    {
+     "away": 3,
+     "home": 4,
+     "label": "Shots on target"
+    },
+    {
+     "away": 5,
+     "home": 3,
+     "label": "Corners"
+    },
+    {
+     "away": 10,
+     "home": 13,
+     "label": "Fouls"
+    },
+    {
+     "away": 2,
+     "home": 4,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 0,
+     "home": 3,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      71,
+      71,
+      72,
+      77,
+      77
+     ],
+     "team": "Liverpool"
+    },
+    {
+     "mins": [
+      66,
+      86,
+      90,
+      90
+     ],
+     "team": "Nottingham Forest"
+    }
+   ]
+  },
+  {
+   "away": "Liverpool",
+   "away_score": 2,
+   "competition": "Premier League",
+   "date": "2026-08-23",
+   "fetched_at": "2026-11-06T22:40:00Z",
+   "goals": [
+    {
+     "min": 5,
+     "team": "Newcastle United"
+    },
+    {
+     "min": 55,
+     "team": "Liverpool"
+    },
+    {
+     "min": 57,
+     "team": "Newcastle United"
+    },
+    {
+     "min": 90,
+     "team": "Liverpool"
+    }
+   ],
+   "home": "Newcastle United",
+   "home_score": 2,
+   "kickoff": "Sun 23 Aug 2026, 4:30pm",
+   "match_id": "sr:sport_event:72221170",
+   "players": [
+    {
+     "names": [
+      "Lukas Hornicek",
+      "Amar Dedic",
+      "Malick Thiaw",
+      "Sven Botman",
+      "Lewis Hall",
+      "Lewis Miley",
+      "Sean Steur",
+      "Anthony Elanga",
+      "Yoane Wissa",
+      "Harvey Barnes",
+      "William Osula",
+      "Aladji Bamba",
+      "Bazoumana Toure",
+      "Nick Woltemade",
+      "Leo Shahar"
+     ],
+     "team": "Newcastle United"
+    },
+    {
+     "names": [
+      "Alisson",
+      "Jeremie Frimpong",
+      "Jeremy Jacquet",
+      "Virgil van Dijk",
+      "Milos Kerkez",
+      "Dominik Szoboszlai",
+      "Ryan Gravenberch",
+      "Rio Ngumoha",
+      "Florian Wirtz",
+      "Cody Gakpo",
+      "Alexander Isak",
+      "Treymaurice Nyoni",
+      "Victor Munoz",
+      "Lewis Koumas",
+      "James McConnell"
+     ],
+     "team": "Liverpool"
+    }
+   ],
+   "red_cards": [],
+   "source": "Live sports data feed (Sportradar)",
+   "stats": [
+    {
+     "away": 60,
+     "home": 40,
+     "label": "Possession (%)"
+    },
+    {
+     "away": 25,
+     "home": 12,
+     "label": "Shots"
+    },
+    {
+     "away": 6,
+     "home": 5,
+     "label": "Shots on target"
+    },
+    {
+     "away": 6,
+     "home": 2,
+     "label": "Corners"
+    },
+    {
+     "away": 15,
+     "home": 15,
+     "label": "Fouls"
+    },
+    {
+     "away": 3,
+     "home": 5,
+     "label": "Yellow cards"
+    },
+    {
+     "away": 1,
+     "home": 2,
+     "label": "Offsides"
+    }
+   ],
+   "subs": [
+    {
+     "mins": [
+      56,
+      56,
+      76,
+      76,
+      90
+     ],
+     "team": "Newcastle United"
+    },
+    {
+     "mins": [
+      63,
+      63,
+      70,
+      78
+     ],
+     "team": "Liverpool"
+    }
+   ]
+  }
+ ]
+}
