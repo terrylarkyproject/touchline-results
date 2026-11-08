@@ -1,0 +1,45 @@
+name: Update results
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"   # every 3 hours
+  workflow_dispatch:
+    inputs:
+      backfill_from:
+        description: "Optional: re-check every match from this date (YYYY-MM-DD), e.g. 2026-08-01"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-results
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch results
+        env:
+          BACKFILL_FROM: ${{ github.event.inputs.backfill_from }}
+        run: python scripts/update.py
+
+      - name: Save changes
+        run: |
+          if git diff --quiet data/results.json; then
+            echo "No new results."
+            exit 0
+          fi
+          git config user.name "touchline-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/results.json
+          git commit -m "Update results"
+          git push
