@@ -500,12 +500,27 @@ function gfxTimeline(r){
   o+=`<circle cx="160" cy="930" r="14" fill="${G.chalk}"/><text x="188" y="941" ${GB} font-size="32" fill="${G.dim}">Goal</text><path d="M360 918 l12 12 l-12 12 l-12 -12z" fill="${G.amber}"/><text x="388" y="941" ${GB} font-size="32" fill="${G.dim}">Substitution</text><rect x="620" y="914" width="22" height="30" fill="${G.red}" stroke="${G.chalk}" stroke-width="3"/><text x="656" y="941" ${GB} font-size="32" fill="${G.dim}">Red card</text><text x="1760" y="941" text-anchor="end" ${GB} font-size="32" fill="${G.dim}">${esc(r.home)} above the line, ${esc(r.away)} below</text>`;
   return gfxWrap(r,o,`Match timeline: ${r.home} v ${r.away}`);
 }
+function gfxTable(r){
+  const tb=tableFor(r); if(!tb) return "";
+  const rows=tb.rows, ps=rows.map((x,i)=>x.team===r.home||x.team===r.away?i:-1).filter(i=>i>=0);
+  const lo=Math.min(...ps), hi=Math.max(...ps);
+  let a = hi-lo<10 ? Math.max(0,Math.min(lo-2, rows.length-10)) : 0; if(hi-lo<10 && hi>=a+10) a=hi-9;
+  const win=hi-lo<10 ? rows.slice(a,a+10) : rows.slice(0,5).concat(ps.map(i=>rows[i]));
+  const X={pos:150,club:230,p:1010,w:1120,d:1230,l:1340,gd:1500,pts:1700};
+  let o=`<text x="${X.pos}" y="316" ${GH} font-weight="600" font-size="32" fill="${G.dim}">POS</text><text x="${X.club}" y="316" ${GH} font-weight="600" font-size="32" fill="${G.dim}">CLUB</text>`+["p","w","d","l"].map(k=>`<text x="${X[k]}" y="316" text-anchor="end" ${GH} font-weight="600" font-size="32" fill="${G.dim}">${k.toUpperCase()}</text>`).join("")+`<text x="${X.gd}" y="316" text-anchor="end" ${GH} font-weight="600" font-size="32" fill="${G.dim}">GD</text><text x="${X.pts}" y="316" text-anchor="end" ${GH} font-weight="600" font-size="32" fill="${G.dim}">PTS</text>`;
+  win.forEach((x,i)=>{ const y=340+i*54, hot=x.team===r.home||x.team===r.away, c=hot?G.amber:G.chalk;
+    if(hot) o+=`<rect x="110" y="${y}" width="1700" height="50" rx="6" fill="rgba(232,176,75,.16)"/>`;
+    o+=`<text x="${X.pos}" y="${y+38}" ${GH} font-weight="700" font-size="40" fill="${c}">${x.pos}</text><text x="${X.club}" y="${y+38}" ${GH} font-weight="700" font-size="40" fill="${c}">${esc(x.team)}</text>`+["p","w","d","l"].map(k=>`<text x="${X[k]}" y="${y+38}" text-anchor="end" ${GH} font-size="38" fill="${c}">${x[k]}</text>`).join("")+`<text x="${X.gd}" y="${y+38}" text-anchor="end" ${GH} font-size="38" fill="${c}">${x.gd>0?"+":""}${x.gd}</text><text x="${X.pts}" y="${y+38}" text-anchor="end" ${GH} font-weight="700" font-size="42" fill="${c}">${x.pts}</text>`; });
+  o+=`<text x="1824" y="990" text-anchor="end" ${GB} font-size="28" fill="${G.dim}">Table as saved ${esc(TABLES_AT||"")}: may include later games</text>`;
+  return gfxWrap(r,o,`League table: ${r.home} v ${r.away}`);
+}
 function gfx(id){
   const r=curResult(); if(!r||r.stats_pending) return "";
   try{
     if(id==="bars"&&(r.stats||[]).length) return gfxBars(r);
     if(id==="stat-panel") return gfxPanel(r);
     if(id==="timeline") return gfxTimeline(r);
+    if(id==="table") return gfxTable(r);
   }catch(e){}
   return "";
 }
@@ -815,6 +830,8 @@ function teamForm(team, before){
 }
 function goalTxt(g){ return `${g.min}' ${g.team}${g.scorer?` – ${g.scorer}${g.penalty?" (pen)":""}${g.own_goal?" (own goal)":""}`:""}${g.assist?`, assist ${g.assist}`:""}`; }
 function needsDetails(r){ return !!r.stats_pending || (r.goals||[]).some(g=>!g.scorer); }
+function ordinal(n){ const v=n%100, x=["th","st","nd","rd"]; return n+(x[(v-20)%10]||x[v]||x[0]); }
+function tableFor(r){ const t=TABLES.find(x=>x.competition===r.competition&&x.rows.some(y=>y.team===r.home||y.team===r.away)); return t||null; }
 function factsFor(r){
   const goals=(r.goals||[]).slice().sort((a,b)=>a.min-b.min);
   const lines = [`${score(r)} · ${r.competition||""} · ${r.kickoff||r.date} (home team: ${r.home})`];
@@ -824,8 +841,15 @@ function factsFor(r){
   if((r.subs||[]).some(x=>(x.mins||[]).length)) lines.push("Substitution minutes: "+r.subs.map(x=>`${x.team} ${mins(x.mins)||"none"}`).join(" · "));
   (r.players||[]).forEach(p=>{ if((p.names||[]).length) lines.push(`Players listed for ${p.team}: ${p.names.join(", ")}`); });
   [r.home,r.away].forEach(t=>{ const f=teamForm(t,r.date); if(f.length) lines.push(`${t}'s previous saved results, most recent first: ${f.join(", ")}`); });
+  const sd=(r.subs_detail||[]);
+  if(sd.length) lines.push("Substitutions (minute, team, on for off): "+sd.map(x=>`${x.min}' ${x.team} ${x.on} for ${x.off}`).join("; "));
+  const tb=tableFor(r);
+  if(tb){ const row=t=>{ const x=tb.rows.find(y=>y.team===t); return x?`${t} ${ordinal(x.pos)}, ${x.pts} pts from ${x.p} (W${x.w} D${x.d} L${x.l}, GD ${x.gd>0?"+":""}${x.gd})`:null; };
+    lines.push(`League table as saved on ${TABLES_AT||"the latest update"}, so it may include games played after this one: `+[row(r.home),row(r.away)].filter(Boolean).join("; ")+`. Top five: `+tb.rows.slice(0,5).map(x=>`${x.pos} ${x.team} ${x.pts}`).join(", ")); }
+  [r.home,r.away].forEach(t=>{ const nx=FIXTURES.find(f=>f.date>r.date&&(f.home===t||f.away===t)); lines.push(nx?`Next fixture for ${t}: ${nx.home===t?"home to "+nx.away:"away at "+nx.home}, ${nx.kickoff} (${nx.competition})`:`Next fixture for ${t}: not in the schedule loaded for the next 10 days.`); });
   const miss=[]; if(r.stats_pending) miss.push("goal minutes","stats","players"); else if(goals.some(g=>!g.scorer)) miss.push("scorer names","assists"); else if(goals.some(g=>!g.assist)) miss.push("assists for goals without one listed (they may have been unassisted)");
-  if(!(r.subs||[]).some(x=>(x.mins||[]).length)) miss.push("substitutions"); else miss.push("who came on or off");
+  if(!(r.subs||[]).some(x=>(x.mins||[]).length)) miss.push("substitutions"); else if(!sd.length) miss.push("who came on or off");
+  if(!tb) miss.push("league table");
   miss.push("xG","PPDA");
   lines.push(`Not in the data: ${miss.join(", ")}.`);
   lines.push(`Source: ${r.source||"live sports data feed"}${r.details_source?`; scorers and assists: ${r.details_source}`:""}`);
@@ -834,7 +858,7 @@ function factsFor(r){
 function compList(){ return [...new Set(RESULTS.map(r=>r.competition).filter(Boolean))].sort((a,b)=>{ const ia=COMP_ORDER.indexOf(a), ib=COMP_ORDER.indexOf(b); return ((ia<0?99:ia)-(ib<0?99:ib)) || a.localeCompare(b); }); }
 
 /* ---------- Fixture picker (results.json, refreshed every 3 hours by GitHub) ---------- */
-let RESULTS = [], autoT = null;
+let RESULTS = [], TABLES = [], FIXTURES = [], TABLES_AT = "", autoT = null;
 const PICK = {comp:"", date:"", id:""};
 /* Picking a match loads its facts and its saved script, or writes a new one. */
 function openMatch(id){
@@ -904,6 +928,7 @@ async function loadResults(quiet){
     if(!res.ok) throw new Error("HTTP "+res.status);
     const d=await res.json();
     RESULTS=(d.results||[]).map(r=>Object.assign({_id:r.date+"|"+r.home+"|"+r.away},r)).filter(r=>r.date&&r.home&&r.away);
+    TABLES=d.tables||[]; FIXTURES=d.fixtures||[]; TABLES_AT=d.tables_at||"";
     const u=d.updated_at?new Date(d.updated_at):null;
     $("upd").textContent=`${RESULTS.length} matches`+(u&&!isNaN(u)?` · newest result saved ${u.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"})}`:"");
     const cur=RESULTS.find(x=>x._id===S.cur);
