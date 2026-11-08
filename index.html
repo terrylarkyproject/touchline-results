@@ -191,6 +191,7 @@ input[type=search],input[type=password]{font:inherit;color:var(--ink);background
   <div class="grid">
     <form class="brief" id="briefForm" autocomplete="off">
       <h2>The brief</h2>
+      <div class="actions" style="align-items:center"><button class="btn sm" type="button" id="openProj">Open a saved project…</button><input type="file" id="projIn" accept=".json,application/json" hidden><span class="hint" style="margin:0">Any video pack from Send to Match Studio.</span></div>
 
       <div class="field picker" id="resBox">
         <span class="lbl">1 · Pick a match</span>
@@ -557,19 +558,99 @@ function segSVG(seg,i,n){
   let svg=""; try{ svg=gfx(seg.layout); }catch(e){}
   return svg||gfxCard(r,seg,i,n);
 }
-function svgToPNG(svg){
+function svgToPNG(svg,w,h){
+  w=w||1920; h=h||1080;
   return new Promise((res,rej)=>{
     const url=URL.createObjectURL(new Blob([svg],{type:"image/svg+xml;charset=utf-8"})), img=new Image();
-    img.onload=()=>{ try{ const c=document.createElement("canvas"); c.width=1920; c.height=1080; c.getContext("2d").drawImage(img,0,0,1920,1080); URL.revokeObjectURL(url); res(c.toDataURL("image/png")); }catch(e){ rej(e); } };
+    img.onload=()=>{ try{ const c=document.createElement("canvas"); c.width=w; c.height=h; c.getContext("2d").drawImage(img,0,0,w,h); URL.revokeObjectURL(url); res(c.toDataURL("image/png")); }catch(e){ rej(e); } };
     img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error("A graphic couldn't be drawn")); };
     img.src=url;
   });
 }
+/* Thumbnail at YouTube's 1280x720: big words on the left, the tactics board on the right. */
+function thumbFull(text){
+  const r=curResult()||{home:"",away:"",home_score:"",away_score:""};
+  const words=String(text||"THE GAP").toUpperCase(), lines=wrapLines(words,9).slice(0,3);
+  const fs=lines.some(l=>l.length>7)?118:138, top=360-(lines.length-1)*fs*0.5;
+  const P={x:640,y:70,w:590,h:580}, ln=`stroke="${G.dim}" stroke-width="5" fill="none"`;
+  const pitchV=`<rect x="${P.x}" y="${P.y}" width="${P.w}" height="${P.h}" ${ln}/><line x1="${P.x}" y1="${P.y+P.h/2}" x2="${P.x+P.w}" y2="${P.y+P.h/2}" ${ln}/><circle cx="${P.x+P.w/2}" cy="${P.y+P.h/2}" r="80" ${ln}/><rect x="${P.x+P.w*0.22}" y="${P.y}" width="${P.w*0.56}" height="110" ${ln}/><rect x="${P.x+P.w*0.22}" y="${P.y+P.h-110}" width="${P.w*0.56}" height="110" ${ln}/>`;
+  const dotB=(x,y)=>`<circle cx="${x}" cy="${y}" r="26" fill="${G.red}" stroke="${G.board}" stroke-width="6"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><rect width="1280" height="720" fill="${G.board}"/>${pitchV}
+<path d="M820 470 Q900 330 1080 250" stroke="${G.red}" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M1080 250 l-46 4 l26 34z" fill="${G.red}"/>
+<path d="M760 380 L960 470" stroke="${G.chalk}" stroke-width="8" stroke-dasharray="20 14" fill="none"/>${dotB(820,470)}${dotB(760,380)}${dotB(960,470)}${dotB(1080,250)}
+<rect x="0" y="0" width="660" height="720" fill="${G.board}" opacity=".82"/>
+${lines.map((l,k)=>`<text x="56" y="${top+k*fs}" ${GH} font-weight="700" font-size="${fs}" fill="${G.chalk}" stroke="${G.board}" stroke-width="6" paint-order="stroke">${esc(l)}</text>`).join("")}
+<rect x="56" y="${top+(lines.length-1)*fs+38}" width="160" height="12" fill="${G.red}"/>
+<text x="56" y="660" ${GB} font-weight="600" font-size="40" fill="${G.amber}">${esc(r.home)} ${r.home_score}–${r.away_score} ${esc(r.away)}</text></svg>`;
+}
+/* End screen: 20 seconds at the end of long videos. YouTube's end screen elements sit on the outlines. */
+function gfxEndCard(){
+  const box=(x,y,w,h,label)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="rgba(0,0,0,.18)" stroke="${G.dim}" stroke-width="4" stroke-dasharray="18 12"/><text x="${x+w/2}" y="${y+h/2+16}" text-anchor="middle" ${GB} font-size="44" fill="${G.dim}">${label}</text>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect width="1920" height="1080" fill="${G.board}"/>
+<text x="960" y="170" text-anchor="middle" ${GH} font-weight="700" font-size="96" fill="${G.chalk}">THE TOUCHLINE NOTEBOOK</text>
+<rect x="860" y="200" width="200" height="8" fill="${G.red}"/>
+<text x="960" y="270" text-anchor="middle" ${GB} font-size="40" fill="${G.dim}">Hard on tactics. Fair on people.</text>
+${box(140,340,780,439,"Watch next")}${box(1000,340,780,439,"Best for you")}
+<circle cx="960" cy="905" r="88" fill="rgba(0,0,0,.18)" stroke="${G.amber}" stroke-width="5" stroke-dasharray="14 10"/><text x="960" y="918" text-anchor="middle" ${GB} font-size="34" fill="${G.amber}">Subscribe</text></svg>`;
+}
+/* Shorts: 1080x1920, big words up top, a match graphic in the middle, the bottom 300px left clear for YouTube. */
+function gfxVertical(r, top, mid, i, n){
+  const inner=String(mid||"").replace(/<svg[^>]*>/,'<svg x="0" y="760" width="1080" height="608" viewBox="0 0 1920 1080">');
+  const lines=wrapLines(String(top||"").toUpperCase(),16).slice(0,4);
+  const t=lines.map((l,k)=>`<text x="540" y="${300+k*118}" text-anchor="middle" ${GH} font-weight="700" font-size="112" fill="${G.chalk}">${esc(l)}</text>`).join("");
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920"><rect width="1080" height="1920" fill="${G.board}"/>
+<text x="540" y="140" text-anchor="middle" ${GB} font-size="40" fill="${G.amber}">${esc(r.home)} ${r.home_score}–${r.away_score} ${esc(r.away)}</text>${t}
+<rect x="440" y="${300+lines.length*118-40}" width="200" height="8" fill="${G.red}"/>${inner}
+<text x="1000" y="1530" text-anchor="end" ${GM} font-size="30" fill="${G.dim}">${i+1} / ${n}</text></svg>`;
+}
+function vertMid(r, seg, i, n){
+  const order=["timeline","stat-panel","bars","table"];
+  for(let k=0;k<order.length;k++){ const s=gfx(order[(i+k)%order.length]); if(s) return s; }
+  return gfxCard(r,seg,i,n);
+}
+function packSlug(r){ return `${r.date}-${(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-")}`; }
+function packProject(){
+  return {matchId:S.cur, match:Object.assign({},curResult()), brief:S.brief, extra:S.extra, facts:S.facts, factsAuto:S.factsAuto, template:S.template, length:S.length, wpm:wpm(), result:S.result};
+}
 async function buildPack(){
   const r=curResult(), res=S.result; if(!r||!res) throw new Error("Pick a match and write the script first.");
-  const n=res.segments.length, segs=[];
-  for(let i=0;i<n;i++){ const s=res.segments[i]; segs.push({label:s.label,voiceover:s.voiceover,layout:s.layout,take:takeName(i),image:await svgToPNG(segSVG(s,i,n))}); }
-  return {version:2,key:[r.competition,r.date,r.home,r.away].join("|"),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||""};
+  const n=res.segments.length, segs=[], vertical=res.segments.every(s=>s.layout==="vertical");
+  for(let i=0;i<n;i++){ const s=res.segments[i];
+    const img = vertical ? await svgToPNG(gfxVertical(r, s.on_screen[0]||s.label, vertMid(r,s,i,n), i, n),1080,1920) : await svgToPNG(segSVG(s,i,n));
+    segs.push({label:s.label,voiceover:s.voiceover,layout:s.layout,take:takeName(i),image:img}); }
+  const pk={version:3,format:vertical?"short":"video",key:[r.competition,r.date,r.home,r.away].join("|")+(vertical?"|short":""),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||"",pinned:res.pinned_comment||"",tags:res.tags||[],hashtags:vertical?(res.hashtags||[]).slice(0,2).concat(["#Shorts"]):(res.hashtags||[]),project:packProject()};
+  if(!vertical){ pk.thumbnail=await svgToPNG(thumbFull(res.thumbnail.text),1280,720); pk.endCard=await svgToPNG(gfxEndCard()); }
+  return pk;
+}
+/* A Short cut from the long script: three sections (hook, main point, close), each its own recording. */
+async function buildShortPack(k){
+  const r=curResult(), res=S.result, sh=res&&res.shorts[k]; if(!r||!sh) throw new Error("Pick a match and write the script first.");
+  const parts=[["Hook",sh.hook,sh.title],["Main point",sh.body,(sh.body.split(/(?<=[.!?])\s+/)[0]||"").slice(0,70)],["Close",sh.close,"Full breakdown on the channel"]].filter(x=>x[1].trim());
+  const segs=[];
+  for(let i=0;i<parts.length;i++){ const [label,vo,top]=parts[i];
+    segs.push({label,voiceover:vo,layout:"vertical",take:`${String(i+1).padStart(2,"0")}-${label.toLowerCase().replace(/[^a-z0-9]+/g,"-")}`,
+      image:await svgToPNG(gfxVertical(r, top, vertMid(r,{label,on_screen:[],stats:[]},i+k,parts.length), i, parts.length),1080,1920)}); }
+  const tags=(res.hashtags||[]).slice(0,2).concat(["#Shorts"]);
+  return {version:3,format:"short",key:[r.competition,r.date,r.home,r.away].join("|")+"|short-"+(k+1),title:sh.title,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:[sh.title],
+    description:`${sh.title}\n\nFrom our full review of ${r.home} ${r.home_score}–${r.away_score} ${r.away}. Hard on tactics, fair on people.`,pinned:"",tags:res.tags||[],hashtags:tags,project:packProject()};
+}
+/* Reopen a project from a video pack: the match, the script and everything in the brief. */
+function importPack(pk){
+  if(!pk||!Array.isArray(pk.segments)) throw new Error("That file isn't a video pack.");
+  const pr=pk.project||{};
+  let r=null;
+  if(pr.matchId) r=RESULTS.find(x=>x._id===pr.matchId);
+  if(!r&&pk.key){ const [comp,date,home,away]=String(pk.key).split("|"); r=RESULTS.find(x=>x.date===date&&x.home===home&&x.away===away); }
+  if(!r&&pr.match&&pr.match.home){ r=Object.assign({},pr.match,{_id:pr.match._id||pr.matchId||(pr.match.date+"|"+pr.match.home+"|"+pr.match.away)}); RESULTS.push(r); }
+  if(!r) throw new Error("This pack's match isn't in the results list any more, and the pack is from before projects were saved, so it can't be reopened.");
+  const result = pr.result ? pr.result : normalise({working_title:pk.title,titles:pk.titles,description:pk.description,pinned_comment:pk.pinned,tags:pk.tags,hashtags:pk.hashtags,
+      segments:pk.segments.map(s=>({label:s.label,voiceover:s.voiceover,layout:s.layout,on_screen:[],stats:[]}))});
+  stash();
+  S.byMatch[r._id]={brief:pr.brief||"",extra:pr.extra||"",result:normalise(result),template:pr.template||S.template,length:pr.length||S.length,facts:pr.facts||"",factsAuto:pr.factsAuto||"",at:Date.now()};
+  if(pr.wpm){ S.wpm=pr.wpm; }
+  PICK.comp=r.competition; PICK.date=r.date; PICK.id=r._id;
+  S.cur=""; openMatch(r._id); renderPicker(); tab="board"; renderTabs();
+  setStatus(`Reopened “${pk.title||r.home+" v "+r.away}”.`);
 }
 /* Each section is recorded as its own file; Match Studio matches files by the number at the start. */
 function takeName(i){ const s=S.result&&S.result.segments[i]; const slug=String(s?s.label:"section").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40)||"section"; return `${String(i+1).padStart(2,"0")}-${slug}`; }
@@ -614,7 +695,7 @@ FACTS AND STATS PROVIDED (the only numbers you may use):
 """${(S.facts||"none").slice(0,6000)}"""
 ${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
 Reply with only a JSON object, no other text, in exactly this shape:
-{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with chapters and a Sources line","pinned_comment":"string","self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
+{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with chapters and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs"],"hashtags":["exactly 3, each starting with #, no spaces"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
 JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles use question, single-mechanism, numbers-versus-perception or "explained" structures; ${shortsRule}, each 60-110 words in total; self_check is an empty array when nothing is borderline.`;
 }
 
@@ -709,6 +790,8 @@ function normalise(r){
     segments:arr(r.segments).filter(s=>s&&s.voiceover).map(s=>({label:String(s.label||"Section"),start:String(s.start||""),end:String(s.end||""),voiceover:String(s.voiceover),layout:LAYOUTS[s.layout]?s.layout:"tactics-board",on_screen:arr(s.on_screen).map(String),stats:arr(s.stats).map(String)})),
     shorts:arr(r.shorts).map(s=>({title:String(s.title||"Short"),hook:String(s.hook||""),body:String(s.body||""),close:String(s.close||"")})),
     description:String(r.description||""), pinned_comment:String(r.pinned_comment||""),
+    tags:arr(r.tags).map(x=>String(x).replace(/^#/,"").trim()).filter(Boolean).slice(0,20),
+    hashtags:arr(r.hashtags).map(x=>"#"+String(x).replace(/^#+/,"").replace(/\s+/g,"")).filter(x=>x.length>1).slice(0,5),
     self_check:arr(r.self_check).filter(Boolean).map(x=>({line:String(x.line||""),issue:String(x.issue||""),rewrite:String(x.rewrite||"")})),
     missing_facts:arr(r.missing_facts).map(String)
   };
@@ -763,7 +846,7 @@ function renderBoard(){
   const sc = r.self_check.length ? `<div class="card"><h3>Lines Claude wasn't sure about</h3>${r.self_check.map(x=>`<p><b>${esc(x.line)}</b><br><span class="spec">${esc(x.issue)}</span><br>Safer: ${esc(x.rewrite)}</p>`).join("")}</div>` : "";
   const vp = curResult() && !curResult().stats_pending ? `<div class="card"><h3>Make the video</h3><p class="spec" style="margin:4px 0 10px">Every section gets a picture drawn from this match's data. Download the pack, then record each section as its own file, named as shown on each section (01-…, 02-…), all in one folder. In Match Studio, open the pack and choose that folder: every picture then lasts exactly as long as its recording. The Read-through tab shows one section at a time to read from.</p><button class="btn sm" type="button" id="sendPack">Send to Match Studio (download video pack)</button> <span class="spec" id="packMsg"></span></div>` : "";
   p.innerHTML = vp + sc + r.segments.map(segHTML).join("");
-  const sp=$("sendPack"); if(sp) sp.addEventListener("click",async()=>{ const m=$("packMsg"); sp.disabled=true; m.textContent="Drawing the pictures…"; try{ const pk=await buildPack(); const cr=curResult(); downloadFile(`${cr.date}-${(cr.home+"-v-"+cr.away).toLowerCase().replace(/[^a-z0-9]+/g,"-")}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent=`Downloaded: ${pk.segments.length} pictures. Open it in Match Studio.`; }catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } sp.disabled=false; });
+  const sp=$("sendPack"); if(sp) sp.addEventListener("click",async()=>{ const m=$("packMsg"); sp.disabled=true; m.textContent="Drawing the pictures…"; try{ const pk=await buildPack(); const cr=curResult(); downloadFile(`${packSlug(cr)}${pk.format==="short"?"-short":""}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent=`Downloaded: ${pk.segments.length} pictures. Open it in Match Studio.`; }catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } sp.disabled=false; });
   renderBoardTimes();
   p.querySelectorAll(".seg").forEach(card=>{
     const i=+card.dataset.i, ta=card.querySelector(".vo");
@@ -814,8 +897,12 @@ function renderShorts(){
     return `<div class="card"><div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start"><div>${layoutSVG("vertical",s.hook.split(" ").slice(0,4).join(" "))}</div><div style="min-width:0"><h3>${esc(s.title)}</h3><span class="time">${w} words · ≈ ${mmss(w/wpm()*60)}</span></div></div>
     <p><span class="k">Hook</span><br>${esc(s.hook)}</p><p><span class="k">Body</span><br>${esc(s.body)}</p><p><span class="k">Close</span><br>${esc(s.close)}</p>
     ${hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join("")}
-    <div><button class="btn sm" type="button" data-cs="${i}">Copy Short</button></div></div>`; }).join("")}</div>`;
+    <p class="spec" style="margin:0">Record as <b>01-hook.wav</b>, <b>02-main-point.wav</b>, <b>03-close.wav</b> in one folder.</p>
+    <div class="actions"><button class="btn sm" type="button" data-cs="${i}">Copy Short</button>${curResult()&&!curResult().stats_pending?`<button class="btn sm" type="button" data-sp="${i}">Send to Match Studio</button>`:""}</div><span class="spec" data-spm="${i}"></span></div>`; }).join("")}</div>`;
   p.querySelectorAll("[data-cs]").forEach(b=>b.onclick=()=>{ const s=r.shorts[+b.dataset.cs]; copy(`${s.title}\n\n${s.hook}\n\n${s.body}\n\n${s.close}`); });
+  p.querySelectorAll("[data-sp]").forEach(b=>b.onclick=async()=>{ const k=+b.dataset.sp, m=p.querySelector(`[data-spm="${k}"]`); b.disabled=true; m.textContent="Drawing the pictures…";
+    try{ const pk=await buildShortPack(k); downloadFile(`${packSlug(curResult())}-short-${k+1}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent="Downloaded. Open it in Match Studio."; }
+    catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } b.disabled=false; });
 }
 function renderPack(){
   const p=$("p-pack"), r=S.result;
@@ -824,10 +911,13 @@ function renderPack(){
     <div class="card thumb"><div class="copyrow"><h3>Thumbnail</h3><span class="k">${esc(LAYOUTS[r.thumbnail.layout].name)}</span></div>${thumbSVG(r.thumbnail.text)}<p><b>${esc(r.thumbnail.text)}</b> · ${esc(r.thumbnail.concept)}</p></div>
     <div class="card"><div class="copyrow"><h3>Titles</h3><button class="btn sm" type="button" id="cpT">Copy</button></div><ol class="titles">${r.titles.map(t=>{ const h=scan(t); return `<li>${esc(t)}${h.length?` <span class="flag" style="display:inline-block;padding:0 6px">${esc(h[0].word)}</span>`:""} <span class="time">${t.length} chars</span></li>`; }).join("")}</ol></div>
     <div class="card"><div class="copyrow"><h3>Description</h3><button class="btn sm" type="button" id="cpD">Copy</button></div><p style="white-space:pre-wrap">${esc(r.description)}</p></div>
+    <div class="card"><div class="copyrow"><h3>Tags</h3><button class="btn sm" type="button" id="cpTg" ${r.tags&&r.tags.length?"":"disabled"}>Copy</button></div>${r.tags&&r.tags.length?`<p>${esc(r.tags.join(", "))}</p><p class="spec">${r.tags.join(", ").length} of 500 characters</p>`:`<p class="empty">Write the script again to get tags.</p>`}</div>
+    <div class="card"><div class="copyrow"><h3>Hashtags</h3><button class="btn sm" type="button" id="cpH" ${r.hashtags&&r.hashtags.length?"":"disabled"}>Copy</button></div>${r.hashtags&&r.hashtags.length?`<p><b>${esc(r.hashtags.join(" "))}</b></p><p class="spec">Put them on the last line of the description. YouTube shows the first three above the title.</p>`:`<p class="empty">Write the script again to get hashtags.</p>`}</div>
     <div class="card"><div class="copyrow"><h3>Pinned comment</h3><button class="btn sm" type="button" id="cpP">Copy</button></div><p>${esc(r.pinned_comment)}</p></div>
     <div class="card"><h3>Stats to find before recording</h3>${r.missing_facts.length?`<ul style="margin:0;padding-left:1.2em">${r.missing_facts.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`:`<p class="empty">Nothing missing.</p>`}<p class="spec">Understat for xG and PPDA; FotMob or Sofascore for match stats; club site for confirmed news.</p></div>
   </div>`;
   $("cpT").onclick=()=>copy(r.titles.join("\n")); $("cpD").onclick=()=>copy(r.description); $("cpP").onclick=()=>copy(r.pinned_comment);
+  $("cpTg").onclick=()=>copy((r.tags||[]).join(", ")); $("cpH").onclick=()=>copy((r.hashtags||[]).join(" "));
 }
 function renderLayouts(){
   $("p-layouts").innerHTML = `<p class="spec">Build each of these once as a template in Canva or DaVinci Resolve (1920×1080, 9:16 for Shorts), then reuse it. Every script section names one.</p><div class="lib">${LAYOUT_IDS.map(id=>`<div class="card">${id==="vertical"?`<div style="max-width:120px">${layoutSVG(id)}</div>`:layoutSVG(id)}<h3>${esc(LAYOUTS[id].name)}</h3><p><span class="k">Use for</span><br>${esc(LAYOUTS[id].use)}</p><p class="spec">${esc(LAYOUTS[id].spec)}</p><p class="spec"><code>${id}</code></p></div>`).join("")}</div>`;
@@ -970,6 +1060,9 @@ function initPicker(){
 }
 
 
+$("openProj").addEventListener("click",()=>$("projIn").click());
+$("projIn").addEventListener("change",async e=>{ const f=e.target.files&&e.target.files[0]; e.target.value=""; if(!f) return;
+  try{ importPack(JSON.parse(await f.text())); }catch(x){ setStatus((x&&x.message)||"That file couldn't be opened.",true); } });
 document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.tab; if(tab==="read") renderRead(); if(tab==="shorts") renderShorts(); if(tab==="pack") renderPack(); renderTabs(); }));
 initForm(); initPicker(); renderAll(); loadResults(); setInterval(()=>loadResults(true),600000);
 })();
