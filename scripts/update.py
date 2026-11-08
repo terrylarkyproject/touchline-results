@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "results.json"
 UK = ZoneInfo("Europe/London")
 BASE = "https://site.api.espn.com/apis/site/v2/sports/soccer"
+STAND = "https://site.api.espn.com/apis/v2/sports/soccer"
 
 LEAGUES = {  # ESPN code -> competition name used on the page
     "eng.1": "Premier League",
@@ -112,6 +113,7 @@ def num(v):
         return None
 
 
+SUB_RE = re.compile(r"Substitution,[^.]*\.\s*(.+?)\s+replaces\s+(.+?)(?:\s+(?:because|due)\b.*)?\.?\s*$", re.I)
 ASSIST_RE = re.compile(r"Assisted by ([^.]+?)(?:\s+with\b|\s+following\b|\.|$)")
 
 
@@ -188,15 +190,20 @@ def add_summary(rec, lg, event_id):
                     g["assist"] = m.group(1).strip()
                 break
 
-    # Substitution minutes per team
+    # Substitutions: minutes per team, plus who came on and off where the feed says
     subs = {rec["home"]: [], rec["away"]: []}
+    detail = []
     for k in kes:
         if "substitution" in str((k.get("type") or {}).get("type", "")).lower():
             t = ids.get(str((k.get("team") or {}).get("id")))
             mn = minute(k.get("clock"))
             if t in subs and mn is not None:
                 subs[t].append(mn)
+                m = SUB_RE.search(k.get("text") or "")
+                if m:
+                    detail.append({"min": mn, "team": t, "on": m.group(1).strip(), "off": m.group(2).strip()})
     rec["subs"] = [{"team": t, "mins": sorted(m)} for t, m in subs.items()]
+    rec["subs_detail"] = sorted(detail, key=lambda d: d["min"])
 
     # Team stats
     by_team = {}
@@ -255,14 +262,14 @@ def merge(old, new):
     for k in ("details_source", "notes"):
         if k in old and k not in out:
             out[k] = old[k]
-    for k in ("subs", "stats", "players"):
+    for k in ("subs", "subs_detail", "stats", "players"):
         if not out.get(k) and old.get(k):
             out[k] = old[k]
     return out
 
 
 def complete(r):
-    return bool(r.get("stats")) and not r.get("stats_pending") and all("scorer" in g for g in r.get("goals", []))
+    return bool(r.get("stats")) and not r.get("stats_pending") and "subs_detail" in r and all("scorer" in g for g in r.get("goals", []))
 
 
 def fetch_events(lg, start_d, end_d):
@@ -293,6 +300,58 @@ def fetch_events(lg, start_d, end_d):
         d = w_end + timedelta(days=1)
         time.sleep(0.3)
     return events if ok else None
+
+
+def fetch_tables(lg, comp):
+    """Current league table(s) from ESPN standings. None if the feed fails."""
+    d = get(f"{STAND}/{lg}/standings", tries=2)
+    if not d:
+        return None
+    out = []
+    for ch in (d.get("children") or [d]):
+        rows = []
+        for e in ((ch.get("standings") or {}).get("entries") or []):
+            name = team_name((e.get("team") or {}).get("displayName"))
+            st = {x.get("name"): x.get("value") for x in (e.get("stats") or [])}
+            pts, gp = num(st.get("points")), num(st.get("gamesPlayed"))
+            if not name or pts is None or gp is None:
+                continue
+            rows.append({"pos": num(st.get("rank")), "team": name, "p": gp, "w": num(st.get("wins")),
+                         "d": num(st.get("ties")), "l": num(st.get("losses")),
+                         "gd": num(st.get("pointDifferential")), "pts": pts})
+        if len(rows) >= 8:
+            rows.sort(key=lambda r: (r["pos"] if r["pos"] is not None else 99, -r["pts"]))
+            for i, r in enumerate(rows, 1):
+                if r["pos"] is None:
+                    r["pos"] = i
+            out.append({"competition": comp, "group": ch.get("name") or "", "rows": rows})
+    return out
+
+
+def fetch_fixtures(lg, comp, today):
+    """Matches not yet played in the next 10 days. None if the feed fails."""
+    events = fetch_events(lg, today, today + timedelta(days=10))
+    if events is None:
+        return None
+    out = []
+    for ev in events:
+        st = (ev.get("status") or {}).get("type") or {}
+        if st.get("completed") or st.get("state") not in (None, "pre"):
+            continue
+        c = (ev.get("competitions") or [{}])[0]
+        sides = {x.get("homeAway"): x for x in c.get("competitors", [])}
+        if "home" not in sides or "away" not in sides:
+            continue
+        try:
+            ko = datetime.fromisoformat(ev["date"].replace("Z", "+00:00")).astimezone(UK)
+        except Exception:
+            continue
+        hour = ko.strftime("%I").lstrip("0") or "12"
+        out.append({"competition": comp, "date": ko.strftime("%Y-%m-%d"),
+                    "kickoff": f"{ko.strftime('%a')} {ko.day} {ko.strftime('%b')}, {hour}:{ko.strftime('%M')}{ko.strftime('%p').lower()}",
+                    "home": team_name(sides["home"]["team"].get("displayName")),
+                    "away": team_name(sides["away"]["team"].get("displayName"))})
+    return out
 
 
 def main():
@@ -338,10 +397,23 @@ def main():
                 added += 1
             results[doc_id(rec)] = rec
 
+    # Tables and upcoming fixtures: replaced each run; a league that fails keeps its last copy
+    old_tables, old_fixtures = store.get("tables", []), store.get("fixtures", [])
+    tables, fixtures = [], []
+    for lg, comp in LEAGUES.items():
+        if lg != "fifa.world":
+            t = fetch_tables(lg, comp)
+            tables += t if t is not None else [x for x in old_tables if x.get("competition") == comp]
+        f = fetch_fixtures(lg, comp, now.astimezone(UK).date())
+        fixtures += f if f is not None else [x for x in old_fixtures if x.get("competition") == comp and x.get("date", "") >= str(now.date())]
+    fixtures.sort(key=lambda x: (x["date"], x["kickoff"]))
+    log(f"Tables: {len(tables)}; upcoming fixtures: {len(fixtures)}")
+
     ordered = sorted(results.values(), key=lambda r: (r.get("date", ""), r.get("competition", ""), r.get("home", "")), reverse=True)
-    changed = bool(added or updated)
+    changed = bool(added or updated) or tables != old_tables or fixtures != old_fixtures
     stamp = now.strftime("%Y-%m-%dT%H:%M:%SZ") if changed else store.get("updated_at", now.strftime("%Y-%m-%dT%H:%M:%SZ"))
-    store = {"updated_at": stamp, "count": len(ordered), "results": ordered}
+    store = {"updated_at": stamp, "tables_at": now.strftime("%Y-%m-%d") if tables != old_tables or not store.get("tables_at") else store["tables_at"],
+             "count": len(ordered), "results": ordered, "tables": tables, "fixtures": fixtures}
     DATA.parent.mkdir(parents=True, exist_ok=True)
     DATA.write_text(json.dumps(store, ensure_ascii=False, indent=1) + "\n")
     log(f"Done: {added} added, {updated} updated, {len(ordered)} total.")
