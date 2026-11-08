@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-08T13:46:46Z",
+ "updated_at": "2026-11-08T15:59:57Z",
  "tables_at": "2026-11-08",
- "count": 128,
+ "count": 135,
  "results": [
   {
    "match_id": "espn:401874810",
@@ -186,6 +186,952 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T13:46:46Z"
+  },
+  {
+   "match_id": "espn:401874800",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:00pm",
+   "competition": "Serie A",
+   "home": "Monza",
+   "away": "Atalanta",
+   "home_score": 0,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 49,
+     "team": "Atalanta",
+     "scorer": "Nikola Krstovic"
+    }
+   ],
+   "red_cards": [
+    {
+     "min": 90,
+     "team": "Monza"
+    }
+   ],
+   "subs": [
+    {
+     "team": "Monza",
+     "mins": [
+      60,
+      61,
+      72,
+      72,
+      80
+     ]
+    },
+    {
+     "team": "Atalanta",
+     "mins": [
+      75,
+      80,
+      83
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 60,
+     "team": "Monza",
+     "on": "Andrea Carboni",
+     "off": "Eddy Kouadio"
+    },
+    {
+     "min": 61,
+     "team": "Monza",
+     "on": "Exequiel Zeballos",
+     "off": "Jay Robinson"
+    },
+    {
+     "min": 72,
+     "team": "Monza",
+     "on": "Dany Mota",
+     "off": "Ebenezer Akinsanmiro"
+    },
+    {
+     "min": 72,
+     "team": "Monza",
+     "on": "Adam Bakoune",
+     "off": "Idrissa Touré"
+    },
+    {
+     "min": 75,
+     "team": "Atalanta",
+     "on": "Jonathan Rowe",
+     "off": "Eljif Elmas"
+    },
+    {
+     "min": 80,
+     "team": "Atalanta",
+     "on": "Relja Obric",
+     "off": "Sead Kolasinac"
+    },
+    {
+     "min": 80,
+     "team": "Monza",
+     "on": "Andrea Colpani",
+     "off": "Mathis Mout"
+    },
+    {
+     "min": 83,
+     "team": "Atalanta",
+     "on": "Franck Kessie",
+     "off": "Nikola Krstovic"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 48.6,
+     "away": 51.4
+    },
+    {
+     "label": "Shots",
+     "home": 22,
+     "away": 13
+    },
+    {
+     "label": "Shots on target",
+     "home": 7,
+     "away": 7
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 11,
+     "away": 6
+    },
+    {
+     "label": "Yellow cards",
+     "home": 4,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 1,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Monza",
+     "names": [
+      "Noel Törnqvist",
+      "Saba Goglichidze",
+      "Lorenzo Lucchesi",
+      "Eddy Kouadio",
+      "Mathis Mout",
+      "Ebenezer Akinsanmiro",
+      "Leonardo Colombo",
+      "Ricardo Mangas",
+      "Idrissa Touré",
+      "Jay Robinson",
+      "Gustavo Varela",
+      "Dany Mota",
+      "Andrea Carboni",
+      "Adam Bakoune",
+      "Exequiel Zeballos",
+      "Andrea Colpani"
+     ]
+    },
+    {
+     "team": "Atalanta",
+     "names": [
+      "Marco Carnesecchi",
+      "Sead Kolasinac",
+      "Giorgio Scalvini",
+      "Lorenzo Bernasconi",
+      "Davide Zappacosta",
+      "Charles De Ketelaere",
+      "Mario Pasalic",
+      "Éderson",
+      "Nikola Krstovic",
+      "Nicola Zalewski",
+      "Eljif Elmas",
+      "Franck Kessié",
+      "Relja Obric",
+      "Jon Rowe"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401875018",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:00pm",
+   "competition": "Serie A",
+   "home": "Genoa",
+   "away": "AC Milan",
+   "home_score": 1,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 13,
+     "team": "AC Milan",
+     "scorer": "Alphadjo Cissè",
+     "assist": "Adrien Rabiot"
+    },
+    {
+     "min": 19,
+     "team": "AC Milan",
+     "scorer": "Christian Pulisic",
+     "assist": "Gonçalo Ramos"
+    },
+    {
+     "min": 88,
+     "team": "Genoa",
+     "scorer": "Mikael Ellertsson",
+     "assist": "Tommaso Baldanzi"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Genoa",
+     "mins": [
+      62,
+      62,
+      74,
+      84,
+      84
+     ]
+    },
+    {
+     "team": "AC Milan",
+     "mins": [
+      61,
+      62,
+      79,
+      87
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 61,
+     "team": "AC Milan",
+     "on": "Omari Hutchinson",
+     "off": "Alphadjo Cisse"
+    },
+    {
+     "min": 62,
+     "team": "AC Milan",
+     "on": "Filippo Terracciano",
+     "off": "Sankhoun Diawara"
+    },
+    {
+     "min": 62,
+     "team": "Genoa",
+     "on": "Tommaso Baldanzi",
+     "off": "Junior Messias"
+    },
+    {
+     "min": 62,
+     "team": "Genoa",
+     "on": "Stephan El Shaarawy",
+     "off": "Alessandro Marcandalli"
+    },
+    {
+     "min": 74,
+     "team": "Genoa",
+     "on": "Lorenzo Colombo",
+     "off": "Vítinha"
+    },
+    {
+     "min": 79,
+     "team": "AC Milan",
+     "on": "Ardon Jashari",
+     "off": "Christian Pulisic"
+    },
+    {
+     "min": 84,
+     "team": "Genoa",
+     "on": "Djibril Sow",
+     "off": "Hamed Traoré"
+    },
+    {
+     "min": 84,
+     "team": "Genoa",
+     "on": "Ethan Meichtry",
+     "off": "Samuel Wiafe"
+    },
+    {
+     "min": 87,
+     "team": "AC Milan",
+     "on": "Pervis Estupiñán",
+     "off": "Yunus Musah"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 37.7,
+     "away": 62.3
+    },
+    {
+     "label": "Shots",
+     "home": 17,
+     "away": 6
+    },
+    {
+     "label": "Shots on target",
+     "home": 5,
+     "away": 2
+    },
+    {
+     "label": "Corners",
+     "home": 3,
+     "away": 0
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 13
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 4
+    },
+    {
+     "label": "Offsides",
+     "home": 3,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Genoa",
+     "names": [
+      "Justin Bijlow",
+      "Leo Østigard",
+      "Johan Vásquez",
+      "Alessandro Marcandalli",
+      "Hamed Traoré",
+      "Samuel Wiafe",
+      "Mikael Ellertsson",
+      "Kingsley Ehizibue",
+      "Milutin Osmajic",
+      "Vitinha",
+      "Junior Messias",
+      "Djibril Sow",
+      "Ethan Meichtry",
+      "Tommaso Baldanzi",
+      "Stephan El Shaarawy",
+      "Lorenzo Colombo"
+     ]
+    },
+    {
+     "team": "AC Milan",
+     "names": [
+      "Mike Maignan",
+      "Koni De Winter",
+      "Sankhoun Diawara",
+      "Mario Gila",
+      "Adrien Rabiot",
+      "Luka Modric",
+      "Yunus Musah",
+      "Diego Moreira",
+      "Gonçalo Ramos",
+      "Alphadjo Cissè",
+      "Christian Pulisic",
+      "Omari Hutchinson",
+      "Pervis Estupiñán",
+      "Ardon Jashari",
+      "Filippo Terracciano"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401878759",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:00pm",
+   "competition": "Premier League",
+   "home": "Ipswich Town",
+   "away": "AFC Bournemouth",
+   "home_score": 1,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 5,
+     "team": "AFC Bournemouth",
+     "scorer": "Evanilson"
+    },
+    {
+     "min": 46,
+     "team": "AFC Bournemouth",
+     "scorer": "Leif Davis",
+     "own_goal": true
+    },
+    {
+     "min": 73,
+     "team": "Ipswich Town",
+     "scorer": "Jack Clarke",
+     "penalty": true
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Ipswich Town",
+     "mins": [
+      54,
+      54,
+      65,
+      85
+     ]
+    },
+    {
+     "team": "AFC Bournemouth",
+     "mins": [
+      67,
+      68,
+      79,
+      85,
+      85
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 54,
+     "team": "Ipswich Town",
+     "on": "Jack Clarke",
+     "off": "Jaden Philogene"
+    },
+    {
+     "min": 54,
+     "team": "Ipswich Town",
+     "on": "Zian Flemming",
+     "off": "Emersonn"
+    },
+    {
+     "min": 65,
+     "team": "Ipswich Town",
+     "on": "Abdul Fatawu",
+     "off": "Daizen Maeda"
+    },
+    {
+     "min": 67,
+     "team": "AFC Bournemouth",
+     "on": "Lewis Cook",
+     "off": "Ryan Christie"
+    },
+    {
+     "min": 68,
+     "team": "AFC Bournemouth",
+     "on": "Junior Kroupi",
+     "off": "Justin Kluivert"
+    },
+    {
+     "min": 79,
+     "team": "AFC Bournemouth",
+     "on": "Bafodé Diakité",
+     "off": "Adam Smith"
+    },
+    {
+     "min": 85,
+     "team": "Ipswich Town",
+     "on": "Chuba Akpom",
+     "off": "Florentino"
+    },
+    {
+     "min": 85,
+     "team": "AFC Bournemouth",
+     "on": "Álvaro Rodríguez",
+     "off": "Evanilson"
+    },
+    {
+     "min": 85,
+     "team": "AFC Bournemouth",
+     "on": "Amine Adli",
+     "off": "Rayan"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 55.8,
+     "away": 44.2
+    },
+    {
+     "label": "Shots",
+     "home": 10,
+     "away": 15
+    },
+    {
+     "label": "Shots on target",
+     "home": 2,
+     "away": 4
+    },
+    {
+     "label": "Corners",
+     "home": 2,
+     "away": 7
+    },
+    {
+     "label": "Fouls",
+     "home": 6,
+     "away": 20
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 3
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Ipswich Town",
+     "names": [
+      "Christian Walton",
+      "Dara O'Shea",
+      "Issa Diop",
+      "Leif Davis",
+      "Abdoul Ouattara",
+      "Julio Enciso",
+      "Florentino",
+      "Exequiel Palacios",
+      "Emersonn",
+      "Jaden Philogene",
+      "Daizen Maeda",
+      "Jack Clarke",
+      "Fatawu Issahaku",
+      "Chuba Akpom",
+      "Zian Flemming"
+     ]
+    },
+    {
+     "team": "AFC Bournemouth",
+     "names": [
+      "Djordje Petrovic",
+      "António Silva",
+      "James Hill",
+      "Adrien Truffert",
+      "Adam Smith",
+      "Justin Kluivert",
+      "Ryan Christie",
+      "Tyler Adams",
+      "Evanilson",
+      "Marcus Tavernier",
+      "Rayan",
+      "Lewis Cook",
+      "Junior Kroupi",
+      "Álvaro Rodríguez",
+      "Amine Adli",
+      "Bafodé Diakité"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401879243",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:00pm",
+   "competition": "Premier League",
+   "home": "Crystal Palace",
+   "away": "Liverpool",
+   "home_score": 1,
+   "away_score": 3,
+   "goals": [
+    {
+     "min": 40,
+     "team": "Liverpool",
+     "scorer": "Alexis Mac Allister",
+     "assist": "Dominik Szoboszlai"
+    },
+    {
+     "min": 54,
+     "team": "Liverpool",
+     "scorer": "Florian Wirtz",
+     "assist": "Bradley Barcola"
+    },
+    {
+     "min": 89,
+     "team": "Liverpool",
+     "scorer": "Alexander Isak",
+     "assist": "Florian Wirtz"
+    },
+    {
+     "min": 90,
+     "team": "Crystal Palace",
+     "scorer": "Eddie Nketiah",
+     "penalty": true
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Crystal Palace",
+     "mins": [
+      60,
+      72,
+      87,
+      87
+     ]
+    },
+    {
+     "team": "Liverpool",
+     "mins": [
+      69,
+      69,
+      76,
+      90,
+      90
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 60,
+     "team": "Crystal Palace",
+     "on": "Darío Osorio",
+     "off": "Quinten Timber"
+    },
+    {
+     "min": 69,
+     "team": "Liverpool",
+     "on": "Víctor Muñoz",
+     "off": "Bradley Barcola"
+    },
+    {
+     "min": 69,
+     "team": "Liverpool",
+     "on": "Trey Nyoni",
+     "off": "Dominik Szoboszlai"
+    },
+    {
+     "min": 72,
+     "team": "Crystal Palace",
+     "on": "Eddie Nketiah",
+     "off": "Jørgen Strand Larsen"
+    },
+    {
+     "min": 76,
+     "team": "Liverpool",
+     "on": "Rio Ngumoha",
+     "off": "Cody Gakpo"
+    },
+    {
+     "min": 87,
+     "team": "Crystal Palace",
+     "on": "Anan Khalaili",
+     "off": "Óscar Mingueza"
+    },
+    {
+     "min": 87,
+     "team": "Crystal Palace",
+     "on": "Dwight McNeil",
+     "off": "Yéremy Pino"
+    },
+    {
+     "min": 90,
+     "team": "Liverpool",
+     "on": "Lewis Koumas",
+     "off": "Alexander Isak"
+    },
+    {
+     "min": 90,
+     "team": "Liverpool",
+     "on": "Joe Gomez",
+     "off": "Ronald Araujo"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 53.2,
+     "away": 46.8
+    },
+    {
+     "label": "Shots",
+     "home": 19,
+     "away": 20
+    },
+    {
+     "label": "Shots on target",
+     "home": 7,
+     "away": 8
+    },
+    {
+     "label": "Corners",
+     "home": 4,
+     "away": 7
+    },
+    {
+     "label": "Fouls",
+     "home": 10,
+     "away": 18
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 4
+    },
+    {
+     "label": "Offsides",
+     "home": 3,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Crystal Palace",
+     "names": [
+      "Dean Henderson",
+      "Axel Disasi",
+      "Jefferson Lerma",
+      "Chris Richards",
+      "Quinten Timber",
+      "Adam Wharton",
+      "Tyrick Mitchell",
+      "Óscar Mingueza",
+      "Jørgen Strand Larsen",
+      "Yéremy Pino",
+      "Daichi Kamada",
+      "Anan Khalaili",
+      "Eddie Nketiah",
+      "Darío Osorio",
+      "Dwight McNeil"
+     ]
+    },
+    {
+     "team": "Liverpool",
+     "names": [
+      "Alisson Becker",
+      "Virgil van Dijk",
+      "Jérémy Jacquet",
+      "Milos Kerkez",
+      "Ronald Araujo",
+      "Florian Wirtz",
+      "Alexis Mac Allister",
+      "Dominik Szoboszlai",
+      "Alexander Isak",
+      "Bradley Barcola",
+      "Cody Gakpo",
+      "Trey Nyoni",
+      "Joe Gomez",
+      "Víctor Muñoz",
+      "Lewis Koumas",
+      "Rio Ngumoha"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401879244",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:00pm",
+   "competition": "Premier League",
+   "home": "Brighton & Hove Albion",
+   "away": "Brentford",
+   "home_score": 2,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 15,
+     "team": "Brighton & Hove Albion",
+     "scorer": "Diego Gómez"
+    },
+    {
+     "min": 42,
+     "team": "Brighton & Hove Albion",
+     "scorer": "Pascal Gross",
+     "penalty": true
+    }
+   ],
+   "red_cards": [
+    {
+     "min": 23,
+     "team": "Brentford",
+     "player": "Igor Thiago"
+    }
+   ],
+   "subs": [
+    {
+     "team": "Brighton & Hove Albion",
+     "mins": [
+      45,
+      78,
+      82,
+      82,
+      90
+     ]
+    },
+    {
+     "team": "Brentford",
+     "mins": [
+      45,
+      45,
+      59,
+      59,
+      70
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Brentford",
+     "on": "Yehor Yarmoliuk",
+     "off": "Dango Ouattara"
+    },
+    {
+     "min": 45,
+     "team": "Brighton & Hove Albion",
+     "on": "Mats Wieffer",
+     "off": "Chema Andrés"
+    },
+    {
+     "min": 45,
+     "team": "Brentford",
+     "on": "Nathan Collins",
+     "off": "Aaron Hickey"
+    },
+    {
+     "min": 59,
+     "team": "Brentford",
+     "on": "El Hadji Malick Diouf",
+     "off": "Keane Lewis-Potter"
+    },
+    {
+     "min": 59,
+     "team": "Brentford",
+     "on": "Mathias Jensen",
+     "off": "Mamadou Sangaré"
+    },
+    {
+     "min": 70,
+     "team": "Brentford",
+     "on": "Callum Wilson",
+     "off": "Sepp van den Berg"
+    },
+    {
+     "min": 78,
+     "team": "Brighton & Hove Albion",
+     "on": "Jack Hinshelwood",
+     "off": "Yasin Ayari"
+    },
+    {
+     "min": 82,
+     "team": "Brighton & Hove Albion",
+     "on": "Georginio Rutter",
+     "off": "Charalampos Kostoulas"
+    },
+    {
+     "min": 82,
+     "team": "Brighton & Hove Albion",
+     "on": "Yankuba Minteh",
+     "off": "Maxim De Cuyper"
+    },
+    {
+     "min": 90,
+     "team": "Brighton & Hove Albion",
+     "on": "Malick Yalcouyé",
+     "off": "Diego Gómez"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 75.3,
+     "away": 24.7
+    },
+    {
+     "label": "Shots",
+     "home": 20,
+     "away": 5
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 0
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 3
+    },
+    {
+     "label": "Fouls",
+     "home": 11,
+     "away": 7
+    },
+    {
+     "label": "Yellow cards",
+     "home": 4,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 1,
+     "away": 3
+    }
+   ],
+   "players": [
+    {
+     "team": "Brighton & Hove Albion",
+     "names": [
+      "Bart Verbruggen",
+      "Lewis Dunk",
+      "Luka Vuskovic",
+      "Olivier Boscagli",
+      "Costinha",
+      "Yasin Ayari",
+      "Chema Andrés",
+      "Pascal Gross",
+      "Charalambos Kostoulas",
+      "Maxim De Cuyper",
+      "Diego Gómez",
+      "Yankuba Minteh",
+      "Mats Wieffer",
+      "Georginio Rutter",
+      "Jack Hinshelwood",
+      "Malick Yalcouyé"
+     ]
+    },
+    {
+     "team": "Brentford",
+     "names": [
+      "Caoimhín Kelleher",
+      "Sepp van den Berg",
+      "Kristoffer Ajer",
+      "Aaron Hickey",
+      "Michael Kayode",
+      "Vitaly Janelt",
+      "Mamadou Sangare",
+      "Keane Lewis-Potter",
+      "Dango Ouattara",
+      "Kevin Schade",
+      "Igor Thiago",
+      "El Hadji Malick Diouf",
+      "Yehor Yarmoliuk",
+      "Nathan Collins",
+      "Mathias Jensen",
+      "Callum Wilson"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T15:59:57Z"
   },
   {
    "match_id": "espn:761948",
@@ -1481,6 +2427,394 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T13:46:46Z"
+  },
+  {
+   "match_id": "espn:401876406",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 2:00pm",
+   "competition": "Ligue 1",
+   "home": "Stade Rennais",
+   "away": "Lille",
+   "home_score": 1,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 24,
+     "team": "Lille",
+     "scorer": "Soriba Diaoune"
+    },
+    {
+     "min": 31,
+     "team": "Stade Rennais",
+     "scorer": "Boulaye Dia",
+     "assist": "Abdelhamid Aït Boudlal"
+    },
+    {
+     "min": 68,
+     "team": "Lille",
+     "scorer": "Nathan Ngoy",
+     "assist": "Soriba Diaoune"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Stade Rennais",
+     "mins": [
+      63,
+      74,
+      75,
+      75,
+      82
+     ]
+    },
+    {
+     "team": "Lille",
+     "mins": [
+      62,
+      62,
+      73,
+      83,
+      83
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 62,
+     "team": "Lille",
+     "on": "Romain Perraud",
+     "off": "Calvin Verdonk"
+    },
+    {
+     "min": 62,
+     "team": "Lille",
+     "on": "Maurits Kjærgaard",
+     "off": "Nabil Bentaleb"
+    },
+    {
+     "min": 63,
+     "team": "Stade Rennais",
+     "on": "Mousa Al Tamari",
+     "off": "Eliezer Mayenda"
+    },
+    {
+     "min": 73,
+     "team": "Lille",
+     "on": "Dilane Bakwa",
+     "off": "Ethan Mbappé"
+    },
+    {
+     "min": 74,
+     "team": "Stade Rennais",
+     "on": "Issa Soumaré",
+     "off": "Boulaye Dia"
+    },
+    {
+     "min": 75,
+     "team": "Stade Rennais",
+     "on": "Djaoui Cissé",
+     "off": "Mahdi Camara"
+    },
+    {
+     "min": 75,
+     "team": "Stade Rennais",
+     "on": "Ludovic Blas",
+     "off": "Adrien Thomasson"
+    },
+    {
+     "min": 82,
+     "team": "Stade Rennais",
+     "on": "Sebastian Szymanski",
+     "off": "Gonçalo Oliveira"
+    },
+    {
+     "min": 83,
+     "team": "Lille",
+     "on": "Isaac Cossier",
+     "off": "Ngal'ayel Mukau"
+    },
+    {
+     "min": 83,
+     "team": "Lille",
+     "on": "Olivier Giroud",
+     "off": "Hákon Haraldsson"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 55.6,
+     "away": 44.4
+    },
+    {
+     "label": "Shots",
+     "home": 15,
+     "away": 8
+    },
+    {
+     "label": "Shots on target",
+     "home": 2,
+     "away": 3
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 7,
+     "away": 15
+    },
+    {
+     "label": "Yellow cards",
+     "home": 0,
+     "away": 3
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Stade Rennais",
+     "names": [
+      "Brice Samba",
+      "Charlie Cresswell",
+      "Gonçalo Oliveira",
+      "Abdelhamid Aït Boudlal",
+      "Mahdi Camara",
+      "Adrien Thomasson",
+      "Valentin Rongier",
+      "Mahamadou Nagida",
+      "Bryan Reynolds",
+      "Eliezer Mayenda",
+      "Boulaye Dia",
+      "Mousa Al-Tamari",
+      "Issa Soumaré",
+      "Ludovic Blas",
+      "Djaoui Cissé",
+      "Sebastian Szymanski"
+     ]
+    },
+    {
+     "team": "Lille",
+     "names": [
+      "Berke Özer",
+      "Alexsandro",
+      "Tanguy Nianzou",
+      "Calvin Verdonk",
+      "Nathan Ngoy",
+      "Nabil Bentaleb",
+      "Benjamin André",
+      "Ngal'ayel Mukau",
+      "Hákon Haraldsson",
+      "Soriba Diaoune",
+      "Ethan Mbappé",
+      "Olivier Giroud",
+      "Isaac Cossier",
+      "Dilane Bakwa",
+      "Maurits Kjaergaard",
+      "Romain Perraud"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401882814",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 1:00pm",
+   "competition": "La Liga",
+   "home": "Elche",
+   "away": "Real Betis",
+   "home_score": 0,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 81,
+     "team": "Real Betis",
+     "scorer": "Rodrigo Riquelme"
+    },
+    {
+     "min": 89,
+     "team": "Real Betis",
+     "scorer": "Marc Bartra",
+     "assist": "Dani Ceballos"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Elche",
+     "mins": [
+      45,
+      69,
+      69,
+      70,
+      77
+     ]
+    },
+    {
+     "team": "Real Betis",
+     "mins": [
+      69,
+      69,
+      78,
+      78,
+      83
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Elche",
+     "on": "Grady Diangana",
+     "off": "Ali Houary"
+    },
+    {
+     "min": 69,
+     "team": "Real Betis",
+     "on": "Dani Ceballos",
+     "off": "Pablo Fornals"
+    },
+    {
+     "min": 69,
+     "team": "Real Betis",
+     "on": "Aitor Ruibal",
+     "off": "Antony"
+    },
+    {
+     "min": 69,
+     "team": "Elche",
+     "on": "Tete Morente",
+     "off": "Germán Valera"
+    },
+    {
+     "min": 69,
+     "team": "Elche",
+     "on": "Abiel Osorio",
+     "off": "Fer Niño"
+    },
+    {
+     "min": 70,
+     "team": "Elche",
+     "on": "Facundo Buonanotte",
+     "off": "Lucas Cepeda"
+    },
+    {
+     "min": 77,
+     "team": "Elche",
+     "on": "Pedro Bigas",
+     "off": "Roy Revivo"
+    },
+    {
+     "min": 78,
+     "team": "Real Betis",
+     "on": "Rodrigo Riquelme",
+     "off": "Abde Ezzalzouli"
+    },
+    {
+     "min": 78,
+     "team": "Real Betis",
+     "on": "José Antonio Morante",
+     "off": "Troy Parrott"
+    },
+    {
+     "min": 83,
+     "team": "Real Betis",
+     "on": "Nelson Deossa",
+     "off": "Isco"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 47.9,
+     "away": 52.1
+    },
+    {
+     "label": "Shots",
+     "home": 13,
+     "away": 18
+    },
+    {
+     "label": "Shots on target",
+     "home": 1,
+     "away": 9
+    },
+    {
+     "label": "Corners",
+     "home": 9,
+     "away": 8
+    },
+    {
+     "label": "Fouls",
+     "home": 12,
+     "away": 7
+    },
+    {
+     "label": "Yellow cards",
+     "home": 4,
+     "away": 0
+    },
+    {
+     "label": "Offsides",
+     "home": 4,
+     "away": 3
+    }
+   ],
+   "players": [
+    {
+     "team": "Elche",
+     "names": [
+      "Matías Dituro",
+      "Víctor Chust",
+      "Federico Redondo",
+      "Roy Revivo",
+      "Rubén Sánchez",
+      "Javier Morcillo",
+      "Ali Houary",
+      "Martim Neto",
+      "Fer Niño",
+      "Germán Valera",
+      "Lucas Cepeda",
+      "José Antonio Morente",
+      "Pedro Bigas",
+      "Abiel Osorio",
+      "Grady Diangana",
+      "Facundo Buonanotte"
+     ]
+    },
+    {
+     "team": "Real Betis",
+     "names": [
+      "Álvaro Valles",
+      "Natan",
+      "Marc Bartra",
+      "Fran García",
+      "Héctor Bellerín",
+      "Isco",
+      "Marc Roca",
+      "Pablo Fornals",
+      "Troy Parrott",
+      "Abde Ezzalzouli",
+      "Antony",
+      "José Morante",
+      "Rodrigo Riquelme",
+      "Aitor Ruibal",
+      "Dani Ceballos",
+      "Nelson Deossa"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T15:59:57Z"
   },
   {
    "match_id": "espn:401874811",
@@ -23519,6 +24853,16 @@
     },
     {
      "pos": 2,
+     "team": "Brighton & Hove Albion",
+     "p": 10,
+     "w": 7,
+     "d": 1,
+     "l": 2,
+     "gd": 19,
+     "pts": 22
+    },
+    {
+     "pos": 3,
      "team": "Manchester City",
      "p": 10,
      "w": 7,
@@ -23528,17 +24872,17 @@
      "pts": 21
     },
     {
-     "pos": 3,
-     "team": "Brighton & Hove Albion",
-     "p": 9,
-     "w": 6,
-     "d": 1,
+     "pos": 4,
+     "team": "Liverpool",
+     "p": 10,
+     "w": 5,
+     "d": 3,
      "l": 2,
-     "gd": 17,
-     "pts": 19
+     "gd": 4,
+     "pts": 18
     },
     {
-     "pos": 4,
+     "pos": 5,
      "team": "Chelsea",
      "p": 9,
      "w": 5,
@@ -23548,7 +24892,7 @@
      "pts": 16
     },
     {
-     "pos": 5,
+     "pos": 6,
      "team": "Everton",
      "p": 10,
      "w": 4,
@@ -23558,27 +24902,27 @@
      "pts": 16
     },
     {
-     "pos": 6,
-     "team": "Liverpool",
-     "p": 9,
+     "pos": 7,
+     "team": "AFC Bournemouth",
+     "p": 10,
      "w": 4,
      "d": 3,
-     "l": 2,
+     "l": 3,
      "gd": 2,
      "pts": 15
     },
     {
-     "pos": 7,
+     "pos": 8,
      "team": "Brentford",
-     "p": 9,
+     "p": 10,
      "w": 3,
      "d": 5,
-     "l": 1,
-     "gd": 7,
+     "l": 2,
+     "gd": 5,
      "pts": 14
     },
     {
-     "pos": 8,
+     "pos": 9,
      "team": "Leeds United",
      "p": 10,
      "w": 3,
@@ -23586,16 +24930,6 @@
      "l": 2,
      "gd": 2,
      "pts": 14
-    },
-    {
-     "pos": 9,
-     "team": "AFC Bournemouth",
-     "p": 9,
-     "w": 3,
-     "d": 3,
-     "l": 3,
-     "gd": 1,
-     "pts": 12
     },
     {
      "pos": 10,
@@ -23640,11 +24974,11 @@
     {
      "pos": 14,
      "team": "Ipswich Town",
-     "p": 9,
+     "p": 10,
      "w": 3,
      "d": 2,
-     "l": 4,
-     "gd": -4,
+     "l": 5,
+     "gd": -5,
      "pts": 11
     },
     {
@@ -23690,11 +25024,11 @@
     {
      "pos": 19,
      "team": "Crystal Palace",
-     "p": 9,
+     "p": 10,
      "w": 2,
      "d": 1,
-     "l": 6,
-     "gd": -12,
+     "l": 7,
+     "gd": -14,
      "pts": 7
     },
     {
@@ -23746,12 +25080,12 @@
     {
      "pos": 4,
      "team": "Real Betis",
-     "p": 11,
-     "w": 7,
+     "p": 12,
+     "w": 8,
      "d": 2,
      "l": 2,
-     "gd": 3,
-     "pts": 23
+     "gd": 5,
+     "pts": 26
     },
     {
      "pos": 5,
@@ -23875,22 +25209,22 @@
     },
     {
      "pos": 17,
-     "team": "Elche",
-     "p": 11,
-     "w": 2,
-     "d": 4,
-     "l": 5,
-     "gd": -4,
-     "pts": 10
-    },
-    {
-     "pos": 18,
      "team": "Levante",
      "p": 11,
      "w": 2,
      "d": 4,
      "l": 5,
      "gd": -5,
+     "pts": 10
+    },
+    {
+     "pos": 18,
+     "team": "Elche",
+     "p": 12,
+     "w": 2,
+     "d": 4,
+     "l": 6,
+     "gd": -6,
      "pts": 10
     },
     {
@@ -24031,6 +25365,16 @@
     },
     {
      "pos": 12,
+     "team": "Atalanta",
+     "p": 11,
+     "w": 4,
+     "d": 2,
+     "l": 5,
+     "gd": -3,
+     "pts": 14
+    },
+    {
+     "pos": 13,
      "team": "Genoa",
      "p": 10,
      "w": 4,
@@ -24038,16 +25382,6 @@
      "l": 5,
      "gd": -4,
      "pts": 13
-    },
-    {
-     "pos": 13,
-     "team": "Atalanta",
-     "p": 10,
-     "w": 3,
-     "d": 2,
-     "l": 5,
-     "gd": -4,
-     "pts": 11
     },
     {
      "pos": 14,
@@ -24092,11 +25426,11 @@
     {
      "pos": 18,
      "team": "Monza",
-     "p": 10,
+     "p": 11,
      "w": 2,
      "d": 1,
-     "l": 7,
-     "gd": -7,
+     "l": 8,
+     "gd": -8,
      "pts": 7
     },
     {
@@ -24323,6 +25657,16 @@
     },
     {
      "pos": 2,
+     "team": "Lille",
+     "p": 10,
+     "w": 6,
+     "d": 3,
+     "l": 1,
+     "gd": 7,
+     "pts": 21
+    },
+    {
+     "pos": 3,
      "team": "Paris FC",
      "p": 10,
      "w": 6,
@@ -24330,16 +25674,6 @@
      "l": 2,
      "gd": 7,
      "pts": 20
-    },
-    {
-     "pos": 3,
-     "team": "Lille",
-     "p": 9,
-     "w": 5,
-     "d": 3,
-     "l": 1,
-     "gd": 6,
-     "pts": 18
     },
     {
      "pos": 4,
@@ -24354,11 +25688,11 @@
     {
      "pos": 5,
      "team": "Stade Rennais",
-     "p": 9,
+     "p": 10,
      "w": 5,
      "d": 1,
-     "l": 3,
-     "gd": 1,
+     "l": 4,
+     "gd": 0,
      "pts": 16
     },
     {
@@ -25173,69 +26507,6 @@
   }
  ],
  "fixtures": [
-  {
-   "competition": "Premier League",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:00pm",
-   "home": "Brighton & Hove Albion",
-   "away": "Brentford"
-  },
-  {
-   "competition": "Premier League",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:00pm",
-   "home": "Crystal Palace",
-   "away": "Liverpool"
-  },
-  {
-   "competition": "Premier League",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:00pm",
-   "home": "Ipswich Town",
-   "away": "AFC Bournemouth"
-  },
-  {
-   "competition": "Premier League",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:00pm",
-   "home": "Sunderland",
-   "away": "Chelsea"
-  },
-  {
-   "competition": "Serie A",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:00pm",
-   "home": "Genoa",
-   "away": "AC Milan"
-  },
-  {
-   "competition": "Serie A",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:00pm",
-   "home": "Monza",
-   "away": "Atalanta"
-  },
-  {
-   "competition": "Ligue 1",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:00pm",
-   "home": "Stade Rennais",
-   "away": "Lille"
-  },
-  {
-   "competition": "Bundesliga",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 2:30pm",
-   "home": "FC Cologne",
-   "away": "Bayer Leverkusen"
-  },
-  {
-   "competition": "La Liga",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 3:15pm",
-   "home": "Real Sociedad",
-   "away": "Rayo Vallecano"
-  },
   {
    "competition": "Ligue 1",
    "date": "2026-11-08",
