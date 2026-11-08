@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-08T19:50:46Z",
+ "updated_at": "2026-11-08T22:09:58Z",
  "tables_at": "2026-11-08",
- "count": 147,
+ "count": 151,
  "results": [
   {
    "match_id": "espn:401874810",
@@ -741,6 +741,201 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T15:59:57Z"
+  },
+  {
+   "match_id": "espn:401875003",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 7:45pm",
+   "competition": "Serie A",
+   "home": "Fiorentina",
+   "away": "Juventus",
+   "home_score": 2,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 4,
+     "team": "Fiorentina",
+     "scorer": "Mateo Pellegrino",
+     "assist": "Pote"
+    },
+    {
+     "min": 32,
+     "team": "Juventus",
+     "scorer": "Nick Woltemade",
+     "assist": "Randal Kolo Muani"
+    },
+    {
+     "min": 54,
+     "team": "Fiorentina",
+     "scorer": "Alieu Njie"
+    },
+    {
+     "min": 66,
+     "team": "Juventus",
+     "scorer": "Bremer",
+     "assist": "Douglas Luiz"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Fiorentina",
+     "mins": [
+      65,
+      65,
+      86,
+      86
+     ]
+    },
+    {
+     "team": "Juventus",
+     "mins": [
+      56,
+      57,
+      57,
+      78,
+      89
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 56,
+     "team": "Juventus",
+     "on": "Zeki Çelik",
+     "off": "Juan Cabal"
+    },
+    {
+     "min": 57,
+     "team": "Juventus",
+     "on": "Edon Zhegrova",
+     "off": "Nick Woltemade"
+    },
+    {
+     "min": 57,
+     "team": "Juventus",
+     "on": "Kerim Alajbegovic",
+     "off": "Jérémie Boga"
+    },
+    {
+     "min": 65,
+     "team": "Fiorentina",
+     "on": "Marco Brescianini",
+     "off": "Pote"
+    },
+    {
+     "min": 65,
+     "team": "Fiorentina",
+     "on": "Nicolò Fagioli",
+     "off": "Christ Inao Oulaï"
+    },
+    {
+     "min": 78,
+     "team": "Juventus",
+     "on": "Jeff Ekhator",
+     "off": "Weston McKennie"
+    },
+    {
+     "min": 86,
+     "team": "Fiorentina",
+     "on": "Beto",
+     "off": "Mateo Pellegrino"
+    },
+    {
+     "min": 86,
+     "team": "Fiorentina",
+     "on": "Wilfried Gnonto",
+     "off": "Alieu Njie"
+    },
+    {
+     "min": 89,
+     "team": "Juventus",
+     "on": "Federico Gatti",
+     "off": "Jhon Lucumí"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 41.3,
+     "away": 58.7
+    },
+    {
+     "label": "Shots",
+     "home": 22,
+     "away": 18
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 6
+    },
+    {
+     "label": "Corners",
+     "home": 5,
+     "away": 12
+    },
+    {
+     "label": "Fouls",
+     "home": 16,
+     "away": 18
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 3
+    },
+    {
+     "label": "Offsides",
+     "home": 0,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Fiorentina",
+     "names": [
+      "David de Gea",
+      "Viery",
+      "Radu Dragusin",
+      "João Mário",
+      "Álex Jiménez",
+      "Pedro Gonçalves",
+      "Christ Inao Oulaï",
+      "Cher Ndour",
+      "Mateo Pellegrino",
+      "Alieu Njie",
+      "Franco Mastantuono",
+      "Wilfried Gnonto",
+      "Nicolò Fagioli",
+      "Beto",
+      "Marco Brescianini"
+     ]
+    },
+    {
+     "team": "Juventus",
+     "names": [
+      "Guglielmo Vicario",
+      "Jhon Lucumí",
+      "Bremer",
+      "Juan Cabal",
+      "Pierre Kalulu",
+      "Douglas Luiz",
+      "Teun Koopmeiners",
+      "Jérémie Boga",
+      "Weston McKennie",
+      "Nick Woltemade",
+      "Randal Kolo Muani",
+      "Kerim Alajbegovic",
+      "Zeki Çelik",
+      "Jeff Ekhator",
+      "Federico Gatti",
+      "Edon Zhegrova"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T22:09:58Z"
   },
   {
    "match_id": "espn:401879239",
@@ -3222,6 +3417,186 @@
    "fetched_at": "2026-11-08T15:59:57Z"
   },
   {
+   "match_id": "espn:401876404",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 7:45pm",
+   "competition": "Ligue 1",
+   "home": "Lens",
+   "away": "Marseille",
+   "home_score": 1,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 2,
+     "team": "Marseille",
+     "scorer": "Amine Gouiri"
+    },
+    {
+     "min": 20,
+     "team": "Lens",
+     "scorer": "Florian Thauvin",
+     "assist": "Florian Sotoca"
+    },
+    {
+     "min": 82,
+     "team": "Marseille",
+     "scorer": "Keyliane Abdallah"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Lens",
+     "mins": [
+      68,
+      68,
+      85,
+      85,
+      88
+     ]
+    },
+    {
+     "team": "Marseille",
+     "mins": [
+      78,
+      78,
+      90
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 68,
+     "team": "Lens",
+     "on": "Mezian Mesloub",
+     "off": "Thorgan Hazard"
+    },
+    {
+     "min": 68,
+     "team": "Lens",
+     "on": "Michaël Cuisance",
+     "off": "Amadou Haidara"
+    },
+    {
+     "min": 78,
+     "team": "Marseille",
+     "on": "Keyliane Abdallah",
+     "off": "Amine Harit"
+    },
+    {
+     "min": 78,
+     "team": "Marseille",
+     "on": "Angel Gomes",
+     "off": "Himad Abdelli"
+    },
+    {
+     "min": 85,
+     "team": "Lens",
+     "on": "Ruben Aguilar",
+     "off": "Jonathan Gradit"
+    },
+    {
+     "min": 85,
+     "team": "Lens",
+     "on": "Junior Kadile",
+     "off": "Florian Sotoca"
+    },
+    {
+     "min": 88,
+     "team": "Lens",
+     "on": "Michal Skóras",
+     "off": "Saud Abdulhamid"
+    },
+    {
+     "min": 90,
+     "team": "Marseille",
+     "on": "Geoffrey Kondogbia",
+     "off": "Tochukwu Nnadi"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 41.3,
+     "away": 58.7
+    },
+    {
+     "label": "Shots",
+     "home": 13,
+     "away": 16
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 5
+    },
+    {
+     "label": "Corners",
+     "home": 4,
+     "away": 6
+    },
+    {
+     "label": "Fouls",
+     "home": 15,
+     "away": 8
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 1,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Lens",
+     "names": [
+      "Robin Risser",
+      "Samson Baidoo",
+      "Jean-Clair Todibo",
+      "Jonathan Gradit",
+      "Amadou Haidara",
+      "Yassine Titraoui",
+      "Matthieu Udol",
+      "Saud Abdulhamid",
+      "Thorgan Hazard",
+      "Florian Sotoca",
+      "Florian Thauvin",
+      "Mezian Soares",
+      "Michaël Cuisance",
+      "Michal Skoras",
+      "Ruben Aguilar",
+      "Junior Kadile"
+     ]
+    },
+    {
+     "team": "Marseille",
+     "names": [
+      "Jeffrey de Lange",
+      "Nayef Aguerd",
+      "CJ Egan-Riley",
+      "Ulisses Garcia",
+      "Timothy Weah",
+      "Himad Abdelli",
+      "Tochukwu Nnadi",
+      "Pierre-Emile Højbjerg",
+      "Amine Gouiri",
+      "Igor Paixão",
+      "Amine Harit",
+      "Angel Gomes",
+      "Geoffrey Kondogbia",
+      "Keyliane Abdallah"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T22:09:58Z"
+  },
+  {
    "match_id": "espn:401876408",
    "date": "2026-11-08",
    "kickoff": "Sun 8 Nov 2026, 4:15pm",
@@ -4694,6 +5069,383 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-08T19:50:46Z"
+  },
+  {
+   "match_id": "espn:401882816",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 8:00pm",
+   "competition": "La Liga",
+   "home": "Atletico Madrid",
+   "away": "Barcelona",
+   "home_score": 1,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 10,
+     "team": "Atletico Madrid",
+     "scorer": "Giuliano Simeone",
+     "assist": "Julián Alvarez"
+    },
+    {
+     "min": 45,
+     "team": "Barcelona",
+     "scorer": "Fermín López"
+    },
+    {
+     "min": 66,
+     "team": "Barcelona",
+     "scorer": "Fermín López",
+     "assist": "Lamine Yamal"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Atletico Madrid",
+     "mins": [
+      60,
+      72,
+      72,
+      78
+     ]
+    },
+    {
+     "team": "Barcelona",
+     "mins": [
+      45,
+      60,
+      74,
+      74,
+      86
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Barcelona",
+     "on": "Frenkie de Jong",
+     "off": "Brian Fariñas"
+    },
+    {
+     "min": 60,
+     "team": "Barcelona",
+     "on": "Andreas Christensen",
+     "off": "João Cancelo"
+    },
+    {
+     "min": 60,
+     "team": "Atletico Madrid",
+     "on": "Alexander Sørloth",
+     "off": "Lee Kang-In"
+    },
+    {
+     "min": 72,
+     "team": "Atletico Madrid",
+     "on": "Morten Hjulmand",
+     "off": "Koke"
+    },
+    {
+     "min": 72,
+     "team": "Atletico Madrid",
+     "on": "Johnny Cardoso",
+     "off": "Álex Baena"
+    },
+    {
+     "min": 74,
+     "team": "Barcelona",
+     "on": "Eric García",
+     "off": "Marc Bernal"
+    },
+    {
+     "min": 74,
+     "team": "Barcelona",
+     "on": "Gavi",
+     "off": "Fermín López"
+    },
+    {
+     "min": 78,
+     "team": "Atletico Madrid",
+     "on": "Jonathan David",
+     "off": "Pablo Barrios"
+    },
+    {
+     "min": 86,
+     "team": "Barcelona",
+     "on": "Karim Adeyemi",
+     "off": "Anthony Gordon"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 37,
+     "away": 63
+    },
+    {
+     "label": "Shots",
+     "home": 9,
+     "away": 19
+    },
+    {
+     "label": "Shots on target",
+     "home": 4,
+     "away": 4
+    },
+    {
+     "label": "Corners",
+     "home": 4,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 14
+    },
+    {
+     "label": "Yellow cards",
+     "home": 4,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 5,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Atletico Madrid",
+     "names": [
+      "Jan Oblak",
+      "Dávid Hancko",
+      "Marc Pubill",
+      "Alejandro Grimaldo",
+      "Marcos Llorente",
+      "Pablo Barrios",
+      "Koke",
+      "Álex Baena",
+      "Giuliano Simeone",
+      "Julián Álvarez",
+      "Lee Kang-In",
+      "Alexander Sørloth",
+      "Jonathan David",
+      "Johnny Cardoso",
+      "Morten Hjulmand"
+     ]
+    },
+    {
+     "team": "Barcelona",
+     "names": [
+      "Joan García",
+      "Gerard Martín",
+      "Pau Cubarsí",
+      "Marc Bernal",
+      "João Cancelo",
+      "Brian Fariñas",
+      "Pedri",
+      "Fermín López",
+      "Anthony Gordon",
+      "Lamine Yamal",
+      "Raphinha",
+      "Gavi",
+      "Karim Adeyemi",
+      "Eric García",
+      "Frenkie de Jong",
+      "Andreas Christensen"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T22:09:58Z"
+  },
+  {
+   "match_id": "espn:401884742",
+   "date": "2026-11-08",
+   "kickoff": "Sun 8 Nov 2026, 6:30pm",
+   "competition": "Bundesliga",
+   "home": "TSG Hoffenheim",
+   "away": "Schalke 04",
+   "home_score": 2,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 10,
+     "team": "TSG Hoffenheim",
+     "scorer": "Fisnik Asllani"
+    },
+    {
+     "min": 26,
+     "team": "TSG Hoffenheim",
+     "scorer": "Tim Lemperle",
+     "assist": "Fisnik Asllani"
+    },
+    {
+     "min": 81,
+     "team": "Schalke 04",
+     "scorer": "Junior Adamu"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "TSG Hoffenheim",
+     "mins": [
+      70,
+      78,
+      78,
+      90
+     ]
+    },
+    {
+     "team": "Schalke 04",
+     "mins": [
+      51,
+      52,
+      70,
+      70,
+      77
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 51,
+     "team": "Schalke 04",
+     "on": "Vitalie Becker",
+     "off": "Robin Gosens"
+    },
+    {
+     "min": 52,
+     "team": "Schalke 04",
+     "on": "Kevin Müller",
+     "off": "Loris Karius"
+    },
+    {
+     "min": 70,
+     "team": "TSG Hoffenheim",
+     "on": "Adam Hlozek",
+     "off": "Andrej Kramaric"
+    },
+    {
+     "min": 70,
+     "team": "Schalke 04",
+     "on": "Junior Dina Ebimbe",
+     "off": "Mertcan Ayhan"
+    },
+    {
+     "min": 70,
+     "team": "Schalke 04",
+     "on": "Junior Adamu",
+     "off": "Satoshi Tanaka"
+    },
+    {
+     "min": 77,
+     "team": "Schalke 04",
+     "on": "Edin Dzeko",
+     "off": "Dejan Ljubicic"
+    },
+    {
+     "min": 78,
+     "team": "TSG Hoffenheim",
+     "on": "Bernardo",
+     "off": "Mats Rots"
+    },
+    {
+     "min": 78,
+     "team": "TSG Hoffenheim",
+     "on": "Adam Daghim",
+     "off": "Fisnik Asllani"
+    },
+    {
+     "min": 90,
+     "team": "TSG Hoffenheim",
+     "on": "Max Moerstedt",
+     "off": "Tim Lemperle"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 48.8,
+     "away": 51.2
+    },
+    {
+     "label": "Shots",
+     "home": 15,
+     "away": 23
+    },
+    {
+     "label": "Shots on target",
+     "home": 7,
+     "away": 6
+    },
+    {
+     "label": "Corners",
+     "home": 6,
+     "away": 4
+    },
+    {
+     "label": "Fouls",
+     "home": 10,
+     "away": 9
+    },
+    {
+     "label": "Yellow cards",
+     "home": 0,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 6,
+     "away": 2
+    }
+   ],
+   "players": [
+    {
+     "team": "TSG Hoffenheim",
+     "names": [
+      "Oliver Baumann",
+      "Koki Machida",
+      "Ozan Kabak",
+      "Mats Rots",
+      "Vladimír Coufal",
+      "Fisnik Asllani",
+      "Wouter Burger",
+      "Leon Avdullahu",
+      "Tim Lemperle",
+      "Alexander Prass",
+      "Andrej Kramaric",
+      "Adam Daghim",
+      "Adam Hlozek",
+      "Max Moerstedt",
+      "Bernardo"
+     ]
+    },
+    {
+     "team": "Schalke 04",
+     "names": [
+      "Loris Karius",
+      "Hasan Kurucay",
+      "Nikola Katic",
+      "Robin Gosens",
+      "Mert Can Ayhan",
+      "Kenan Karaman",
+      "Satoshi Tanaka",
+      "Soufian El-Faouzi",
+      "Hwang Hee-Chan",
+      "Adil Aouchiche",
+      "Dejan Ljubicic",
+      "Edin Dzeko",
+      "Vitalie Becker",
+      "Kevin Müller",
+      "Junior Dina Ebimbe",
+      "Junior Adamu"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-08T22:09:58Z"
   },
   {
    "match_id": "espn:401884741",
@@ -27302,12 +28054,12 @@
     {
      "pos": 1,
      "team": "Barcelona",
-     "p": 11,
-     "w": 10,
+     "p": 12,
+     "w": 11,
      "d": 0,
      "l": 1,
-     "gd": 34,
-     "pts": 30
+     "gd": 35,
+     "pts": 33
     },
     {
      "pos": 2,
@@ -27322,11 +28074,11 @@
     {
      "pos": 3,
      "team": "Atletico Madrid",
-     "p": 11,
+     "p": 12,
      "w": 9,
      "d": 1,
-     "l": 1,
-     "gd": 14,
+     "l": 2,
+     "gd": 13,
      "pts": 28
     },
     {
@@ -27568,12 +28320,12 @@
     {
      "pos": 7,
      "team": "Juventus",
-     "p": 10,
+     "p": 11,
      "w": 5,
-     "d": 2,
+     "d": 3,
      "l": 3,
      "gd": 3,
-     "pts": 17
+     "pts": 18
     },
     {
      "pos": 8,
@@ -27648,12 +28400,12 @@
     {
      "pos": 15,
      "team": "Fiorentina",
-     "p": 10,
+     "p": 11,
      "w": 2,
-     "d": 2,
+     "d": 3,
      "l": 6,
      "gd": -8,
-     "pts": 8
+     "pts": 9
     },
     {
      "pos": 16,
@@ -27793,6 +28545,16 @@
     },
     {
      "pos": 9,
+     "team": "TSG Hoffenheim",
+     "p": 9,
+     "w": 4,
+     "d": 0,
+     "l": 5,
+     "gd": -1,
+     "pts": 12
+    },
+    {
+     "pos": 10,
      "team": "Eintracht Frankfurt",
      "p": 9,
      "w": 3,
@@ -27802,7 +28564,7 @@
      "pts": 12
     },
     {
-     "pos": 10,
+     "pos": 11,
      "team": "Hamburg SV",
      "p": 9,
      "w": 4,
@@ -27812,7 +28574,7 @@
      "pts": 12
     },
     {
-     "pos": 11,
+     "pos": 12,
      "team": "Mainz",
      "p": 9,
      "w": 3,
@@ -27822,7 +28584,7 @@
      "pts": 10
     },
     {
-     "pos": 12,
+     "pos": 13,
      "team": "SC Paderborn 07",
      "p": 9,
      "w": 2,
@@ -27832,23 +28594,13 @@
      "pts": 10
     },
     {
-     "pos": 13,
+     "pos": 14,
      "team": "FC Augsburg",
      "p": 9,
      "w": 2,
      "d": 3,
      "l": 4,
      "gd": 0,
-     "pts": 9
-    },
-    {
-     "pos": 14,
-     "team": "TSG Hoffenheim",
-     "p": 8,
-     "w": 3,
-     "d": 0,
-     "l": 5,
-     "gd": -2,
      "pts": 9
     },
     {
@@ -27874,11 +28626,11 @@
     {
      "pos": 17,
      "team": "Schalke 04",
-     "p": 8,
+     "p": 9,
      "w": 1,
      "d": 3,
-     "l": 4,
-     "gd": -5,
+     "l": 5,
+     "gd": -6,
      "pts": 6
     },
     {
@@ -27929,6 +28681,16 @@
     },
     {
      "pos": 4,
+     "team": "Marseille",
+     "p": 10,
+     "w": 6,
+     "d": 0,
+     "l": 4,
+     "gd": 8,
+     "pts": 18
+    },
+    {
+     "pos": 5,
      "team": "Lyon",
      "p": 10,
      "w": 5,
@@ -27938,7 +28700,7 @@
      "pts": 17
     },
     {
-     "pos": 5,
+     "pos": 6,
      "team": "Nice",
      "p": 10,
      "w": 5,
@@ -27948,7 +28710,7 @@
      "pts": 17
     },
     {
-     "pos": 6,
+     "pos": 7,
      "team": "AS Monaco",
      "p": 10,
      "w": 4,
@@ -27958,7 +28720,7 @@
      "pts": 16
     },
     {
-     "pos": 7,
+     "pos": 8,
      "team": "Stade Rennais",
      "p": 10,
      "w": 5,
@@ -27966,16 +28728,6 @@
      "l": 4,
      "gd": 0,
      "pts": 16
-    },
-    {
-     "pos": 8,
-     "team": "Marseille",
-     "p": 9,
-     "w": 5,
-     "d": 0,
-     "l": 4,
-     "gd": 7,
-     "pts": 15
     },
     {
      "pos": 9,
@@ -28000,11 +28752,11 @@
     {
      "pos": 11,
      "team": "Lens",
-     "p": 9,
+     "p": 10,
      "w": 4,
      "d": 1,
-     "l": 4,
-     "gd": 3,
+     "l": 5,
+     "gd": 2,
      "pts": 13
     },
     {
@@ -28758,13 +29510,5 @@
    ]
   }
  ],
- "fixtures": [
-  {
-   "competition": "La Liga",
-   "date": "2026-11-08",
-   "kickoff": "Sun 8 Nov, 8:00pm",
-   "home": "Atletico Madrid",
-   "away": "Barcelona"
-  }
- ]
+ "fixtures": []
 }
