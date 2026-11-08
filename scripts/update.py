@@ -79,9 +79,14 @@ def doc_id(r):
 def get(url, tries=3):
     for i in range(tries):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "touchline-results/1.0", "Accept": "application/json"})
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (touchline-results)", "Accept": "application/json"})
             with urllib.request.urlopen(req, timeout=30) as resp:
                 return json.load(resp)
+        except urllib.error.HTTPError as e:
+            log(f"  fetch failed ({i + 1}/{tries}): {url} -> {e}")
+            if 400 <= e.code < 500 and e.code != 429:
+                return None  # the request itself was refused; retrying won't help
+            time.sleep(2 * (i + 1))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
             log(f"  fetch failed ({i + 1}/{tries}): {url} -> {e}")
             time.sleep(2 * (i + 1))
@@ -260,6 +265,36 @@ def complete(r):
     return bool(r.get("stats")) and not r.get("stats_pending") and all("scorer" in g for g in r.get("goals", []))
 
 
+def fetch_events(lg, start_d, end_d):
+    """All scoreboard events between two dates, asked for a week at a time.
+    A week the feed refuses is retried one day at a time. Returns None only
+    if every request failed."""
+    events, seen, ok = [], set(), False
+    d = start_d
+    while d <= end_d:
+        w_end = min(d + timedelta(days=6), end_d)
+        span = f"{d:%Y%m%d}" if d == w_end else f"{d:%Y%m%d}-{w_end:%Y%m%d}"
+        sb = get(f"{BASE}/{lg}/scoreboard?dates={span}&limit=200", tries=2)
+        chunks = [sb] if sb is not None else []
+        if sb is None and d != w_end:
+            day = d
+            while day <= w_end:
+                one = get(f"{BASE}/{lg}/scoreboard?dates={day:%Y%m%d}", tries=2)
+                if one is not None:
+                    chunks.append(one)
+                day += timedelta(days=1)
+                time.sleep(0.2)
+        for c in chunks:
+            ok = True
+            for ev in c.get("events") or []:
+                if ev.get("id") not in seen:
+                    seen.add(ev.get("id"))
+                    events.append(ev)
+        d = w_end + timedelta(days=1)
+        time.sleep(0.3)
+    return events if ok else None
+
+
 def main():
     now = datetime.now(timezone.utc)
     store = json.loads(DATA.read_text()) if DATA.exists() else {"results": []}
@@ -272,11 +307,10 @@ def main():
     failures = []
 
     for lg, comp in LEAGUES.items():
-        sb = get(f"{BASE}/{lg}/scoreboard?dates={start_d:%Y%m%d}-{end_d:%Y%m%d}&limit=1000")
-        if sb is None:
+        events = fetch_events(lg, start_d, end_d)
+        if events is None:
             failures.append(comp)
             continue
-        events = sb.get("events") or []
         log(f"{comp}: {len(events)} events")
         for ev in events:
             rec = parse_event(ev, comp)
