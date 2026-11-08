@@ -2,203 +2,774 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Touchline Results</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Touchline Script Desk</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+/* Layout: an analyst's desk. Brief on the left like a notebook page, the script on the right as a storyboard of chalkboard frames. */
 :root{
-  --paper:#ECEFE9;--sheet:#F8FAF6;--ink:#15221B;--muted:#56655C;--rule:#D3D9D0;
-  --board:#0F3D2E;--red:#C23D39;--red-soft:rgba(194,61,57,.12);--amber:#B07A14;--amber-soft:rgba(217,162,58,.18);
-  --ok:#2E7D4F;--home:#C23D39;--away:#8A968E;
+  --paper:#ECEFE9; --sheet:#F8FAF6; --ink:#15221B; --muted:#56655C; --rule:#D3D9D0;
+  --board:#0F3D2E; --board-2:#14503C; --chalk:#EEF2EC; --chalk-dim:rgba(238,242,236,.45);
+  --red:#C23D39; --red-soft:rgba(194,61,57,.12); --amber:#B07A14; --amber-soft:rgba(217,162,58,.18);
+  --ok:#2E7D4F; --ok-soft:rgba(46,125,79,.12); --focus:#C23D39;
   --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
   --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  color-scheme:light;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#0C1712;--sheet:#12211A;--ink:#E4EBE4;--muted:#93A399;--rule:#25392E;
-  --red:#E2625D;--red-soft:rgba(226,98,93,.16);--amber:#E3B04F;--amber-soft:rgba(227,176,79,.16);
-  --ok:#5DBB86;--home:#E2625D;--away:#6F7D74;color-scheme:dark}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0C1712; --sheet:#12211A; --ink:#E4EBE4; --muted:#93A399; --rule:#25392E;
+  --board:#0F3D2E; --board-2:#16533E; --chalk:#EEF2EC; --chalk-dim:rgba(238,242,236,.45);
+  --red:#E2625D; --red-soft:rgba(226,98,93,.16); --amber:#E3B04F; --amber-soft:rgba(227,176,79,.16);
+  --ok:#5DBB86; --ok-soft:rgba(93,187,134,.14); --focus:#E2625D; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#0C1712;--sheet:#12211A;--ink:#E4EBE4;--muted:#93A399;--rule:#25392E;
-  --red:#E2625D;--red-soft:rgba(226,98,93,.16);--amber:#E3B04F;--amber-soft:rgba(227,176,79,.16);
-  --ok:#5DBB86;--home:#E2625D;--away:#6F7D74;color-scheme:dark}
+  --paper:#0C1712; --sheet:#12211A; --ink:#E4EBE4; --muted:#93A399; --rule:#25392E;
+  --board:#0F3D2E; --board-2:#16533E; --chalk:#EEF2EC; --chalk-dim:rgba(238,242,236,.45);
+  --red:#E2625D; --red-soft:rgba(226,98,93,.16); --amber:#E3B04F; --amber-soft:rgba(227,176,79,.16);
+  --ok:#5DBB86; --ok-soft:rgba(93,187,134,.14); --focus:#E2625D; color-scheme:dark}
+
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
-.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
-h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;letter-spacing:.01em}
-.mast{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:18px}
-.mast h1{font-size:2.1rem;line-height:1;text-transform:uppercase}.mast h1 span{color:var(--red)}
-.mast p{margin:4px 0 0;color:var(--muted)}
-.upd{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
-.grid{display:grid;grid-template-columns:minmax(280px,380px) minmax(0,1fr);gap:22px;align-items:start}
-@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
-.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:14px}
-.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
-.filters .full{grid-column:1/-1}
-label{font-family:var(--f-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);display:block;margin-bottom:3px}
-select,input{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:7px 9px;width:100%}
-select:focus,input:focus,button:focus-visible{outline:2px solid var(--red);outline-offset:1px}
-.list{display:flex;flex-direction:column;gap:4px;max-height:70vh;overflow-y:auto}
-.day{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.07em;font-size:.85rem;color:var(--muted);margin:8px 0 2px}
-.fix{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:6px 9px;cursor:pointer;text-align:left}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1320px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:.01em;margin:0;text-wrap:balance}
+.mast{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:20px}
+.mast h1{font-size:2.1rem;line-height:1;text-transform:uppercase}
+.mast h1 span{color:var(--red)}
+.mast p{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.rule-chip{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.06em;font-size:.95rem;border:1.5px solid var(--ink);padding:4px 10px;border-radius:3px;white-space:nowrap}
+
+.grid{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Brief */
+.brief{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (max-width:900px){.brief{position:static}}
+.brief h2{font-size:1.35rem;text-transform:uppercase}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label,.lbl{font-family:var(--f-display);font-size:.9rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.hint{font-size:.8rem;color:var(--muted);margin:0}
+textarea,select,input[type=text],input[type=number]{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;width:100%}
+textarea{resize:vertical;min-height:72px;line-height:1.5}
+#brief{min-height:150px}
+textarea:focus,select:focus,input:focus,button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{font-family:var(--f-display);font-size:1rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:4px;padding:7px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:var(--ink);color:var(--sheet)}
+.btn:disabled{opacity:.45;cursor:default;background:transparent;color:var(--ink)}
+.btn.primary{background:var(--red);border-color:var(--red);color:#fff;justify-content:center;padding:10px 14px;font-size:1.1rem}
+.btn.primary:hover{filter:brightness(1.08);background:var(--red);color:#fff}
+.btn.sm{font-size:.82rem;padding:4px 9px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.status{font-size:.85rem;color:var(--muted);min-height:1.3em;margin:0}
+.status.err{color:var(--red)}
+.res-row{display:flex;gap:8px;align-items:stretch}.res-row select,.res-row input{flex:1;min-width:0}.res-row .btn{white-space:nowrap}
+.picker{border:1px solid var(--rule);border-radius:6px;padding:12px;background:var(--paper);gap:10px}
+.picker .lbl{color:var(--ink);font-size:1rem}
+.fixtures{display:flex;flex-direction:column;gap:4px;max-height:260px;overflow-y:auto}
+.fix{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center;text-align:left;font:inherit;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:6px 9px;cursor:pointer}
+.fix .fx-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.88rem}.fix .fx-t.r{text-align:right}.fix b{font-family:var(--f-display);font-size:1.1rem;font-variant-numeric:tabular-nums}
+.fix small{grid-column:1/-1;color:var(--muted);font-size:.74rem;text-align:center}
 .fix:hover{border-color:var(--ink)}.fix[aria-selected="true"]{border-color:var(--red);box-shadow:inset 3px 0 0 var(--red)}
-.fix span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.9rem}.fix span.r{text-align:right}
-.fix b{font-family:var(--f-display);font-size:1.1rem;font-variant-numeric:tabular-nums}
-.fix small{grid-column:1/-1;text-align:center;font-size:.72rem;color:var(--muted)}
-.empty{color:var(--muted);font-size:.9rem;padding:8px 0}
-.sheet{display:flex;flex-direction:column;gap:16px}
-.score{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center;background:var(--board);color:#EEF2EC;border-radius:6px;padding:18px}
-.score h2{font-size:1.5rem;line-height:1.1}.score h2.r{text-align:right}
-.score .n{font-family:var(--f-display);font-size:2.8rem;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
-.meta{grid-column:1/-1;text-align:center;font-size:.85rem;opacity:.75}
-.tag{display:inline-block;font-family:var(--f-display);font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;padding:1px 7px;border-radius:3px;background:var(--amber-soft);color:var(--amber)}
-.events{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.events li{display:grid;grid-template-columns:42px 14px minmax(0,1fr);gap:8px;align-items:baseline}
-.events .min{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
-.events .mk{width:10px;height:10px;border-radius:50%;background:var(--ink);align-self:center}
-.events .mk.rc{border-radius:2px;background:var(--red);height:12px;width:9px}
-.events .who{font-size:.95rem}.events .who small{color:var(--muted)}
-.stats{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.stats td{padding:6px 4px;border-top:1px solid var(--rule);font-size:.9rem}
-.stats td:first-child,.stats td:last-child{width:52px;font-weight:600}.stats td:last-child{text-align:right}
-.stats td.lb{text-align:center;color:var(--muted)}
-.bar{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-top:4px;background:var(--rule)}
-.bar i{display:block;background:var(--home)}.bar i+i{background:var(--away)}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.cols ol{margin:6px 0 0;padding-left:1.3em;font-size:.88rem}
-.btn{font-family:var(--f-display);font-size:1rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;border:1.5px solid var(--red);background:var(--red);color:#fff;border-radius:4px;padding:9px 14px;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.src{font-size:.8rem;color:var(--muted);word-break:break-word}
-pre.facts{white-space:pre-wrap;font-family:var(--f-mono);font-size:.8rem;background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:10px;margin:8px 0 0;max-height:220px;overflow:auto}
-.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:var(--ink);color:var(--sheet);padding:8px 14px;border-radius:4px;font-size:.9rem}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.sheet-head{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center}
+.sheet-head span{font-family:var(--f-display);font-size:1.05rem;font-weight:600;line-height:1.1}.sheet-head span:last-child{text-align:right}
+.sheet-head b{font-family:var(--f-display);font-size:1.7rem;font-variant-numeric:tabular-nums}
+.events{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:.88rem}
+.events li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:6px}
+.events .min{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);padding-top:2px}
+.mini{width:100%;border-collapse:collapse;font-size:.82rem;font-variant-numeric:tabular-nums}
+.mini td{padding:3px 4px;border-top:1px solid var(--rule)}.mini td:first-child{text-align:left;font-weight:600}.mini td:nth-child(2){text-align:center;color:var(--muted)}.mini td:last-child{text-align:right;font-weight:600}
+.squads summary{cursor:pointer;font-size:.85rem;font-weight:600}
+.squads .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:.8rem;margin-top:6px}
+.squads ol{margin:4px 0 0;padding-left:1.2em}
+.req{border-top:1px dashed var(--rule);padding-top:8px;display:flex;flex-direction:column;gap:6px}
+.req summary{cursor:pointer;font-size:.88rem;font-weight:600}
+.req[open]{gap:8px}
+.reqs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.reqs li{font-size:.84rem;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.pill{font-family:var(--f-display);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:1px 7px;border-radius:3px}
+.pill.pending{background:var(--amber-soft);color:var(--amber)} .pill.done{background:var(--ok-soft);color:var(--ok)} .pill.not_found{background:var(--red-soft);color:var(--red)}
+.rules{font-size:.82rem;color:var(--muted);border-top:1px dashed var(--rule);padding-top:10px}
+.rules b{color:var(--ink)}
+
+/* Output */
+.out{min-width:0;display:flex;flex-direction:column;gap:16px}
+.summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:14px 16px}
+@media (max-width:620px){.summary{grid-template-columns:minmax(0,1fr)}}
+.summary h2{font-size:1.6rem;line-height:1.1}
+.tag{display:inline-block;font-family:var(--f-display);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:3px;background:var(--amber-soft);color:var(--amber);margin-bottom:6px}
+.tag.ex{background:var(--red-soft);color:var(--red)}
+.meters{display:flex;gap:16px;flex-wrap:wrap}
+.meter{display:flex;flex-direction:column;min-width:76px}
+.meter b{font-family:var(--f-display);font-size:1.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.meter span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.meter.warn b{color:var(--red)} .meter.good b{color:var(--ok)}
+.runbar{grid-column:1/-1;height:8px;background:var(--rule);border-radius:4px;position:relative;overflow:hidden}
+.runbar i{position:absolute;inset:0 auto 0 0;background:var(--board-2);border-radius:4px}
+.runbar em{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--red)}
+
+.tabs{display:flex;gap:2px;border-bottom:2px solid var(--ink);overflow-x:auto}
+.tabs button{font-family:var(--f-display);font-size:1rem;text-transform:uppercase;letter-spacing:.06em;border:0;background:transparent;color:var(--muted);padding:8px 14px;cursor:pointer;border-radius:4px 4px 0 0;white-space:nowrap}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--sheet)}
+.panel{display:flex;flex-direction:column;gap:12px}
+
+.seg{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:14px}
+@media (max-width:620px){.seg{grid-template-columns:minmax(0,1fr)}}
+.seg.flagged{border-color:var(--red);box-shadow:inset 3px 0 0 var(--red)}
+.frame{display:flex;flex-direction:column;gap:6px}
+.frame svg{width:100%;height:auto;border-radius:4px;display:block}
+.frame small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.seg-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:6px}
+.seg-head h3{font-size:1.25rem}
+.time{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.seg textarea{background:transparent;border-color:transparent;padding:6px 8px;margin-left:-8px;width:calc(100% + 8px);font-size:1rem;min-height:60px}
+.seg textarea:hover{border-color:var(--rule)}
+.cues{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.cue{font-size:.85rem;color:var(--muted);display:flex;gap:6px}
+.cue::before{content:"▸";color:var(--board-2)}
+:root[data-theme="dark"] .cue::before{color:var(--ok)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-family:var(--f-mono);font-size:.74rem;padding:2px 7px;border-radius:3px;border:1px solid var(--rule)}
+.chip.ph{background:var(--amber-soft);border-color:transparent;color:var(--amber)}
+.flag{margin-top:8px;font-size:.85rem;background:var(--red-soft);color:var(--ink);border-radius:4px;padding:6px 9px}
+.flag b{color:var(--red)}
+.seg-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.seg-actions input{max-width:340px;font-size:.85rem;padding:4px 8px}
+
+.read{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:18px 22px}
+.read pre{white-space:pre-wrap;font-family:var(--f-body);font-size:1rem;line-height:1.65;margin:0;max-width:72ch}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card h3{font-size:1.15rem}
+.card p{margin:0}
+.k{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.07em;font-size:.8rem;color:var(--muted)}
+ol.titles{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+.copyrow{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.thumb svg{width:100%;height:auto;border-radius:6px;display:block}
+.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.lib .card svg{width:100%;height:auto;border-radius:4px}
+.spec{font-size:.85rem;color:var(--muted)}
+.spec code{font-family:var(--f-mono);font-size:.78rem;color:var(--ink)}
+.empty{color:var(--muted);font-size:.9rem}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--sheet);padding:8px 14px;border-radius:4px;font-size:.9rem;z-index:20}
+@media (prefers-reduced-motion:no-preference){.seg{transition:border-color .2s}}
+
+.mast-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.upd{font-family:var(--f-mono);font-size:.76rem;color:var(--muted)}
+.soft{text-transform:none;letter-spacing:0;font-family:var(--f-body);font-size:.8rem}
+.chk{display:flex;gap:6px;align-items:center;font-size:.85rem;align-self:end;padding-bottom:8px;font-family:var(--f-body);text-transform:none;letter-spacing:0;color:var(--ink)}
+.chk input{width:auto}
+input[type=search],input[type=password]{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;width:100%}
+.pill{background:var(--amber-soft);color:var(--amber)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.hint.err{color:var(--red)}
+
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="mast">
     <div>
-      <h1>Touchline <span>Results</span></h1>
-      <p>Finished matches with goals, cards and team stats. Updates itself every three hours.</p>
+      <h1>Touchline <span>Script Desk</span></h1>
+      <p>Pick a match, write your point, get a full timed script with a layout for every section. Results update themselves.</p>
     </div>
-    <div class="upd" id="upd">Loading…</div>
+    <div class="mast-r"><div class="rule-chip">Hard on tactics · Fair on people</div><div class="upd" id="upd">Loading results…</div></div>
   </header>
 
   <div class="grid">
-    <aside class="panel">
-      <div class="filters">
-        <div><label for="comp">Competition</label><select id="comp"></select></div>
-        <div><label for="range">Dates</label><select id="range">
-          <option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="all">Whole season</option></select></div>
-        <div class="full"><label for="q">Team</label><input id="q" type="search" placeholder="e.g. Liverpool"></div>
+    <form class="brief" id="briefForm" autocomplete="off">
+      <h2>The brief</h2>
+
+      <div class="field picker" id="resBox">
+        <span class="lbl">1 · Pick a match</span>
+        <div class="field"><label for="teamQ">Find a team</label><input type="search" id="teamQ" placeholder="e.g. Liverpool (searches every date)"></div>
+        <div class="row2">
+          <div class="field"><label for="resComp">Competition</label><select id="resComp"></select></div>
+          <div class="field"><label for="resDate">Date</label><select id="resDate"></select></div>
+        </div>
+        <div class="fixtures" id="fixList" role="listbox" aria-label="Fixtures"></div>
+        <div class="sheet" id="sheet" hidden></div>
+        <p class="hint" id="resNote">Loading results…</p>
       </div>
-      <div class="list" id="list" role="listbox" aria-label="Matches"></div>
-    </aside>
-    <main id="sheet" class="sheet"><div class="panel empty">Pick a match on the left.</div></main>
+
+      <div class="field">
+        <label for="tpl">2 · Format</label>
+        <select id="tpl"></select>
+      </div>
+      <div class="field">
+        <label for="brief">Your paragraph</label>
+        <textarea id="brief" placeholder="What happened, the question it raised, and the point you want to make."></textarea>
+      </div>
+      <div class="field">
+        <label for="facts">Facts and stats <span class="soft">(filled in when you press “Use this match”)</span></label>
+        <textarea id="facts" placeholder="Score, scorers, substitutions, xG, PPDA… Only these numbers will be used. Gaps become [STAT] placeholders."></textarea>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="len">Target length</label><select id="len"></select></div>
+        <div class="field"><label for="wpm">Your pace (wpm)</label><input type="number" id="wpm" min="110" max="200" step="5" value="150"></div>
+      </div>
+      <div class="field">
+        <label for="extra">Extra instructions <span class="soft">(optional)</span></label>
+        <input type="text" id="extra" placeholder="e.g. more on the second half; keep it under 8 minutes">
+      </div>
+      <button class="btn primary" id="go" type="submit">3 · Write the script</button>
+      <div class="actions"><button class="btn sm" type="button" id="stop" hidden>Stop</button></div>
+      <p class="status" id="status" role="status"></p>
+
+      <details class="req" id="keyBox">
+        <summary>Claude API key <span class="pill" id="keyPill">not set</span></summary>
+        <p class="hint">Script writing is done by Claude, so this page needs your own API key from console.anthropic.com (billed per use, usually a few pence a script). The key stays in this browser and is only ever sent to Anthropic. Set a monthly spending limit on the key, and don't save it on a shared computer.</p>
+        <div class="field"><label for="apiKey">API key</label><input type="password" id="apiKey" placeholder="sk-ant-…" autocomplete="off" spellcheck="false"></div>
+        <div class="row2">
+          <div class="field"><label for="model">Model</label><select id="model"><option value="claude-sonnet-5-5">Sonnet 5.5 (faster, cheaper)</option><option value="claude-opus-5-5">Opus 5.5 (best writing)</option></select></div>
+          <label class="chk"><input type="checkbox" id="remember"> Remember on this device</label>
+        </div>
+        <div class="actions"><button class="btn sm" type="button" id="saveKey">Save key</button><button class="btn sm" type="button" id="clearKey">Remove key</button></div>
+        <p class="hint" style="margin-top:8px"><b>No key?</b> Copy the prompt, paste it into a Claude chat, then paste Claude's reply here.</p>
+        <div class="actions"><button class="btn sm" type="button" id="copyPrompt">Copy prompt for Claude</button></div>
+        <textarea id="pasteReply" placeholder="Paste Claude's reply here (the JSON)" style="min-height:60px"></textarea>
+        <div class="actions"><button class="btn sm" type="button" id="loadReply">Load reply</button></div>
+      </details>
+
+      <div class="rules"><b>Built-in rules:</b> nothing negative about any identifiable person (name, number or position); criticism only of team patterns; people appear in neutral facts or praise; no rumours, betting or profanity; no invented numbers. Every line is also scanned here for risky wording.</div>
+    </form>
+
+    <main class="out" id="out">
+      <section class="summary" id="summary"></section>
+      <nav class="tabs" role="tablist" id="tabs">
+        <button role="tab" data-tab="board" aria-selected="true">Storyboard</button>
+        <button role="tab" data-tab="read" aria-selected="false">Read-through</button>
+        <button role="tab" data-tab="shorts" aria-selected="false">Shorts</button>
+        <button role="tab" data-tab="pack" aria-selected="false">Publish pack</button>
+        <button role="tab" data-tab="layouts" aria-selected="false">Layouts</button>
+      </nav>
+      <section class="panel" id="p-board"></section>
+      <section class="panel" id="p-read" hidden></section>
+      <section class="panel" id="p-shorts" hidden></section>
+      <section class="panel" id="p-pack" hidden></section>
+      <section class="panel" id="p-layouts" hidden></section>
+    </main>
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
 
 <script>
+(function(){
 "use strict";
-const $=id=>document.getElementById(id);
-const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let ALL=[], sel=null;
+/* ---------- Formats (from the channel blueprint) ---------- */
+const TEMPLATES = [
+  {id:"lfc-review", name:"Liverpool match review", len:9, sections:["Hook: the one question the match raised","Context and score","First half","Second half: what changed, described neutrally","Tactical observation: the team-level mechanism that decided it","Standout contributions: 2-3 players who did something well (praise only)","Key statistics panel","Conclusion and the pattern to watch next match","Viewer question and call to action"]},
+  {id:"result", name:"Result review (results-led)", len:6, sections:["The result and what it means, in one line","How the goals came: minutes and phases of play from the facts","The numbers behind the result: shots, shots on target, possession, corners","What decided it: the team-level pattern","Standout contributions (praise only)","Where it leaves the table and the run of form","What's next: the next fixture and the pattern to watch","Viewer question and call to action"]},
+  {id:"pl-review", name:"Premier League match review", len:8, sections:["Hook: the clash of plans","Each team's plan A","The turning point","Plan B: who adapted, described neutrally","One standout contribution from each side (praise only)","Combined stats panel","What it means for both clubs","Viewer question and call to action"]},
+  {id:"roundup", name:"Premier League data roundup", len:12, sections:["Headline result of the period","Title race","European places","Relegation battle","Goals versus xG: who deserved more","Stat of the period","Three games to watch next","Viewer question and call to action"]},
+  {id:"five", name:"Five things we learned", len:9, sections:["Hook teasing point five","Point one","Point two","Point three","Point four","Point five","Quick recap","Viewer question"]},
+  {id:"tactical", name:"Tactical breakdown", len:11, sections:["The question","Why it matters now","Mechanism, board one: the shape","Mechanism, board two: the trigger","Mechanism, board three: the consequence","Counter-evidence: test the argument","What would fix it, or what opponents could copy","Verdict","Viewer question and call to action"]},
+  {id:"unit", name:"Unit and role explainer", len:9, sections:["The unit or role","What the system asks of it: three jobs","Job one on the board","Job two on the board","Job three on the board","An example of it working well","How opponents try to stop it","What it means for the next match"]},
+  {id:"table", name:"Table and title race update", len:7, sections:["Table snapshot","Points pace","Expected points versus actual points","Remaining fixture strength","Three key fixtures","Projection (no odds)","Viewer question"]},
+  {id:"short", name:"YouTube Short", len:0.75, sections:["Hook (0-2 seconds)","The one thing: one stat or one board","Why it matters","Close: question or loop line"]}
+];
+const LENGTHS = [[0.75,"45 seconds (Short)"],[4,"4 minutes"],[6,"6 minutes"],[8,"8 minutes"],[9,"9 minutes"],[10,"10 minutes"],[12,"12 minutes"],[14,"14 minutes"]];
 
-function pref(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
-function fmtDay(d){const x=new Date(d+"T12:00:00");return x.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short",year:"numeric"})}
-function idOf(r){return r.date+"|"+r.home+"|"+r.away}
+/* ---------- Layout library ---------- */
+const LAYOUTS = {
+  "title-card":{name:"Title card",use:"Hooks, chapter openers, the verdict line.",spec:"Board background at 40% contrast. One line of 2–6 words, Barlow Condensed 140–180px, inside the central 80%. Optional small kicker above at 48px in amber."},
+  "tactics-board":{name:"Tactics board",use:"Shapes, patterns, pressing traps, any mechanism.",spec:"Full pitch, 1600×1000 inside a 1920×1080 frame. Dots 56px with shirt numbers, team colours only. Arrows 8px chalk; one red arrow for the key action. Caption strip along the bottom, 56px."},
+  "split-board":{name:"Split board",use:"Plan A vs plan B, before vs after, team vs team.",spec:"Two half-pitches side by side with a 40px gap. Label each top-left at 64px. Keep the same scale on both sides so shapes compare honestly."},
+  "stat-panel":{name:"Stat panel",use:"Key numbers: score, xG, shots, PPDA.",spec:"Three or four tiles in a row. Number 160px, label 40px under it. Source line bottom-left at 32px, e.g. “Source: Understat”."},
+  "bars":{name:"Comparison bars",use:"Team vs team, this season vs last.",spec:"Horizontal bars measured from zero. Left team in its colour, right in grey. Values printed at the bar end. Max six rows."},
+  "timeline":{name:"Match timeline",use:"Goals, substitutions and game-state changes.",spec:"0–90 axis across the frame at 70% height. Goals as filled circles, substitutions as small diamonds, half-time tick. Labels above markers at 40px."},
+  "table":{name:"League table",use:"Title race, relegation, form tables.",spec:"Up to 10 rows at 56px row height. Highlight the subject row in amber. Columns: Pos, Club, P, GD, Pts, plus one data column (xGD or xPts)."},
+  "shot-map":{name:"Shot map",use:"Chance quality and where chances came from.",spec:"Half pitch. Circle size = xG, filled = goal, hollow = no goal. Totals in a corner box: shots and xG."},
+  "numeral":{name:"Numeral card",use:"Five-things points, three jobs, countdowns.",spec:"A single numeral at 480px, left third. Point headline on the right at 96px, max eight words."},
+  "end-screen":{name:"End screen",use:"Last 15–20 seconds: subscribe and next video.",spec:"Two video slots on the right (YouTube end-screen elements), subscribe circle on the left. Keep the board background; no text in the slot areas."},
+  "vertical":{name:"Vertical board",use:"Shorts (9:16).",spec:"1080×1920. Hook text in the top 25%, board in the middle, caption in the lower third clear of YouTube's interface at the bottom 300px."}
+};
+const LAYOUT_IDS = Object.keys(LAYOUTS);
 
-async function load(){
+/* SVG drawings: viewBox 160x90 (vertical: 90x160) */
+function pitch(x,y,w,h){
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/>
+  <line x1="${x+w/2}" y1="${y}" x2="${x+w/2}" y2="${y+h}" stroke="var(--chalk-dim)" stroke-width=".8"/>
+  <circle cx="${x+w/2}" cy="${y+h/2}" r="${h*0.14}" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/>
+  <rect x="${x}" y="${y+h*0.25}" width="${w*0.14}" height="${h*0.5}" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/>
+  <rect x="${x+w*0.86}" y="${y+h*0.25}" width="${w*0.14}" height="${h*0.5}" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/>`;
+}
+function dot(x,y,c){return `<circle cx="${x}" cy="${y}" r="3" fill="${c}"/>`;}
+const RED="#D64541", GREY="#C9D1CB", AMB="#E8B04B";
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function layoutSVG(id, text){
+  const t = esc((text||"").toUpperCase());
+  const bg = `<rect width="160" height="90" fill="var(--board)"/>`;
+  let body = "";
+  switch(id){
+    case "title-card":
+      body = `${pitch(10,8,140,74).replace(/var\(--chalk-dim\)/g,"rgba(238,242,236,.18)")}<text x="80" y="${t?50:52}" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="${t&&t.length>18?11:15}" fill="var(--chalk)">${t||"THE QUESTION"}</text><rect x="60" y="58" width="40" height="2" fill="${RED}"/>`; break;
+    case "tactics-board":
+      body = `${pitch(8,6,144,68)}${dot(40,22,RED)}${dot(48,40,RED)}${dot(40,58,RED)}${dot(62,30,RED)}${dot(62,50,RED)}${dot(96,40,GREY)}${dot(104,24,GREY)}${dot(104,56,GREY)}<path d="M62 30 L88 38" stroke="${RED}" stroke-width="1.4" fill="none" marker-end="url(#ah)"/><path d="M48 40 Q60 62 84 60" stroke="var(--chalk)" stroke-width=".9" fill="none" stroke-dasharray="2 1.5"/><rect x="8" y="78" width="144" height="8" fill="rgba(0,0,0,.25)"/><text x="12" y="84" font-family="Barlow, sans-serif" font-size="5" fill="var(--chalk)">${t||"Caption: the one pattern"}</text>`; break;
+    case "split-board":
+      body = `${pitch(6,14,70,56)}${pitch(84,14,70,56)}${dot(28,30,RED)}${dot(28,54,RED)}${dot(44,42,RED)}${dot(110,30,RED)}${dot(122,42,RED)}${dot(110,54,RED)}<text x="8" y="10" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="6" fill="var(--chalk)">PLAN A</text><text x="86" y="10" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="6" fill="${AMB}">PLAN B</text>`; break;
+    case "stat-panel":
+      body = [0,1,2].map(i=>`<rect x="${10+i*48}" y="20" width="44" height="44" rx="2" fill="rgba(0,0,0,.22)"/><text x="${32+i*48}" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="16" fill="${i===0?AMB:"var(--chalk)"}">${["1.84","14","9.2"][i]}</text><text x="${32+i*48}" y="57" text-anchor="middle" font-family="Barlow, sans-serif" font-size="4.5" fill="var(--chalk-dim)">${["xG","SHOTS","PPDA"][i]}</text>`).join("")+`<text x="10" y="80" font-family="IBM Plex Mono, monospace" font-size="3.6" fill="var(--chalk-dim)">Source: Understat · placeholder values</text>`; break;
+    case "bars":
+      body = [["POSSESSION",58,42],["SHOTS",64,36],["XG",55,45],["CORNERS",70,30]].map((r,i)=>`<text x="10" y="${22+i*15}" font-family="Barlow Condensed, sans-serif" font-size="4.8" fill="var(--chalk-dim)">${r[0]}</text><rect x="44" y="${17+i*15}" width="${r[1]*0.9}" height="6" fill="${RED}"/><rect x="${44+r[1]*0.9+2}" y="${17+i*15}" width="${r[2]*0.9}" height="6" fill="${GREY}"/>`).join(""); break;
+    case "timeline":
+      body = `<line x1="12" y1="56" x2="148" y2="56" stroke="var(--chalk)" stroke-width="1"/><line x1="80" y1="52" x2="80" y2="60" stroke="var(--chalk-dim)" stroke-width=".8"/><text x="80" y="68" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk-dim)">HT</text><text x="12" y="68" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk-dim)">0'</text><text x="148" y="68" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk-dim)">90'</text>${[[34,RED],[101,GREY],[128,RED]].map(g=>`<circle cx="${g[0]}" cy="56" r="3.2" fill="${g[1]}"/>`).join("")}${[96,112].map(x=>`<path d="M${x} 48 l3 3 l-3 3 l-3 -3z" fill="${AMB}"/>`).join("")}<text x="12" y="24" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="7" fill="var(--chalk)">${t||"HOW THE GAME MOVED"}</text>`; break;
+    case "table":
+      body = Array.from({length:6},(_,i)=>`<rect x="14" y="${10+i*12}" width="132" height="10" fill="${i===2?"rgba(232,176,75,.35)":"rgba(0,0,0,.18)"}"/><text x="18" y="${17+i*12}" font-family="IBM Plex Mono, monospace" font-size="4.5" fill="var(--chalk)">${i+1}</text><rect x="28" y="${13.5+i*12}" width="${50-i*3}" height="3" fill="var(--chalk-dim)"/><text x="140" y="${17+i*12}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="4.5" fill="var(--chalk)">${30-i*2}</text>`).join(""); break;
+    case "shot-map":
+      body = `<rect x="20" y="8" width="120" height="74" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/><rect x="50" y="8" width="60" height="22" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/><rect x="66" y="8" width="28" height="8" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/>${[[80,20,4,1],[72,26,2.4,0],[90,24,3,0],[60,36,1.6,0],[100,40,1.4,0],[84,18,5,1],[76,44,1.2,0]].map(s=>`<circle cx="${s[0]}" cy="${s[1]}" r="${s[2]}" fill="${s[3]?RED:"none"}" stroke="${s[3]?RED:"var(--chalk)"}" stroke-width=".8"/>`).join("")}<rect x="112" y="62" width="26" height="16" fill="rgba(0,0,0,.25)"/><text x="125" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk)">xG —</text>`; break;
+    case "numeral":
+      body = `<text x="14" y="72" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="70" fill="${RED}">1</text><text x="62" y="40" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="9" fill="var(--chalk)">${t?t.slice(0,22):"POINT HEADLINE"}</text><rect x="62" y="48" width="70" height="3" fill="var(--chalk-dim)"/><rect x="62" y="56" width="50" height="3" fill="var(--chalk-dim)"/>`; break;
+    case "end-screen":
+      body = `<circle cx="34" cy="45" r="16" fill="none" stroke="var(--chalk)" stroke-width="1"/><text x="34" y="47" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="5" fill="var(--chalk)">SUBSCRIBE</text><rect x="68" y="14" width="80" height="28" rx="2" fill="rgba(0,0,0,.28)" stroke="var(--chalk-dim)" stroke-width=".6" stroke-dasharray="2 1.5"/><rect x="68" y="48" width="80" height="28" rx="2" fill="rgba(0,0,0,.28)" stroke="var(--chalk-dim)" stroke-width=".6" stroke-dasharray="2 1.5"/><text x="108" y="30" text-anchor="middle" font-family="Barlow, sans-serif" font-size="4.5" fill="var(--chalk-dim)">Next video</text><text x="108" y="64" text-anchor="middle" font-family="Barlow, sans-serif" font-size="4.5" fill="var(--chalk-dim)">Best for viewer</text>`; break;
+    case "vertical":
+      return `<svg viewBox="0 0 90 160" role="img" aria-label="Vertical board layout"><rect width="90" height="160" fill="var(--board)"/><text x="45" y="26" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="9" fill="var(--chalk)">${t?t.slice(0,18):"THE HOOK"}</text><rect x="10" y="40" width="70" height="70" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/><line x1="10" y1="75" x2="80" y2="75" stroke="var(--chalk-dim)" stroke-width=".8"/>${dot(30,60,RED)}${dot(52,56,RED)}${dot(44,92,GREY)}<path d="M52 56 L62 86" stroke="${RED}" stroke-width="1.2"/><rect x="10" y="116" width="70" height="10" fill="rgba(0,0,0,.25)"/><rect x="0" y="134" width="90" height="26" fill="rgba(0,0,0,.18)"/><text x="45" y="149" text-anchor="middle" font-family="Barlow, sans-serif" font-size="4" fill="var(--chalk-dim)">keep clear: app interface</text></svg>`;
+    default:
+      return layoutSVG("tactics-board", text);
+  }
+  return `<svg viewBox="0 0 160 90" role="img" aria-label="${esc(LAYOUTS[id]?LAYOUTS[id].name:"Layout")} layout"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="${RED}"/></marker></defs>${bg}${body}</svg>`;
+}
+function thumbSVG(text){
+  const t = esc((text||"THE GAP").toUpperCase()).slice(0,30);
+  return `<svg viewBox="0 0 160 90" role="img" aria-label="Thumbnail mock-up: ${t}"><rect width="160" height="90" fill="var(--board)"/>${pitch(6,6,148,78)}${dot(98,34,RED)}${dot(112,48,RED)}${dot(98,62,RED)}<path d="M112 48 Q132 40 146 22" stroke="${RED}" stroke-width="2" fill="none"/><path d="M98 34 L120 60" stroke="var(--chalk)" stroke-width="1.2" fill="none"/><text x="10" y="54" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="${t.length>14?13:20}" fill="var(--chalk)" stroke="var(--board)" stroke-width=".6" paint-order="stroke">${t}</text></svg>`;
+}
+
+/* ---------- Risky wording check (local, runs on every edit) ---------- */
+const RISK = [
+  {re:/\b(flop|liability|clueless|useless|fraud|disgrace(ful)?|embarrass(ing|ment)|shambolic|shambles|pathetic|washed|lazy|greedy|idiot(ic)?|stupid|clown|joke of a|rubbish|awful|dreadful|abysmal|woeful|spineless|bottle(d|r)?|passenger|deadwood|not good enough|out of his depth|has no idea|lost the dressing room|should be (sacked|dropped|sold)|sack(ed)?)\b/i, why:"Attack or verdict wording. Make sure it describes a team pattern, not a person."},
+  {re:/\b(at fault|to blame|his fault|their fault|blame[sd]?|howler|culpable|gifted (them|it)|switched off|asleep)\b/i, why:"Blame language. Describe what happened on the board instead of who caused it."},
+  {re:/\b(bent|biased|cheat(ed|ing|s)?|diver|dived|corrupt|paid off|robbed|agenda)\b/i, why:"Integrity accusation about officials or players."},
+  {re:/\b(sources (say|claim|suggest)|reportedly|rumou?r(ed|s)?|ITK|in the know|apparently|i('|’)m hearing)\b/i, why:"Rumour or unattributed claim. Name the outlet or cut it."},
+  {re:/\b(odds|bet(s|ting)?|bookies?|bookmakers?|accumulator|acca|punters?|each[- ]way)\b/i, why:"Betting language is not used on this channel."},
+  {re:/\b(damn|hell|crap|bloody|shit\w*|f\*?u?ck\w*|bollocks|arse)\b/i, why:"Profanity."},
+  {re:/\b(injury[- ]prone|faking|made of glass|always injured)\b/i, why:"Injury mockery or speculation."}
+];
+function scan(text){
+  const hits=[]; if(!text) return hits;
+  const sentences = String(text).split(/(?<=[.!?])\s+/);
+  for(const s of sentences){ for(const r of RISK){ const m=s.match(r.re); if(m){ hits.push({word:m[0], sentence:s.trim(), why:r.why}); } } }
+  return hits;
+}
+
+
+/* ---------- State ---------- */
+const $ = id => document.getElementById(id);
+const KEY = "touchline-script-desk-v2", KKEY = "touchline-api-key";
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ if(v==null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){} }
+let S = Object.assign({template:"lfc-review",length:9,wpm:150,brief:"",facts:"",extra:"",model:"claude-sonnet-5-5",result:null},
+  (()=>{ try{ return JSON.parse(lsGet(KEY)||"{}"); }catch(e){ return {}; } })());
+if(!["claude-sonnet-5-5","claude-opus-5-5"].includes(S.model)) S.model="claude-sonnet-5-5";
+let tab = "board", ctl = null, apiKey = lsGet(KKEY) || "";
+let saveT = null;
+function save(){ clearTimeout(saveT); saveT=setTimeout(()=>lsSet(KEY, JSON.stringify(S)),300); }
+
+
+/* ---------- Helpers ---------- */
+function words(s){ return (String(s||"").match(/\b[\w'’-]+\b/g)||[]).length; }
+function mmss(sec){ sec=Math.max(0,Math.round(sec)); return Math.floor(sec/60)+":"+String(sec%60).padStart(2,"0"); }
+function parseT(t){ const m=String(t||"").match(/(\d+):(\d{1,2})/); return m ? (+m[1])*60+(+m[2]) : null; }
+function toast(msg){ const t=$("toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(()=>t.hidden=true,2200); }
+async function copy(text){ try{ await navigator.clipboard.writeText(text); toast("Copied"); }catch(e){ const ta=document.createElement("textarea"); ta.value=text; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy"); toast("Copied");}catch(_){ toast("Select the text and copy it manually"); } ta.remove(); } }
+function tplById(id){ return TEMPLATES.find(t=>t.id===id) || TEMPLATES[0]; }
+function wpm(){ const v=+S.wpm; return v>=100&&v<=220 ? v : 150; }
+function setStatus(msg, err){ const s=$("status"); s.textContent=msg||""; s.classList.toggle("err",!!err); }
+function downloadFile(filename, text){
+  try{ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([text],{type:"text/plain;charset=utf-8"})); a.download=filename; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500); toast("Saved"); }
+  catch(e){ toast("Saving isn't available here. Use Copy instead."); }
+}
+
+/* ---------- Brief form ---------- */
+function initForm(){
+  $("tpl").innerHTML = TEMPLATES.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join("");
+  $("len").innerHTML = LENGTHS.map(l=>`<option value="${l[0]}">${l[1]}</option>`).join("");
+  $("tpl").value=S.template; $("len").value=String(S.length); $("wpm").value=S.wpm||150;
+  $("brief").value=S.brief||""; $("facts").value=S.facts||""; $("extra").value=S.extra||"";
+  $("tpl").addEventListener("change",()=>{ S.template=$("tpl").value; const t=tplById(S.template); S.length=t.len; $("len").value=String(t.len); save(); });
+  $("len").addEventListener("change",()=>{ S.length=+$("len").value; save(); renderSummary(); });
+  $("wpm").addEventListener("input",()=>{ S.wpm=+$("wpm").value; save(); renderSummary(); renderBoardTimes(); });
+  ["brief","facts","extra"].forEach(id=>$(id).addEventListener("input",()=>{ S[id]=$(id).value; save(); }));
+  $("briefForm").addEventListener("submit",e=>{ e.preventDefault(); generate(); });
+  $("stop").addEventListener("click",()=>ctl&&ctl.abort());
+  initKey();
+}
+function initKey(){
+  $("apiKey").value=apiKey; $("model").value=S.model; $("remember").checked=!!lsGet(KKEY);
+  const pill=()=>{ const p=$("keyPill"); p.textContent=apiKey?"saved":"not set"; p.classList.toggle("ok",!!apiKey); };
+  pill(); $("keyBox").open = !apiKey;
+  $("model").addEventListener("change",()=>{ S.model=$("model").value; save(); });
+  $("saveKey").addEventListener("click",()=>{
+    apiKey=$("apiKey").value.trim();
+    if(apiKey && !/^sk-ant-/.test(apiKey)){ toast("That doesn't look like an Anthropic key (it starts sk-ant-)"); }
+    lsSet(KKEY, apiKey && $("remember").checked ? apiKey : null);
+    pill(); renderBoard(); toast(apiKey?($("remember").checked?"Key saved on this device":"Key kept until you close this tab"):"No key entered");
+    if(apiKey) $("keyBox").open=false;
+  });
+  $("clearKey").addEventListener("click",()=>{ apiKey=""; $("apiKey").value=""; lsSet(KKEY,null); pill(); renderBoard(); toast("Key removed"); });
+  $("copyPrompt").addEventListener("click",()=>{ if(!(S.brief||"").trim()){ setStatus("Write a paragraph first.",true); $("brief").focus(); return; } copy(buildPrompt()); });
+  $("loadReply").addEventListener("click",()=>{ try{ applyReply($("pasteReply").value); $("pasteReply").value=""; }catch(e){ setStatus(ERR[e&&e.code]||ERR.invalid_json,true); } });
+}
+
+/* ---------- Prompt ---------- */
+/* ---------- Prompt ---------- */
+const RULES = `EDITORIAL RULES (non-negotiable):
+1. Never say or imply anything negative about an identifiable person: player, manager, coach, referee, owner, director, pundit or fan. This includes identifying someone by name, shirt number or position (for example "the left-back was at fault").
+2. Criticism is allowed only of team-level patterns, shapes, spaces and numbers ("the press", "the defensive line", "the team's shape after 60 minutes").
+3. Individuals may appear only in neutral facts (who scored, which substitution happened, what the club confirmed) or in praise.
+4. Describe decisions such as substitutions neutrally: what changed and what happened next. No verdict on the person who made them.
+5. No rumours, transfer gossip or anonymous sources. No injury speculation. No betting, odds or bookmaker language. No profanity, mockery, sarcasm about people, or fanbase baiting.
+6. Use ONLY facts and numbers given in the brief. Never invent a score, scorer, minute, statistic or quote. Where a number would help, write a placeholder like [STAT: Liverpool PPDA v Arsenal] and list it in missing_facts.
+7. Titles and thumbnail text must never pair a person's name, number or role with a negative word. No fake outrage or misleading claims.`;
+function buildPrompt(){
+  const t = tplById(S.template); const L = +S.length; const W = Math.round(L*wpm());
+  const lenTxt = L<1 ? `${Math.round(L*60)} seconds` : `${L} minutes`;
+  const shortsRule = t.id==="short" ? "shorts = 2 alternative versions of this Short" : "shorts = 3 vertical Shorts cut from this script";
+  return `You are the scriptwriter for "The Touchline Notebook", a faceless football analysis YouTube channel. It leads on Liverpool, but this video may cover any club, league or era. The creator narrates in his own voice. Write in UK English: calm, clear, intelligent, conversational, no hype, short spoken sentences.
+
+${RULES}
+
+FORMAT: ${t.name}. Target length: ${lenTxt}, about ${W} spoken words at ${wpm()} words per minute.
+Sections in order (adapt the labels to the content, keep the order):
+${t.sections.map((s,i)=>`${i+1}. ${s}`).join("\n")}
+Shape the whole script as Problem → Tension → Payoff: open on the question, build the evidence, land a clear answer.
+Visuals are original only: tactics boards with numbered dots, charts and tables. Never broadcast footage, photos or club crests.
+For each segment choose ONE layout id from: ${LAYOUT_IDS.filter(x=>x!=="vertical").join(", ")}${t.id==="short"?", vertical (use vertical for every segment of a Short)":""}.
+
+BRIEF FROM THE CREATOR:
+"""${(S.brief||"").slice(0,6000)}"""
+
+FACTS AND STATS PROVIDED (the only numbers you may use):
+"""${(S.facts||"none").slice(0,6000)}"""
+${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
+Reply with only a JSON object, no other text, in exactly this shape:
+{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with chapters and a Sources line","pinned_comment":"string","self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
+JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles use question, single-mechanism, numbers-versus-perception or "explained" structures; ${shortsRule}, each 60-110 words in total; self_check is an empty array when nothing is borderline.`;
+}
+
+/* ---------- Claude (direct from this page, using your own key) ---------- */
+const ERR = {invalid_json:"The reply wasn't in the expected shape. Press Write the script to try again.",no_key:"Add your Claude API key below first.",bad_key:"Anthropic rejected that key. Check it in the key box below.",no_credit:"Your Anthropic account has no credit left. Add some at console.anthropic.com.",rate_limited:"Too many requests right now. Try again in a minute.",busy:"Claude is busy. Press Write the script to try again.",network:"Couldn't reach Anthropic. Check your connection and try again.",too_long:"The script was cut off for length. Choose a shorter target and try again.",bad_request:"Anthropic refused the request."};
+function apiError(e){
+  if(e&&e.name==="AbortError") return {code:"cancelled"};
+  if(e&&e.code) return e;
+  return {code:"network"};
+}
+async function callClaude(prompt, opts){
+  opts=opts||{};
+  if(!apiKey) throw {code:"no_key"};
+  let res;
+  try{
+    res = await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal:opts.signal,
+      headers:{"content-type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      body:JSON.stringify({model:S.model,max_tokens:opts.max||14000,stream:true,messages:[{role:"user",content:prompt}]})});
+  }catch(e){ throw apiError(e); }
+  if(!res.ok){
+    let msg=""; try{ const j=await res.json(); msg=(j.error&&j.error.message)||""; }catch(_){}
+    if(res.status===401||res.status===403) throw {code:"bad_key"};
+    if(res.status===429) throw {code:"rate_limited"};
+    if(res.status===400&&/credit balance/i.test(msg)) throw {code:"no_credit"};
+    if(res.status>=500||res.status===529) throw {code:"busy"};
+    throw {code:"bad_request",message:msg};
+  }
+  const reader=res.body.getReader(), dec=new TextDecoder(); let buf="", text="", stop="";
+  try{
+    for(;;){
+      const {done,value}=await reader.read(); if(done) break;
+      buf += dec.decode(value,{stream:true}).replace(/\r\n/g,"\n");
+      let i;
+      while((i=buf.indexOf("\n\n"))>=0){
+        const chunk=buf.slice(0,i); buf=buf.slice(i+2);
+        const line=chunk.split("\n").find(l=>l.startsWith("data:")); if(!line) continue;
+        let ev; try{ ev=JSON.parse(line.slice(5).trim()); }catch(_){ continue; }
+        if(ev.type==="content_block_delta"&&ev.delta&&ev.delta.type==="text_delta"){ text+=ev.delta.text; if(opts.onText) opts.onText(text); }
+        else if(ev.type==="message_delta"&&ev.delta&&ev.delta.stop_reason){ stop=ev.delta.stop_reason; }
+        else if(ev.type==="error"){ throw {code:(ev.error&&ev.error.type==="overloaded_error")?"busy":"bad_request",message:ev.error&&ev.error.message}; }
+      }
+    }
+  }catch(e){ throw apiError(e); }
+  if(stop==="max_tokens") throw {code:"too_long"};
+  return text;
+}
+function extractJSON(t){
+  t=String(t||""); const a=t.indexOf("{"), b=t.lastIndexOf("}");
+  if(a<0||b<=a) throw {code:"invalid_json"};
+  try{ return JSON.parse(t.slice(a,b+1)); }catch(e){ throw {code:"invalid_json"}; }
+}
+function applyReply(text){
+  const r = normalise(extractJSON(text));
+  if(!r.segments.length) throw {code:"invalid_json"};
+  S.result=r; save(); tab="board"; renderAll();
+  setStatus(`Done: ${r.segments.length} sections. Edit any line below; changes save in this browser.`);
+}
+async function generate(){
+  if(!(S.brief||"").trim()){ setStatus("Write a paragraph first: what happened and the point you want to make.",true); $("brief").focus(); return; }
+  if(!apiKey){ setStatus(ERR.no_key,true); $("keyBox").open=true; $("apiKey").focus(); return; }
+  ctl = new AbortController();
+  $("go").disabled=true; $("stop").hidden=false; setStatus("Thinking…");
+  try{
+    const text = await callClaude(buildPrompt(),{signal:ctl.signal,max:14000,onText:t=>setStatus(`Writing… ${t.length.toLocaleString("en-GB")} characters`)});
+    applyReply(text);
+  }catch(e){
+    if(e&&e.code==="cancelled") setStatus("Stopped.");
+    else setStatus(ERR[e&&e.code]||(e&&e.message)||ERR.network,true);
+  }finally{ $("go").disabled=false; $("stop").hidden=true; ctl=null; }
+}
+async function rewriteSeg(i, instr, btn){
+  if(!apiKey){ toast("Add your Claude API key first"); return; }
+  const seg=S.result.segments[i]; const all=S.result.segments.map((s,j)=>`${j===i?">>> ":""}[${s.label}] ${s.voiceover}`).join("\n\n");
+  btn.disabled=true; const old=btn.textContent; btn.textContent="Rewriting…";
+  try{
+    const txt = await callClaude(`${RULES}\n\nYou are editing one section of a narrated football analysis script for "The Touchline Notebook" (UK English, calm, spoken). The full script is below; the section to rewrite is marked >>>.\n\n${all.slice(0,20000)}\n\nFACTS PROVIDED (only numbers allowed):\n"""${(S.facts||"none").slice(0,4000)}"""\n\nRewrite ONLY the section "${seg.label}" at roughly the same length (${words(seg.voiceover)} words).${instr?` Creator's instruction: ${instr.slice(0,400)}`:""}\nReply with only JSON: {"voiceover":"string","on_screen":["1-4 strings"],"stats":["strings or [STAT: ...] placeholders"]}`,{max:3000});
+    const r = extractJSON(txt);
+    if(r&&r.voiceover){ seg.voiceover=String(r.voiceover); if(Array.isArray(r.on_screen)) seg.on_screen=r.on_screen.map(String); if(Array.isArray(r.stats)) seg.stats=r.stats.map(String); save(); renderAll(); toast("Section rewritten"); }
+  }catch(e){ const x=apiError(e); toast(ERR[x.code]||"Rewrite failed. Try again."); btn.disabled=false; btn.textContent=old; }
+}
+
+function normalise(r){
+  r = r && typeof r==="object" ? r : {};
+  const arr = v => Array.isArray(v) ? v : [];
+  return {
+    working_title:String(r.working_title||"Untitled script"),
+    titles:arr(r.titles).map(String).slice(0,8),
+    thumbnail:{text:String(r.thumbnail&&r.thumbnail.text||""),concept:String(r.thumbnail&&r.thumbnail.concept||""),layout:LAYOUTS[r.thumbnail&&r.thumbnail.layout]?r.thumbnail.layout:"tactics-board"},
+    segments:arr(r.segments).filter(s=>s&&s.voiceover).map(s=>({label:String(s.label||"Section"),start:String(s.start||""),end:String(s.end||""),voiceover:String(s.voiceover),layout:LAYOUTS[s.layout]?s.layout:"tactics-board",on_screen:arr(s.on_screen).map(String),stats:arr(s.stats).map(String)})),
+    shorts:arr(r.shorts).map(s=>({title:String(s.title||"Short"),hook:String(s.hook||""),body:String(s.body||""),close:String(s.close||"")})),
+    description:String(r.description||""), pinned_comment:String(r.pinned_comment||""),
+    self_check:arr(r.self_check).filter(Boolean).map(x=>({line:String(x.line||""),issue:String(x.issue||""),rewrite:String(x.rewrite||"")})),
+    missing_facts:arr(r.missing_facts).map(String)
+  };
+}
+/* ---------- Render ---------- */
+function totals(){
+  const r=S.result; if(!r) return {w:0,sec:0,flags:0,ph:0};
+  let w=0, flags=0, ph=0;
+  r.segments.forEach(s=>{ w+=words(s.voiceover); flags+=scan(s.voiceover).length; ph+=(s.voiceover.match(/\[STAT[^\]]*\]/g)||[]).length + s.stats.filter(x=>/\[STAT/.test(x)).length; });
+  r.titles.forEach(t=>flags+=scan(t).length);
+  return {w, sec:w/wpm()*60, flags, ph};
+}
+function renderSummary(){
+  const r=S.result, el=$("summary");
+  if(!r){ el.innerHTML=`<div><h2>No script yet</h2><p class="empty">Write a paragraph in the brief and press Write the script.</p></div>`; return; }
+  const T=totals(), target=+S.length*60, ratio=T.sec/target;
+  const timeCls = ratio<0.85||ratio>1.15 ? "warn" : "good";
+  const max=Math.max(target,T.sec)*1.1;
+  el.innerHTML = `<div style="min-width:0">${`<span class="tag">${esc(tplById(S.template).name)}</span>`}<h2>${esc(r.working_title)}</h2></div>
+  <div class="meters">
+    <div class="meter ${timeCls}"><b>${mmss(T.sec)}</b><span>Est. runtime</span></div>
+    <div class="meter"><b>${mmss(target)}</b><span>Target</span></div>
+    <div class="meter"><b>${T.w.toLocaleString("en-GB")}</b><span>Words</span></div>
+    <div class="meter ${T.flags?"warn":"good"}"><b>${T.flags}</b><span>Wording flags</span></div>
+    <div class="meter"><b>${T.ph}</b><span>Stats to find</span></div>
+  </div>
+  <div class="runbar" aria-hidden="true"><i style="width:${Math.min(100,T.sec/max*100)}%"></i><em style="left:${target/max*100}%"></em></div>`;
+}
+function renderBoardTimes(){
+  document.querySelectorAll("[data-est]").forEach(n=>{ const i=+n.dataset.est; const s=S.result&&S.result.segments[i]; if(s) n.textContent=`≈ ${mmss(words(s.voiceover)/wpm()*60)} spoken · ${words(s.voiceover)} words`; });
+}
+function segHTML(s,i){
+  const hits=scan(s.voiceover);
+  const planned = (parseT(s.start)!=null && parseT(s.end)!=null) ? `${s.start}–${s.end}` : "";
+  return `<article class="seg${hits.length?" flagged":""}" data-i="${i}">
+    <div class="frame">${layoutSVG(s.layout)}<small>${esc(LAYOUTS[s.layout].name)}</small>
+      <select class="lay" aria-label="Layout for ${esc(s.label)}">${LAYOUT_IDS.map(id=>`<option value="${id}"${id===s.layout?" selected":""}>${esc(LAYOUTS[id].name)}</option>`).join("")}</select>
+    </div>
+    <div style="min-width:0">
+      <div class="seg-head"><h3>${i+1}. ${esc(s.label)}</h3><span class="time">${esc(planned)}</span><span class="time" data-est="${i}"></span></div>
+      <textarea class="vo" id="vo-${i}" aria-label="Voiceover for ${esc(s.label)}">${esc(s.voiceover)}</textarea>
+      ${s.on_screen.length?`<div class="cues">${s.on_screen.map(c=>`<div class="cue">${esc(c)}</div>`).join("")}</div>`:""}
+      ${s.stats.length?`<div class="chips">${s.stats.map(x=>`<span class="chip${/\[STAT/.test(x)?" ph":""}">${esc(x)}</span>`).join("")}</div>`:""}
+      <div class="flags">${hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join("")}</div>
+      <div class="seg-actions"><input type="text" class="instr" id="instr-${i}" placeholder="Optional: how to change this section"><button class="btn sm rw" type="button">Rewrite section</button><button class="btn sm cp" type="button">Copy</button></div>
+    </div>
+  </article>`;
+}
+function renderBoard(){
+  const p=$("p-board"), r=S.result;
+  if(!r){ p.innerHTML=`<p class="empty">Your storyboard appears here.</p>`; return; }
+  const sc = r.self_check.length ? `<div class="card"><h3>Lines Claude wasn't sure about</h3>${r.self_check.map(x=>`<p><b>${esc(x.line)}</b><br><span class="spec">${esc(x.issue)}</span><br>Safer: ${esc(x.rewrite)}</p>`).join("")}</div>` : "";
+  p.innerHTML = sc + r.segments.map(segHTML).join("");
+  renderBoardTimes();
+  p.querySelectorAll(".seg").forEach(card=>{
+    const i=+card.dataset.i, ta=card.querySelector(".vo");
+    const fit=()=>{ ta.style.height="auto"; ta.style.height=ta.scrollHeight+"px"; }; fit();
+    ta.addEventListener("input",()=>{ S.result.segments[i].voiceover=ta.value; S.example=false; save(); fit(); renderBoardTimes(); renderSummary();
+      const hits=scan(ta.value); card.classList.toggle("flagged",hits.length>0); card.querySelector(".flags").innerHTML=hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join(""); });
+    card.querySelector(".lay").addEventListener("change",e=>{ S.result.segments[i].layout=e.target.value; save(); const f=card.querySelector(".frame"); f.querySelector("svg").outerHTML=layoutSVG(e.target.value); f.querySelector("small").textContent=LAYOUTS[e.target.value].name; });
+    card.querySelector(".rw").addEventListener("click",e=>rewriteSeg(i, card.querySelector(".instr").value, e.currentTarget));
+    card.querySelector(".cp").addEventListener("click",()=>copy(S.result.segments[i].voiceover));
+    if(!apiKey) card.querySelector(".rw").hidden=true, card.querySelector(".instr").hidden=true;
+  });
+}
+function plainScript(withCues){
+  const r=S.result; if(!r) return "";
+  return `${r.working_title}\n\n` + r.segments.map((s,i)=>{
+    let t = `${i+1}. ${s.label.toUpperCase()}${s.start?`  [${s.start}–${s.end}]`:""}`;
+    if(withCues) t += `\nLAYOUT: ${LAYOUTS[s.layout].name}` + (s.on_screen.length?`\nON SCREEN: ${s.on_screen.join(" | ")}`:"") + (s.stats.length?`\nSTATS: ${s.stats.join(" | ")}`:"");
+    return t + `\n\n${s.voiceover}`;
+  }).join("\n\n— — —\n\n");
+}
+function renderRead(){
+  const p=$("p-read"), r=S.result;
+  if(!r){ p.innerHTML=`<p class="empty">The full read-through appears here.</p>`; return; }
+  p.innerHTML = `<div class="actions"><button class="btn sm" type="button" id="cpVO">Copy voiceover only</button><button class="btn sm" type="button" id="cpFull">Copy script with layout cues</button><button class="btn sm" type="button" id="dlTxt">Save as .txt</button><button class="btn sm" type="button" id="dlMd">Save as .md</button></div>
+  <div class="read"><pre>${esc(r.segments.map(s=>s.voiceover).join("\n\n"))}</pre></div>`;
+  $("cpVO").onclick=()=>copy(r.segments.map(s=>s.voiceover).join("\n\n"));
+  $("cpFull").onclick=()=>copy(plainScript(true));
+  const fn = (r.working_title||"script").replace(/[^\w\s-]/g,"").trim().replace(/\s+/g,"-").slice(0,60)||"script";
+  $("dlTxt").onclick=()=>downloadFile(fn+".txt",plainScript(true)+publishText());
+  $("dlMd").onclick=()=>downloadFile(fn+".md",markdown());
+}
+function publishText(){
+  const r=S.result;
+  return `\n\n=====\nTITLES\n${r.titles.map((t,i)=>`${i+1}. ${t}`).join("\n")}\n\nTHUMBNAIL: ${r.thumbnail.text} — ${r.thumbnail.concept}\n\nDESCRIPTION\n${r.description}\n\nPINNED COMMENT\n${r.pinned_comment}\n\nSHORTS\n${r.shorts.map((s,i)=>`${i+1}. ${s.title}\n${s.hook}\n${s.body}\n${s.close}`).join("\n\n")}\n\nSTATS TO FIND\n${r.missing_facts.map(m=>"- "+m).join("\n")}`;
+}
+function markdown(){
+  const r=S.result;
+  return `# ${r.working_title}\n\n` + r.segments.map((s,i)=>`## ${i+1}. ${s.label} ${s.start?`(${s.start}–${s.end})`:""}\n\n**Layout:** ${LAYOUTS[s.layout].name}  \n${s.on_screen.length?`**On screen:** ${s.on_screen.join("; ")}  \n`:""}${s.stats.length?`**Stats:** ${s.stats.join("; ")}\n`:""}\n${s.voiceover}`).join("\n\n") + `\n\n## Titles\n\n${r.titles.map((t,i)=>`${i+1}. ${t}`).join("\n")}\n\n## Thumbnail\n\n**${r.thumbnail.text}**: ${r.thumbnail.concept}\n\n## Description\n\n${r.description}\n\n## Pinned comment\n\n${r.pinned_comment}\n\n## Shorts\n\n${r.shorts.map(s=>`### ${s.title}\n\n${s.hook}\n\n${s.body}\n\n${s.close}`).join("\n\n")}\n\n## Stats to find\n\n${r.missing_facts.map(m=>"- "+m).join("\n")}\n`;
+}
+function renderShorts(){
+  const p=$("p-shorts"), r=S.result;
+  if(!r||!r.shorts.length){ p.innerHTML=`<p class="empty">Shorts cut from the script appear here.</p>`; return; }
+  p.innerHTML = `<div class="cards">${r.shorts.map((s,i)=>{ const txt=`${s.hook}\n\n${s.body}\n\n${s.close}`; const w=words(txt); const hits=scan(txt);
+    return `<div class="card"><div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start"><div>${layoutSVG("vertical",s.hook.split(" ").slice(0,4).join(" "))}</div><div style="min-width:0"><h3>${esc(s.title)}</h3><span class="time">${w} words · ≈ ${mmss(w/wpm()*60)}</span></div></div>
+    <p><span class="k">Hook</span><br>${esc(s.hook)}</p><p><span class="k">Body</span><br>${esc(s.body)}</p><p><span class="k">Close</span><br>${esc(s.close)}</p>
+    ${hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join("")}
+    <div><button class="btn sm" type="button" data-cs="${i}">Copy Short</button></div></div>`; }).join("")}</div>`;
+  p.querySelectorAll("[data-cs]").forEach(b=>b.onclick=()=>{ const s=r.shorts[+b.dataset.cs]; copy(`${s.title}\n\n${s.hook}\n\n${s.body}\n\n${s.close}`); });
+}
+function renderPack(){
+  const p=$("p-pack"), r=S.result;
+  if(!r){ p.innerHTML=`<p class="empty">Titles, thumbnail, description and pinned comment appear here.</p>`; return; }
+  p.innerHTML = `<div class="cards">
+    <div class="card thumb"><div class="copyrow"><h3>Thumbnail</h3><span class="k">${esc(LAYOUTS[r.thumbnail.layout].name)}</span></div>${thumbSVG(r.thumbnail.text)}<p><b>${esc(r.thumbnail.text)}</b> · ${esc(r.thumbnail.concept)}</p></div>
+    <div class="card"><div class="copyrow"><h3>Titles</h3><button class="btn sm" type="button" id="cpT">Copy</button></div><ol class="titles">${r.titles.map(t=>{ const h=scan(t); return `<li>${esc(t)}${h.length?` <span class="flag" style="display:inline-block;padding:0 6px">${esc(h[0].word)}</span>`:""} <span class="time">${t.length} chars</span></li>`; }).join("")}</ol></div>
+    <div class="card"><div class="copyrow"><h3>Description</h3><button class="btn sm" type="button" id="cpD">Copy</button></div><p style="white-space:pre-wrap">${esc(r.description)}</p></div>
+    <div class="card"><div class="copyrow"><h3>Pinned comment</h3><button class="btn sm" type="button" id="cpP">Copy</button></div><p>${esc(r.pinned_comment)}</p></div>
+    <div class="card"><h3>Stats to find before recording</h3>${r.missing_facts.length?`<ul style="margin:0;padding-left:1.2em">${r.missing_facts.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`:`<p class="empty">Nothing missing.</p>`}<p class="spec">Understat for xG and PPDA; FotMob or Sofascore for match stats; club site for confirmed news.</p></div>
+  </div>`;
+  $("cpT").onclick=()=>copy(r.titles.join("\n")); $("cpD").onclick=()=>copy(r.description); $("cpP").onclick=()=>copy(r.pinned_comment);
+}
+function renderLayouts(){
+  $("p-layouts").innerHTML = `<p class="spec">Build each of these once as a template in Canva or DaVinci Resolve (1920×1080, 9:16 for Shorts), then reuse it. Every script section names one.</p><div class="lib">${LAYOUT_IDS.map(id=>`<div class="card">${id==="vertical"?`<div style="max-width:120px">${layoutSVG(id)}</div>`:layoutSVG(id)}<h3>${esc(LAYOUTS[id].name)}</h3><p><span class="k">Use for</span><br>${esc(LAYOUTS[id].use)}</p><p class="spec">${esc(LAYOUTS[id].spec)}</p><p class="spec"><code>${id}</code></p></div>`).join("")}</div>`;
+}
+function renderTabs(){
+  document.querySelectorAll("#tabs button").forEach(b=>{ const on=b.dataset.tab===tab; b.setAttribute("aria-selected",on); $("p-"+b.dataset.tab).hidden=!on; });
+}
+function renderAll(){ renderSummary(); renderBoard(); renderRead(); renderShorts(); renderPack(); renderLayouts(); renderTabs(); }
+const COMP_ORDER = ["Premier League","Champions League","La Liga","Serie A","Bundesliga","Ligue 1","MLS","World Cup"];
+function score(r){ return `${r.home} ${r.home_score}–${r.away_score} ${r.away}`; }
+function mins(list){ const c={}; (list||[]).forEach(m=>c[m]=(c[m]||0)+1); return Object.keys(c).map(Number).sort((x,y)=>x-y).map(m=>c[m]>1?`${m}' ×${c[m]}`:`${m}'`).join(", "); }
+function dayLabel(d){ try{ return new Date(d+"T12:00:00Z").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short",year:"numeric",timeZone:"UTC"}); }catch(e){ return d; } }
+function koTime(k){ const m=String(k||"").match(/(\d{1,2}:\d{2}\s?[ap]m)/i); return m?m[1]:""; }
+function koMin(k){ const m=String(k||"").match(/(\d{1,2}):(\d{2})\s?([ap]m)/i); if(!m) return 9999; return (+m[1]%12 + (m[3].toLowerCase()==="pm"?12:0))*60 + (+m[2]); }
+function teamForm(team, before){
+  return RESULTS.filter(x=>x.date<before && (x.home===team||x.away===team)).slice(0,5).map(x=>{
+    const h=x.home===team, f=h?x.home_score:x.away_score, a=h?x.away_score:x.home_score;
+    return `${f>a?"W":f<a?"L":"D"} ${f}–${a} v ${h?x.away:x.home} (${h?"H":"A"}, ${x.competition||""})`;
+  });
+}
+function goalTxt(g){ return `${g.min}' ${g.team}${g.scorer?` – ${g.scorer}${g.penalty?" (pen)":""}${g.own_goal?" (own goal)":""}`:""}${g.assist?`, assist ${g.assist}`:""}`; }
+function needsDetails(r){ return !!r.stats_pending || (r.goals||[]).some(g=>!g.scorer); }
+function factsFor(r){
+  const goals=(r.goals||[]).slice().sort((a,b)=>a.min-b.min);
+  const lines = [`${score(r)} · ${r.competition||""} · ${r.kickoff||r.date} (home team: ${r.home})`];
+  lines.push(r.stats_pending ? "Goals: goal minutes and match stats aren't loaded for this one yet." : `Goals: ${goals.map(goalTxt).join("; ")||"none"}`);
+  if((r.red_cards||[]).length) lines.push(`Sendings-off: ${r.red_cards.map(c=>`${c.min}' ${c.team}${c.player?` – ${c.player}`:""}`).join("; ")}`);
+  if((r.stats||[]).length) lines.push(`Stats (${r.home} / ${r.away}): `+r.stats.map(st=>{ const pc=/%/.test(st.label)?"%":""; return `${st.label.replace(" (%)","")} ${st.home}${pc} / ${st.away}${pc}`; }).join(" · "));
+  if((r.subs||[]).some(x=>(x.mins||[]).length)) lines.push("Substitution minutes: "+r.subs.map(x=>`${x.team} ${mins(x.mins)||"none"}`).join(" · "));
+  (r.players||[]).forEach(p=>{ if((p.names||[]).length) lines.push(`Players listed for ${p.team}: ${p.names.join(", ")}`); });
+  [r.home,r.away].forEach(t=>{ const f=teamForm(t,r.date); if(f.length) lines.push(`${t}'s previous saved results, most recent first: ${f.join(", ")}`); });
+  const miss=[]; if(r.stats_pending) miss.push("goal minutes","stats","players"); else if(goals.some(g=>!g.scorer)) miss.push("scorer names","assists"); else if(goals.some(g=>!g.assist)) miss.push("assists for goals without one listed (they may have been unassisted)");
+  if(!(r.subs||[]).some(x=>(x.mins||[]).length)) miss.push("substitutions"); else miss.push("who came on or off");
+  miss.push("xG","PPDA");
+  lines.push(`Not in the data: ${miss.join(", ")}.`);
+  lines.push(`Source: ${r.source||"live sports data feed"}${r.details_source?`; scorers and assists: ${r.details_source}`:""}`);
+  return lines.join("\n");
+}
+function compList(){ return [...new Set(RESULTS.map(r=>r.competition).filter(Boolean))].sort((a,b)=>{ const ia=COMP_ORDER.indexOf(a), ib=COMP_ORDER.indexOf(b); return ((ia<0?99:ia)-(ib<0?99:ib)) || a.localeCompare(b); }); }
+
+/* ---------- Fixture picker (results.json, refreshed every 3 hours by GitHub) ---------- */
+let RESULTS = [];
+const PICK = {comp:"", date:"", id:""};
+function renderPicker(){
+  const cs=$("resComp"), ds=$("resDate"), fl=$("fixList"), note=$("resNote"), q=($("teamQ").value||"").trim().toLowerCase();
+  if(!RESULTS.length){ cs.innerHTML=""; ds.innerHTML=""; fl.innerHTML=""; $("sheet").hidden=true; return; }
+  const cl=compList(); if(!cl.includes(PICK.comp)) PICK.comp = cl.includes("Premier League")?"Premier League":cl[0];
+  cs.innerHTML=cl.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join(""); cs.value=PICK.comp;
+  const inComp=RESULTS.filter(r=>r.competition===PICK.comp);
+  const dates=[...new Set(inComp.map(r=>r.date))].sort().reverse();
+  if(!dates.includes(PICK.date)) PICK.date=dates[0];
+  ds.innerHTML=dates.map(d=>{ const n=inComp.filter(r=>r.date===d).length; return `<option value="${esc(d)}">${esc(dayLabel(d).replace(/,? \d{4}$/,"").replace(",",""))} · ${n} ${n===1?"match":"matches"}</option>`; }).join(""); ds.value=PICK.date;
+  cs.disabled=ds.disabled=!!q;
+  let fx;
+  if(q) fx=RESULTS.filter(r=>(r.home+" "+r.away).toLowerCase().includes(q)).sort((a,b)=>b.date.localeCompare(a.date)||koMin(b.kickoff)-koMin(a.kickoff)).slice(0,60);
+  else fx=inComp.filter(r=>r.date===PICK.date).sort((a,b)=>(koMin(a.kickoff)-koMin(b.kickoff))||a.home.localeCompare(b.home));
+  if(!fx.some(r=>r._id===PICK.id)) PICK.id = fx.length?fx[0]._id:"";
+  fl.innerHTML = fx.length ? fx.map(r=>{
+    const flag = r.stats_pending?" · score only":needsDetails(r)?" · no scorers yet":"";
+    const sub = q ? `${dayLabel(r.date).replace(/,? \d{4}$/,"")} · ${r.competition||""}${flag}` : `${koTime(r.kickoff)||""}${flag}`;
+    return `<button type="button" class="fix" role="option" aria-selected="${r._id===PICK.id}" data-id="${esc(r._id)}"><span class="fx-t">${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span class="fx-t r">${esc(r.away)}</span><small>${esc(sub)}</small></button>`;
+  }).join("") : `<p class="hint">No matches found.</p>`;
+  fl.querySelectorAll(".fix").forEach(b=>b.addEventListener("click",()=>{ PICK.id=b.dataset.id; fl.querySelectorAll(".fix").forEach(x=>x.setAttribute("aria-selected",x===b)); renderSheet(); }));
+  note.textContent = q ? `Showing matches for “${$("teamQ").value.trim()}” across every date.` : `${RESULTS.length} results across ${cl.length} competitions.`;
+  renderSheet();
+}
+function renderSheet(){
+  const el=$("sheet"), r=RESULTS.find(x=>x._id===PICK.id);
+  if(!r){ el.hidden=true; return; } el.hidden=false;
+  const goals=(r.goals||[]).slice().sort((a,b)=>a.min-b.min);
+  let gh;
+  if(r.stats_pending) gh=`<p class="hint">Goal minutes, stats and players arrive in the next update.</p>`;
+  else if(!goals.length) gh=`<p class="hint">No goals.</p>`;
+  else gh=`<ul class="events">${goals.map(g=>`<li><span class="min">${esc(g.min)}'</span><span>${g.scorer?`<b>${esc(g.scorer)}</b>${g.penalty?" (pen)":""}${g.own_goal?" (own goal)":""} <span class="hint">${esc(g.team)}${g.assist?` · assist ${esc(g.assist)}`:""}</span>`:`<b>${esc(g.team)}</b> <span class="hint">scorer not in the data</span>`}</span></li>`).join("")}</ul>`;
+  const reds=(r.red_cards||[]).length?`<span class="k">Sent off</span><ul class="events">${r.red_cards.map(c=>`<li><span class="min">${esc(c.min)}'</span><span>${c.player?`<b>${esc(c.player)}</b> <span class="hint">${esc(c.team)}</span>`:`<b>${esc(c.team)}</b>`}</span></li>`).join("")}</ul>`:"";
+  const stats=(r.stats||[]).length?`<table class="mini"><tbody>${r.stats.map(st=>`<tr><td>${esc(st.home)}</td><td>${esc(st.label.replace(" (%)"," %"))}</td><td>${esc(st.away)}</td></tr>`).join("")}</tbody></table>`:"";
+  const pl=(r.players||[]).filter(p=>(p.names||[]).length);
+  const squads=pl.length?`<details class="squads"><summary>Players listed</summary><div class="cols">${pl.map(p=>`<div><span class="k">${esc(p.team)}</span><ol>${p.names.map(n=>`<li>${esc(n)}</li>`).join("")}</ol></div>`).join("")}</div></details>`:"";
+  el.innerHTML = `<div class="sheet-head"><span>${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span>${esc(r.away)}</span></div>
+    <p class="hint">${esc(r.competition||"")} · ${esc(r.kickoff||dayLabel(r.date))}</p>
+    <span class="k">Goals</span>${gh}${reds}${stats}${squads}
+    <button class="btn primary" type="button" id="useMatch">Use this match</button>`;
+  $("useMatch").onclick=()=>useResult(r._id);
+}
+async function loadResults(){
   try{
     const res=await fetch("data/results.json?ts="+Date.now(),{cache:"no-store"});
-    const data=await res.json();
-    ALL=data.results||[];
-    const u=data.updated_at?new Date(data.updated_at):null;
-    $("upd").textContent=(u?"Last new result: "+u.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"}):"")+" · "+ALL.length+" matches";
-  }catch(e){$("upd").textContent="Could not load results.";$("list").innerHTML='<p class="empty">The results file could not be loaded.</p>';return}
-  const comps=[...new Set(ALL.map(r=>r.competition))].sort();
-  $("comp").innerHTML='<option value="">All competitions</option>'+comps.map(c=>`<option>${esc(c)}</option>`).join("");
-  $("comp").value=pref("tr-comp")||""; $("range").value=pref("tr-range")||"7";
-  ["comp","range"].forEach(id=>$(id).addEventListener("change",()=>{pref("tr-"+id,$(id).value);renderList()}));
-  $("q").addEventListener("input",renderList);
-  renderList();
-}
-
-function filtered(){
-  const c=$("comp").value, q=$("q").value.trim().toLowerCase(), rg=$("range").value;
-  const latest=ALL.reduce((m,r)=>r.date>m?r.date:m,"");
-  let cutoff="";
-  if(rg!=="all"&&latest){const d=new Date(latest+"T12:00:00");d.setDate(d.getDate()-(+rg));cutoff=d.toISOString().slice(0,10)}
-  return ALL.filter(r=>(!c||r.competition===c)&&(!q||(r.home+" "+r.away).toLowerCase().includes(q))&&(!cutoff||r.date>cutoff));
-}
-
-function renderList(){
-  const rows=filtered();
-  if(!rows.length){$("list").innerHTML='<p class="empty">No matches for these filters.</p>';return}
-  let html="",day="";
-  for(const r of rows){
-    if(r.date!==day){day=r.date;html+=`<div class="day">${esc(fmtDay(day))}</div>`}
-    html+=`<button class="fix" role="option" aria-selected="${sel===idOf(r)}" data-id="${esc(idOf(r))}"><span>${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span class="r">${esc(r.away)}</span>${$("comp").value?"":`<small>${esc(r.competition)}</small>`}</button>`;
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const d=await res.json();
+    RESULTS=(d.results||[]).map(r=>Object.assign({_id:r.date+"|"+r.home+"|"+r.away},r)).filter(r=>r.date&&r.home&&r.away);
+    const u=d.updated_at?new Date(d.updated_at):null;
+    $("upd").textContent=`${RESULTS.length} matches`+(u&&!isNaN(u)?` · newest result saved ${u.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"})}`:"");
+    renderPicker();
+  }catch(e){
+    $("upd").textContent="Results didn't load";
+    $("resNote").textContent="Results couldn't load. Open the website address instead of the file on your computer.";
+    $("resNote").classList.add("err");
   }
-  $("list").innerHTML=html;
-  $("list").querySelectorAll(".fix").forEach(b=>b.addEventListener("click",()=>{sel=b.dataset.id;renderList();renderSheet(ALL.find(r=>idOf(r)===sel))}));
+}
+function initPicker(){
+  $("resComp").addEventListener("change",()=>{ PICK.comp=$("resComp").value; PICK.date=""; PICK.id=""; renderPicker(); });
+  $("resDate").addEventListener("change",()=>{ PICK.date=$("resDate").value; PICK.id=""; renderPicker(); });
+  $("teamQ").addEventListener("input",()=>{ PICK.id=""; renderPicker(); });
+  $("teamQ").addEventListener("keydown",e=>{ if(e.key==="Enter") e.preventDefault(); });
 }
 
-function goalLine(g){
-  let s=g.scorer?esc(g.scorer):"Scorer not recorded";
-  const tags=[g.penalty?"pen":"",g.own_goal?"og":""].filter(Boolean);
-  if(tags.length)s+=` (${tags.join(", ")})`;
-  if(g.assist)s+=` <small>· assist ${esc(g.assist)}</small>`;
-  return s;
+function useResult(id){
+  const r=RESULTS.find(x=>x._id===id); if(!r) return;
+  S.facts=factsFor(r); $("facts").value=S.facts;
+  const lfc = r.home==="Liverpool"||r.away==="Liverpool";
+  if(!["lfc-review","result","pl-review","five","tactical"].includes(S.template) || (S.template==="lfc-review"&&!lfc)){ S.template="result"; $("tpl").value="result"; S.length=tplById("result").len; $("len").value=String(S.length); }
+  save(); toast("Match added to Facts");
+  if(window.matchMedia("(max-width:900px)").matches) $("brief").scrollIntoView({behavior:"smooth",block:"center"});
 }
 
-function renderSheet(r){
-  if(!r)return;
-  const ev=[...(r.goals||[]).map(g=>({min:g.min,team:g.team,html:goalLine(g),k:"g"})),...(r.red_cards||[]).map(c=>({min:c.min,team:c.team,html:"Red card"+(c.player?": "+esc(c.player):""),k:"rc"}))].sort((a,b)=>(a.min||0)-(b.min||0));
-  const stats=(r.stats||[]).map(s=>{const t=(+s.home)+(+s.away)||1;return `<tr><td>${s.home}</td><td class="lb">${esc(s.label)}<div class="bar"><i style="width:${s.home/t*100}%"></i><i style="width:${s.away/t*100}%"></i></div></td><td>${s.away}</td></tr>`}).join("");
-  const pl=r.players||[];
-  $("sheet").innerHTML=`
-    <section class="score">
-      <h2>${esc(r.home)}</h2><div class="n">${r.home_score} – ${r.away_score}</div><h2 class="r">${esc(r.away)}</h2>
-      <div class="meta">${esc(r.competition)} · ${esc(r.kickoff||fmtDay(r.date))}</div>
-    </section>
-    <section class="panel"><h3>Goals and red cards</h3>
-      ${ev.length?`<ul class="events">${ev.map(e=>`<li><span class="min">${e.min!=null?e.min+"'":""}</span><span class="mk ${e.k==="rc"?"rc":""}"></span><span class="who">${e.html} <small>· ${esc(e.team)}</small></span></li>`).join("")}</ul>`:'<p class="empty">No goals or red cards.</p>'}
-    </section>
-    <section class="panel"><h3>Team stats</h3>
-      ${stats?`<table class="stats"><tbody>${stats}</tbody></table>`:`<p class="empty">${r.stats_pending?'<span class="tag">Waiting</span> Stats not published yet. The next update will try again.':"No team stats for this match."}</p>`}
-    </section>
-    ${pl.length?`<section class="panel"><h3>Players used</h3><div class="cols">${pl.map(t=>`<div><b>${esc(t.team)}</b><ol>${t.names.map(n=>`<li>${esc(n)}</li>`).join("")}</ol></div>`).join("")}</div></section>`:""}
-    <section class="panel"><h3>Facts for your script</h3>
-      <pre class="facts" id="facts">${esc(factsText(r))}</pre>
-      <div class="row" style="margin-top:10px"><button class="btn" id="copy">Copy facts</button></div>
-      <p class="src">Source: ${esc(r.source||"")}${r.details_source?" · Scorers checked against "+esc(r.details_source):""}</p>
-    </section>`;
-  $("copy").addEventListener("click",()=>copy(factsText(r)));
-  if(innerWidth<860)$("sheet").scrollIntoView({behavior:"smooth"});
-}
+document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.tab; if(tab==="read") renderRead(); if(tab==="shorts") renderShorts(); if(tab==="pack") renderPack(); renderTabs(); }));
+initForm(); initPicker(); renderAll(); loadResults();
+})();
 
-function factsText(r){
-  const L=[`${r.home} ${r.home_score}-${r.away_score} ${r.away} (${r.competition}, ${r.kickoff||r.date})`];
-  const g=(r.goals||[]).slice().sort((a,b)=>a.min-b.min);
-  if(g.length)L.push("Goals: "+g.map(x=>`${x.min}' ${x.scorer||"[scorer]"}${x.penalty?" (pen)":""}${x.own_goal?" (og)":""} (${x.team})${x.assist?", assist "+x.assist:""}`).join("; "));
-  if((r.red_cards||[]).length)L.push("Red cards: "+r.red_cards.map(c=>`${c.min}' ${c.player||"[player]"} (${c.team})`).join("; "));
-  const subs=(r.subs||[]).filter(s=>s.mins&&s.mins.length);
-  if(subs.length)L.push("Substitution minutes: "+subs.map(s=>`${s.team} ${s.mins.join(", ")}`).join("; "));
-  if((r.stats||[]).length)L.push(`Stats (${r.home} v ${r.away}): `+r.stats.map(s=>`${s.label} ${s.home}-${s.away}`).join("; "));
-  return L.join("\n");
-}
-
-async function copy(t){
-  try{await navigator.clipboard.writeText(t);toast("Copied")}
-  catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Copied")}catch(_){toast("Select the text and copy it")}a.remove()}
-}
-function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2000)}
-load();
 </script>
 </body>
 </html>
