@@ -509,6 +509,46 @@ function gfx(id){
   }catch(e){}
   return "";
 }
+
+/* ---------- Video pack: one picture per section, for Match Studio ---------- */
+function wrapLines(t,max){ const w=String(t||"").split(/\s+/).filter(Boolean), out=[]; let cur=""; w.forEach(x=>{ if((cur+" "+x).trim().length>max && cur){ out.push(cur); cur=x; } else cur=(cur+" "+x).trim(); }); if(cur) out.push(cur); return out; }
+function gfxCard(r, seg, i, n){
+  const lay=seg.layout, lines=(seg.on_screen||[]).slice(0,4).flatMap(x=>wrapLines(x,46).slice(0,2)).slice(0,6);
+  const stats=(seg.stats||[]).filter(x=>!/\[STAT/.test(x)).slice(0,4);
+  let o="";
+  if(lay==="numeral"){
+    o+=`<text x="140" y="760" ${GH} font-weight="700" font-size="560" fill="${G.amber}">${i+1}</text>`;
+    wrapLines(seg.label,16).slice(0,3).forEach((l,k)=>{ o+=`<text x="720" y="${520+k*110}" ${GH} font-weight="700" font-size="104" fill="${G.chalk}">${esc(l)}</text>`; });
+  }else if(lay==="title-card"||lay==="end-screen"){
+    wrapLines(seg.label.toUpperCase(),20).slice(0,3).forEach((l,k,a)=>{ o+=`<text x="960" y="${560-(a.length-1)*60+k*130}" text-anchor="middle" ${GH} font-weight="700" font-size="150" fill="${G.chalk}">${esc(l)}</text>`; });
+    o+=`<rect x="860" y="${700}" width="200" height="8" fill="${G.red}"/>`;
+  }else{
+    o+=`<text x="96" y="400" ${GH} font-weight="700" font-size="120" fill="${G.chalk}">${esc(seg.label)}</text><rect x="96" y="430" width="200" height="8" fill="${G.red}"/>`;
+    lines.forEach((l,k)=>{ o+=`<text x="96" y="${520+k*66}" ${GB} font-size="46" fill="${G.dim}">${esc(l)}</text>`; });
+    if(stats.length){ o+=`<text x="96" y="930" ${GB} font-size="40" fill="${G.amber}">${esc(stats.join("   ·   ").slice(0,90))}</text>`; }
+  }
+  o+=`<text x="1824" y="1032" text-anchor="end" ${GM} font-size="28" fill="${G.dim}">${i+1} / ${n}</text>`;
+  return gfxWrap(r,o,`${seg.label}: ${r.home} v ${r.away}`);
+}
+function segSVG(seg,i,n){
+  const r=curResult(); if(!r) return "";
+  let svg=""; try{ svg=gfx(seg.layout); }catch(e){}
+  return svg||gfxCard(r,seg,i,n);
+}
+function svgToPNG(svg){
+  return new Promise((res,rej)=>{
+    const url=URL.createObjectURL(new Blob([svg],{type:"image/svg+xml;charset=utf-8"})), img=new Image();
+    img.onload=()=>{ try{ const c=document.createElement("canvas"); c.width=1920; c.height=1080; c.getContext("2d").drawImage(img,0,0,1920,1080); URL.revokeObjectURL(url); res(c.toDataURL("image/png")); }catch(e){ rej(e); } };
+    img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error("A graphic couldn't be drawn")); };
+    img.src=url;
+  });
+}
+async function buildPack(){
+  const r=curResult(), res=S.result; if(!r||!res) throw new Error("Pick a match and write the script first.");
+  const n=res.segments.length, segs=[];
+  for(let i=0;i<n;i++){ const s=res.segments[i]; segs.push({label:s.label,voiceover:s.voiceover,layout:s.layout,image:await svgToPNG(segSVG(s,i,n))}); }
+  return {version:1,key:[r.competition,r.date,r.home,r.away].join("|"),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||""};
+}
 function gfxFile(layout){ const r=curResult(); return `${r?r.date+"-"+(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-"):"graphic"}-${layout}.svg`; }
 
 /* ---------- Prompt ---------- */
@@ -689,7 +729,9 @@ function renderBoard(){
   const p=$("p-board"), r=S.result;
   if(!r){ p.innerHTML=`<p class="empty">Your storyboard appears here.</p>`; return; }
   const sc = r.self_check.length ? `<div class="card"><h3>Lines Claude wasn't sure about</h3>${r.self_check.map(x=>`<p><b>${esc(x.line)}</b><br><span class="spec">${esc(x.issue)}</span><br>Safer: ${esc(x.rewrite)}</p>`).join("")}</div>` : "";
-  p.innerHTML = sc + r.segments.map(segHTML).join("");
+  const vp = curResult() && !curResult().stats_pending ? `<div class="card"><h3>Make the video</h3><p class="spec" style="margin:4px 0 10px">Every section gets a picture drawn from this match's data. Download the pack, record your voice, and open it in Match Studio on your PC.</p><button class="btn sm" type="button" id="sendPack">Send to Match Studio (download video pack)</button> <span class="spec" id="packMsg"></span></div>` : "";
+  p.innerHTML = vp + sc + r.segments.map(segHTML).join("");
+  const sp=$("sendPack"); if(sp) sp.addEventListener("click",async()=>{ const m=$("packMsg"); sp.disabled=true; m.textContent="Drawing the pictures…"; try{ const pk=await buildPack(); const cr=curResult(); downloadFile(`${cr.date}-${(cr.home+"-v-"+cr.away).toLowerCase().replace(/[^a-z0-9]+/g,"-")}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent=`Downloaded: ${pk.segments.length} pictures. Open it in Match Studio.`; }catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } sp.disabled=false; });
   renderBoardTimes();
   p.querySelectorAll(".seg").forEach(card=>{
     const i=+card.dataset.i, ta=card.querySelector(".vo");
