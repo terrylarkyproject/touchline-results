@@ -142,6 +142,13 @@ textarea:focus,select:focus,input:focus,button:focus-visible{outline:2px solid v
 
 .read{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:18px 22px}
 .read pre{white-space:pre-wrap;font-family:var(--f-body);font-size:1rem;line-height:1.65;margin:0;max-width:72ch}
+.rt{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px dashed var(--rule)}
+.rt:first-child{border-top:0;padding-top:0}
+.rt-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.rt-head b{font-family:var(--f-display);font-size:1.15rem;font-weight:600}
+.rt-n{font-family:var(--f-display);font-weight:700;font-size:1.3rem;color:var(--red);min-width:1.2em}
+.rt-head .btn{margin-left:auto}
+.rt p{margin:0;font-size:1.08rem;line-height:1.7;max-width:68ch}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .card{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .card h3{font-size:1.15rem}
@@ -561,9 +568,11 @@ function svgToPNG(svg){
 async function buildPack(){
   const r=curResult(), res=S.result; if(!r||!res) throw new Error("Pick a match and write the script first.");
   const n=res.segments.length, segs=[];
-  for(let i=0;i<n;i++){ const s=res.segments[i]; segs.push({label:s.label,voiceover:s.voiceover,layout:s.layout,image:await svgToPNG(segSVG(s,i,n))}); }
-  return {version:1,key:[r.competition,r.date,r.home,r.away].join("|"),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||""};
+  for(let i=0;i<n;i++){ const s=res.segments[i]; segs.push({label:s.label,voiceover:s.voiceover,layout:s.layout,take:takeName(i),image:await svgToPNG(segSVG(s,i,n))}); }
+  return {version:2,key:[r.competition,r.date,r.home,r.away].join("|"),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||""};
 }
+/* Each section is recorded as its own file; Match Studio matches files by the number at the start. */
+function takeName(i){ const s=S.result&&S.result.segments[i]; const slug=String(s?s.label:"section").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40)||"section"; return `${String(i+1).padStart(2,"0")}-${slug}`; }
 function gfxFile(layout){ const r=curResult(); return `${r?r.date+"-"+(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-"):"graphic"}-${layout}.svg`; }
 
 /* ---------- Prompt ---------- */
@@ -576,6 +585,11 @@ const RULES = `EDITORIAL RULES (non-negotiable):
 5. No rumours, transfer gossip or anonymous sources. No injury speculation. No betting, odds or bookmaker language. No profanity, mockery, sarcasm about people, or fanbase baiting.
 6. Use ONLY facts and numbers given in the brief. Never invent a score, scorer, minute, statistic or quote. Where a number would help, write a placeholder like [STAT: Liverpool PPDA v Arsenal] and list it in missing_facts.
 7. Titles and thumbnail text must never pair a person's name, number or role with a negative word. No fake outrage or misleading claims.`;
+const SECTION_RULES = `VOICEOVER IS RECORDED ONE SECTION AT A TIME. Each segment is a separate recording, played over that segment's own picture, so every segment's voiceover must:
+- stand on its own: open cleanly, never with "So", "And", "But" or a sentence that carries on from the previous section;
+- talk only about what this segment's picture shows; never point to another section's picture ("as we saw earlier", "on the next board", "in a moment");
+- end on a complete sentence that closes the thought, with no hand-off to the next section;
+- list on_screen items in the order the voiceover reaches them.`;
 function buildPrompt(){
   const t = tplById(S.template); const L = +S.length; const W = Math.round(L*wpm());
   const lenTxt = L<1 ? `${Math.round(L*60)} seconds` : `${L} minutes`;
@@ -588,6 +602,8 @@ FORMAT: ${t.name}. Target length: ${lenTxt}, about ${W} spoken words at ${wpm()}
 Sections in order (adapt the labels to the content, keep the order):
 ${t.sections.map((s,i)=>`${i+1}. ${s}`).join("\n")}
 Shape the whole script as Problem → Tension → Payoff: open on the question, build the evidence, land a clear answer.
+${SECTION_RULES}
+If a section would run past about 90 seconds of speech, split it into two segments, each with its own picture.
 Visuals are original only: tactics boards with numbered dots, charts and tables. Never broadcast footage, photos or club crests.
 For each segment choose ONE layout id from: ${LAYOUT_IDS.filter(x=>x!=="vertical").join(", ")}${t.id==="short"?", vertical (use vertical for every segment of a Short)":""}.
 
@@ -676,7 +692,7 @@ async function rewriteSeg(i, instr, btn){
   const seg=S.result.segments[i]; const all=S.result.segments.map((s,j)=>`${j===i?">>> ":""}[${s.label}] ${s.voiceover}`).join("\n\n");
   btn.disabled=true; const old=btn.textContent; btn.textContent="Rewriting…";
   try{
-    const txt = await callClaude(`${RULES}\n\nYou are editing one section of a narrated football analysis script for "The Touchline Notebook" (UK English, calm, spoken). The full script is below; the section to rewrite is marked >>>.\n\n${all.slice(0,20000)}\n\nFACTS PROVIDED (only numbers allowed):\n"""${(S.facts||"none").slice(0,4000)}"""\n\nRewrite ONLY the section "${seg.label}" at roughly the same length (${words(seg.voiceover)} words).${instr?` Creator's instruction: ${instr.slice(0,400)}`:""}\nReply with only JSON: {"voiceover":"string","on_screen":["1-4 strings"],"stats":["strings or [STAT: ...] placeholders"]}`,{max:3000});
+    const txt = await callClaude(`${RULES}\n\nYou are editing one section of a narrated football analysis script for "The Touchline Notebook" (UK English, calm, spoken). The full script is below; the section to rewrite is marked >>>.\n\n${all.slice(0,20000)}\n\nFACTS PROVIDED (only numbers allowed):\n"""${(S.facts||"none").slice(0,4000)}"""\n\n${SECTION_RULES}\n\nRewrite ONLY the section "${seg.label}" at roughly the same length (${words(seg.voiceover)} words).${instr?` Creator's instruction: ${instr.slice(0,400)}`:""}\nReply with only JSON: {"voiceover":"string","on_screen":["1-4 strings"],"stats":["strings or [STAT: ...] placeholders"]}`,{max:3000});
     const r = extractJSON(txt);
     if(r&&r.voiceover){ seg.voiceover=String(r.voiceover); if(Array.isArray(r.on_screen)) seg.on_screen=r.on_screen.map(String); if(Array.isArray(r.stats)) seg.stats=r.stats.map(String); save(); renderAll(); toast("Section rewritten"); }
   }catch(e){ const x=apiError(e); toast(ERR[x.code]||"Rewrite failed. Try again."); btn.disabled=false; btn.textContent=old; }
@@ -731,7 +747,7 @@ function segHTML(s,i){
       <select class="lay" aria-label="Layout for ${esc(s.label)}">${LAYOUT_IDS.map(id=>`<option value="${id}"${id===s.layout?" selected":""}>${esc(LAYOUTS[id].name)}</option>`).join("")}</select>
     </div>
     <div style="min-width:0">
-      <div class="seg-head"><h3>${i+1}. ${esc(s.label)}</h3><span class="time">${esc(planned)}</span><span class="time" data-est="${i}"></span></div>
+      <div class="seg-head"><h3>${i+1}. ${esc(s.label)}</h3><span class="time">${esc(planned)}</span><span class="time" data-est="${i}"></span><span class="time">Record as <b>${esc(takeName(i))}.wav</b></span></div>
       <textarea class="vo" id="vo-${i}" aria-label="Voiceover for ${esc(s.label)}">${esc(s.voiceover)}</textarea>
       ${s.on_screen.length?`<div class="cues">${s.on_screen.map(c=>`<div class="cue">${esc(c)}</div>`).join("")}</div>`:""}
       ${s.stats.length?`<div class="chips">${s.stats.map(x=>`<span class="chip${/\[STAT/.test(x)?" ph":""}">${esc(x)}</span>`).join("")}</div>`:""}
@@ -744,7 +760,7 @@ function renderBoard(){
   const p=$("p-board"), r=S.result;
   if(!r){ p.innerHTML=`<p class="empty">Your storyboard appears here.</p>`; return; }
   const sc = r.self_check.length ? `<div class="card"><h3>Lines Claude wasn't sure about</h3>${r.self_check.map(x=>`<p><b>${esc(x.line)}</b><br><span class="spec">${esc(x.issue)}</span><br>Safer: ${esc(x.rewrite)}</p>`).join("")}</div>` : "";
-  const vp = curResult() && !curResult().stats_pending ? `<div class="card"><h3>Make the video</h3><p class="spec" style="margin:4px 0 10px">Every section gets a picture drawn from this match's data. Download the pack, record your voice, and open it in Match Studio on your PC.</p><button class="btn sm" type="button" id="sendPack">Send to Match Studio (download video pack)</button> <span class="spec" id="packMsg"></span></div>` : "";
+  const vp = curResult() && !curResult().stats_pending ? `<div class="card"><h3>Make the video</h3><p class="spec" style="margin:4px 0 10px">Every section gets a picture drawn from this match's data. Download the pack, then record each section as its own file, named as shown on each section (01-…, 02-…), all in one folder. In Match Studio, open the pack and choose that folder: every picture then lasts exactly as long as its recording. The Read-through tab shows one section at a time to read from.</p><button class="btn sm" type="button" id="sendPack">Send to Match Studio (download video pack)</button> <span class="spec" id="packMsg"></span></div>` : "";
   p.innerHTML = vp + sc + r.segments.map(segHTML).join("");
   const sp=$("sendPack"); if(sp) sp.addEventListener("click",async()=>{ const m=$("packMsg"); sp.disabled=true; m.textContent="Drawing the pictures…"; try{ const pk=await buildPack(); const cr=curResult(); downloadFile(`${cr.date}-${(cr.home+"-v-"+cr.away).toLowerCase().replace(/[^a-z0-9]+/g,"-")}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent=`Downloaded: ${pk.segments.length} pictures. Open it in Match Studio.`; }catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } sp.disabled=false; });
   renderBoardTimes();
@@ -771,9 +787,12 @@ function plainScript(withCues){
 function renderRead(){
   const p=$("p-read"), r=S.result;
   if(!r){ p.innerHTML=`<p class="empty">The full read-through appears here.</p>`; return; }
-  p.innerHTML = `<div class="actions"><button class="btn sm" type="button" id="cpVO">Copy voiceover only</button><button class="btn sm" type="button" id="cpFull">Copy script with layout cues</button><button class="btn sm" type="button" id="dlTxt">Save as .txt</button><button class="btn sm" type="button" id="dlMd">Save as .md</button></div>
-  <div class="read"><pre>${esc(r.segments.map(s=>s.voiceover).join("\n\n"))}</pre></div>`;
+  p.innerHTML = `<div class="actions"><button class="btn sm" type="button" id="cpVO">Copy voiceover only</button><button class="btn sm" type="button" id="cpRec">Copy with file names</button><button class="btn sm" type="button" id="cpFull">Copy script with layout cues</button><button class="btn sm" type="button" id="dlTxt">Save as .txt</button><button class="btn sm" type="button" id="dlMd">Save as .md</button></div>
+  <p class="spec" style="margin:0">Record each section below as its own file, saved under the name shown, all in one folder.</p>
+  <div class="read">${r.segments.map((s,i)=>`<div class="rt"><div class="rt-head"><span class="rt-n">${i+1}</span><b>${esc(s.label)}</b><span class="time">${esc(takeName(i))}.wav · ${words(s.voiceover)} words · ≈ ${mmss(words(s.voiceover)/wpm()*60)}</span><button class="btn sm" type="button" data-cs="${i}">Copy</button></div><p>${esc(s.voiceover)}</p></div>`).join("")}</div>`;
   $("cpVO").onclick=()=>copy(r.segments.map(s=>s.voiceover).join("\n\n"));
+  $("cpRec").onclick=()=>copy(r.segments.map((s,i)=>`[${takeName(i)}.wav]\n${s.voiceover}`).join("\n\n"));
+  p.querySelectorAll("[data-cs]").forEach(b=>b.onclick=()=>copy(r.segments[+b.dataset.cs].voiceover));
   $("cpFull").onclick=()=>copy(plainScript(true));
   const fn = (r.working_title||"script").replace(/[^\w\s-]/g,"").trim().replace(/\s+/g,"-").slice(0,60)||"script";
   $("dlTxt").onclick=()=>downloadFile(fn+".txt",plainScript(true)+publishText());
