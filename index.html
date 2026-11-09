@@ -170,7 +170,19 @@ ol.titles{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px
 .soft{text-transform:none;letter-spacing:0;font-family:var(--f-body);font-size:.8rem}
 .chk{display:flex;gap:6px;align-items:center;font-size:.85rem;align-self:end;padding-bottom:8px;font-family:var(--f-body);text-transform:none;letter-spacing:0;color:var(--ink)}
 .chk input{width:auto}
-input[type=search],input[type=password]{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;width:100%}
+.modes{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden}
+.modes button{font-family:var(--f-display);font-size:.95rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;border:0;background:transparent;color:var(--ink);padding:8px;cursor:pointer}
+.modes button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.ru-list{display:flex;flex-direction:column;gap:4px;max-height:320px;overflow-y:auto}
+.ru-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center;background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:5px 9px;font-size:.88rem;cursor:pointer}
+.picker .ru-row{font-family:var(--f-body);text-transform:none;letter-spacing:0;color:var(--ink);font-size:.88rem}
+.ru-row input{width:auto;margin:0}
+.ru-row .fx-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ru-row .fx-t.r{text-align:right}
+.ru-row b{font-family:var(--f-display);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.ru-row small{grid-column:2/-1;color:var(--muted);font-size:.72rem;text-align:center}
+.ru-row.off{opacity:.5}
+.match-tag{display:inline-block;font-family:var(--f-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+input[type=search],input[type=password],input[type=date]{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;width:100%}
 .pill{background:var(--amber-soft);color:var(--amber)}
 .pill.ok{background:var(--ok-soft);color:var(--ok)}
 .hint.err{color:var(--red)}
@@ -193,6 +205,22 @@ input[type=search],input[type=password]{font:inherit;color:var(--ink);background
       <h2>The brief</h2>
       <div class="actions" style="align-items:center"><button class="btn sm" type="button" id="openProj">Open a saved project…</button><input type="file" id="projIn" accept=".json,application/json" hidden><span class="hint" style="margin:0">Any video pack from Send to Match Studio.</span></div>
 
+      <div class="modes" role="group" aria-label="What to script"><button type="button" data-mode="single" aria-pressed="true">One match</button><button type="button" data-mode="roundup" aria-pressed="false">Weekend round-up</button></div>
+
+      <div class="field picker" id="ruBox" hidden>
+        <span class="lbl">1 · Pick the round</span>
+        <div class="field"><label for="ruComp">Competition</label><select id="ruComp"></select></div>
+        <div class="field"><label for="ruWk">Round</label><select id="ruWk"></select></div>
+        <div class="row2" id="ruCustom" hidden>
+          <div class="field"><label for="ruFrom">From</label><input type="date" id="ruFrom"></div>
+          <div class="field"><label for="ruTo">To</label><input type="date" id="ruTo"></div>
+        </div>
+        <div class="actions" style="align-items:center"><span class="hint" id="ruCount" style="margin:0;flex:1"></span><button class="btn sm" type="button" id="ruAll">Tick all</button><button class="btn sm" type="button" id="ruNone">Untick all</button></div>
+        <div class="ru-list" id="ruList"></div>
+        <button class="btn primary" type="button" id="ruGo">Open the round-up</button>
+        <p class="hint" id="ruNote" style="margin:0">One script covers every ticked match, plus a Short for each game, all written from the same facts so the numbers match.</p>
+      </div>
+
       <div class="field picker" id="resBox">
         <span class="lbl">1 · Pick a match</span>
         <div class="field"><label for="teamQ">Find a team</label><input type="search" id="teamQ" placeholder="e.g. Liverpool (searches every date)"></div>
@@ -206,7 +234,7 @@ input[type=search],input[type=password]{font:inherit;color:var(--ink);background
         <label class="chk" style="padding:0"><input type="checkbox" id="auto" checked> Write the script automatically when I pick a match</label>
       </div>
 
-      <div class="field">
+      <div class="field" id="tplField">
         <label for="tpl">2 · Format</label>
         <select id="tpl"></select>
       </div>
@@ -280,6 +308,7 @@ const TEMPLATES = [
   {id:"tactical", name:"Tactical breakdown", len:11, sections:["The question","Why it matters now","Mechanism, board one: the shape","Mechanism, board two: the trigger","Mechanism, board three: the consequence","Counter-evidence: test the argument","What would fix it, or what opponents could copy","Verdict","Viewer question and call to action"]},
   {id:"unit", name:"Unit and role explainer", len:9, sections:["The unit or role","What the system asks of it: three jobs","Job one on the board","Job two on the board","Job three on the board","An example of it working well","How opponents try to stop it","What it means for the next match"]},
   {id:"table", name:"Table and title race update", len:7, sections:["Table snapshot","Points pace","Expected points versus actual points","Remaining fixture strength","Three key fixtures","Projection (no odds)","Viewer question"]},
+  {id:"weekend", name:"Weekend round-up (every match + a Short each)", len:12, sections:["Hook: the headline story of the round","Results at a glance","One section per match","Where the table stands","Stat of the round","Games to watch next","Viewer question and call to action"]},
   {id:"short", name:"YouTube Short", len:0.75, sections:["Hook (0-2 seconds)","The one thing: one stat or one board","Why it matters","Close: question or loop line"]}
 ];
 const LENGTHS = [[0.75,"45 seconds (Short)"],[4,"4 minutes"],[6,"6 minutes"],[8,"8 minutes"],[9,"9 minutes"],[10,"10 minutes"],[12,"12 minutes"],[14,"14 minutes"]];
@@ -293,6 +322,7 @@ const LAYOUTS = {
   "bars":{name:"Comparison bars",use:"Team vs team, this season vs last.",spec:"Horizontal bars measured from zero. Left team in its colour, right in grey. Values printed at the bar end. Max six rows."},
   "timeline":{name:"Match timeline",use:"Goals, substitutions and game-state changes.",spec:"0–90 axis across the frame at 70% height. Goals as filled circles, substitutions as small diamonds, half-time tick. Labels above markers at 40px."},
   "table":{name:"League table",use:"Title race, relegation, form tables.",spec:"Up to 10 rows at 56px row height. Highlight the subject row in amber. Columns: Pos, Club, P, GD, Pts, plus one data column (xGD or xPts)."},
+  "results-grid":{name:"Results grid",use:"Round-ups: every score from the round on one board.",spec:"Every score in one or two columns: home team right-aligned, score in a box, away team left-aligned. Competition and dates in the header."},
   "shot-map":{name:"Shot map",use:"Chance quality and where chances came from.",spec:"Half pitch. Circle size = xG, filled = goal, hollow = no goal. Totals in a corner box: shots and xG."},
   "numeral":{name:"Numeral card",use:"Five-things points, three jobs, countdowns.",spec:"A single numeral at 480px, left third. Point headline on the right at 96px, max eight words."},
   "end-screen":{name:"End screen",use:"Last 15–20 seconds: subscribe and next video.",spec:"Two video slots on the right (YouTube end-screen elements), subscribe circle on the left. Keep the board background; no text in the slot areas."},
@@ -330,6 +360,8 @@ function layoutSVG(id, text){
       body = `<line x1="12" y1="56" x2="148" y2="56" stroke="var(--chalk)" stroke-width="1"/><line x1="80" y1="52" x2="80" y2="60" stroke="var(--chalk-dim)" stroke-width=".8"/><text x="80" y="68" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk-dim)">HT</text><text x="12" y="68" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk-dim)">0'</text><text x="148" y="68" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk-dim)">90'</text>${[[34,RED],[101,GREY],[128,RED]].map(g=>`<circle cx="${g[0]}" cy="56" r="3.2" fill="${g[1]}"/>`).join("")}${[96,112].map(x=>`<path d="M${x} 48 l3 3 l-3 3 l-3 -3z" fill="${AMB}"/>`).join("")}<text x="12" y="24" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="7" fill="var(--chalk)">${t||"HOW THE GAME MOVED"}</text>`; break;
     case "table":
       body = Array.from({length:6},(_,i)=>`<rect x="14" y="${10+i*12}" width="132" height="10" fill="${i===2?"rgba(232,176,75,.35)":"rgba(0,0,0,.18)"}"/><text x="18" y="${17+i*12}" font-family="IBM Plex Mono, monospace" font-size="4.5" fill="var(--chalk)">${i+1}</text><rect x="28" y="${13.5+i*12}" width="${50-i*3}" height="3" fill="var(--chalk-dim)"/><text x="140" y="${17+i*12}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="4.5" fill="var(--chalk)">${30-i*2}</text>`).join(""); break;
+    case "results-grid":
+      body = Array.from({length:6},(_,i)=>{ const hw=28-(i%3)*5, aw=24-(i%2)*6; return `<rect x="16" y="${10+i*12}" width="128" height="10" rx="1" fill="rgba(0,0,0,.18)"/><rect x="${70-hw}" y="${13.5+i*12}" width="${hw}" height="3" fill="var(--chalk-dim)"/><text x="80" y="${17.2+i*12}" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="6.5" fill="${i===0?AMB:"var(--chalk)"}">${[[2,1],[0,0],[3,2],[1,0],[1,1],[0,2]][i].join("–")}</text><rect x="90" y="${13.5+i*12}" width="${aw}" height="3" fill="var(--chalk-dim)"/>`; }).join(""); break;
     case "shot-map":
       body = `<rect x="20" y="8" width="120" height="74" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/><rect x="50" y="8" width="60" height="22" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/><rect x="66" y="8" width="28" height="8" fill="none" stroke="var(--chalk-dim)" stroke-width=".8"/>${[[80,20,4,1],[72,26,2.4,0],[90,24,3,0],[60,36,1.6,0],[100,40,1.4,0],[84,18,5,1],[76,44,1.2,0]].map(s=>`<circle cx="${s[0]}" cy="${s[1]}" r="${s[2]}" fill="${s[3]?RED:"none"}" stroke="${s[3]?RED:"var(--chalk)"}" stroke-width=".8"/>`).join("")}<rect x="112" y="62" width="26" height="16" fill="rgba(0,0,0,.25)"/><text x="125" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="4" fill="var(--chalk)">xG —</text>`; break;
     case "numeral":
@@ -371,17 +403,18 @@ const $ = id => document.getElementById(id);
 const KEY = "touchline-script-desk-v2", KKEY = "touchline-api-key";
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ if(v==null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){} }
-let S = Object.assign({template:"lfc-review",length:9,wpm:150,brief:"",facts:"",extra:"",model:"claude-sonnet-5-5",result:null,byMatch:{},order:[],cur:"",auto:true,factsAuto:""},
+let S = Object.assign({template:"lfc-review",length:9,wpm:150,brief:"",facts:"",extra:"",model:"claude-sonnet-5-5",result:null,byMatch:{},order:[],cur:"",auto:true,factsAuto:"",mode:"single",ru:null},
   (()=>{ try{ return JSON.parse(lsGet(KEY)||"{}"); }catch(e){ return {}; } })());
 S.byMatch = S.byMatch||{}; S.order = S.order||[];
-if(S.cur && S.byMatch[S.cur]){ const r=S.byMatch[S.cur]; Object.assign(S,{brief:r.brief||"",extra:r.extra||"",result:r.result||null,template:r.template||S.template,length:r.length||S.length,facts:r.facts||S.facts,factsAuto:r.factsAuto||S.factsAuto}); }
+if(S.cur && S.byMatch[S.cur]){ const r=S.byMatch[S.cur]; Object.assign(S,{brief:r.brief||"",extra:r.extra||"",result:r.result||null,template:r.template||S.template,length:r.length||S.length,facts:r.facts||S.facts,factsAuto:r.factsAuto||S.factsAuto}); if(r.ru) S.ru=r.ru; }
+if(String(S.cur||"").startsWith("roundup|")) S.mode="roundup";
 if(!["claude-sonnet-5-5","claude-opus-5-5"].includes(S.model)) S.model="claude-sonnet-5-5";
 let tab = "board", ctl = null, apiKey = lsGet(KKEY) || "";
 let saveT = null;
 /* Each match you open keeps its own script, paragraph and facts (latest 25). */
 function stash(){
   if(!S.cur) return;
-  S.byMatch[S.cur]={brief:S.brief,extra:S.extra,result:S.result,template:S.template,length:S.length,facts:S.facts,factsAuto:S.factsAuto,at:Date.now()};
+  S.byMatch[S.cur]={brief:S.brief,extra:S.extra,result:S.result,template:S.template,length:S.length,facts:S.facts,factsAuto:S.factsAuto,ru:isRU()?S.ru:undefined,at:Date.now()};
   S.order=[S.cur].concat((S.order||[]).filter(x=>x!==S.cur)).slice(0,25);
   Object.keys(S.byMatch).forEach(k=>{ if(!S.order.includes(k)) delete S.byMatch[k]; });
 }
@@ -412,7 +445,7 @@ function initForm(){
   $("len").innerHTML = LENGTHS.map(l=>`<option value="${l[0]}">${l[1]}</option>`).join("");
   $("tpl").value=S.template; $("len").value=String(S.length); $("wpm").value=S.wpm||150;
   $("brief").value=S.brief||""; $("facts").value=S.facts||""; $("extra").value=S.extra||"";
-  $("tpl").addEventListener("change",()=>{ S.template=$("tpl").value; const t=tplById(S.template); S.length=t.len; $("len").value=String(t.len); save(); });
+  $("tpl").addEventListener("change",()=>{ if($("tpl").value==="weekend"){ $("tpl").value=S.template; setMode("roundup"); return; } S.template=$("tpl").value; const t=tplById(S.template); S.length=t.len; $("len").value=String(t.len); save(); });
   $("len").addEventListener("change",()=>{ S.length=+$("len").value; save(); renderSummary(); });
   $("wpm").addEventListener("input",()=>{ S.wpm=+$("wpm").value; save(); renderSummary(); renderBoardTimes(); });
   ["brief","facts","extra"].forEach(id=>$(id).addEventListener("input",()=>{ S[id]=$(id).value; save(); }));
@@ -435,7 +468,7 @@ function initKey(){
     if(apiKey) $("keyBox").open=false;
   });
   $("clearKey").addEventListener("click",()=>{ apiKey=""; $("apiKey").value=""; lsSet(KKEY,null); pill(); renderBoard(); toast("Key removed"); });
-  $("copyPrompt").addEventListener("click",()=>{ if(!(S.brief||"").trim()){ setStatus("Write a paragraph first.",true); $("brief").focus(); return; } copy(buildPrompt()); });
+  $("copyPrompt").addEventListener("click",()=>{ if(!(S.brief||"").trim()&&!(S.facts||"").trim()){ setStatus("Pick a match or a round first, or write a paragraph.",true); return; } copy(promptNow()); });
   $("loadReply").addEventListener("click",()=>{ try{ applyReply($("pasteReply").value); $("pasteReply").value=""; }catch(e){ setStatus(ERR[e&&e.code]||ERR.invalid_json,true); } });
 }
 
@@ -444,6 +477,11 @@ function initKey(){
 const G = {board:"#0F3D2E",chalk:"#EEF2EC",dim:"rgba(238,242,236,.6)",red:"#D64541",grey:"#C9D1CB",amber:"#E8B04B"};
 const GH = 'font-family="Barlow Condensed, Arial Narrow, sans-serif"', GB = 'font-family="Barlow, Arial, sans-serif"', GM = 'font-family="IBM Plex Mono, monospace"';
 function curResult(){ return RESULTS.find(x=>x._id===S.cur)||null; }
+/* Round-up mode: the open item is a round (S.ru), and each match section names its match. */
+function isRU(){ return String(S.cur||"").startsWith("roundup|"); }
+function byId(id){ return RESULTS.find(x=>x._id===id)||null; }
+function ruMatches(){ return isRU()&&S.ru ? (S.ru.ids||[]).map(byId).filter(Boolean) : []; }
+function segResult(seg){ if(seg&&seg.match){ const m=byId(seg.match); if(m) return m; } return isRU()?null:curResult(); }
 function surname(n){
   const p=String(n||"").trim().split(/\s+/).filter(Boolean); if(p.length<2) return p[0]||"";
   let i=p.length-1; while(i>1 && /^[a-z]/.test(p[i-1])) i--;
@@ -454,7 +492,7 @@ function gfxWrap(r, inner, label){
   const hx = 136 + Math.min(r.home.length,22)*16 + 70;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="${esc(label)}">
 <rect width="1920" height="1080" fill="${G.board}"/>
-<text x="96" y="130" ${GH} font-weight="700" font-size="82" fill="${G.chalk}">${esc(r.home)} ${r.home_score}–${r.away_score} ${esc(r.away)}</text>
+<text x="96" y="130" ${GH} font-weight="700" font-size="82"${(`${r.home} ${r.home_score}–${r.away_score} ${r.away}`.length*82*0.56>1728)?` textLength="1728" lengthAdjust="spacingAndGlyphs"`:""} fill="${G.chalk}">${esc(r.home)} ${r.home_score}–${r.away_score} ${esc(r.away)}</text>
 <text x="96" y="190" ${GB} font-size="38" fill="${G.dim}">${esc(r.competition||"")} · ${esc(r.kickoff||r.date)}</text>
 <rect x="96" y="226" width="28" height="28" fill="${G.red}"/><text x="136" y="252" ${GB} font-size="34" fill="${G.chalk}">${esc(r.home)}</text>
 <rect x="${hx}" y="226" width="28" height="28" fill="${G.grey}"/><text x="${hx+40}" y="252" ${GB} font-size="34" fill="${G.chalk}">${esc(r.away)}</text>
@@ -505,7 +543,7 @@ function gfxTimeline(r){
   reds.forEach(c=>{ const x=X(c.min), home=c.team===r.home; o+=`<rect x="${x-12}" y="${AY+(home?-70:68)}" width="24" height="32" fill="${G.red}" stroke="${G.chalk}" stroke-width="3"/>`; });
   (r.subs||[]).forEach(sb=>{ const home=sb.team===r.home; (sb.mins||[]).forEach(m=>{ const x=X(m), y=AY+(home?-30:30); o+=`<path d="M${x} ${y-12} l11 12 l-11 12 l-11 -12z" fill="${G.amber}"/>`; }); });
   if(!goals.length) o+=`<text x="960" y="470" text-anchor="middle" ${GH} font-weight="600" font-size="64" fill="${G.dim}">No goals</text>`;
-  o+=`<circle cx="160" cy="930" r="14" fill="${G.chalk}"/><text x="188" y="941" ${GB} font-size="32" fill="${G.dim}">Goal</text><path d="M360 918 l12 12 l-12 12 l-12 -12z" fill="${G.amber}"/><text x="388" y="941" ${GB} font-size="32" fill="${G.dim}">Substitution</text><rect x="620" y="914" width="22" height="30" fill="${G.red}" stroke="${G.chalk}" stroke-width="3"/><text x="656" y="941" ${GB} font-size="32" fill="${G.dim}">Red card</text><text x="1760" y="941" text-anchor="end" ${GB} font-size="32" fill="${G.dim}">${esc(r.home)} above the line, ${esc(r.away)} below</text>`;
+  o+=`<circle cx="160" cy="930" r="14" fill="${G.chalk}"/><text x="188" y="941" ${GB} font-size="32" fill="${G.dim}">Goal</text><path d="M360 918 l12 12 l-12 12 l-12 -12z" fill="${G.amber}"/><text x="388" y="941" ${GB} font-size="32" fill="${G.dim}">Substitution</text><rect x="620" y="914" width="22" height="30" fill="${G.red}" stroke="${G.chalk}" stroke-width="3"/><text x="656" y="941" ${GB} font-size="32" fill="${G.dim}">Red card</text><text x="1760" y="990" text-anchor="end" ${GB} font-size="32" fill="${G.dim}">${esc(r.home)} above the line, ${esc(r.away)} below</text>`;
   return gfxWrap(r,o,`Match timeline: ${r.home} v ${r.away}`);
 }
 function gfxTable(r){
@@ -522,8 +560,9 @@ function gfxTable(r){
   o+=`<text x="1824" y="990" text-anchor="end" ${GB} font-size="28" fill="${G.dim}">Table as saved ${esc(TABLES_AT||"")}: may include later games</text>`;
   return gfxWrap(r,o,`League table: ${r.home} v ${r.away}`);
 }
-function gfx(id){
-  const r=curResult(); if(!r||r.stats_pending) return "";
+function gfx(id){ return gfxFor(id, curResult()); }
+function gfxFor(id, r){
+  if(!r||r.stats_pending) return "";
   try{
     if(id==="bars"&&(r.stats||[]).length) return gfxBars(r);
     if(id==="stat-panel") return gfxPanel(r);
@@ -535,7 +574,7 @@ function gfx(id){
 
 /* ---------- Video pack: one picture per section, for Match Studio ---------- */
 function wrapLines(t,max){ const w=String(t||"").split(/\s+/).filter(Boolean), out=[]; let cur=""; w.forEach(x=>{ if((cur+" "+x).trim().length>max && cur){ out.push(cur); cur=x; } else cur=(cur+" "+x).trim(); }); if(cur) out.push(cur); return out; }
-function gfxCard(r, seg, i, n){
+function cardInner(seg, i, n){
   const lay=seg.layout, lines=(seg.on_screen||[]).slice(0,4).flatMap(x=>wrapLines(x,46).slice(0,2)).slice(0,6);
   const stats=(seg.stats||[]).filter(x=>!/\[STAT/.test(x)).slice(0,4);
   let o="";
@@ -551,12 +590,66 @@ function gfxCard(r, seg, i, n){
     if(stats.length){ o+=`<text x="96" y="930" ${GB} font-size="40" fill="${G.amber}">${esc(stats.join("   ·   ").slice(0,90))}</text>`; }
   }
   o+=`<text x="1824" y="1032" text-anchor="end" ${GM} font-size="28" fill="${G.dim}">${i+1} / ${n}</text>`;
-  return gfxWrap(r,o,`${seg.label}: ${r.home} v ${r.away}`);
+  return o;
+}
+function gfxCard(r, seg, i, n){ return gfxWrap(r,cardInner(seg,i,n),`${seg.label}: ${r.home} v ${r.away}`); }
+function ruCard(seg, i, n){ return ruWrap(cardInner(seg,i,n),seg.label); }
+function segGfx(seg){
+  const r=segResult(seg);
+  if(r) return gfxFor(seg.layout, r);
+  if(isRU()){ try{ if(seg.layout==="results-grid") return gfxResultsGrid(); if(seg.layout==="table") return gfxLeague(seg); }catch(e){} }
+  return "";
 }
 function segSVG(seg,i,n){
-  const r=curResult(); if(!r) return "";
-  let svg=""; try{ svg=gfx(seg.layout); }catch(e){}
-  return svg||gfxCard(r,seg,i,n);
+  let svg=""; try{ svg=segGfx(seg); }catch(e){}
+  if(svg) return svg;
+  const r=segResult(seg);
+  if(r) return gfxCard(r,seg,i,n);
+  return isRU() ? ruCard(seg,i,n) : "";
+}
+/* ---------- Round-up graphics ---------- */
+function dayShort(d){ return dayLabel(d).replace(/,? \d{4}$/,"").replace(",",""); }
+function rangeLabel(a,b){ if(a===b) return dayShort(a); const x=dayShort(a), y=dayShort(b); return `${a.slice(0,7)===b.slice(0,7)?x.replace(/ \S+$/,""):x} – ${y}`; }
+function ruName(ru){ ru=ru||S.ru||{}; return `${ru.comp||""} ${ru.kind==="midweek"?"midweek round-up":ru.kind==="custom"?"round-up":"weekend round-up"}`; }
+function ruLabel(ru){ ru=ru||S.ru; return ru ? rangeLabel(ru.from,ru.to) : ""; }
+function ruSlug(){ const ru=S.ru||{}; return `${ru.from}-to-${ru.to}-${String(ru.comp||"").toLowerCase().replace(/[^a-z0-9]+/g,"-")}-round-up`; }
+function ruWrap(inner,label){
+  const ms=ruMatches(), srcs=[...new Set(ms.map(r=>String(r.source||"").replace(/\s*\(.*$/,"")).filter(Boolean))].slice(0,2).join("; ");
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="${esc(label)}">
+<rect width="1920" height="1080" fill="${G.board}"/>
+<text x="96" y="130" ${GH} font-weight="700" font-size="82" fill="${G.chalk}">${esc(ruName().toUpperCase())}</text>
+<text x="96" y="190" ${GB} font-size="38" fill="${G.dim}">${esc(ruLabel())} · ${ms.length} ${ms.length===1?"match":"matches"}</text>
+<rect x="96" y="222" width="200" height="8" fill="${G.red}"/>
+${inner}
+<text x="96" y="1032" ${GM} font-size="28" fill="${G.dim}">${esc(srcs?"Source: "+srcs:"")}</text>
+</svg>`;
+}
+function gfxResultsGrid(){
+  const ms=ruMatches().slice(0,20); if(!ms.length) return "";
+  const cols=ms.length>8?2:1, rows=Math.ceil(ms.length/cols), rh=Math.min(88,Math.floor(720/rows)), fs=Math.min(48,Math.floor(rh*0.58));
+  const cw=cols===2?852:1728; let o="";
+  ms.forEach((r,k)=>{
+    const c=cols===2?Math.floor(k/rows):0, row=cols===2?k%rows:k, x0=96+c*(cw+24), mid=x0+cw/2, y=272+row*rh, cy=y+rh/2;
+    const nameW=cw/2-96, nf=t=>Math.max(22,Math.min(fs,Math.floor(nameW/(Math.max(String(t).length,1)*0.58)))), fit=t=>String(t).length*nf(t)*0.58>nameW*0.92?` textLength="${Math.round(nameW*0.95)}" lengthAdjust="spacingAndGlyphs"`:"";
+    o+=`<rect x="${x0}" y="${y+4}" width="${cw}" height="${rh-8}" rx="6" fill="rgba(0,0,0,.18)"/>
+<text x="${mid-84}" y="${cy+nf(r.home)*0.35}" text-anchor="end" ${GH} font-weight="600" font-size="${nf(r.home)}"${fit(r.home)} fill="${G.chalk}">${esc(r.home)}</text>
+<rect x="${mid-68}" y="${cy-rh*0.34}" width="136" height="${rh*0.68}" rx="4" fill="rgba(0,0,0,.32)"/>
+<text x="${mid}" y="${cy+fs*0.35}" text-anchor="middle" ${GH} font-weight="700" font-size="${fs}" fill="${G.amber}">${r.home_score}–${r.away_score}</text>
+<text x="${mid+84}" y="${cy+nf(r.away)*0.35}" ${GH} font-weight="600" font-size="${nf(r.away)}"${fit(r.away)} fill="${G.chalk}">${esc(r.away)}</text>`;
+  });
+  return ruWrap(o,"Results at a glance");
+}
+function gfxLeague(seg){
+  const ru=S.ru; if(!ru) return "";
+  const tb=TABLES.find(x=>x.competition===ru.comp); if(!tb||!tb.rows.length) return "";
+  const rows=tb.rows, bottom=/relegat|bottom|drop|surviv|foot of/i.test(seg.label+" "+(seg.on_screen||[]).join(" "));
+  const win=bottom?rows.slice(Math.max(0,rows.length-10)):rows.slice(0,10);
+  const X={pos:150,club:230,p:1010,w:1120,d:1230,l:1340,gd:1500,pts:1700};
+  let o=`<text x="${X.pos}" y="300" ${GH} font-weight="600" font-size="32" fill="${G.dim}">POS</text><text x="${X.club}" y="300" ${GH} font-weight="600" font-size="32" fill="${G.dim}">CLUB</text>`+["p","w","d","l"].map(k=>`<text x="${X[k]}" y="300" text-anchor="end" ${GH} font-weight="600" font-size="32" fill="${G.dim}">${k.toUpperCase()}</text>`).join("")+`<text x="${X.gd}" y="300" text-anchor="end" ${GH} font-weight="600" font-size="32" fill="${G.dim}">GD</text><text x="${X.pts}" y="300" text-anchor="end" ${GH} font-weight="600" font-size="32" fill="${G.dim}">PTS</text>`;
+  win.forEach((x,i)=>{ const y=320+i*58, c=G.chalk;
+    o+=`<rect x="110" y="${y}" width="1700" height="52" rx="6" fill="rgba(0,0,0,${i%2?".10":".20"})"/><text x="${X.pos}" y="${y+39}" ${GH} font-weight="700" font-size="40" fill="${G.amber}">${x.pos}</text><text x="${X.club}" y="${y+39}" ${GH} font-weight="700" font-size="40" fill="${c}">${esc(x.team)}</text>`+["p","w","d","l"].map(k=>`<text x="${X[k]}" y="${y+39}" text-anchor="end" ${GH} font-size="38" fill="${c}">${x[k]}</text>`).join("")+`<text x="${X.gd}" y="${y+39}" text-anchor="end" ${GH} font-size="38" fill="${c}">${x.gd>0?"+":""}${x.gd}</text><text x="${X.pts}" y="${y+39}" text-anchor="end" ${GH} font-weight="700" font-size="42" fill="${c}">${x.pts}</text>`; });
+  o+=`<text x="1824" y="1000" text-anchor="end" ${GB} font-size="28" fill="${G.dim}">Table as saved ${esc(TABLES_AT||"")}: may include later games</text>`;
+  return ruWrap(o, bottom?"League table: the bottom ten":"League table: the top ten");
 }
 function svgToPNG(svg,w,h){
   w=w||1920; h=h||1080;
@@ -581,7 +674,7 @@ function thumbFull(text){
 <rect x="0" y="0" width="660" height="720" fill="${G.board}" opacity=".82"/>
 ${lines.map((l,k)=>`<text x="56" y="${top+k*fs}" ${GH} font-weight="700" font-size="${fs}" fill="${G.chalk}" stroke="${G.board}" stroke-width="6" paint-order="stroke">${esc(l)}</text>`).join("")}
 <rect x="56" y="${top+(lines.length-1)*fs+38}" width="160" height="12" fill="${G.red}"/>
-<text x="56" y="660" ${GB} font-weight="600" font-size="40" fill="${G.amber}">${esc(r.home)} ${r.home_score}–${r.away_score} ${esc(r.away)}</text></svg>`;
+<text x="56" y="660" ${GB} font-weight="600" font-size="40" fill="${G.amber}">${esc(isRU()?`${(S.ru||{}).comp||""} · ${ruLabel()}`:(r.home?`${r.home} ${r.home_score}–${r.away_score} ${r.away}`:""))}</text></svg>`;
 }
 /* End screen: 20 seconds at the end of long videos. YouTube's end screen elements sit on the outlines. */
 function gfxEndCard(){
@@ -605,39 +698,50 @@ function gfxVertical(r, top, mid, i, n){
 }
 function vertMid(r, seg, i, n){
   const order=["timeline","stat-panel","bars","table"];
-  for(let k=0;k<order.length;k++){ const s=gfx(order[(i+k)%order.length]); if(s) return s; }
+  for(let k=0;k<order.length;k++){ const s=gfxFor(order[(i+k)%order.length], r); if(s) return s; }
   return gfxCard(r,seg,i,n);
 }
 function packSlug(r){ return `${r.date}-${(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-")}`; }
 function packProject(){
-  return {matchId:S.cur, match:Object.assign({},curResult()), brief:S.brief, extra:S.extra, facts:S.facts, factsAuto:S.factsAuto, template:S.template, length:S.length, wpm:wpm(), result:S.result};
+  return {matchId:S.cur, match:isRU()?null:Object.assign({},curResult()), ru:isRU()?S.ru:null, brief:S.brief, extra:S.extra, facts:S.facts, factsAuto:S.factsAuto, template:S.template, length:S.length, wpm:wpm(), result:S.result};
 }
 async function buildPack(){
-  const r=curResult(), res=S.result; if(!r||!res) throw new Error("Pick a match and write the script first.");
+  const ru=isRU(), res=S.result, r=ru?{competition:(S.ru||{}).comp,date:(S.ru||{}).to,home:ruName(),away:"",home_score:"",away_score:""}:curResult();
+  if(!r||!res) throw new Error(ru?"Write the round-up script first.":"Pick a match and write the script first.");
   const n=res.segments.length, segs=[], vertical=res.segments.every(s=>s.layout==="vertical");
   for(let i=0;i<n;i++){ const s=res.segments[i];
     const img = vertical ? await svgToPNG(gfxVertical(r, s.on_screen[0]||s.label, vertMid(r,s,i,n), i, n),1080,1920) : await svgToPNG(segSVG(s,i,n));
     segs.push({label:s.label,voiceover:s.voiceover,layout:s.layout,take:takeName(i),image:img}); }
-  const pk={version:3,format:vertical?"short":"video",key:[r.competition,r.date,r.home,r.away].join("|")+(vertical?"|short":""),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||"",pinned:res.pinned_comment||"",tags:res.tags||[],hashtags:vertical?(res.hashtags||[]).slice(0,2).concat(["#Shorts"]):(res.hashtags||[]),project:packProject()};
+  const pk={version:3,format:vertical?"short":"video",key:ru?S.cur:[r.competition,r.date,r.home,r.away].join("|")+(vertical?"|short":""),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:ru?`${ruName()} · ${ruLabel()}`:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||"",pinned:res.pinned_comment||"",tags:res.tags||[],hashtags:vertical?(res.hashtags||[]).slice(0,2).concat(["#Shorts"]):(res.hashtags||[]),project:packProject()};
   if(!vertical){ pk.thumbnail=await svgToPNG(thumbFull(res.thumbnail.text),1280,720); pk.endCard=await svgToPNG(gfxEndCard()); }
   return pk;
 }
 /* A Short cut from the long script: three sections (hook, main point, close), each its own recording. */
 async function buildShortPack(k){
-  const r=curResult(), res=S.result, sh=res&&res.shorts[k]; if(!r||!sh) throw new Error("Pick a match and write the script first.");
+  const res=S.result, sh=res&&res.shorts[k], r=sh&&sh.match?byId(sh.match):curResult();
+  if(!sh) throw new Error("Write the script first."); if(!r) throw new Error(isRU()?"This Short's match isn't in the results list any more.":"Pick a match and write the script first.");
   const parts=[["Hook",sh.hook,sh.title],["Main point",sh.body,(sh.body.split(/(?<=[.!?])\s+/)[0]||"").slice(0,70)],["Close",sh.close,"Full breakdown on the channel"]].filter(x=>x[1].trim());
   const segs=[];
   for(let i=0;i<parts.length;i++){ const [label,vo,top]=parts[i];
     segs.push({label,voiceover:vo,layout:"vertical",take:`${String(i+1).padStart(2,"0")}-${label.toLowerCase().replace(/[^a-z0-9]+/g,"-")}`,
       image:await svgToPNG(gfxVertical(r, top, vertMid(r,{label,on_screen:[],stats:[]},i+k,parts.length), i, parts.length),1080,1920)}); }
   const tags=(res.hashtags||[]).slice(0,2).concat(["#Shorts"]);
-  return {version:3,format:"short",key:[r.competition,r.date,r.home,r.away].join("|")+"|short-"+(k+1),title:sh.title,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:[sh.title],
-    description:`${sh.title}\n\nFrom our full review of ${r.home} ${r.home_score}–${r.away_score} ${r.away}. Hard on tactics, fair on people.`,pinned:"",tags:res.tags||[],hashtags:tags,project:packProject()};
+  return {version:3,format:"short",key:[r.competition,r.date,r.home,r.away].join("|")+(sh.match?"|short":"|short-"+(k+1)),title:sh.title,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:[sh.title],
+    description:`${sh.title}\n\n${isRU()?`From our ${ruName()}: ${r.home} ${r.home_score}–${r.away_score} ${r.away}.`:`From our full review of ${r.home} ${r.home_score}–${r.away_score} ${r.away}.`} Hard on tactics, fair on people.`,pinned:"",tags:res.tags||[],hashtags:tags,project:packProject()};
 }
 /* Reopen a project from a video pack: the match, the script and everything in the brief. */
 function importPack(pk){
   if(!pk||!Array.isArray(pk.segments)) throw new Error("That file isn't a video pack.");
   const pr=pk.project||{};
+  if(pr.ru&&Array.isArray(pr.ru.ids)){
+    const key=pr.matchId&&String(pr.matchId).startsWith("roundup|")?pr.matchId:ruKey(pr.ru);
+    stash();
+    S.byMatch[key]={brief:pr.brief||"",extra:pr.extra||"",result:pr.result?normalise(pr.result):null,template:"weekend",length:pr.length||S.length,facts:pr.facts||"",factsAuto:pr.factsAuto||"",ru:pr.ru,at:Date.now()};
+    if(pr.wpm) S.wpm=pr.wpm;
+    S.cur=""; openRoundup(pr.ru,{key,quiet:true}); tab="board"; renderTabs();
+    setStatus(`Reopened “${pk.title||ruName(pr.ru)}”.`);
+    return;
+  }
   let r=null;
   if(pr.matchId) r=RESULTS.find(x=>x._id===pr.matchId);
   if(!r&&pk.key){ const [comp,date,home,away]=String(pk.key).split("|"); r=RESULTS.find(x=>x.date===date&&x.home===home&&x.away===away); }
@@ -654,7 +758,7 @@ function importPack(pk){
 }
 /* Each section is recorded as its own file; Match Studio matches files by the number at the start. */
 function takeName(i){ const s=S.result&&S.result.segments[i]; const slug=String(s?s.label:"section").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40)||"section"; return `${String(i+1).padStart(2,"0")}-${slug}`; }
-function gfxFile(layout){ const r=curResult(); return `${r?r.date+"-"+(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-"):"graphic"}-${layout}.svg`; }
+function gfxFile(seg){ const r=segResult(seg); return `${r?r.date+"-"+(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-"):isRU()?ruSlug():"graphic"}-${seg.layout}.svg`; }
 
 /* ---------- Prompt ---------- */
 /* ---------- Prompt ---------- */
@@ -686,7 +790,7 @@ Shape the whole script as Problem → Tension → Payoff: open on the question, 
 ${SECTION_RULES}
 If a section would run past about 90 seconds of speech, split it into two segments, each with its own picture.
 Visuals are original only: tactics boards with numbered dots, charts and tables. Never broadcast footage, photos or club crests.
-For each segment choose ONE layout id from: ${LAYOUT_IDS.filter(x=>x!=="vertical").join(", ")}${t.id==="short"?", vertical (use vertical for every segment of a Short)":""}.
+For each segment choose ONE layout id from: ${LAYOUT_IDS.filter(x=>x!=="vertical"&&x!=="results-grid").join(", ")}${t.id==="short"?", vertical (use vertical for every segment of a Short)":""}.
 
 BRIEF FROM THE CREATOR:
 """${((S.brief||"").trim()||"No paragraph written. Choose the single most interesting question these facts raise, and build the script around it.").slice(0,6000)}"""
@@ -697,6 +801,43 @@ ${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
 Reply with only a JSON object, no other text, in exactly this shape:
 {"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with chapters and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs"],"hashtags":["exactly 3, each starting with #, no spaces"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
 JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles use question, single-mechanism, numbers-versus-perception or "explained" structures; ${shortsRule}, each 60-110 words in total; self_check is an empty array when nothing is borderline.`;
+}
+
+function promptNow(){ return isRU() ? buildRoundupPrompt() : buildPrompt(); }
+function buildRoundupPrompt(){
+  const ru=S.ru||{}, n=ruMatches().length, L=+S.length, W=Math.round(L*wpm());
+  const hasTable=TABLES.some(x=>x.competition===ru.comp&&x.rows.length);
+  const per=Math.max(50,Math.round(W*0.66/Math.max(n,1)));
+  const secs=[
+    `Hook: the headline story of the round (layout title-card; match "").`,
+    `Results at a glance: every score, read briskly (layout results-grid; match "").`,
+    `One segment per match, for every match from M1 to M${n}, ordered from the most significant result to the least. Each covers the score, how the goals came (minutes and scorers only where the facts give them), the team-level pattern the numbers point to, and at most one standout contribution (praise only). About ${per} words each on average: give the biggest games more and the quieter ones less. Set "match" to the M-number and label the segment with the score, e.g. "Arsenal 2–1 Chelsea". Layout: timeline when the goals carry the story, otherwise stat-panel or bars.`,
+    hasTable?`Where the table stands after the round (layout table; match ""). If the bottom of the table matters this round, add a second table segment whose label includes the word "relegation".`:`What the results mean for the table, from the results alone: no positions or points (layout title-card; match "").`,
+    `Stat of the round: one number from the facts that sums the round up (layout stat-panel or title-card; match "").`,
+    `Games to watch next: only fixtures listed in the facts; leave this segment out if none are listed (layout title-card; match "").`,
+    `Viewer question and call to action (layout end-screen; match "").`
+  ];
+  return `You are the scriptwriter for "The Touchline Notebook", a faceless football analysis YouTube channel. It leads on Liverpool, but this video covers a whole round of matches. The creator narrates in his own voice. Write in UK English: calm, clear, intelligent, conversational, no hype, short spoken sentences.
+
+${RULES}
+
+FORMAT: ${ruName(ru)}, ${ruLabel(ru)}: ${n} ${n===1?"match":"matches"}. Target length: ${L} minutes, about ${W} spoken words at ${wpm()} words per minute.
+Segments in order:
+${secs.map((s,i)=>`${i+1}. ${s}`).join("\n")}
+Every match in the facts gets its own segment. Never mention a match, score, scorer or number that isn't in the facts.
+${SECTION_RULES}
+Visuals are original only: charts, tables and boards drawn from data. Never broadcast footage, photos or club crests.
+Layout ids allowed: title-card, results-grid, timeline, stat-panel, bars, table, numeral, end-screen.
+
+BRIEF FROM THE CREATOR:
+"""${((S.brief||"").trim()||"No angle given. Find the one story that links this round together and open on it.").slice(0,6000)}"""
+
+FACTS AND STATS PROVIDED (the only numbers you may use; each match is tagged with its M-number):
+"""${(S.facts||"none").slice(0,24000)}"""
+${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
+Reply with only a JSON object, no other text, in exactly this shape:
+{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","match":"M-number, or empty string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"match":"M-number","title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with a chapter for every segment and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs"],"hashtags":["exactly 3, each starting with #, no spaces"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
+JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles suit a round-up (for example "${ru.comp} round-up: ..." or a question about the round's biggest story) and never pair a person with a negative word; shorts = exactly ${n}, one per match in M-number order starting with M1, each about that match alone and using only its facts, with a hook under 12 words, a body, and a close that asks a question or points to the full round-up, 60-110 words in total, each standing on its own; self_check is an empty array when nothing is borderline.`;
 }
 
 /* ---------- Claude (direct from this page, using your own key) ---------- */
@@ -748,11 +889,19 @@ function extractJSON(t){
   if(a<0||b<=a) throw {code:"invalid_json"};
   try{ return JSON.parse(t.slice(a,b+1)); }catch(e){ throw {code:"invalid_json"}; }
 }
+function mapRefs(o){
+  const ms=ruMatches(), f=v=>{ const m=String(v||"").match(/(\d+)/); const x=m?ms[+m[1]-1]:null; return x?x._id:""; };
+  (o.segments||[]).forEach(s=>{ if(s) s.match=f(s.match); });
+  (o.shorts||[]).forEach(s=>{ if(s) s.match=f(s.match); });
+}
 function applyReply(text){
-  const r = normalise(extractJSON(text));
+  const raw=extractJSON(text); if(isRU()) mapRefs(raw);
+  const r = normalise(raw);
   if(!r.segments.length) throw {code:"invalid_json"};
   S.result=r; save(); tab="board"; renderAll();
-  setStatus(`Done: ${r.segments.length} sections. Edit any line below; changes save in this browser.`);
+  if(isRU()){ const n=ruMatches().length, got=new Set(r.shorts.map(s=>s.match).filter(Boolean)).size;
+    setStatus(`Done: ${r.segments.length} sections and ${got} of ${n} Shorts.${got<n?" Press Write the script again to get the rest.":""} Edit any line below; changes save in this browser.`, got<n); }
+  else setStatus(`Done: ${r.segments.length} sections. Edit any line below; changes save in this browser.`);
 }
 async function generate(){
   if(!(S.brief||"").trim() && !(S.facts||"").trim()){ setStatus("Pick a match, or write a paragraph: what happened and the point you want to make.",true); $("brief").focus(); return; }
@@ -760,7 +909,7 @@ async function generate(){
   const my = new AbortController(); ctl = my;
   $("go").disabled=true; $("stop").hidden=false; setStatus("Thinking…");
   try{
-    const text = await callClaude(buildPrompt(),{signal:my.signal,max:32000,effort:"medium",onText:t=>{ if(ctl===my) setStatus(`Writing… ${t.length.toLocaleString("en-GB")} characters`); },onThink:()=>{ if(ctl===my) setStatus("Planning the script…"); }});
+    const text = await callClaude(promptNow(),{signal:my.signal,max:32000,effort:"medium",onText:t=>{ if(ctl===my) setStatus(`Writing… ${t.length.toLocaleString("en-GB")} characters`); },onThink:()=>{ if(ctl===my) setStatus("Planning the script…"); }});
     if(ctl!==my) return;
     applyReply(text);
   }catch(e){
@@ -769,12 +918,13 @@ async function generate(){
     else setStatus(ERR[e&&e.code]||(e&&e.message)||ERR.network,true);
   }finally{ if(ctl===my){ $("go").disabled=false; $("stop").hidden=true; ctl=null; } }
 }
+function segFacts(seg){ const m=seg&&seg.match?byId(seg.match):null; if(isRU()&&m) return compactFacts(m); return (S.facts||"none").slice(0,isRU()?12000:4000); }
 async function rewriteSeg(i, instr, btn){
   if(!apiKey){ toast("Add your Claude API key first"); return; }
   const seg=S.result.segments[i]; const all=S.result.segments.map((s,j)=>`${j===i?">>> ":""}[${s.label}] ${s.voiceover}`).join("\n\n");
   btn.disabled=true; const old=btn.textContent; btn.textContent="Rewriting…";
   try{
-    const txt = await callClaude(`${RULES}\n\nYou are editing one section of a narrated football analysis script for "The Touchline Notebook" (UK English, calm, spoken). The full script is below; the section to rewrite is marked >>>.\n\n${all.slice(0,20000)}\n\nFACTS PROVIDED (only numbers allowed):\n"""${(S.facts||"none").slice(0,4000)}"""\n\n${SECTION_RULES}\n\nRewrite ONLY the section "${seg.label}" at roughly the same length (${words(seg.voiceover)} words).${instr?` Creator's instruction: ${instr.slice(0,400)}`:""}\nReply with only JSON: {"voiceover":"string","on_screen":["1-4 strings"],"stats":["strings or [STAT: ...] placeholders"]}`,{max:12000,effort:"low"});
+    const txt = await callClaude(`${RULES}\n\nYou are editing one section of a narrated football analysis script for "The Touchline Notebook" (UK English, calm, spoken). The full script is below; the section to rewrite is marked >>>.\n\n${all.slice(0,20000)}\n\nFACTS PROVIDED (only numbers allowed):\n"""${segFacts(seg)}"""\n\n${SECTION_RULES}\n\nRewrite ONLY the section "${seg.label}" at roughly the same length (${words(seg.voiceover)} words).${instr?` Creator's instruction: ${instr.slice(0,400)}`:""}\nReply with only JSON: {"voiceover":"string","on_screen":["1-4 strings"],"stats":["strings or [STAT: ...] placeholders"]}`,{max:12000,effort:"low"});
     const r = extractJSON(txt);
     if(r&&r.voiceover){ seg.voiceover=String(r.voiceover); if(Array.isArray(r.on_screen)) seg.on_screen=r.on_screen.map(String); if(Array.isArray(r.stats)) seg.stats=r.stats.map(String); save(); renderAll(); toast("Section rewritten"); }
   }catch(e){ const x=apiError(e); toast(ERR[x.code]||"Rewrite failed. Try again."); btn.disabled=false; btn.textContent=old; }
@@ -787,8 +937,8 @@ function normalise(r){
     working_title:String(r.working_title||"Untitled script"),
     titles:arr(r.titles).map(String).slice(0,8),
     thumbnail:{text:String(r.thumbnail&&r.thumbnail.text||""),concept:String(r.thumbnail&&r.thumbnail.concept||""),layout:LAYOUTS[r.thumbnail&&r.thumbnail.layout]?r.thumbnail.layout:"tactics-board"},
-    segments:arr(r.segments).filter(s=>s&&s.voiceover).map(s=>({label:String(s.label||"Section"),start:String(s.start||""),end:String(s.end||""),voiceover:String(s.voiceover),layout:LAYOUTS[s.layout]?s.layout:"tactics-board",on_screen:arr(s.on_screen).map(String),stats:arr(s.stats).map(String)})),
-    shorts:arr(r.shorts).map(s=>({title:String(s.title||"Short"),hook:String(s.hook||""),body:String(s.body||""),close:String(s.close||"")})),
+    segments:arr(r.segments).filter(s=>s&&s.voiceover).map(s=>({match:String(s.match||""),label:String(s.label||"Section"),start:String(s.start||""),end:String(s.end||""),voiceover:String(s.voiceover),layout:LAYOUTS[s.layout]?s.layout:"tactics-board",on_screen:arr(s.on_screen).map(String),stats:arr(s.stats).map(String)})),
+    shorts:arr(r.shorts).filter(Boolean).map(s=>({match:String(s.match||""),title:String(s.title||"Short"),hook:String(s.hook||""),body:String(s.body||""),close:String(s.close||"")})),
     description:String(r.description||""), pinned_comment:String(r.pinned_comment||""),
     tags:arr(r.tags).map(x=>String(x).replace(/^#/,"").trim()).filter(Boolean).slice(0,20),
     hashtags:arr(r.hashtags).map(x=>"#"+String(x).replace(/^#+/,"").replace(/\s+/g,"")).filter(x=>x.length>1).slice(0,5),
@@ -810,7 +960,7 @@ function renderSummary(){
   const T=totals(), target=+S.length*60, ratio=T.sec/target;
   const timeCls = ratio<0.85||ratio>1.15 ? "warn" : "good";
   const max=Math.max(target,T.sec)*1.1;
-  el.innerHTML = `<div style="min-width:0">${`<span class="tag">${esc(tplById(S.template).name)}</span>`}<h2>${esc(r.working_title)}</h2></div>
+  el.innerHTML = `<div style="min-width:0">${isRU()?`<span class="tag">${esc(ruName())} · ${esc(ruLabel())} · ${ruMatches().length} matches</span>`:`<span class="tag">${esc(tplById(S.template).name)}</span>`}<h2>${esc(r.working_title)}</h2></div>
   <div class="meters">
     <div class="meter ${timeCls}"><b>${mmss(T.sec)}</b><span>Est. runtime</span></div>
     <div class="meter"><b>${mmss(target)}</b><span>Target</span></div>
@@ -824,14 +974,14 @@ function renderBoardTimes(){
   document.querySelectorAll("[data-est]").forEach(n=>{ const i=+n.dataset.est; const s=S.result&&S.result.segments[i]; if(s) n.textContent=`≈ ${mmss(words(s.voiceover)/wpm()*60)} spoken · ${words(s.voiceover)} words`; });
 }
 function segHTML(s,i){
-  const hits=scan(s.voiceover);
+  const hits=scan(s.voiceover), g=segGfx(s), sm=s.match?byId(s.match):null;
   const planned = (parseT(s.start)!=null && parseT(s.end)!=null) ? `${s.start}–${s.end}` : "";
   return `<article class="seg${hits.length?" flagged":""}" data-i="${i}">
-    <div class="frame">${gfx(s.layout)||layoutSVG(s.layout)}<small>${esc(LAYOUTS[s.layout].name)}${gfx(s.layout)?" · drawn from this match":" · layout guide"}</small>${gfx(s.layout)?`<button class="btn sm sv" type="button">Save as SVG</button>`:""}
+    <div class="frame">${g||layoutSVG(s.layout)}<small>${esc(LAYOUTS[s.layout].name)}${g?(isRU()&&!sm?" · drawn from this round":" · drawn from this match"):" · layout guide"}</small>${g?`<button class="btn sm sv" type="button">Save as SVG</button>`:""}
       <select class="lay" aria-label="Layout for ${esc(s.label)}">${LAYOUT_IDS.map(id=>`<option value="${id}"${id===s.layout?" selected":""}>${esc(LAYOUTS[id].name)}</option>`).join("")}</select>
     </div>
     <div style="min-width:0">
-      <div class="seg-head"><h3>${i+1}. ${esc(s.label)}</h3><span class="time">${esc(planned)}</span><span class="time" data-est="${i}"></span><span class="time">Record as <b>${esc(takeName(i))}.wav</b></span></div>
+      ${sm&&isRU()?`<span class="match-tag">${esc(score(sm))}</span>`:""}<div class="seg-head"><h3>${i+1}. ${esc(s.label)}</h3><span class="time">${esc(planned)}</span><span class="time" data-est="${i}"></span><span class="time">Record as <b>${esc(takeName(i))}.wav</b></span></div>
       <textarea class="vo" id="vo-${i}" aria-label="Voiceover for ${esc(s.label)}">${esc(s.voiceover)}</textarea>
       ${s.on_screen.length?`<div class="cues">${s.on_screen.map(c=>`<div class="cue">${esc(c)}</div>`).join("")}</div>`:""}
       ${s.stats.length?`<div class="chips">${s.stats.map(x=>`<span class="chip${/\[STAT/.test(x)?" ph":""}">${esc(x)}</span>`).join("")}</div>`:""}
@@ -844,9 +994,10 @@ function renderBoard(){
   const p=$("p-board"), r=S.result;
   if(!r){ p.innerHTML=`<p class="empty">Your storyboard appears here.</p>`; return; }
   const sc = r.self_check.length ? `<div class="card"><h3>Lines Claude wasn't sure about</h3>${r.self_check.map(x=>`<p><b>${esc(x.line)}</b><br><span class="spec">${esc(x.issue)}</span><br>Safer: ${esc(x.rewrite)}</p>`).join("")}</div>` : "";
-  const vp = curResult() && !curResult().stats_pending ? `<div class="card"><h3>Make the video</h3><p class="spec" style="margin:4px 0 10px">Every section gets a picture drawn from this match's data. Download the pack, then record each section as its own file, named as shown on each section (01-…, 02-…), all in one folder. In Match Studio, open the pack and choose that folder: every picture then lasts exactly as long as its recording. The Read-through tab shows one section at a time to read from.</p><button class="btn sm" type="button" id="sendPack">Send to Match Studio (download video pack)</button> <span class="spec" id="packMsg"></span></div>` : "";
+  const canPack = isRU() ? ruMatches().length>0 : !!(curResult() && !curResult().stats_pending);
+  const vp = canPack ? `<div class="card"><h3>Make the video</h3><p class="spec" style="margin:4px 0 10px">Every section gets a picture drawn from ${isRU()?"the round's":"this match's"} data. Download the pack, then record each section as its own file, named as shown on each section (01-…, 02-…), all in one folder. In Match Studio, open the pack and choose that folder: every picture then lasts exactly as long as its recording. The Read-through tab shows one section at a time to read from.</p><button class="btn sm" type="button" id="sendPack">Send to Match Studio (download video pack)</button> <span class="spec" id="packMsg"></span></div>` : "";
   p.innerHTML = vp + sc + r.segments.map(segHTML).join("");
-  const sp=$("sendPack"); if(sp) sp.addEventListener("click",async()=>{ const m=$("packMsg"); sp.disabled=true; m.textContent="Drawing the pictures…"; try{ const pk=await buildPack(); const cr=curResult(); downloadFile(`${packSlug(cr)}${pk.format==="short"?"-short":""}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent=`Downloaded: ${pk.segments.length} pictures. Open it in Match Studio.`; }catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } sp.disabled=false; });
+  const sp=$("sendPack"); if(sp) sp.addEventListener("click",async()=>{ const m=$("packMsg"); sp.disabled=true; m.textContent="Drawing the pictures…"; try{ const pk=await buildPack(); downloadFile(`${isRU()?ruSlug():packSlug(curResult())}${pk.format==="short"?"-short":""}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent=`Downloaded: ${pk.segments.length} pictures. Open it in Match Studio.`; }catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } sp.disabled=false; });
   renderBoardTimes();
   p.querySelectorAll(".seg").forEach(card=>{
     const i=+card.dataset.i, ta=card.querySelector(".vo");
@@ -856,7 +1007,7 @@ function renderBoard(){
     card.querySelector(".lay").addEventListener("change",e=>{ S.result.segments[i].layout=e.target.value; save(); renderBoard(); });
     card.querySelector(".rw").addEventListener("click",e=>rewriteSeg(i, card.querySelector(".instr").value, e.currentTarget));
     card.querySelector(".cp").addEventListener("click",()=>copy(S.result.segments[i].voiceover));
-    const sv=card.querySelector(".sv"); if(sv) sv.addEventListener("click",()=>{ const lay=S.result.segments[i].layout; downloadFile(gfxFile(lay),gfx(lay),"image/svg+xml"); });
+    const sv=card.querySelector(".sv"); if(sv) sv.addEventListener("click",()=>{ const sg=S.result.segments[i]; downloadFile(gfxFile(sg),segGfx(sg),"image/svg+xml"); });
     if(!apiKey) card.querySelector(".rw").hidden=true, card.querySelector(".instr").hidden=true;
   });
 }
@@ -893,16 +1044,25 @@ function markdown(){
 function renderShorts(){
   const p=$("p-shorts"), r=S.result;
   if(!r||!r.shorts.length){ p.innerHTML=`<p class="empty">Shorts cut from the script appear here.</p>`; return; }
-  p.innerHTML = `<div class="cards">${r.shorts.map((s,i)=>{ const txt=`${s.hook}\n\n${s.body}\n\n${s.close}`; const w=words(txt); const hits=scan(txt);
-    return `<div class="card"><div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start"><div>${layoutSVG("vertical",s.hook.split(" ").slice(0,4).join(" "))}</div><div style="min-width:0"><h3>${esc(s.title)}</h3><span class="time">${w} words · ≈ ${mmss(w/wpm()*60)}</span></div></div>
+  const shortRes=s=>s.match?byId(s.match):(isRU()?null:curResult());
+  const canSend=s=>{ const sr=shortRes(s); return !!sr && (!!s.match || !sr.stats_pending); };
+  let top="";
+  if(isRU()){ const ms=ruMatches(), have=new Set(r.shorts.map(s=>s.match)), miss=ms.filter(m=>!have.has(m._id)), ok=r.shorts.filter(canSend).length;
+    top=`<div class="card"><h3>A Short for every game</h3><p class="spec" style="margin:4px 0 10px">${r.shorts.length} Shorts, one per match, each written only from that match's facts. Each downloads as its own video pack for Match Studio. Your browser may ask once to allow several downloads.</p>${miss.length?`<p class="flag" style="margin:0 0 10px">No Short came back for ${esc(miss.map(score).join(", "))}. Press Write the script again to redo them.</p>`:""}<div class="actions" style="align-items:center"><button class="btn sm" type="button" id="spAll" ${ok?"":"disabled"}>Download all ${ok} Short packs</button><span class="spec" id="spAllMsg"></span></div></div>`; }
+  p.innerHTML = top + `<div class="cards">${r.shorts.map((s,i)=>{ const txt=`${s.hook}\n\n${s.body}\n\n${s.close}`; const w=words(txt); const hits=scan(txt), sr=shortRes(s);
+    return `<div class="card"><div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start"><div>${layoutSVG("vertical",s.hook.split(" ").slice(0,4).join(" "))}</div><div style="min-width:0">${isRU()&&sr?`<span class="match-tag">${esc(score(sr))}</span>`:""}<h3>${esc(s.title)}</h3><span class="time">${w} words · ≈ ${mmss(w/wpm()*60)}</span></div></div>
     <p><span class="k">Hook</span><br>${esc(s.hook)}</p><p><span class="k">Body</span><br>${esc(s.body)}</p><p><span class="k">Close</span><br>${esc(s.close)}</p>
     ${hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join("")}
     <p class="spec" style="margin:0">Record as <b>01-hook.wav</b>, <b>02-main-point.wav</b>, <b>03-close.wav</b> in one folder.</p>
-    <div class="actions"><button class="btn sm" type="button" data-cs="${i}">Copy Short</button>${curResult()&&!curResult().stats_pending?`<button class="btn sm" type="button" data-sp="${i}">Send to Match Studio</button>`:""}</div><span class="spec" data-spm="${i}"></span></div>`; }).join("")}</div>`;
+    <div class="actions"><button class="btn sm" type="button" data-cs="${i}">Copy Short</button>${canSend(s)?`<button class="btn sm" type="button" data-sp="${i}">Send to Match Studio</button>`:""}</div><span class="spec" data-spm="${i}"></span></div>`; }).join("")}</div>`;
   p.querySelectorAll("[data-cs]").forEach(b=>b.onclick=()=>{ const s=r.shorts[+b.dataset.cs]; copy(`${s.title}\n\n${s.hook}\n\n${s.body}\n\n${s.close}`); });
   p.querySelectorAll("[data-sp]").forEach(b=>b.onclick=async()=>{ const k=+b.dataset.sp, m=p.querySelector(`[data-spm="${k}"]`); b.disabled=true; m.textContent="Drawing the pictures…";
-    try{ const pk=await buildShortPack(k); downloadFile(`${packSlug(curResult())}-short-${k+1}.matchpack.json`, JSON.stringify(pk), "application/json"); m.textContent="Downloaded. Open it in Match Studio."; }
+    try{ const pk=await buildShortPack(k); downloadFile(shortFile(k), JSON.stringify(pk), "application/json"); m.textContent="Downloaded. Open it in Match Studio."; }
     catch(e){ m.textContent=(e&&e.message)||"That didn't work."; } b.disabled=false; });
+  function shortFile(k){ const s=r.shorts[k], sr=shortRes(s); return `${packSlug(sr)}-short${s.match?"":"-"+(k+1)}.matchpack.json`; }
+  const all=$("spAll"); if(all) all.onclick=async()=>{ const m=$("spAllMsg"), ks=r.shorts.map((s,k)=>k).filter(k=>canSend(r.shorts[k])); all.disabled=true; let done=0;
+    for(const k of ks){ m.textContent=`Drawing ${done+1} of ${ks.length}…`; try{ const pk=await buildShortPack(k); downloadFile(shortFile(k), JSON.stringify(pk), "application/json"); done++; }catch(e){} await new Promise(z=>setTimeout(z,700)); }
+    m.textContent=`Downloaded ${done} of ${ks.length}. Open each one in Match Studio.`; all.disabled=false; };
 }
 function renderPack(){
   const p=$("p-pack"), r=S.result;
@@ -975,7 +1135,7 @@ function openMatch(id){
   const r=RESULTS.find(x=>x._id===id); if(!r) return;
   if(ctl){ ctl.abort(); ctl=null; $("go").disabled=false; $("stop").hidden=true; }
   stash();
-  S.cur=id; PICK.id=id;
+  S.cur=id; PICK.id=id; S.mode="single"; renderMode();
   const rec=S.byMatch[id], lfc=r.home==="Liverpool"||r.away==="Liverpool";
   const newFacts=factsFor(r);
   S.template = (rec&&rec.template)||(lfc?"lfc-review":"result");
@@ -1044,6 +1204,10 @@ async function loadResults(quiet){
     const cur=RESULTS.find(x=>x._id===S.cur);
     if(cur && !PICK.id){ PICK.id=cur._id; PICK.comp=cur.competition; PICK.date=cur.date; }
     renderPicker();
+    if(isRU()&&!RU_UI.comp) syncRUUI(S.ru);
+    if(S.mode==="roundup") renderRU();
+    if(!loadResults.done){ loadResults.done=true; renderAll(); }
+    if(isRU() && S.factsAuto){ const f=ruFacts(); if(f!==S.factsAuto){ S.facts=f; S.factsAuto=f; $("facts").value=f; save(); if(S.result) setStatus("New data arrived for this round. Press Write the script to refresh the script.",true); } }
     if(cur && S.factsAuto){ const f=factsFor(cur); if(f!==S.factsAuto){ S.facts=f; S.factsAuto=f; $("facts").value=f; save(); if(S.result) setStatus("New data arrived for this match. Press Write the script to refresh the script.",true); } }
   }catch(e){
     if(quiet && RESULTS.length) return;
@@ -1051,6 +1215,114 @@ async function loadResults(quiet){
     $("resNote").textContent="Results couldn't load. Open the website address instead of the file on your computer.";
     $("resNote").classList.add("err");
   }
+}
+/* ---------- Round-up picker: a weekend (Fri–Mon), a midweek (Tue–Thu) or any dates ---------- */
+const RU_UI = {comp:"", wk:"", kind:"weekend", from:"", to:"", off:new Set()};
+function compactFacts(r){
+  const goals=(r.goals||[]).slice().sort((a,b)=>a.min-b.min);
+  const L=[`${score(r)} · ${dayShort(r.date)}${koTime(r.kickoff)?", "+koTime(r.kickoff):""} (home team: ${r.home})`];
+  if(r.stats_pending){ L.push("Score only: goal minutes, scorers and stats aren't in the data for this match."); return L.join("\n"); }
+  L.push(`Goals: ${goals.map(goalTxt).join("; ")||"none"}`);
+  if((r.red_cards||[]).length) L.push(`Sendings-off: ${r.red_cards.map(c=>`${c.min}' ${c.team}${c.player?` – ${c.player}`:""}`).join("; ")}`);
+  const want=["Possession (%)","Shots","Shots on target","Corners","Fouls"], st=(r.stats||[]).filter(x=>want.includes(x.label));
+  const use=st.length?st:(r.stats||[]).slice(0,5);
+  if(use.length) L.push(`Stats (${r.home} / ${r.away}): `+use.map(s=>{ const pc=/%/.test(s.label)?"%":""; return `${s.label.replace(" (%)","")} ${s.home}${pc} / ${s.away}${pc}`; }).join(" · "));
+  return L.join("\n");
+}
+function ruFacts(){
+  const ru=S.ru||{}, ms=ruMatches(), parts=ms.map((r,k)=>`[M${k+1}] `+compactFacts(r));
+  const tb=TABLES.find(x=>x.competition===ru.comp&&x.rows.length);
+  if(tb) parts.push(`League table as saved on ${TABLES_AT||"the latest update"} (it may include games played after this round): `+tb.rows.map(x=>`${x.pos} ${x.team} ${x.pts} pts, P${x.p}, GD ${x.gd>0?"+":""}${x.gd}`).join("; "));
+  const nx=FIXTURES.filter(f=>f.competition===ru.comp&&f.date>ru.to).sort((a,b)=>a.date.localeCompare(b.date)||koMin(a.kickoff)-koMin(b.kickoff)).slice(0,10);
+  parts.push(nx.length?`Next fixtures in the ${ru.comp}: `+nx.map(f=>`${f.home} v ${f.away}, ${f.kickoff}`).join("; "):`Next fixtures: none loaded for the ${ru.comp}.`);
+  const miss=[]; if(ms.some(r=>r.stats_pending)) miss.push("goal details for the score-only matches"); if(ms.some(r=>!r.stats_pending&&(r.goals||[]).some(g=>!g.scorer))) miss.push("some scorer names"); if(!tb) miss.push("league table"); miss.push("xG","PPDA");
+  parts.push(`Not in the data: ${miss.join(", ")}.`);
+  const srcs=[...new Set(ms.map(r=>r.source).filter(Boolean))]; parts.push(`Sources: ${srcs.join("; ")||"live sports data feed"}`);
+  return parts.join("\n\n");
+}
+function hashIds(a){ let h=5381; for(const c of a.join(",")) h=((h<<5)+h+c.charCodeAt(0))|0; return (h>>>0).toString(36); }
+function ruKey(ru){ return `roundup|${ru.comp}|${ru.from}|${ru.to}|${hashIds(ru.ids||[])}`; }
+function dow(d){ return new Date(d+"T12:00:00Z").getUTCDay(); }
+function addDays(d,n){ const x=new Date(d+"T12:00:00Z"); x.setUTCDate(x.getUTCDate()+n); return x.toISOString().slice(0,10); }
+function roundOf(d){ const w=dow(d); if(w>=2&&w<=4){ const s=addDays(d,2-w); return {kind:"midweek",from:s,to:addDays(s,2)}; } const s=addDays(d,-((w+2)%7)); return {kind:"weekend",from:s,to:addDays(s,3)}; }
+function ruRounds(comp){
+  const m={}; RESULTS.filter(r=>r.competition===comp).forEach(r=>{ const w=roundOf(r.date); (m[w.from]=m[w.from]||Object.assign({n:0},w)).n++; });
+  return Object.values(m).sort((a,b)=>b.from.localeCompare(a.from));
+}
+function ruLen(n){ const want=3+n*0.8; return [6,8,9,10,12,14].find(x=>x>=want)||14; }
+function ruPool(){ return RESULTS.filter(r=>r.competition===RU_UI.comp&&r.date>=RU_UI.from&&r.date<=RU_UI.to).sort((a,b)=>a.date.localeCompare(b.date)||koMin(a.kickoff)-koMin(b.kickoff)||a.home.localeCompare(b.home)); }
+function syncRUUI(ru){
+  if(!ru) return; RU_UI.comp=ru.comp; RU_UI.from=ru.from; RU_UI.to=ru.to; RU_UI.kind=ru.kind;
+  RU_UI.wk = ru.kind==="custom" ? "custom" : ru.from;
+  const on=new Set(ru.ids||[]); RU_UI.off=new Set(ruPool().map(r=>r._id).filter(id=>!on.has(id)));
+}
+function ruCount(){
+  const pool=ruPool(), on=pool.filter(r=>!RU_UI.off.has(r._id)).length;
+  $("ruCount").textContent = pool.length ? `${on} of ${pool.length} ticked · about ${ruLen(on)} minutes` : "";
+  $("ruGo").disabled=!on;
+  $("ruList").querySelectorAll(".ru-row").forEach(l=>l.classList.toggle("off",!l.querySelector("input").checked));
+}
+function renderRU(){
+  if(!RESULTS.length){ $("ruList").innerHTML=""; $("ruCount").textContent="Results are still loading."; $("ruGo").disabled=true; return; }
+  const cl=compList(); if(!cl.includes(RU_UI.comp)) RU_UI.comp=cl.includes("Premier League")?"Premier League":cl[0];
+  $("ruComp").innerHTML=cl.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join(""); $("ruComp").value=RU_UI.comp;
+  const rs=ruRounds(RU_UI.comp);
+  if(RU_UI.wk!=="custom" && !rs.some(x=>x.from===RU_UI.wk)){ const wk=rs.find(x=>x.kind==="weekend")||rs[0]; RU_UI.wk = wk ? wk.from : "custom"; }
+  $("ruWk").innerHTML=rs.map(x=>`<option value="${x.from}">${x.kind==="midweek"?"Midweek · ":""}${esc(rangeLabel(x.from,x.to))} · ${x.n} ${x.n===1?"match":"matches"}</option>`).join("")+`<option value="custom">Custom dates…</option>`;
+  $("ruWk").value=RU_UI.wk;
+  if(RU_UI.wk!=="custom"){ const x=rs.find(y=>y.from===RU_UI.wk); RU_UI.from=x.from; RU_UI.to=x.to; RU_UI.kind=x.kind; }
+  else{ RU_UI.kind="custom"; if(!RU_UI.from||!RU_UI.to){ const d=RESULTS.filter(r=>r.competition===RU_UI.comp).map(r=>r.date).sort().pop()||""; RU_UI.from=RU_UI.from||d; RU_UI.to=RU_UI.to||d; } }
+  $("ruCustom").hidden = RU_UI.wk!=="custom"; $("ruFrom").value=RU_UI.from; $("ruTo").value=RU_UI.to;
+  const pool=ruPool();
+  $("ruList").innerHTML = pool.length ? pool.map(r=>`<label class="ru-row"><input type="checkbox" data-id="${esc(r._id)}" ${RU_UI.off.has(r._id)?"":"checked"} aria-label="Include ${esc(score(r))}"><span class="fx-t r">${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span class="fx-t">${esc(r.away)}</span><small>${esc(dayShort(r.date))}${koTime(r.kickoff)?" · "+esc(koTime(r.kickoff)):""}${r.stats_pending?" · score only":needsDetails(r)?" · no scorers yet":""}</small></label>`).join("") : `<p class="hint">No ${esc(RU_UI.comp)} matches between these dates.</p>`;
+  $("ruList").querySelectorAll("input").forEach(c=>c.addEventListener("change",()=>{ if(c.checked) RU_UI.off.delete(c.dataset.id); else RU_UI.off.add(c.dataset.id); ruCount(); }));
+  ruCount();
+}
+function openRoundup(ru, opts){
+  opts=opts||{};
+  if(ctl){ ctl.abort(); ctl=null; $("go").disabled=false; $("stop").hidden=true; }
+  stash();
+  const key=opts.key||ruKey(ru);
+  S.cur=key; S.ru=ru; S.mode="roundup"; PICK.id="";
+  const rec=S.byMatch[key];
+  S.template="weekend"; S.length=(rec&&rec.length)||ruLen((ru.ids||[]).length);
+  S.brief=rec?rec.brief:""; S.extra=rec?rec.extra:""; S.result=rec?rec.result:null;
+  const nf=ruFacts(), changed=!!(rec&&rec.result&&rec.factsAuto&&rec.factsAuto!==nf);
+  S.facts=nf; S.factsAuto=nf;
+  syncRUUI(ru); syncForm(); renderMode(); renderRU(); renderAll(); save();
+  if(window.matchMedia("(max-width:900px)").matches) $("summary").scrollIntoView({behavior:"smooth",block:"start"});
+  if(opts.quiet) return;
+  if(rec&&rec.result) setStatus(changed?"Loaded your saved round-up. New data has arrived since it was written: press Write the script to refresh it.":"Loaded your saved round-up.", changed);
+  else if(S.auto!==false && apiKey) generate();
+  else if(!apiKey){ setStatus("Round-up loaded. Add your Claude API key below to write the script.", true); $("keyBox").open=true; }
+  else setStatus("Round-up loaded. Press Write the script.");
+}
+function renderMode(){
+  const ru=S.mode==="roundup";
+  document.querySelectorAll(".modes button").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.mode===S.mode)));
+  $("ruBox").hidden=!ru; $("resBox").hidden=ru; $("tplField").hidden=ru;
+}
+function setMode(m){
+  if(S.mode===m) return;
+  S.mode=m; renderMode();
+  if(m==="roundup"){ if(isRU()) syncRUUI(S.ru); renderRU(); if(!isRU()) setStatus("Pick a round, untick any match to leave out, then press Open the round-up."); }
+  else if(isRU()) setStatus("Pick a match to script it on its own.");
+  save();
+}
+function initRU(){
+  document.querySelectorAll(".modes button").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
+  $("ruComp").addEventListener("change",()=>{ RU_UI.comp=$("ruComp").value; RU_UI.wk=""; RU_UI.off.clear(); renderRU(); });
+  $("ruWk").addEventListener("change",()=>{ RU_UI.wk=$("ruWk").value; RU_UI.off.clear(); renderRU(); });
+  const dates=()=>{ let a=$("ruFrom").value, b=$("ruTo").value; if(a&&b&&a>b){ const t=a; a=b; b=t; } RU_UI.from=a||RU_UI.from; RU_UI.to=b||RU_UI.to; RU_UI.off.clear(); renderRU(); };
+  $("ruFrom").addEventListener("change",dates); $("ruTo").addEventListener("change",dates);
+  $("ruAll").addEventListener("click",()=>{ RU_UI.off.clear(); renderRU(); });
+  $("ruNone").addEventListener("click",()=>{ ruPool().forEach(r=>RU_UI.off.add(r._id)); renderRU(); });
+  $("ruGo").addEventListener("click",()=>{
+    const ids=ruPool().filter(r=>!RU_UI.off.has(r._id)).map(r=>r._id); if(!ids.length) return;
+    openRoundup({comp:RU_UI.comp, kind:RU_UI.kind, from:RU_UI.from, to:RU_UI.to, ids});
+  });
+  if(isRU()) syncRUUI(S.ru);
+  renderMode();
 }
 function initPicker(){
   $("resComp").addEventListener("change",()=>{ PICK.comp=$("resComp").value; PICK.date=""; PICK.id=""; renderPicker(); });
@@ -1064,7 +1336,7 @@ $("openProj").addEventListener("click",()=>$("projIn").click());
 $("projIn").addEventListener("change",async e=>{ const f=e.target.files&&e.target.files[0]; e.target.value=""; if(!f) return;
   try{ importPack(JSON.parse(await f.text())); }catch(x){ setStatus((x&&x.message)||"That file couldn't be opened.",true); } });
 document.querySelectorAll("#tabs button").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.tab; if(tab==="read") renderRead(); if(tab==="shorts") renderShorts(); if(tab==="pack") renderPack(); renderTabs(); }));
-initForm(); initPicker(); renderAll(); loadResults(); setInterval(()=>loadResults(true),600000);
+initForm(); initPicker(); initRU(); renderAll(); loadResults(); setInterval(()=>loadResults(true),600000);
 })();
 
 </script>
