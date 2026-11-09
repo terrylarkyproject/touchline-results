@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-08T22:09:58Z",
+ "updated_at": "2026-11-09T06:39:21Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -29510,5 +29510,20 @@
    ]
   }
  ],
- "fixtures": []
+ "fixtures": [
+  {
+   "competition": "MLS",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov, 12:30am",
+   "home": "Orlando City SC",
+   "away": "FC Cincinnati"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov, 3:00am",
+   "home": "Seattle Sounders FC",
+   "away": "Real Salt Lake"
+  }
+ ]
 }
