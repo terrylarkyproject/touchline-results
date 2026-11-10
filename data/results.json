@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T06:39:21Z",
+ "updated_at": "2026-11-10T03:36:04Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -29524,6 +29524,27 @@
    "kickoff": "Fri 20 Nov, 3:00am",
    "home": "Seattle Sounders FC",
    "away": "Real Salt Lake"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov, 7:30pm",
+   "home": "Bayern Munich",
+   "away": "FC Cologne"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov, 7:45pm",
+   "home": "Troyes",
+   "away": "Le Havre AC"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov, 8:00pm",
+   "home": "Athletic Club",
+   "away": "Espanyol"
   }
  ]
 }
