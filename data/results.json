@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T03:36:04Z",
+ "updated_at": "2026-11-11T06:29:33Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -29545,6 +29545,209 @@
    "kickoff": "Fri 20 Nov, 8:00pm",
    "home": "Athletic Club",
    "away": "Espanyol"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 11:00pm",
+   "home": "Inter Miami CF",
+   "away": "Columbus Crew"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 12:30pm",
+   "home": "Manchester City",
+   "away": "Fulham"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 1:00pm",
+   "home": "Alaves",
+   "away": "Deportivo"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 2:00pm",
+   "home": "Como",
+   "away": "Cagliari"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 2:00pm",
+   "home": "Lazio",
+   "away": "Lecce"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 2:30pm",
+   "home": "1. FC Union Berlin",
+   "away": "RB Leipzig"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 2:30pm",
+   "home": "Bayer Leverkusen",
+   "away": "SC Paderborn 07"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 2:30pm",
+   "home": "Borussia Monchengladbach",
+   "away": "Borussia Dortmund"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 2:30pm",
+   "home": "Eintracht Frankfurt",
+   "away": "TSG Hoffenheim"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 2:30pm",
+   "home": "SV Elversberg",
+   "away": "SC Freiburg"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 3:00pm",
+   "home": "AFC Bournemouth",
+   "away": "Nottingham Forest"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 3:00pm",
+   "home": "Aston Villa",
+   "away": "Sunderland"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 3:00pm",
+   "home": "Chelsea",
+   "away": "Leeds United"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 3:00pm",
+   "home": "Coventry City",
+   "away": "Crystal Palace"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 3:00pm",
+   "home": "Tottenham Hotspur",
+   "away": "Ipswich Town"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 3:15pm",
+   "home": "Rayo Vallecano",
+   "away": "Valencia"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 4:15pm",
+   "home": "Nice",
+   "away": "Paris Saint-Germain"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 5:00pm",
+   "home": "Parma",
+   "away": "AS Roma"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 5:30pm",
+   "home": "Newcastle United",
+   "away": "Arsenal"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 5:30pm",
+   "home": "Sevilla",
+   "away": "Real Betis"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 5:30pm",
+   "home": "Schalke 04",
+   "away": "VfB Stuttgart"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 7:00pm",
+   "home": "New England Revolution",
+   "away": "Philadelphia Union"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 7:45pm",
+   "home": "Napoli",
+   "away": "Torino"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 7:45pm",
+   "home": "AS Monaco",
+   "away": "AJ Auxerre"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 7:45pm",
+   "home": "Lens",
+   "away": "Toulouse"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 7:45pm",
+   "home": "Lille",
+   "away": "Lyon"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 7:45pm",
+   "home": "Strasbourg",
+   "away": "Brest"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 8:00pm",
+   "home": "Real Madrid",
+   "away": "Celta Vigo"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-21",
+   "kickoff": "Sat 21 Nov, 9:00pm",
+   "home": "FC Dallas",
+   "away": "Portland Timbers"
   }
  ]
 }
