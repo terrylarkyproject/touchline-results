@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-12T00:46:32Z",
+ "updated_at": "2026-11-13T01:51:12Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -29881,6 +29881,34 @@
    "kickoff": "Mon 23 Nov, 1:30am",
    "home": "Vancouver Whitecaps",
    "away": "TBD Away"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-23",
+   "kickoff": "Mon 23 Nov, 7:45pm",
+   "home": "Monza",
+   "away": "Fiorentina"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-23",
+   "kickoff": "Mon 23 Nov, 8:00pm",
+   "home": "Brentford",
+   "away": "Everton"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-23",
+   "kickoff": "Mon 23 Nov, 8:00pm",
+   "home": "Levante",
+   "away": "Elche"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 1:00am",
+   "home": "St. Louis CITY SC",
+   "away": "LAFC"
   }
  ]
 }
