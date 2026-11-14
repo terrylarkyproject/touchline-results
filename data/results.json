@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T01:51:12Z",
+ "updated_at": "2026-11-14T01:27:48Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -29909,6 +29909,76 @@
    "kickoff": "Tue 24 Nov, 1:00am",
    "home": "St. Louis CITY SC",
    "away": "LAFC"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 5:45pm",
+   "home": "Bodo/Glimt",
+   "away": "LASK Linz"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 5:45pm",
+   "home": "Galatasaray",
+   "away": "Aston Villa"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 8:00pm",
+   "home": "Arsenal",
+   "away": "Borussia Dortmund"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 8:00pm",
+   "home": "Como",
+   "away": "AEK Athens"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 8:00pm",
+   "home": "Feyenoord Rotterdam",
+   "away": "FC Porto"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 8:00pm",
+   "home": "Manchester City",
+   "away": "Napoli"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 8:00pm",
+   "home": "RB Leipzig",
+   "away": "Lens"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 8:00pm",
+   "home": "Real Madrid",
+   "away": "PSV Eindhoven"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov, 8:00pm",
+   "home": "Slovan Bratislava",
+   "away": "Real Betis"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 3:00am",
+   "home": "San Jose Earthquakes",
+   "away": "Houston Dynamo FC"
   }
  ]
 }
