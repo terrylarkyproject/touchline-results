@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-14T01:27:48Z",
+ "updated_at": "2026-11-15T06:38:42Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -29979,6 +29979,69 @@
    "kickoff": "Wed 25 Nov, 3:00am",
    "home": "San Jose Earthquakes",
    "away": "Houston Dynamo FC"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 5:45pm",
+   "home": "Sabah FK",
+   "away": "Barcelona"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 5:45pm",
+   "home": "Slavia Prague",
+   "away": "Villarreal"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 8:00pm",
+   "home": "Atletico Madrid",
+   "away": "Viking FK"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 8:00pm",
+   "home": "Club Brugge",
+   "away": "Liverpool"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 8:00pm",
+   "home": "Inter",
+   "away": "VfB Stuttgart"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 8:00pm",
+   "home": "Lille",
+   "away": "Bayern Munich"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 8:00pm",
+   "home": "Paris Saint-Germain",
+   "away": "AS Roma"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 8:00pm",
+   "home": "Shakhtar Donetsk",
+   "away": "Fenerbahce"
+  },
+  {
+   "competition": "Champions League",
+   "date": "2026-11-25",
+   "kickoff": "Wed 25 Nov, 8:00pm",
+   "home": "Sporting CP",
+   "away": "Manchester United"
   }
  ]
 }
