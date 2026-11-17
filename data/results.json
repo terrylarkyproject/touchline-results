@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-15T06:38:42Z",
+ "updated_at": "2026-11-17T03:56:07Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -30042,6 +30042,55 @@
    "kickoff": "Wed 25 Nov, 8:00pm",
    "home": "Sporting CP",
    "away": "Manchester United"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-27",
+   "kickoff": "Fri 27 Nov, 7:30pm",
+   "home": "Werder Bremen",
+   "away": "Borussia Monchengladbach"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-27",
+   "kickoff": "Fri 27 Nov, 7:45pm",
+   "home": "Venezia",
+   "away": "Bologna"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-27",
+   "kickoff": "Fri 27 Nov, 7:45pm",
+   "home": "Brest",
+   "away": "Paris FC"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-27",
+   "kickoff": "Fri 27 Nov, 8:00pm",
+   "home": "Nottingham Forest",
+   "away": "Chelsea"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-27",
+   "kickoff": "Fri 27 Nov, 8:00pm",
+   "home": "Levante",
+   "away": "Racing Santander"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 1:00am",
+   "home": "Columbus Crew",
+   "away": "Inter Miami CF"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 3:00am",
+   "home": "TBD Home",
+   "away": "Vancouver Whitecaps"
   }
  ]
 }
