@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-17T03:56:07Z",
+ "updated_at": "2026-11-18T00:58:46Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -30081,9 +30081,58 @@
   {
    "competition": "MLS",
    "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 11:30pm",
+   "home": "TBD Home",
+   "away": "Nashville SC"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-28",
    "kickoff": "Sat 28 Nov, 1:00am",
    "home": "Columbus Crew",
    "away": "Inter Miami CF"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 1:00pm",
+   "home": "Real Betis",
+   "away": "Rayo Vallecano"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 2:00pm",
+   "home": "Frosinone",
+   "away": "Parma"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 2:30pm",
+   "home": "FC Cologne",
+   "away": "SV Elversberg"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 2:30pm",
+   "home": "Hamburg SV",
+   "away": "Bayern Munich"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 2:30pm",
+   "home": "Mainz",
+   "away": "1. FC Union Berlin"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 2:30pm",
+   "home": "SC Paderborn 07",
+   "away": "Schalke 04"
   },
   {
    "competition": "MLS",
@@ -30091,6 +30140,139 @@
    "kickoff": "Sat 28 Nov, 3:00am",
    "home": "TBD Home",
    "away": "Vancouver Whitecaps"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 3:00pm",
+   "home": "Leeds United",
+   "away": "Coventry City"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 3:00pm",
+   "home": "Manchester United",
+   "away": "Brentford"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 3:15pm",
+   "home": "Malaga",
+   "away": "Athletic Club"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 4:15pm",
+   "home": "Angers",
+   "away": "Lens"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 5:00pm",
+   "home": "Torino",
+   "away": "Lazio"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 5:30pm",
+   "home": "Ipswich Town",
+   "away": "Aston Villa"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 5:30pm",
+   "home": "Elche",
+   "away": "Atletico Madrid"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 5:30pm",
+   "home": "VfB Stuttgart",
+   "away": "Eintracht Frankfurt"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 5:30pm",
+   "home": "Charlotte FC",
+   "away": "Chicago Fire FC"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 7:30pm",
+   "home": "Houston Dynamo FC",
+   "away": "San Jose Earthquakes"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 7:45pm",
+   "home": "Inter",
+   "away": "Genoa"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 7:45pm",
+   "home": "Le Havre AC",
+   "away": "Strasbourg"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 7:45pm",
+   "home": "Le Mans",
+   "away": "Lille"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 7:45pm",
+   "home": "Nice",
+   "away": "Troyes"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 7:45pm",
+   "home": "Paris Saint-Germain",
+   "away": "Lorient"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 8:00pm",
+   "home": "Real Madrid",
+   "away": "Alaves"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-28",
+   "kickoff": "Sat 28 Nov, 9:30pm",
+   "home": "Philadelphia Union",
+   "away": "New England Revolution"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 1:30am",
+   "home": "LAFC",
+   "away": "St. Louis CITY SC"
+  },
+  {
+   "competition": "MLS",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 3:30am",
+   "home": "Portland Timbers",
+   "away": "FC Dallas"
   }
  ]
 }
