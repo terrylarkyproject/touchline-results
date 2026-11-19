@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-18T00:58:46Z",
+ "updated_at": "2026-11-19T02:36:28Z",
  "tables_at": "2026-11-08",
  "count": 151,
  "results": [
@@ -30261,6 +30261,27 @@
    "away": "New England Revolution"
   },
   {
+   "competition": "Serie A",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 11:30am",
+   "home": "Udinese",
+   "away": "Fiorentina"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 12:00pm",
+   "home": "Everton",
+   "away": "Liverpool"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 1:00pm",
+   "home": "Valencia",
+   "away": "Osasuna"
+  },
+  {
    "competition": "MLS",
    "date": "2026-11-29",
    "kickoff": "Sun 29 Nov, 1:30am",
@@ -30268,11 +30289,130 @@
    "away": "St. Louis CITY SC"
   },
   {
+   "competition": "Serie A",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 2:00pm",
+   "home": "Sassuolo",
+   "away": "Napoli"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 2:00pm",
+   "home": "AJ Auxerre",
+   "away": "Marseille"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 2:05pm",
+   "home": "Brighton & Hove Albion",
+   "away": "Newcastle United"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 2:05pm",
+   "home": "Crystal Palace",
+   "away": "Hull City"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 2:05pm",
+   "home": "Fulham",
+   "away": "AFC Bournemouth"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 2:05pm",
+   "home": "Sunderland",
+   "away": "Tottenham Hotspur"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 2:30pm",
+   "home": "SC Freiburg",
+   "away": "RB Leipzig"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 3:15pm",
+   "home": "Deportivo",
+   "away": "Barcelona"
+  },
+  {
    "competition": "MLS",
    "date": "2026-11-29",
    "kickoff": "Sun 29 Nov, 3:30am",
    "home": "Portland Timbers",
    "away": "FC Dallas"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 4:15pm",
+   "home": "Toulouse",
+   "away": "Stade Rennais"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 4:30pm",
+   "home": "Arsenal",
+   "away": "Manchester City"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 4:30pm",
+   "home": "TSG Hoffenheim",
+   "away": "FC Augsburg"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 5:00pm",
+   "home": "AS Roma",
+   "away": "Monza"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 5:30pm",
+   "home": "Celta Vigo",
+   "away": "Villarreal"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 6:30pm",
+   "home": "Borussia Dortmund",
+   "away": "Bayer Leverkusen"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 7:45pm",
+   "home": "Como",
+   "away": "Juventus"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 7:45pm",
+   "home": "Lyon",
+   "away": "AS Monaco"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-11-29",
+   "kickoff": "Sun 29 Nov, 8:00pm",
+   "home": "Real Sociedad",
+   "away": "Sevilla"
   }
  ]
 }
