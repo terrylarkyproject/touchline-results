@@ -1,8 +1,412 @@
 {
- "updated_at": "2026-11-20T02:21:33Z",
+ "updated_at": "2026-11-20T11:45:21Z",
  "tables_at": "2026-11-08",
- "count": 151,
+ "count": 153,
  "results": [
+  {
+   "match_id": "espn:401933555",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov 2026, 3:00am",
+   "competition": "MLS",
+   "home": "Seattle Sounders FC",
+   "away": "Real Salt Lake",
+   "home_score": 1,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 36,
+     "team": "Seattle Sounders FC",
+     "scorer": "Albert Rusnák",
+     "assist": "Sebastian Gomez"
+    },
+    {
+     "min": 63,
+     "team": "Real Salt Lake",
+     "scorer": "Morgan Guilavogui",
+     "assist": "Sergi Solans"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Seattle Sounders FC",
+     "mins": [
+      71,
+      71,
+      86,
+      90,
+      90,
+      90
+     ]
+    },
+    {
+     "team": "Real Salt Lake",
+     "mins": [
+      45,
+      60,
+      77,
+      78,
+      85,
+      90
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Real Salt Lake",
+     "on": "Zach Booth",
+     "off": "Dominik Marczuk"
+    },
+    {
+     "min": 60,
+     "team": "Real Salt Lake",
+     "on": "Lukas Engel",
+     "off": "Kobi Henry"
+    },
+    {
+     "min": 71,
+     "team": "Seattle Sounders FC",
+     "on": "Kalani Kossa-Rienzi",
+     "off": "Kim Kee-Hee"
+    },
+    {
+     "min": 71,
+     "team": "Seattle Sounders FC",
+     "on": "Paul Arriola",
+     "off": "Sebastian Gomez"
+    },
+    {
+     "min": 77,
+     "team": "Real Salt Lake",
+     "on": "Samuel Junqua",
+     "off": "Juan Manuel Sanabria"
+    },
+    {
+     "min": 78,
+     "team": "Real Salt Lake",
+     "on": "Ariath Piol",
+     "off": "Morgan Guilavogui"
+    },
+    {
+     "min": 85,
+     "team": "Real Salt Lake",
+     "on": "Aiden Hezarkhani",
+     "off": "Ariath Piol"
+    },
+    {
+     "min": 86,
+     "team": "Seattle Sounders FC",
+     "on": "Snyder Brunell",
+     "off": "Hassani Dotson"
+    },
+    {
+     "min": 90,
+     "team": "Seattle Sounders FC",
+     "on": "Paul Rothrock",
+     "off": "Nouhou Tolo"
+    },
+    {
+     "min": 90,
+     "team": "Seattle Sounders FC",
+     "on": "Peter Kingston",
+     "off": "Jesús Ferreira"
+    },
+    {
+     "min": 90,
+     "team": "Real Salt Lake",
+     "on": "DeAndre Yedlin",
+     "off": "Zach Booth"
+    },
+    {
+     "min": 90,
+     "team": "Seattle Sounders FC",
+     "on": "Yeimar Gómez",
+     "off": "Alex Roldan"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 56.3,
+     "away": 43.7
+    },
+    {
+     "label": "Shots",
+     "home": 19,
+     "away": 11
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 2
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 1
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 13
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 1,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Seattle Sounders FC",
+     "names": [
+      "Andy Thomas",
+      "Stuart Hawkins",
+      "Kim Kee-Hee",
+      "Nouhou Tolo",
+      "Alex Roldan",
+      "Albert Rusnák",
+      "Cristian Roldan",
+      "Hassani Dotson",
+      "Dejan Joveljic",
+      "Sebastian Gomez",
+      "Jesús Ferreira",
+      "Kalani Kossa-Rienzi",
+      "Paul Rothrock",
+      "Snyder Brunell",
+      "Paul Arriola",
+      "Peter Kingston",
+      "Yeimar Gómez"
+     ]
+    },
+    {
+     "team": "Real Salt Lake",
+     "names": [
+      "Rafael",
+      "Philip Quinton",
+      "Kobi Henry",
+      "Luc de Fougerolles",
+      "Noel Caliskan",
+      "Stijn Spierings",
+      "Juan Manuel Sanabria",
+      "Dominik Marczuk",
+      "Sergi Solans",
+      "Morgan Guilavogui",
+      "Saba Lobjanidze",
+      "Lukas Engel",
+      "Zach Booth",
+      "Ariath Piol",
+      "Samuel Junqua",
+      "DeAndre Yedlin",
+      "Aiden Hezarkhani"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-20T11:45:21Z"
+  },
+  {
+   "match_id": "espn:401933535",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov 2026, 12:30am",
+   "competition": "MLS",
+   "home": "Orlando City SC",
+   "away": "FC Cincinnati",
+   "home_score": 1,
+   "away_score": 3,
+   "goals": [
+    {
+     "min": 26,
+     "team": "Orlando City SC",
+     "scorer": "Martín Ojeda",
+     "assist": "Iván Angulo"
+    },
+    {
+     "min": 43,
+     "team": "FC Cincinnati",
+     "scorer": "Evander",
+     "penalty": true
+    },
+    {
+     "min": 49,
+     "team": "FC Cincinnati",
+     "scorer": "Evander",
+     "assist": "Tom Barlow"
+    },
+    {
+     "min": 85,
+     "team": "FC Cincinnati",
+     "scorer": "Samuel Gidi",
+     "assist": "Evander"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Orlando City SC",
+     "mins": [
+      53,
+      53,
+      55,
+      75
+     ]
+    },
+    {
+     "team": "FC Cincinnati",
+     "mins": [
+      45,
+      45,
+      68,
+      81,
+      87
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "FC Cincinnati",
+     "on": "Alvas Powell",
+     "off": "Miles Robinson"
+    },
+    {
+     "min": 45,
+     "team": "FC Cincinnati",
+     "on": "José Martínez",
+     "off": "Nick Hagglund"
+    },
+    {
+     "min": 53,
+     "team": "Orlando City SC",
+     "on": "Justin Ellis",
+     "off": "Marco Pasalic"
+    },
+    {
+     "min": 53,
+     "team": "Orlando City SC",
+     "on": "Adrián Marín",
+     "off": "Iago Teodoro"
+    },
+    {
+     "min": 55,
+     "team": "Orlando City SC",
+     "on": "Joran Gerbet",
+     "off": "Luis Otávio"
+    },
+    {
+     "min": 68,
+     "team": "FC Cincinnati",
+     "on": "Ender Echenique",
+     "off": "David Doudera"
+    },
+    {
+     "min": 75,
+     "team": "Orlando City SC",
+     "on": "Daryl Dike",
+     "off": "Griffin Dorsey"
+    },
+    {
+     "min": 81,
+     "team": "FC Cincinnati",
+     "on": "Julián Malatini",
+     "off": "Pavel Bucha"
+    },
+    {
+     "min": 87,
+     "team": "FC Cincinnati",
+     "on": "Bryan Ramírez",
+     "off": "Evander"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 57.8,
+     "away": 42.2
+    },
+    {
+     "label": "Shots",
+     "home": 27,
+     "away": 10
+    },
+    {
+     "label": "Shots on target",
+     "home": 8,
+     "away": 8
+    },
+    {
+     "label": "Corners",
+     "home": 3,
+     "away": 5
+    },
+    {
+     "label": "Fouls",
+     "home": 12,
+     "away": 14
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 4
+    },
+    {
+     "label": "Offsides",
+     "home": 3,
+     "away": 2
+    }
+   ],
+   "players": [
+    {
+     "team": "Orlando City SC",
+     "names": [
+      "Maxime Crépeau",
+      "Iago Teodoro",
+      "David Brekalo",
+      "Vinícius Nogueira",
+      "Griffin Dorsey",
+      "Eduard Atuesta",
+      "Luis Otávio",
+      "Iván Angulo",
+      "Marco Pasalic",
+      "Martín Ojeda",
+      "Antoine Griezmann",
+      "Justin Ellis",
+      "Joran Gerbet",
+      "Adrián Marín",
+      "Daryl Dike"
+     ]
+    },
+    {
+     "team": "FC Cincinnati",
+     "names": [
+      "Roman Celentano",
+      "Nick Hagglund",
+      "Kyle Smith",
+      "Miles Robinson",
+      "Samuel Gidi",
+      "Pavel Bucha",
+      "Obinna Nwobodo",
+      "Tyrell Malacia",
+      "David Doudera",
+      "Evander",
+      "Tom Barlow",
+      "Bryan Ramirez",
+      "José Andrés Martínez",
+      "Alvas Powell",
+      "Ender Echenique",
+      "Julian Malatini"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-20T11:45:21Z"
+  },
   {
    "match_id": "espn:401874810",
    "date": "2026-11-08",
@@ -29859,14 +30263,14 @@
    "date": "2026-11-22",
    "kickoff": "Sun 22 Nov, 9:00pm",
    "home": "Nashville SC",
-   "away": "TBD Away"
+   "away": "FC Cincinnati"
   },
   {
    "competition": "MLS",
    "date": "2026-11-23",
    "kickoff": "Mon 23 Nov, 1:30am",
    "home": "Vancouver Whitecaps",
-   "away": "TBD Away"
+   "away": "Real Salt Lake"
   },
   {
    "competition": "Serie A",
@@ -30068,7 +30472,7 @@
    "competition": "MLS",
    "date": "2026-11-28",
    "kickoff": "Sat 28 Nov, 11:30pm",
-   "home": "TBD Home",
+   "home": "FC Cincinnati",
    "away": "Nashville SC"
   },
   {
@@ -30124,7 +30528,7 @@
    "competition": "MLS",
    "date": "2026-11-28",
    "kickoff": "Sat 28 Nov, 3:00am",
-   "home": "TBD Home",
+   "home": "Real Salt Lake",
    "away": "Vancouver Whitecaps"
   },
   {
