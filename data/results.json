@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-20T20:25:28Z",
- "tables_at": "2026-11-08",
- "count": 153,
+ "updated_at": "2026-11-21T02:20:11Z",
+ "tables_at": "2026-11-21",
+ "count": 156,
  "results": [
   {
    "match_id": "espn:401933555",
@@ -406,6 +406,593 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-20T11:45:21Z"
+  },
+  {
+   "match_id": "espn:401876395",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov 2026, 7:45pm",
+   "competition": "Ligue 1",
+   "home": "Troyes",
+   "away": "Le Havre AC",
+   "home_score": 3,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 3,
+     "team": "Le Havre AC",
+     "scorer": "Josh Maja"
+    },
+    {
+     "min": 19,
+     "team": "Troyes",
+     "scorer": "Antoine Mille",
+     "assist": "Kandet Diawara"
+    },
+    {
+     "min": 69,
+     "team": "Troyes",
+     "scorer": "Antoine Mille",
+     "assist": "Anis Ouzenadji"
+    },
+    {
+     "min": 90,
+     "team": "Troyes",
+     "scorer": "Renaud Ripart",
+     "penalty": true
+    }
+   ],
+   "red_cards": [
+    {
+     "min": 89,
+     "team": "Le Havre AC",
+     "player": "Enzo Koffi"
+    }
+   ],
+   "subs": [
+    {
+     "team": "Troyes",
+     "mins": [
+      45,
+      78,
+      78,
+      87,
+      90
+     ]
+    },
+    {
+     "team": "Le Havre AC",
+     "mins": [
+      66,
+      66,
+      79,
+      87,
+      87
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Troyes",
+     "on": "Lucas Maronnier",
+     "off": "Yvann Titi"
+    },
+    {
+     "min": 66,
+     "team": "Le Havre AC",
+     "on": "Hakim Dongopandji",
+     "off": "Rayan Fofana"
+    },
+    {
+     "min": 66,
+     "team": "Le Havre AC",
+     "on": "Djibril Ouziad",
+     "off": "Kaito Mizuta"
+    },
+    {
+     "min": 78,
+     "team": "Troyes",
+     "on": "Renaud Ripart",
+     "off": "Jérémy Le Douaron"
+    },
+    {
+     "min": 78,
+     "team": "Troyes",
+     "on": "Hugo Picard",
+     "off": "Merwan Ifnaoui"
+    },
+    {
+     "min": 79,
+     "team": "Le Havre AC",
+     "on": "Ismaïl Bouneb",
+     "off": "Simon Ebonog"
+    },
+    {
+     "min": 87,
+     "team": "Troyes",
+     "on": "Iron Gomis",
+     "off": "Mouhamed Diop"
+    },
+    {
+     "min": 87,
+     "team": "Le Havre AC",
+     "on": "Bocar Wade",
+     "off": "Vincent Sasso"
+    },
+    {
+     "min": 87,
+     "team": "Le Havre AC",
+     "on": "Mbwana Samatta",
+     "off": "Josh Maja"
+    },
+    {
+     "min": 90,
+     "team": "Troyes",
+     "on": "Timothé Nkada",
+     "off": "Kandet Diawara"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 46.5,
+     "away": 53.5
+    },
+    {
+     "label": "Shots",
+     "home": 19,
+     "away": 7
+    },
+    {
+     "label": "Shots on target",
+     "home": 7,
+     "away": 3
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 0
+    },
+    {
+     "label": "Fouls",
+     "home": 19,
+     "away": 22
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 3
+    },
+    {
+     "label": "Offsides",
+     "home": 3,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Troyes",
+     "names": [
+      "Hillel Konaté",
+      "Ismael Boura",
+      "Adrien Monfray",
+      "Dermane Karim",
+      "Anis Ouzenadji",
+      "Yvann Titi",
+      "Mouhamed Diop",
+      "Antoine Mille",
+      "Kandet Diawara",
+      "Merwan Ifnaoui",
+      "Jeremy Le Douaron",
+      "Lucas Maronnier",
+      "Hugo Picard",
+      "Timothé Nkada",
+      "Iron Gomis",
+      "Renaud Ripart"
+     ]
+    },
+    {
+     "team": "Le Havre AC",
+     "names": [
+      "Arnaud Bodart",
+      "Ayumu Seko",
+      "Ahmed Touba",
+      "Vincent Sasso",
+      "Junior Mwanga",
+      "Simon Ebonog",
+      "Amir Richardson",
+      "Enzo Koffi",
+      "Kaito Mizuta",
+      "Josh Maja",
+      "Rayan Fofana",
+      "Ismail Bouneb",
+      "Djibril Ouziad",
+      "Bocar Wade",
+      "Hakim Dongopandji",
+      "Mbwana Samatta"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-21T02:20:11Z"
+  },
+  {
+   "match_id": "espn:401882805",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov 2026, 8:00pm",
+   "competition": "La Liga",
+   "home": "Athletic Club",
+   "away": "Espanyol",
+   "home_score": 0,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 66,
+     "team": "Espanyol",
+     "scorer": "Roberto Fernández",
+     "assist": "Tyrhys Dolan"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Athletic Club",
+     "mins": [
+      61,
+      69,
+      69,
+      85,
+      85
+     ]
+    },
+    {
+     "team": "Espanyol",
+     "mins": [
+      57,
+      65,
+      65,
+      85,
+      85
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 57,
+     "team": "Espanyol",
+     "on": "Tyrhys Dolan",
+     "off": "Pere Milla"
+    },
+    {
+     "min": 61,
+     "team": "Athletic Club",
+     "on": "Iñigo Ruiz de Galarreta",
+     "off": "Peio Canales"
+    },
+    {
+     "min": 65,
+     "team": "Espanyol",
+     "on": "Javi Hernández",
+     "off": "Rafel Bauzà"
+    },
+    {
+     "min": 65,
+     "team": "Espanyol",
+     "on": "Gabriel Moscardo",
+     "off": "Roger Hinojo"
+    },
+    {
+     "min": 69,
+     "team": "Athletic Club",
+     "on": "Beñat Gerenabarrena",
+     "off": "Beñat Prados"
+    },
+    {
+     "min": 69,
+     "team": "Athletic Club",
+     "on": "Robert Navarro",
+     "off": "Hugo Rincón"
+    },
+    {
+     "min": 85,
+     "team": "Athletic Club",
+     "on": "Alejandro Rego",
+     "off": "Aymeric Laporte"
+    },
+    {
+     "min": 85,
+     "team": "Athletic Club",
+     "on": "Txus Vizcay",
+     "off": "Oihan Sancet"
+    },
+    {
+     "min": 85,
+     "team": "Espanyol",
+     "on": "Unai Núñez",
+     "off": "Alejandro Santiago"
+    },
+    {
+     "min": 85,
+     "team": "Espanyol",
+     "on": "Javi Puado",
+     "off": "Quilindschy Hartman"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 57.8,
+     "away": 42.2
+    },
+    {
+     "label": "Shots",
+     "home": 17,
+     "away": 6
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 3
+    },
+    {
+     "label": "Corners",
+     "home": 9,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 16,
+     "away": 13
+    },
+    {
+     "label": "Yellow cards",
+     "home": 3,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 3
+    }
+   ],
+   "players": [
+    {
+     "team": "Athletic Club",
+     "names": [
+      "Unai Simón",
+      "Aymeric Laporte",
+      "Yeray",
+      "Yuri Berchiche",
+      "Hugo Rincón",
+      "Oihan Sancet",
+      "Peio Canales",
+      "Beñat Prados",
+      "Iñaki Williams",
+      "Nico Williams",
+      "Álex Berenguer",
+      "Jesús Vizcay Hurtado",
+      "Robert Navarro",
+      "Beñat Gerenabarrena",
+      "Iñigo Ruiz de Galarreta",
+      "Alejandro Rego"
+     ]
+    },
+    {
+     "team": "Espanyol",
+     "names": [
+      "Ángel Fortuño",
+      "Leandro Cabrera",
+      "Quilindschy Hartman",
+      "Clemens Riedel",
+      "Alejandro Santiago",
+      "Omar El Hilali",
+      "Pol Lozano",
+      "Rafael Bauza",
+      "Roger Hinojo",
+      "Roberto Fernández",
+      "Pere Milla",
+      "Javi Hernandez",
+      "Javier Puado",
+      "Unai Núñez",
+      "Gabriel Moscardo",
+      "Tyrhys Dolan"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-21T02:20:11Z"
+  },
+  {
+   "match_id": "espn:401884736",
+   "date": "2026-11-20",
+   "kickoff": "Fri 20 Nov 2026, 7:30pm",
+   "competition": "Bundesliga",
+   "home": "Bayern Munich",
+   "away": "FC Cologne",
+   "home_score": 1,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 12,
+     "team": "FC Cologne",
+     "scorer": "Mikey Moore",
+     "assist": "Saïd El Mala"
+    },
+    {
+     "min": 37,
+     "team": "Bayern Munich",
+     "scorer": "Nathaniel Brown",
+     "assist": "Tom Bischof"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Bayern Munich",
+     "mins": [
+      20,
+      45,
+      70,
+      70,
+      87
+     ]
+    },
+    {
+     "team": "FC Cologne",
+     "mins": [
+      77,
+      77,
+      85,
+      85,
+      90
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 20,
+     "team": "Bayern Munich",
+     "on": "Tom Bischof",
+     "off": "Harry Kane"
+    },
+    {
+     "min": 45,
+     "team": "Bayern Munich",
+     "on": "Tim Binder",
+     "off": "Michael Olise"
+    },
+    {
+     "min": 70,
+     "team": "Bayern Munich",
+     "on": "Jamal Musiala",
+     "off": "Konrad Laimer"
+    },
+    {
+     "min": 70,
+     "team": "Bayern Munich",
+     "on": "Kim Min-Jae",
+     "off": "Dayot Upamecano"
+    },
+    {
+     "min": 77,
+     "team": "FC Cologne",
+     "on": "Jan Thielmann",
+     "off": "Linton Maina"
+    },
+    {
+     "min": 77,
+     "team": "FC Cologne",
+     "on": "Ísak Jóhannesson",
+     "off": "Paul Okon-Engstler"
+    },
+    {
+     "min": 85,
+     "team": "FC Cologne",
+     "on": "Reigan Heskey",
+     "off": "Saïd El Mala"
+    },
+    {
+     "min": 85,
+     "team": "FC Cologne",
+     "on": "Alessio Castro-Montes",
+     "off": "Sebastian Sebulonsen"
+    },
+    {
+     "min": 87,
+     "team": "Bayern Munich",
+     "on": "Noah Codjo-Evora",
+     "off": "Aleksandar Pavlovic"
+    },
+    {
+     "min": 90,
+     "team": "FC Cologne",
+     "on": "Marius Bülter",
+     "off": "Mikey Moore"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 71.5,
+     "away": 28.5
+    },
+    {
+     "label": "Shots",
+     "home": 17,
+     "away": 7
+    },
+    {
+     "label": "Shots on target",
+     "home": 1,
+     "away": 4
+    },
+    {
+     "label": "Corners",
+     "home": 5,
+     "away": 0
+    },
+    {
+     "label": "Fouls",
+     "home": 6,
+     "away": 3
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 5,
+     "away": 2
+    }
+   ],
+   "players": [
+    {
+     "team": "Bayern Munich",
+     "names": [
+      "Jonas Urbig",
+      "Jonathan Tah",
+      "Dayot Upamecano",
+      "Josip Stanisic",
+      "Konrad Laimer",
+      "Lennart Karl",
+      "Aleksandar Pavlovic",
+      "Joshua Kimmich",
+      "Harry Kane",
+      "Nathaniel Brown",
+      "Michael Olise",
+      "Jamal Musiala",
+      "Tom Bischof",
+      "Tim Binder",
+      "Kim Min-Jae",
+      "Noah Codjo-Evora"
+     ]
+    },
+    {
+     "team": "FC Cologne",
+     "names": [
+      "Marvin Schwäbe",
+      "Jahmai Simpson-Pusey",
+      "Luka Lochoshvili",
+      "Joel Schmied",
+      "Mikey Moore",
+      "Tom Krauss",
+      "Paul Okon-Engstler",
+      "Borna Sosa",
+      "Sebastian Sebulonsen",
+      "Said El Mala",
+      "Linton Maina",
+      "Jan Thielmann",
+      "Alessio Castro-Montes",
+      "Ísak Jóhannesson",
+      "Reigan Heskey",
+      "Marius Bulter"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-21T02:20:11Z"
   },
   {
    "match_id": "espn:401874810",
@@ -28518,11 +29105,11 @@
     {
      "pos": 7,
      "team": "Athletic Club",
-     "p": 11,
+     "p": 12,
      "w": 4,
      "d": 4,
-     "l": 3,
-     "gd": 4,
+     "l": 4,
+     "gd": 3,
      "pts": 16
     },
     {
@@ -28547,6 +29134,16 @@
     },
     {
      "pos": 10,
+     "team": "Espanyol",
+     "p": 13,
+     "w": 4,
+     "d": 3,
+     "l": 6,
+     "gd": 0,
+     "pts": 15
+    },
+    {
+     "pos": 11,
      "team": "Racing Santander",
      "p": 12,
      "w": 4,
@@ -28556,7 +29153,7 @@
      "pts": 14
     },
     {
-     "pos": 11,
+     "pos": 12,
      "team": "Celta Vigo",
      "p": 12,
      "w": 2,
@@ -28566,7 +29163,7 @@
      "pts": 13
     },
     {
-     "pos": 12,
+     "pos": 13,
      "team": "Alaves",
      "p": 12,
      "w": 3,
@@ -28574,16 +29171,6 @@
      "l": 5,
      "gd": -2,
      "pts": 13
-    },
-    {
-     "pos": 13,
-     "team": "Espanyol",
-     "p": 12,
-     "w": 3,
-     "d": 3,
-     "l": 6,
-     "gd": -1,
-     "pts": 12
     },
     {
      "pos": 14,
@@ -28870,12 +29457,12 @@
     {
      "pos": 1,
      "team": "Bayern Munich",
-     "p": 9,
+     "p": 10,
      "w": 6,
-     "d": 3,
+     "d": 4,
      "l": 0,
      "gd": 20,
-     "pts": 21
+     "pts": 22
     },
     {
      "pos": 2,
@@ -28999,22 +29586,22 @@
     },
     {
      "pos": 14,
+     "team": "FC Cologne",
+     "p": 10,
+     "w": 2,
+     "d": 4,
+     "l": 4,
+     "gd": -4,
+     "pts": 10
+    },
+    {
+     "pos": 15,
      "team": "FC Augsburg",
      "p": 9,
      "w": 2,
      "d": 3,
      "l": 4,
      "gd": 0,
-     "pts": 9
-    },
-    {
-     "pos": 15,
-     "team": "FC Cologne",
-     "p": 9,
-     "w": 2,
-     "d": 3,
-     "l": 4,
-     "gd": -4,
      "pts": 9
     },
     {
@@ -29175,6 +29762,16 @@
     },
     {
      "pos": 13,
+     "team": "Troyes",
+     "p": 11,
+     "w": 3,
+     "d": 2,
+     "l": 6,
+     "gd": -8,
+     "pts": 11
+    },
+    {
+     "pos": 14,
      "team": "Strasbourg",
      "p": 10,
      "w": 3,
@@ -29184,7 +29781,7 @@
      "pts": 10
     },
     {
-     "pos": 14,
+     "pos": 15,
      "team": "AJ Auxerre",
      "p": 10,
      "w": 3,
@@ -29194,7 +29791,7 @@
      "pts": 10
     },
     {
-     "pos": 15,
+     "pos": 16,
      "team": "Le Mans",
      "p": 10,
      "w": 1,
@@ -29204,18 +29801,8 @@
      "pts": 8
     },
     {
-     "pos": 16,
-     "team": "Angers",
-     "p": 10,
-     "w": 2,
-     "d": 2,
-     "l": 6,
-     "gd": -10,
-     "pts": 8
-    },
-    {
      "pos": 17,
-     "team": "Troyes",
+     "team": "Angers",
      "p": 10,
      "w": 2,
      "d": 2,
@@ -29226,11 +29813,11 @@
     {
      "pos": 18,
      "team": "Le Havre AC",
-     "p": 10,
+     "p": 11,
      "w": 0,
      "d": 2,
-     "l": 8,
-     "gd": -13,
+     "l": 9,
+     "gd": -15,
      "pts": 2
     }
    ]
@@ -30803,6 +31390,13 @@
    "kickoff": "Mon 30 Nov, 8:00pm",
    "home": "Espanyol",
    "away": "Getafe"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-12-01",
+   "kickoff": "Tue 1 Dec, 8:00pm",
+   "home": "Coventry City",
+   "away": "Ipswich Town"
   }
  ]
 }
