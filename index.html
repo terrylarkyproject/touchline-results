@@ -397,6 +397,43 @@ function scan(text){
   return hits;
 }
 
+/* ---------- Number check and named-player check (local, runs on every edit) ---------- */
+const NUM_UNITS={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9};
+const NUM_WORDS={two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19,twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90,hundred:100};
+const NUM_TENS={twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90};
+function numTokens(text){
+  const out=[]; let t=String(text||"").replace(/\[STAT[^\]]*\]/gi," ");
+  t=t.replace(/\b(twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)[- ](one|two|three|four|five|six|seven|eight|nine)\b/gi,(m,a,b)=>{ out.push({tok:m,val:NUM_TENS[a.toLowerCase()]+NUM_UNITS[b.toLowerCase()]}); return " "; });
+  t.replace(/\d+(?:[.,]\d+)*/g,m=>{ const v=parseFloat(m.replace(/,/g,"")); if(!isNaN(v)) out.push({tok:m,val:v}); return m; });
+  t.replace(/\b(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)\b/gi,m=>{ out.push({tok:m,val:NUM_WORDS[m.toLowerCase()]}); return m; });
+  return out;
+}
+function numScan(text){
+  const hits=[]; if(!text) return hits;
+  const known=new Set(numTokens((S.facts||"")+" "+(S.brief||"")+" "+(S.extra||"")).map(x=>x.val));
+  const sentences=String(text).split(/(?<=[.!?])\s+/);
+  for(const sen of sentences){ const seen=new Set(); for(const n of numTokens(sen)){ if(known.has(n.val)||seen.has(n.tok)) continue; seen.add(n.tok); hits.push({word:n.tok,sentence:sen.trim(),why:"This number isn't in the facts or your brief. Check it against the data, or turn it into a [STAT: …] placeholder if you worked it out yourself."}); } }
+  return hits;
+}
+const NEG_EVENT=/\b(sent off|red card|sending[- ]off|booked|yellow card|own goal|gave away|lost possession|dispossessed|substituted off|taken off|hooked|missed (a |the )?(penalty|chance|sitter)|error|mistake)\b/i;
+function playerSurnames(){
+  const names=new Set(), f=String(S.facts||"");
+  f.split("\n").forEach(l=>{
+    if(/^Players listed for/i.test(l)){ l.replace(/^[^:]*:/,"").split(",").forEach(n=>names.add(n.trim())); }
+    if(/^Goals:/i.test(l)){ l.replace(/ – ([^;,(\n]+)/g,(m,n)=>{ names.add(n.trim()); return m; }); l.replace(/assist ([^;,(\n]+)/g,(m,n)=>{ names.add(n.trim()); return m; }); }
+  });
+  const sur=new Set(); names.forEach(n=>{ const w=n.split(/\s+/).filter(Boolean); const last=w[w.length-1]; if(last&&last.length>=3&&/^[A-ZÀ-Ý]/.test(last)) sur.add(last.replace(/[.,]/g,"")); });
+  return [...sur];
+}
+function nameScan(text){
+  const hits=[]; if(!text) return hits;
+  const sur=playerSurnames(); if(!sur.length) return hits;
+  const re=new RegExp("\\b("+sur.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")\\b");
+  for(const sen of String(text).split(/(?<=[.!?])\s+/)){ const a=sen.match(re), b=sen.match(NEG_EVENT); if(a&&b) hits.push({word:a[0]+" + "+b[0],sentence:sen.trim(),why:"Names a player in the same sentence as a negative event. Describe it at team level instead (editorial rule 3)."}); }
+  return hits;
+}
+function scanAll(text){ return scan(text).concat(numScan(text),nameScan(text)); }
+
 
 /* ---------- State ---------- */
 const $ = id => document.getElementById(id);
@@ -950,8 +987,8 @@ function normalise(r){
 function totals(){
   const r=S.result; if(!r) return {w:0,sec:0,flags:0,ph:0};
   let w=0, flags=0, ph=0;
-  r.segments.forEach(s=>{ w+=words(s.voiceover); flags+=scan(s.voiceover).length; ph+=(s.voiceover.match(/\[STAT[^\]]*\]/g)||[]).length + s.stats.filter(x=>/\[STAT/.test(x)).length; });
-  r.titles.forEach(t=>flags+=scan(t).length);
+  r.segments.forEach(s=>{ w+=words(s.voiceover); flags+=scanAll(s.voiceover).length; ph+=(s.voiceover.match(/\[STAT[^\]]*\]/g)||[]).length + s.stats.filter(x=>/\[STAT/.test(x)).length; });
+  r.titles.forEach(t=>flags+=scanAll(t).length);
   return {w, sec:w/wpm()*60, flags, ph};
 }
 function renderSummary(){
@@ -974,7 +1011,7 @@ function renderBoardTimes(){
   document.querySelectorAll("[data-est]").forEach(n=>{ const i=+n.dataset.est; const s=S.result&&S.result.segments[i]; if(s) n.textContent=`≈ ${mmss(words(s.voiceover)/wpm()*60)} spoken · ${words(s.voiceover)} words`; });
 }
 function segHTML(s,i){
-  const hits=scan(s.voiceover), g=segGfx(s), sm=s.match?byId(s.match):null;
+  const hits=scanAll(s.voiceover), g=segGfx(s), sm=s.match?byId(s.match):null;
   const planned = (parseT(s.start)!=null && parseT(s.end)!=null) ? `${s.start}–${s.end}` : "";
   return `<article class="seg${hits.length?" flagged":""}" data-i="${i}">
     <div class="frame">${g||layoutSVG(s.layout)}<small>${esc(LAYOUTS[s.layout].name)}${g?(isRU()&&!sm?" · drawn from this round":" · drawn from this match"):" · layout guide"}</small>${g?`<button class="btn sm sv" type="button">Save as SVG</button>`:""}
@@ -1003,7 +1040,7 @@ function renderBoard(){
     const i=+card.dataset.i, ta=card.querySelector(".vo");
     const fit=()=>{ ta.style.height="auto"; ta.style.height=ta.scrollHeight+"px"; }; fit();
     ta.addEventListener("input",()=>{ S.result.segments[i].voiceover=ta.value; S.example=false; save(); fit(); renderBoardTimes(); renderSummary();
-      const hits=scan(ta.value); card.classList.toggle("flagged",hits.length>0); card.querySelector(".flags").innerHTML=hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join(""); });
+      const hits=scanAll(ta.value); card.classList.toggle("flagged",hits.length>0); card.querySelector(".flags").innerHTML=hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join(""); });
     card.querySelector(".lay").addEventListener("change",e=>{ S.result.segments[i].layout=e.target.value; save(); renderBoard(); });
     card.querySelector(".rw").addEventListener("click",e=>rewriteSeg(i, card.querySelector(".instr").value, e.currentTarget));
     card.querySelector(".cp").addEventListener("click",()=>copy(S.result.segments[i].voiceover));
@@ -1049,7 +1086,7 @@ function renderShorts(){
   let top="";
   if(isRU()){ const ms=ruMatches(), have=new Set(r.shorts.map(s=>s.match)), miss=ms.filter(m=>!have.has(m._id)), ok=r.shorts.filter(canSend).length;
     top=`<div class="card"><h3>A Short for every game</h3><p class="spec" style="margin:4px 0 10px">${r.shorts.length} Shorts, one per match, each written only from that match's facts. Each downloads as its own video pack for Match Studio. Your browser may ask once to allow several downloads.</p>${miss.length?`<p class="flag" style="margin:0 0 10px">No Short came back for ${esc(miss.map(score).join(", "))}. Press Write the script again to redo them.</p>`:""}<div class="actions" style="align-items:center"><button class="btn sm" type="button" id="spAll" ${ok?"":"disabled"}>Download all ${ok} Short packs</button><span class="spec" id="spAllMsg"></span></div></div>`; }
-  p.innerHTML = top + `<div class="cards">${r.shorts.map((s,i)=>{ const txt=`${s.hook}\n\n${s.body}\n\n${s.close}`; const w=words(txt); const hits=scan(txt), sr=shortRes(s);
+  p.innerHTML = top + `<div class="cards">${r.shorts.map((s,i)=>{ const txt=`${s.hook}\n\n${s.body}\n\n${s.close}`; const w=words(txt); const hits=scanAll(txt), sr=shortRes(s);
     return `<div class="card"><div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start"><div>${layoutSVG("vertical",s.hook.split(" ").slice(0,4).join(" "))}</div><div style="min-width:0">${isRU()&&sr?`<span class="match-tag">${esc(score(sr))}</span>`:""}<h3>${esc(s.title)}</h3><span class="time">${w} words · ≈ ${mmss(w/wpm()*60)}</span></div></div>
     <p><span class="k">Hook</span><br>${esc(s.hook)}</p><p><span class="k">Body</span><br>${esc(s.body)}</p><p><span class="k">Close</span><br>${esc(s.close)}</p>
     ${hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join("")}
@@ -1069,7 +1106,7 @@ function renderPack(){
   if(!r){ p.innerHTML=`<p class="empty">Titles, thumbnail, description and pinned comment appear here.</p>`; return; }
   p.innerHTML = `<div class="cards">
     <div class="card thumb"><div class="copyrow"><h3>Thumbnail</h3><span class="k">${esc(LAYOUTS[r.thumbnail.layout].name)}</span></div>${thumbSVG(r.thumbnail.text)}<p><b>${esc(r.thumbnail.text)}</b> · ${esc(r.thumbnail.concept)}</p></div>
-    <div class="card"><div class="copyrow"><h3>Titles</h3><button class="btn sm" type="button" id="cpT">Copy</button></div><ol class="titles">${r.titles.map(t=>{ const h=scan(t); return `<li>${esc(t)}${h.length?` <span class="flag" style="display:inline-block;padding:0 6px">${esc(h[0].word)}</span>`:""} <span class="time">${t.length} chars</span></li>`; }).join("")}</ol></div>
+    <div class="card"><div class="copyrow"><h3>Titles</h3><button class="btn sm" type="button" id="cpT">Copy</button></div><ol class="titles">${r.titles.map(t=>{ const h=scanAll(t); return `<li>${esc(t)}${h.length?` <span class="flag" style="display:inline-block;padding:0 6px">${esc(h[0].word)}</span>`:""} <span class="time">${t.length} chars</span></li>`; }).join("")}</ol></div>
     <div class="card"><div class="copyrow"><h3>Description</h3><button class="btn sm" type="button" id="cpD">Copy</button></div><p style="white-space:pre-wrap">${esc(r.description)}</p></div>
     <div class="card"><div class="copyrow"><h3>Tags</h3><button class="btn sm" type="button" id="cpTg" ${r.tags&&r.tags.length?"":"disabled"}>Copy</button></div>${r.tags&&r.tags.length?`<p>${esc(r.tags.join(", "))}</p><p class="spec">${r.tags.join(", ").length} of 500 characters</p>`:`<p class="empty">Write the script again to get tags.</p>`}</div>
     <div class="card"><div class="copyrow"><h3>Hashtags</h3><button class="btn sm" type="button" id="cpH" ${r.hashtags&&r.hashtags.length?"":"disabled"}>Copy</button></div>${r.hashtags&&r.hashtags.length?`<p><b>${esc(r.hashtags.join(" "))}</b></p><p class="spec">Put them on the last line of the description. YouTube shows the first three above the title.</p>`:`<p class="empty">Write the script again to get hashtags.</p>`}</div>
@@ -1098,7 +1135,9 @@ function teamForm(team, before){
     return `${f>a?"W":f<a?"L":"D"} ${f}–${a} v ${h?x.away:x.home} (${h?"H":"A"}, ${x.competition||""})`;
   });
 }
-function goalTxt(g){ return `${g.min}' ${g.team}${g.scorer?` – ${g.scorer}${g.penalty?" (pen)":""}${g.own_goal?" (own goal)":""}`:""}${g.assist?`, assist ${g.assist}`:""}`; }
+/* Editorial rule 3: a name goes in the facts only with a goal or in praise. Sendings-off and own goals are listed by minute and team, never by player. */
+function redTxt(c){ return `${c.min}' ${c.team}`; }
+function goalTxt(g){ if(g.own_goal) return `${g.min}' ${g.team} (own goal)`; return `${g.min}' ${g.team}${g.scorer?` – ${g.scorer}${g.penalty?" (pen)":""}`:""}${g.assist?`, assist ${g.assist}`:""}`; }
 function needsDetails(r){ return !!r.stats_pending || (r.goals||[]).some(g=>!g.scorer); }
 function ordinal(n){ const v=n%100, x=["th","st","nd","rd"]; return n+(x[(v-20)%10]||x[v]||x[0]); }
 function tableFor(r){ const t=TABLES.find(x=>x.competition===r.competition&&x.rows.some(y=>y.team===r.home||y.team===r.away)); return t||null; }
@@ -1106,7 +1145,7 @@ function factsFor(r){
   const goals=(r.goals||[]).slice().sort((a,b)=>a.min-b.min);
   const lines = [`${score(r)} · ${r.competition||""} · ${r.kickoff||r.date} (home team: ${r.home})`];
   lines.push(r.stats_pending ? "Goals: goal minutes and match stats aren't loaded for this one yet." : `Goals: ${goals.map(goalTxt).join("; ")||"none"}`);
-  if((r.red_cards||[]).length) lines.push(`Sendings-off: ${r.red_cards.map(c=>`${c.min}' ${c.team}${c.player?` – ${c.player}`:""}`).join("; ")}`);
+  if((r.red_cards||[]).length) lines.push(`Sendings-off: ${r.red_cards.map(redTxt).join("; ")}`);
   if((r.stats||[]).length) lines.push(`Stats (${r.home} / ${r.away}): `+r.stats.map(st=>{ const pc=/%/.test(st.label)?"%":""; return `${st.label.replace(" (%)","")} ${st.home}${pc} / ${st.away}${pc}`; }).join(" · "));
   if((r.subs||[]).some(x=>(x.mins||[]).length)) lines.push("Substitution minutes: "+r.subs.map(x=>`${x.team} ${mins(x.mins)||"none"}`).join(" · "));
   (r.players||[]).forEach(p=>{ if((p.names||[]).length) lines.push(`Players listed for ${p.team}: ${p.names.join(", ")}`); });
@@ -1223,7 +1262,7 @@ function compactFacts(r){
   const L=[`${score(r)} · ${dayShort(r.date)}${koTime(r.kickoff)?", "+koTime(r.kickoff):""} (home team: ${r.home})`];
   if(r.stats_pending){ L.push("Score only: goal minutes, scorers and stats aren't in the data for this match."); return L.join("\n"); }
   L.push(`Goals: ${goals.map(goalTxt).join("; ")||"none"}`);
-  if((r.red_cards||[]).length) L.push(`Sendings-off: ${r.red_cards.map(c=>`${c.min}' ${c.team}${c.player?` – ${c.player}`:""}`).join("; ")}`);
+  if((r.red_cards||[]).length) L.push(`Sendings-off: ${r.red_cards.map(redTxt).join("; ")}`);
   const want=["Possession (%)","Shots","Shots on target","Corners","Fouls"], st=(r.stats||[]).filter(x=>want.includes(x.label));
   const use=st.length?st:(r.stats||[]).slice(0,5);
   if(use.length) L.push(`Stats (${r.home} / ${r.away}): `+use.map(s=>{ const pc=/%/.test(s.label)?"%":""; return `${s.label.replace(" (%)","")} ${s.home}${pc} / ${s.away}${pc}`; }).join(" · "));
