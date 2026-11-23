@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-22T19:43:45Z",
- "tables_at": "2026-11-22",
- "count": 198,
+ "updated_at": "2026-11-23T01:46:14Z",
+ "tables_at": "2026-11-23",
+ "count": 203,
  "results": [
   {
    "match_id": "espn:401874960",
@@ -587,6 +587,233 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-22T19:43:45Z"
+  },
+  {
+   "match_id": "espn:401875001",
+   "date": "2026-11-22",
+   "kickoff": "Sun 22 Nov 2026, 7:45pm",
+   "competition": "Serie A",
+   "home": "Atalanta",
+   "away": "Inter",
+   "home_score": 4,
+   "away_score": 4,
+   "goals": [
+    {
+     "min": 16,
+     "team": "Inter",
+     "scorer": "Pio Esposito"
+    },
+    {
+     "min": 32,
+     "team": "Inter",
+     "scorer": "Pio Esposito",
+     "assist": "Federico Dimarco"
+    },
+    {
+     "min": 35,
+     "team": "Atalanta",
+     "scorer": "Eljif Elmas",
+     "assist": "Nicola Zalewski"
+    },
+    {
+     "min": 52,
+     "team": "Inter",
+     "scorer": "Pio Esposito",
+     "assist": "Marcus Thuram"
+    },
+    {
+     "min": 72,
+     "team": "Atalanta",
+     "scorer": "Charles De Ketelaere",
+     "assist": "Nicola Zalewski"
+    },
+    {
+     "min": 76,
+     "team": "Inter",
+     "scorer": "Petar Sucic",
+     "penalty": true
+    },
+    {
+     "min": 80,
+     "team": "Atalanta",
+     "scorer": "Charles De Ketelaere",
+     "assist": "Jonathan Rowe"
+    },
+    {
+     "min": 90,
+     "team": "Atalanta",
+     "scorer": "Franck Kessié",
+     "penalty": true
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Atalanta",
+     "mins": [
+      68,
+      68,
+      73,
+      88,
+      88
+     ]
+    },
+    {
+     "team": "Inter",
+     "mins": [
+      33,
+      64,
+      64,
+      77,
+      77
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 33,
+     "team": "Inter",
+     "on": "Petar Sucic",
+     "off": "Hakan Çalhanoğlu"
+    },
+    {
+     "min": 64,
+     "team": "Inter",
+     "on": "Manuel Akanji",
+     "off": "Federico Dimarco"
+    },
+    {
+     "min": 64,
+     "team": "Inter",
+     "on": "Curtis Jones",
+     "off": "Nicolò Barella"
+    },
+    {
+     "min": 68,
+     "team": "Atalanta",
+     "on": "Jonathan Rowe",
+     "off": "Eljif Elmas"
+    },
+    {
+     "min": 68,
+     "team": "Atalanta",
+     "on": "Mario Pasalic",
+     "off": "Éderson"
+    },
+    {
+     "min": 73,
+     "team": "Atalanta",
+     "on": "Giacomo Raspadori",
+     "off": "Nicola Zalewski"
+    },
+    {
+     "min": 77,
+     "team": "Inter",
+     "on": "Lautaro Martínez",
+     "off": "Francesco Pio Esposito"
+    },
+    {
+     "min": 77,
+     "team": "Inter",
+     "on": "Aleksandar Stankovic",
+     "off": "Henrikh Mkhitaryan"
+    },
+    {
+     "min": 88,
+     "team": "Atalanta",
+     "on": "Gianluca Scamacca",
+     "off": "Nikola Krstovic"
+    },
+    {
+     "min": 88,
+     "team": "Atalanta",
+     "on": "Lorenzo Bernasconi",
+     "off": "Raoul Bellanova"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 40.6,
+     "away": 59.4
+    },
+    {
+     "label": "Shots",
+     "home": 15,
+     "away": 16
+    },
+    {
+     "label": "Shots on target",
+     "home": 10,
+     "away": 6
+    },
+    {
+     "label": "Corners",
+     "home": 5,
+     "away": 6
+    },
+    {
+     "label": "Fouls",
+     "home": 9,
+     "away": 10
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 4,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Atalanta",
+     "names": [
+      "Marco Sportiello",
+      "Sead Kolasinac",
+      "Giorgio Scalvini",
+      "Davide Zappacosta",
+      "Raoul Bellanova",
+      "Charles De Ketelaere",
+      "Éderson",
+      "Franck Kessié",
+      "Nikola Krstovic",
+      "Nicola Zalewski",
+      "Eljif Elmas",
+      "Gianluca Scamacca",
+      "Mario Pasalic",
+      "Lorenzo Bernasconi",
+      "Jon Rowe",
+      "Giacomo Raspadori"
+     ]
+    },
+    {
+     "team": "Inter",
+     "names": [
+      "Josep Martínez",
+      "Alessandro Bastoni",
+      "Carlos Augusto",
+      "Benjamin Pavard",
+      "Henrikh Mkhitaryan",
+      "Nicolò Barella",
+      "Hakan Çalhanoglu",
+      "Federico Dimarco",
+      "Djed Spence",
+      "Marcus Thuram",
+      "Pio Esposito",
+      "Curtis Jones",
+      "Manuel Akanji",
+      "Aleksandar Stankovic",
+      "Lautaro Martínez",
+      "Petar Sucic"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-23T01:46:14Z"
   },
   {
    "match_id": "espn:401874989",
@@ -1210,6 +1437,373 @@
    "fetched_at": "2026-11-22T19:43:45Z"
   },
   {
+   "match_id": "espn:401933731",
+   "date": "2026-11-22",
+   "kickoff": "Sun 22 Nov 2026, 9:00pm",
+   "competition": "MLS",
+   "home": "Nashville SC",
+   "away": "FC Cincinnati",
+   "home_score": 0,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 7,
+     "team": "FC Cincinnati",
+     "scorer": "Patrick Yazbek",
+     "own_goal": true
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Nashville SC",
+     "mins": [
+      45,
+      56,
+      75,
+      86,
+      89
+     ]
+    },
+    {
+     "team": "FC Cincinnati",
+     "mins": [
+      61,
+      61,
+      67,
+      75,
+      89
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Nashville SC",
+     "on": "Bryan Acosta",
+     "off": "Patrick Yazbek"
+    },
+    {
+     "min": 56,
+     "team": "Nashville SC",
+     "on": "Jack Maher",
+     "off": "Maxwell Woledzi"
+    },
+    {
+     "min": 61,
+     "team": "FC Cincinnati",
+     "on": "Tyrell Malacia",
+     "off": "Bryan Ramírez"
+    },
+    {
+     "min": 61,
+     "team": "FC Cincinnati",
+     "on": "Pavel Bucha",
+     "off": "José Martínez"
+    },
+    {
+     "min": 67,
+     "team": "FC Cincinnati",
+     "on": "Tom Barlow",
+     "off": "Evander"
+    },
+    {
+     "min": 75,
+     "team": "Nashville SC",
+     "on": "Warren Madrigal",
+     "off": "Matthew Corcoran"
+    },
+    {
+     "min": 75,
+     "team": "FC Cincinnati",
+     "on": "Kenji Mboma Dem",
+     "off": "Samuel Gidi"
+    },
+    {
+     "min": 86,
+     "team": "Nashville SC",
+     "on": "Shak Mohammed",
+     "off": "Cristian Espinoza"
+    },
+    {
+     "min": 89,
+     "team": "Nashville SC",
+     "on": "Alex Muyl",
+     "off": "Reed Baker-Whiting"
+    },
+    {
+     "min": 89,
+     "team": "FC Cincinnati",
+     "on": "Ayoub Jabbari",
+     "off": "David Doudera"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 68.7,
+     "away": 31.3
+    },
+    {
+     "label": "Shots",
+     "home": 23,
+     "away": 5
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 2
+    },
+    {
+     "label": "Corners",
+     "home": 9,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 7,
+     "away": 13
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 5
+    },
+    {
+     "label": "Offsides",
+     "home": 4,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Nashville SC",
+     "names": [
+      "Brian Schwake",
+      "Maxwell Woledzi",
+      "Jeisson Palacios",
+      "Reed Baker-Whiting",
+      "Andy Nájar",
+      "Matthew Corcoran",
+      "Elias Saad",
+      "Patrick Yazbek",
+      "Hany Mukhtar",
+      "Sam Surridge",
+      "Cristian Espinoza",
+      "Warren Madrigal",
+      "Jack Maher",
+      "Shakur Mohammed",
+      "Bryan Acosta",
+      "Alex Muyl"
+     ]
+    },
+    {
+     "team": "FC Cincinnati",
+     "names": [
+      "Roman Celentano",
+      "Julian Malatini",
+      "Kyle Smith",
+      "Miles Robinson",
+      "Obinna Nwobodo",
+      "Samuel Gidi",
+      "José Andrés Martínez",
+      "Bryan Ramirez",
+      "David Doudera",
+      "Kévin Denkey",
+      "Evander",
+      "Kenji Mboma Dem",
+      "Ayoub Jabbari",
+      "Pavel Bucha",
+      "Tyrell Malacia",
+      "Tom Barlow"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-23T01:46:14Z"
+  },
+  {
+   "match_id": "espn:401933730",
+   "date": "2026-11-22",
+   "kickoff": "Sun 22 Nov 2026, 11:30pm",
+   "competition": "MLS",
+   "home": "Chicago Fire FC",
+   "away": "Charlotte FC",
+   "home_score": 1,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 48,
+     "team": "Charlotte FC",
+     "scorer": "Liel Abada",
+     "assist": "Henry Kessler"
+    },
+    {
+     "min": 68,
+     "team": "Chicago Fire FC",
+     "scorer": "Robert Lewandowski",
+     "assist": "Jonathan Dean"
+    },
+    {
+     "min": 90,
+     "team": "Charlotte FC",
+     "scorer": "Pep Biel"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Chicago Fire FC",
+     "mins": [
+      67,
+      90,
+      90,
+      90
+     ]
+    },
+    {
+     "team": "Charlotte FC",
+     "mins": [
+      67,
+      76,
+      77,
+      77
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 67,
+     "team": "Charlotte FC",
+     "on": "Rodolfo Aloko",
+     "off": "Liel Abada"
+    },
+    {
+     "min": 67,
+     "team": "Chicago Fire FC",
+     "on": "Robin Lod",
+     "off": "Maren Haile-Selassie"
+    },
+    {
+     "min": 76,
+     "team": "Charlotte FC",
+     "on": "Abdoulaye Doucouré",
+     "off": "Ashley Westwood"
+    },
+    {
+     "min": 77,
+     "team": "Charlotte FC",
+     "on": "Will Cleary",
+     "off": "Nathan Byrne"
+    },
+    {
+     "min": 77,
+     "team": "Charlotte FC",
+     "on": "David Schnegg",
+     "off": "Harry Toffolo"
+    },
+    {
+     "min": 90,
+     "team": "Chicago Fire FC",
+     "on": "Anzor Mekvabishvili",
+     "off": "Djé D'Avilla"
+    },
+    {
+     "min": 90,
+     "team": "Chicago Fire FC",
+     "on": "Johan Gómez",
+     "off": "Jonathan Bamba"
+    },
+    {
+     "min": 90,
+     "team": "Chicago Fire FC",
+     "on": "Josh Cohen",
+     "off": "Chris Brady"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 58.1,
+     "away": 41.9
+    },
+    {
+     "label": "Shots",
+     "home": 27,
+     "away": 19
+    },
+    {
+     "label": "Shots on target",
+     "home": 4,
+     "away": 5
+    },
+    {
+     "label": "Corners",
+     "home": 5,
+     "away": 8
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 14
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 1,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Chicago Fire FC",
+     "names": [
+      "Chris Brady",
+      "Mbekezeli Mbokazi",
+      "Jack Elliott",
+      "Andrew Gutman",
+      "Jonathan Dean",
+      "D'Avilla Dje Tah",
+      "Anton Saletros",
+      "Jonathan Bamba",
+      "Philip Zinckernagel",
+      "Maren Haile-Selassie",
+      "Robert Lewandowski",
+      "Robin Lod",
+      "Johan Gómez",
+      "Josh Cohen",
+      "Anzor Mekvabishvili"
+     ]
+    },
+    {
+     "team": "Charlotte FC",
+     "names": [
+      "Kristijan Kahlina",
+      "Henry Kessler",
+      "Morrison Agyemang",
+      "Harry Toffolo",
+      "Nathan Byrne",
+      "Djibril Diani",
+      "Ashley Westwood",
+      "Allan Saint-Maximin",
+      "Liel Abada",
+      "Idan Toklomati",
+      "Pep Biel",
+      "David Schnegg",
+      "Rodolfo Aloko",
+      "Abdoulaye Doucouré",
+      "Will Cleary"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-23T01:46:14Z"
+  },
+  {
    "match_id": "espn:401876397",
    "date": "2026-11-22",
    "kickoff": "Sun 22 Nov 2026, 2:00pm",
@@ -1410,6 +2004,206 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-22T19:43:45Z"
+  },
+  {
+   "match_id": "espn:401876400",
+   "date": "2026-11-22",
+   "kickoff": "Sun 22 Nov 2026, 7:45pm",
+   "competition": "Ligue 1",
+   "home": "Marseille",
+   "away": "Le Mans",
+   "home_score": 2,
+   "away_score": 3,
+   "goals": [
+    {
+     "min": 33,
+     "team": "Marseille",
+     "scorer": "Amine Gouiri",
+     "assist": "CJ Egan-Riley"
+    },
+    {
+     "min": 40,
+     "team": "Marseille",
+     "scorer": "Igor Paixão",
+     "assist": "Amine Gouiri"
+    },
+    {
+     "min": 70,
+     "team": "Le Mans",
+     "scorer": "Louis Mafouta"
+    },
+    {
+     "min": 84,
+     "team": "Le Mans",
+     "scorer": "Erwan Colas"
+    },
+    {
+     "min": 90,
+     "team": "Le Mans",
+     "scorer": "Jean Vercruysse",
+     "assist": "Rayan Bamba"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Marseille",
+     "mins": [
+      74,
+      74,
+      88,
+      88
+     ]
+    },
+    {
+     "team": "Le Mans",
+     "mins": [
+      63,
+      63,
+      82,
+      82,
+      83
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 63,
+     "team": "Le Mans",
+     "on": "Jean Vercruysse",
+     "off": "Antoine Rabillard"
+    },
+    {
+     "min": 63,
+     "team": "Le Mans",
+     "on": "Erwan Colas",
+     "off": "Dame Gueye"
+    },
+    {
+     "min": 74,
+     "team": "Marseille",
+     "on": "Nouhoum Kamissoko",
+     "off": "Geoffrey Kondogbia"
+    },
+    {
+     "min": 74,
+     "team": "Marseille",
+     "on": "Angel Gomes",
+     "off": "Tochukwu Nnadi"
+    },
+    {
+     "min": 82,
+     "team": "Le Mans",
+     "on": "Noa Boissé",
+     "off": "Lucas Buadés"
+    },
+    {
+     "min": 82,
+     "team": "Le Mans",
+     "on": "Raúl Torrente",
+     "off": "Harold Voyer"
+    },
+    {
+     "min": 83,
+     "team": "Le Mans",
+     "on": "William Harhouz",
+     "off": "Louis Mafouta"
+    },
+    {
+     "min": 88,
+     "team": "Marseille",
+     "on": "Alexi Koum",
+     "off": "Ulisses Garcia"
+    },
+    {
+     "min": 88,
+     "team": "Marseille",
+     "on": "Keyliane Abdallah",
+     "off": "Amine Harit"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 55.2,
+     "away": 44.8
+    },
+    {
+     "label": "Shots",
+     "home": 11,
+     "away": 18
+    },
+    {
+     "label": "Shots on target",
+     "home": 5,
+     "away": 9
+    },
+    {
+     "label": "Corners",
+     "home": 2,
+     "away": 5
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 11
+    },
+    {
+     "label": "Yellow cards",
+     "home": 3,
+     "away": 4
+    },
+    {
+     "label": "Offsides",
+     "home": 4,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Marseille",
+     "names": [
+      "Jeffrey de Lange",
+      "Nayef Aguerd",
+      "CJ Egan-Riley",
+      "Ulisses Garcia",
+      "Timothy Weah",
+      "Himad Abdelli",
+      "Tochukwu Nnadi",
+      "Geoffrey Kondogbia",
+      "Amine Gouiri",
+      "Igor Paixão",
+      "Amine Harit",
+      "Nouhoum Kamissoko",
+      "Keyliane Abdallah",
+      "Angel Gomes",
+      "Alexi Koum"
+     ]
+    },
+    {
+     "team": "Le Mans",
+     "names": [
+      "Nicolas Kocik",
+      "Samuel Yohou",
+      "Harold Voyer",
+      "Rayan Bamba",
+      "Lucas Bretelle",
+      "Daouda Traoré",
+      "Antoine Rabillard",
+      "Lucas Calodat",
+      "Lucas Buades",
+      "Dame Guèye",
+      "Louis Mafouta",
+      "Erwan Colas",
+      "Jean Vercruysse",
+      "Noa Boissé",
+      "Raúl Torrente",
+      "William Harhouz"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-23T01:46:14Z"
   },
   {
    "match_id": "espn:401876401",
@@ -1985,6 +2779,194 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-22T19:43:45Z"
+  },
+  {
+   "match_id": "espn:401882803",
+   "date": "2026-11-22",
+   "kickoff": "Sun 22 Nov 2026, 8:00pm",
+   "competition": "La Liga",
+   "home": "Getafe",
+   "away": "Atletico Madrid",
+   "home_score": 0,
+   "away_score": 3,
+   "goals": [
+    {
+     "min": 10,
+     "team": "Atletico Madrid",
+     "scorer": "Álex Baena",
+     "assist": "Julián Alvarez"
+    },
+    {
+     "min": 30,
+     "team": "Atletico Madrid",
+     "scorer": "Johnny Cardoso",
+     "assist": "Julián Alvarez"
+    },
+    {
+     "min": 90,
+     "team": "Atletico Madrid",
+     "scorer": "Alejandro Grimaldo",
+     "penalty": true
+    }
+   ],
+   "red_cards": [
+    {
+     "min": 90,
+     "team": "Getafe",
+     "player": "Djené"
+    }
+   ],
+   "subs": [
+    {
+     "team": "Getafe",
+     "mins": [
+      45,
+      45,
+      67,
+      67,
+      85
+     ]
+    },
+    {
+     "team": "Atletico Madrid",
+     "mins": [
+      45,
+      67,
+      75
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Getafe",
+     "on": "Kiko Femenía",
+     "off": "Ramón Terrats"
+    },
+    {
+     "min": 45,
+     "team": "Getafe",
+     "on": "Martín Satriano",
+     "off": "Jean Valou"
+    },
+    {
+     "min": 45,
+     "team": "Atletico Madrid",
+     "on": "Lee Kang-In",
+     "off": "Johnny Cardoso"
+    },
+    {
+     "min": 67,
+     "team": "Atletico Madrid",
+     "on": "Rodrigo Mendoza",
+     "off": "Álex Baena"
+    },
+    {
+     "min": 67,
+     "team": "Getafe",
+     "on": "Borja Mayoral",
+     "off": "Iván Azón"
+    },
+    {
+     "min": 67,
+     "team": "Getafe",
+     "on": "Mario Martín",
+     "off": "Francho Serrano"
+    },
+    {
+     "min": 75,
+     "team": "Atletico Madrid",
+     "on": "Alexander Sørloth",
+     "off": "Julián Alvarez"
+    },
+    {
+     "min": 85,
+     "team": "Getafe",
+     "on": "Davinchi",
+     "off": "Andrés García"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 31.3,
+     "away": 68.7
+    },
+    {
+     "label": "Shots",
+     "home": 11,
+     "away": 20
+    },
+    {
+     "label": "Shots on target",
+     "home": 1,
+     "away": 10
+    },
+    {
+     "label": "Corners",
+     "home": 2,
+     "away": 7
+    },
+    {
+     "label": "Fouls",
+     "home": 11,
+     "away": 11
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 0,
+     "away": 2
+    }
+   ],
+   "players": [
+    {
+     "team": "Getafe",
+     "names": [
+      "David Soria",
+      "Jean Ives Valou",
+      "Djené",
+      "Zaid Romero",
+      "Andrés García",
+      "Francho Serrano",
+      "Orel Mangala",
+      "Johan Mojica",
+      "Ramón Terrats",
+      "Ivan Azón",
+      "Enes Ünal",
+      "Kiko Femenía",
+      "Borja Mayoral",
+      "Martín Satriano",
+      "Davinchi",
+      "Mario Martín"
+     ]
+    },
+    {
+     "team": "Atletico Madrid",
+     "names": [
+      "Jan Oblak",
+      "Dávid Hancko",
+      "Robin Le Normand",
+      "Koke",
+      "Alejandro Grimaldo",
+      "Marcos Llorente",
+      "Johnny Cardoso",
+      "Pablo Barrios",
+      "Álex Baena",
+      "Giuliano Simeone",
+      "Julián Álvarez",
+      "Rodrigo Mendoza",
+      "Alexander Sørloth",
+      "Lee Kang-In"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-23T01:46:14Z"
   },
   {
    "match_id": "espn:401882804",
@@ -37154,12 +38136,12 @@
     {
      "pos": 3,
      "team": "Atletico Madrid",
-     "p": 12,
-     "w": 9,
+     "p": 13,
+     "w": 10,
      "d": 1,
      "l": 2,
-     "gd": 13,
-     "pts": 28
+     "gd": 16,
+     "pts": 31
     },
     {
      "pos": 4,
@@ -37283,22 +38265,22 @@
     },
     {
      "pos": 16,
-     "team": "Getafe",
-     "p": 12,
-     "w": 3,
-     "d": 3,
-     "l": 6,
-     "gd": -10,
-     "pts": 12
-    },
-    {
-     "pos": 17,
      "team": "Valencia",
      "p": 13,
      "w": 3,
      "d": 3,
      "l": 7,
      "gd": -11,
+     "pts": 12
+    },
+    {
+     "pos": 17,
+     "team": "Getafe",
+     "p": 13,
+     "w": 3,
+     "d": 3,
+     "l": 7,
+     "gd": -13,
      "pts": 12
     },
     {
@@ -37360,12 +38342,12 @@
     {
      "pos": 3,
      "team": "Inter",
-     "p": 11,
+     "p": 12,
      "w": 9,
-     "d": 1,
+     "d": 2,
      "l": 1,
      "gd": 15,
-     "pts": 28
+     "pts": 29
     },
     {
      "pos": 4,
@@ -37450,12 +38432,12 @@
     {
      "pos": 12,
      "team": "Atalanta",
-     "p": 11,
+     "p": 12,
      "w": 4,
-     "d": 2,
+     "d": 3,
      "l": 5,
      "gd": -3,
-     "pts": 14
+     "pts": 15
     },
     {
      "pos": 13,
@@ -37772,11 +38754,11 @@
     {
      "pos": 5,
      "team": "Marseille",
-     "p": 10,
+     "p": 11,
      "w": 6,
      "d": 0,
-     "l": 4,
-     "gd": 8,
+     "l": 5,
+     "gd": 7,
      "pts": 18
     },
     {
@@ -37851,6 +38833,16 @@
     },
     {
      "pos": 13,
+     "team": "Le Mans",
+     "p": 11,
+     "w": 2,
+     "d": 5,
+     "l": 4,
+     "gd": -6,
+     "pts": 11
+    },
+    {
+     "pos": 14,
      "team": "Troyes",
      "p": 11,
      "w": 3,
@@ -37860,7 +38852,7 @@
      "pts": 11
     },
     {
-     "pos": 14,
+     "pos": 15,
      "team": "AJ Auxerre",
      "p": 11,
      "w": 3,
@@ -37870,7 +38862,7 @@
      "pts": 11
     },
     {
-     "pos": 15,
+     "pos": 16,
      "team": "Strasbourg",
      "p": 11,
      "w": 3,
@@ -37878,16 +38870,6 @@
      "l": 7,
      "gd": -5,
      "pts": 10
-    },
-    {
-     "pos": 16,
-     "team": "Le Mans",
-     "p": 10,
-     "w": 1,
-     "d": 5,
-     "l": 4,
-     "gd": -7,
-     "pts": 8
     },
     {
      "pos": 17,
@@ -38592,48 +39574,6 @@
  ],
  "fixtures": [
   {
-   "competition": "MLS",
-   "date": "2026-11-22",
-   "kickoff": "Sun 22 Nov, 11:30pm",
-   "home": "Chicago Fire FC",
-   "away": "Charlotte FC"
-  },
-  {
-   "competition": "Serie A",
-   "date": "2026-11-22",
-   "kickoff": "Sun 22 Nov, 7:45pm",
-   "home": "Atalanta",
-   "away": "Inter"
-  },
-  {
-   "competition": "Ligue 1",
-   "date": "2026-11-22",
-   "kickoff": "Sun 22 Nov, 7:45pm",
-   "home": "Marseille",
-   "away": "Le Mans"
-  },
-  {
-   "competition": "La Liga",
-   "date": "2026-11-22",
-   "kickoff": "Sun 22 Nov, 8:00pm",
-   "home": "Getafe",
-   "away": "Atletico Madrid"
-  },
-  {
-   "competition": "MLS",
-   "date": "2026-11-22",
-   "kickoff": "Sun 22 Nov, 9:00pm",
-   "home": "Nashville SC",
-   "away": "FC Cincinnati"
-  },
-  {
-   "competition": "MLS",
-   "date": "2026-11-23",
-   "kickoff": "Mon 23 Nov, 1:30am",
-   "home": "Vancouver Whitecaps",
-   "away": "Real Salt Lake"
-  },
-  {
    "competition": "Serie A",
    "date": "2026-11-23",
    "kickoff": "Mon 23 Nov, 7:45pm",
@@ -39318,6 +40258,13 @@
    "kickoff": "Thu 3 Dec, 3:00am",
    "home": "San Jose Earthquakes",
    "away": "Houston Dynamo FC"
+  },
+  {
+   "competition": "Premier League",
+   "date": "2026-12-03",
+   "kickoff": "Thu 3 Dec, 8:00pm",
+   "home": "Tottenham Hotspur",
+   "away": "Fulham"
   }
  ]
 }
