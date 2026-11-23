@@ -1,8 +1,192 @@
 {
- "updated_at": "2026-11-23T01:46:14Z",
+ "updated_at": "2026-11-23T08:01:49Z",
  "tables_at": "2026-11-23",
- "count": 203,
+ "count": 204,
  "results": [
+  {
+   "match_id": "espn:401933729",
+   "date": "2026-11-23",
+   "kickoff": "Mon 23 Nov 2026, 1:30am",
+   "competition": "MLS",
+   "home": "Vancouver Whitecaps",
+   "away": "Real Salt Lake",
+   "home_score": 2,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 44,
+     "team": "Vancouver Whitecaps",
+     "scorer": "Édier Ocampo",
+     "assist": "Emmanuel Sabbi"
+    },
+    {
+     "min": 55,
+     "team": "Vancouver Whitecaps",
+     "scorer": "Bruno Caicedo",
+     "assist": "Édier Ocampo"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Vancouver Whitecaps",
+     "mins": [
+      60,
+      63,
+      63,
+      74
+     ]
+    },
+    {
+     "team": "Real Salt Lake",
+     "mins": [
+      63,
+      71,
+      71,
+      71,
+      85
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 60,
+     "team": "Vancouver Whitecaps",
+     "on": "Thomas Müller",
+     "off": "Emmanuel Sabbi"
+    },
+    {
+     "min": 63,
+     "team": "Vancouver Whitecaps",
+     "on": "Rayan Elloumi",
+     "off": "Brian White"
+    },
+    {
+     "min": 63,
+     "team": "Vancouver Whitecaps",
+     "on": "Jeevan Badwal",
+     "off": "Oliver Larraz"
+    },
+    {
+     "min": 63,
+     "team": "Real Salt Lake",
+     "on": "Samuel Junqua",
+     "off": "Juan Manuel Sanabria"
+    },
+    {
+     "min": 71,
+     "team": "Real Salt Lake",
+     "on": "Aiden Hezarkhani",
+     "off": "Morgan Guilavogui"
+    },
+    {
+     "min": 71,
+     "team": "Real Salt Lake",
+     "on": "Luc De Fougerolles",
+     "off": "Justen Glad"
+    },
+    {
+     "min": 71,
+     "team": "Real Salt Lake",
+     "on": "Stijn Spierings",
+     "off": "Noel Caliskan"
+    },
+    {
+     "min": 74,
+     "team": "Vancouver Whitecaps",
+     "on": "Aleksa Cvetkovic",
+     "off": "Andrés Cubas"
+    },
+    {
+     "min": 85,
+     "team": "Real Salt Lake",
+     "on": "Lineker Rodrigues",
+     "off": "Sergi Solans"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 63.1,
+     "away": 36.9
+    },
+    {
+     "label": "Shots",
+     "home": 22,
+     "away": 14
+    },
+    {
+     "label": "Shots on target",
+     "home": 7,
+     "away": 5
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 8
+    },
+    {
+     "label": "Fouls",
+     "home": 9,
+     "away": 8
+    },
+    {
+     "label": "Yellow cards",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Offsides",
+     "home": 3,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Vancouver Whitecaps",
+     "names": [
+      "Yohei Takaoka",
+      "Ralph Priso-Mbongue",
+      "Tristan Blackmon",
+      "Tate Johnson",
+      "Édier Ocampo",
+      "Ryan Gauld",
+      "Andrés Cubas",
+      "Oliver Larraz",
+      "Brian White",
+      "Bruno Caicedo",
+      "Emmanuel Sabbi",
+      "Aleksa Cvetković",
+      "Rayan Elloumi",
+      "Jeevan Badwal",
+      "Thomas Müller"
+     ]
+    },
+    {
+     "team": "Real Salt Lake",
+     "names": [
+      "Rafael",
+      "Philip Quinton",
+      "Lukas Engel",
+      "Justen Glad",
+      "Juan Manuel Sanabria",
+      "DeAndre Yedlin",
+      "Noel Caliskan",
+      "Colin Guske",
+      "Morgan Guilavogui",
+      "Saba Lobjanidze",
+      "Sergi Solans",
+      "Aiden Hezarkhani",
+      "Lineker Rodrigues",
+      "Stijn Spierings",
+      "Samuel Junqua",
+      "Luc de Fougerolles"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-23T08:01:49Z"
+  },
   {
    "match_id": "espn:401874960",
    "date": "2026-11-22",
