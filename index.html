@@ -739,6 +739,7 @@ function vertMid(r, seg, i, n){
   for(let k=0;k<order.length;k++){ const s=gfxFor(order[(i+k)%order.length], r); if(s) return s; }
   return gfxCard(r,seg,i,n);
 }
+function clubTag(n){ return "#"+String(n||"").replace(/[^A-Za-z0-9]/g,""); }
 function packSlug(r){ return `${r.date}-${(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-")}`; }
 function packProject(){
   return {matchId:S.cur, match:isRU()?null:Object.assign({},curResult()), ru:isRU()?S.ru:null, brief:S.brief, extra:S.extra, facts:S.facts, factsAuto:S.factsAuto, template:S.template, length:S.length, wpm:wpm(), result:S.result};
@@ -750,7 +751,7 @@ async function buildPack(){
   for(let i=0;i<n;i++){ const s=res.segments[i];
     const img = vertical ? await svgToPNG(gfxVertical(r, s.on_screen[0]||s.label, vertMid(r,s,i,n), i, n),1080,1920) : await svgToPNG(segSVG(s,i,n));
     segs.push({label:s.label,voiceover:s.voiceover,layout:s.layout,take:takeName(i),image:img}); }
-  const pk={version:3,format:vertical?"short":"video",key:ru?S.cur:[r.competition,r.date,r.home,r.away].join("|")+(vertical?"|short":""),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:ru?`${ruName()} · ${ruLabel()}`:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||"",pinned:res.pinned_comment||"",tags:res.tags||[],hashtags:vertical?(res.hashtags||[]).slice(0,2).concat(["#Shorts"]):(res.hashtags||[]),project:packProject()};
+  const pk={version:3,format:vertical?"short":"video",key:ru?S.cur:[r.competition,r.date,r.home,r.away].join("|")+(vertical?"|short":""),title:res.working_title||`${r.home} v ${r.away}`,home:r.home,away:r.away,score:ru?`${ruName()} · ${ruLabel()}`:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:res.titles||[],description:res.description||"",pinned:res.pinned_comment||"",tags:res.tags||[],hashtags:vertical?(ru?(res.hashtags||[]).slice(0,2):[clubTag(r.home),clubTag(r.away)]).concat(["#Shorts"]):(res.hashtags||[]),project:packProject()};
   if(!vertical){ pk.thumbnail=await svgToPNG(thumbFull(res.thumbnail.text),1280,720); pk.endCard=await svgToPNG(gfxEndCard()); }
   return pk;
 }
@@ -763,7 +764,7 @@ async function buildShortPack(k){
   for(let i=0;i<parts.length;i++){ const [label,vo,top]=parts[i];
     segs.push({label,voiceover:vo,layout:"vertical",take:`${String(i+1).padStart(2,"0")}-${label.toLowerCase().replace(/[^a-z0-9]+/g,"-")}`,
       image:await svgToPNG(gfxVertical(r, top, vertMid(r,{label,on_screen:[],stats:[]},i+k,parts.length), i, parts.length),1080,1920)}); }
-  const tags=(res.hashtags||[]).slice(0,2).concat(["#Shorts"]);
+  const tags=[clubTag(r.home),clubTag(r.away),"#Shorts"];
   return {version:3,format:"short",key:[r.competition,r.date,r.home,r.away].join("|")+(sh.match?"|short":"|short-"+(k+1)),title:sh.title,home:r.home,away:r.away,score:`${r.home} ${r.home_score}–${r.away_score} ${r.away}`,segments:segs,titles:[sh.title],
     description:`${sh.title}\n\n${isRU()?`From our ${ruName()}: ${r.home} ${r.home_score}–${r.away_score} ${r.away}.`:`From our full review of ${r.home} ${r.home_score}–${r.away_score} ${r.away}.`} Hard on tactics, fair on people.`,pinned:"",tags:res.tags||[],hashtags:tags,project:packProject()};
 }
@@ -817,7 +818,7 @@ function buildPrompt(){
   const t = tplById(S.template); const L = +S.length; const W = Math.round(L*wpm());
   const lenTxt = L<1 ? `${Math.round(L*60)} seconds` : `${L} minutes`;
   const shortsRule = t.id==="short" ? "shorts = 2 alternative versions of this Short" : "shorts = 3 vertical Shorts cut from this script";
-  return `You are the scriptwriter for "The Touchline Notebook", a faceless football analysis YouTube channel. It leads on Liverpool, but this video may cover any club, league or era. The creator narrates in his own voice. Write in UK English: calm, clear, intelligent, conversational, no hype, short spoken sentences.
+  return `You are the scriptwriter for "The Touchline Notebook", a faceless football analysis YouTube channel. It covers any club or league. This video is about the teams in the facts only, so never mention, tag or favour any other club. The creator narrates in his own voice. Write in UK English: calm, clear, intelligent, conversational, no hype, short spoken sentences.
 
 ${RULES}
 
@@ -838,7 +839,7 @@ FACTS AND STATS PROVIDED (the only numbers you may use):
 """${(S.facts||"none").slice(0,6000)}"""
 ${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
 Reply with only a JSON object, no other text, in exactly this shape:
-{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with chapters and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs"],"hashtags":["exactly 3, each starting with #, no spaces"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
+{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with chapters and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs; start with the two club names and the competition, and never use a club that isn't in the facts"],"hashtags":["exactly 3, each starting with #, no spaces: the two clubs playing first (e.g. #Arsenal #Chelsea), then the competition (e.g. #PremierLeague). Never a club that isn't in the facts"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
 JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles use question, single-mechanism, numbers-versus-perception or "explained" structures; ${shortsRule}, each 45-85 words in total, following the SHORTS RULES; self_check is an empty array when nothing is borderline.`;
 }
 
@@ -856,7 +857,7 @@ function buildRoundupPrompt(){
     `Games to watch next: only fixtures listed in the facts; leave this segment out if none are listed (layout title-card; match "").`,
     `Viewer question and call to action (layout end-screen; match "").`
   ];
-  return `You are the scriptwriter for "The Touchline Notebook", a faceless football analysis YouTube channel. It leads on Liverpool, but this video covers a whole round of matches. The creator narrates in his own voice. Write in UK English: calm, clear, intelligent, conversational, no hype, short spoken sentences.
+  return `You are the scriptwriter for "The Touchline Notebook", a faceless football analysis YouTube channel. It covers any club or league. This video covers a whole round of matches, so never mention, tag or favour any club that isn't in the facts. The creator narrates in his own voice. Write in UK English: calm, clear, intelligent, conversational, no hype, short spoken sentences.
 
 ${RULES}
 
@@ -876,7 +877,7 @@ FACTS AND STATS PROVIDED (the only numbers you may use; each match is tagged wit
 """${(S.facts||"none").slice(0,24000)}"""
 ${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
 Reply with only a JSON object, no other text, in exactly this shape:
-{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","match":"M-number, or empty string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"match":"M-number","title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with a chapter for every segment and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs"],"hashtags":["exactly 3, each starting with #, no spaces"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
+{"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","match":"M-number, or empty string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"match":"M-number","title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with a chapter for every segment and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs; start with the competition and the clubs in the round, and never use a club that isn't in the facts"],"hashtags":["exactly 3, each starting with #, no spaces: the competition first (e.g. #PremierLeague), then #RoundUp, then the club with the biggest story. Never a club that isn't in the facts"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
 JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles suit a round-up (for example "${ru.comp} round-up: ..." or a question about the round's biggest story) and never pair a person with a negative word; shorts = ${sw.length?`exactly ${sw.length}, one for each of ${sw.join(", ")} only, in that order`:"an empty array (the creator chose no Shorts)"}, each about that match alone and using only its facts, following the SHORTS RULES, each standing on its own; self_check is an empty array when nothing is borderline.`;
 }
 
@@ -937,6 +938,11 @@ function mapRefs(o){
 function applyReply(text){
   const raw=extractJSON(text); if(isRU()) mapRefs(raw);
   const r = normalise(raw);
+  const pool = isRU()?ruMatches():[curResult()].filter(Boolean), names=pool.map(m=>m.home+" "+m.away).join(" ");
+  if(pool.length){ const bad=h=>/liverpool|lfc/i.test(h)&&!/liverpool/i.test(names);
+    if(!isRU()){ const ct=[clubTag(pool[0].home),clubTag(pool[0].away)]; r.hashtags=ct.concat(r.hashtags.filter(h=>!bad(h)&&!ct.some(x=>x.toLowerCase()===h.toLowerCase()))).slice(0,3); }
+    else r.hashtags=r.hashtags.filter(h=>!bad(h));
+    r.tags=r.tags.filter(t=>!bad(t)); }
   if(!r.segments.length) throw {code:"invalid_json"};
   S.result=r; save(); tab="board"; renderAll();
   if(isRU()){ const n=ruShortWanted().length, got=new Set(r.shorts.map(s=>s.match).filter(Boolean)).size;
