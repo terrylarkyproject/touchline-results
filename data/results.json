@@ -1,8 +1,406 @@
 {
- "updated_at": "2026-11-23T08:01:49Z",
- "tables_at": "2026-11-23",
- "count": 204,
+ "updated_at": "2026-11-24T02:14:48Z",
+ "tables_at": "2026-11-24",
+ "count": 207,
  "results": [
+  {
+   "match_id": "espn:401875009",
+   "date": "2026-11-23",
+   "kickoff": "Mon 23 Nov 2026, 7:45pm",
+   "competition": "Serie A",
+   "home": "Monza",
+   "away": "Fiorentina",
+   "home_score": 3,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 45,
+     "team": "Monza",
+     "scorer": "Gustavo Varela",
+     "penalty": true
+    },
+    {
+     "min": 51,
+     "team": "Monza",
+     "scorer": "Gustavo Varela",
+     "assist": "Matteo Pessina"
+    },
+    {
+     "min": 59,
+     "team": "Monza",
+     "scorer": "Jay Robinson"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Monza",
+     "mins": [
+      67,
+      74,
+      74,
+      85,
+      85
+     ]
+    },
+    {
+     "team": "Fiorentina",
+     "mins": [
+      27,
+      45,
+      66,
+      67
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 27,
+     "team": "Fiorentina",
+     "on": "Luca Ranieri",
+     "off": "Viery"
+    },
+    {
+     "min": 45,
+     "team": "Fiorentina",
+     "on": "Alieu Njie",
+     "off": "Pote"
+    },
+    {
+     "min": 66,
+     "team": "Fiorentina",
+     "on": "Valde",
+     "off": "Wilfried Gnonto"
+    },
+    {
+     "min": 67,
+     "team": "Fiorentina",
+     "on": "Beto",
+     "off": "Franco Mastantuono"
+    },
+    {
+     "min": 67,
+     "team": "Monza",
+     "on": "Dany Mota",
+     "off": "Jay Robinson"
+    },
+    {
+     "min": 74,
+     "team": "Monza",
+     "on": "Manga Foe Ondoa",
+     "off": "Ebenezer Akinsanmiro"
+    },
+    {
+     "min": 74,
+     "team": "Monza",
+     "on": "Jan Ziólkowski",
+     "off": "Eddy Kouadio"
+    },
+    {
+     "min": 85,
+     "team": "Monza",
+     "on": "Idrissa Touré",
+     "off": "Matteo Pessina"
+    },
+    {
+     "min": 85,
+     "team": "Monza",
+     "on": "Lorenzo Lucchesi",
+     "off": "Samuele Birindelli"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 44.6,
+     "away": 55.4
+    },
+    {
+     "label": "Shots",
+     "home": 13,
+     "away": 17
+    },
+    {
+     "label": "Shots on target",
+     "home": 5,
+     "away": 8
+    },
+    {
+     "label": "Corners",
+     "home": 3,
+     "away": 7
+    },
+    {
+     "label": "Fouls",
+     "home": 8,
+     "away": 13
+    },
+    {
+     "label": "Yellow cards",
+     "home": 0,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 1,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "Monza",
+     "names": [
+      "Demba Thiam",
+      "Saba Goglichidze",
+      "Andrea Carboni",
+      "Eddy Kouadio",
+      "Matteo Pessina",
+      "Ebenezer Akinsanmiro",
+      "Leonardo Colombo",
+      "Ricardo Mangas",
+      "Samuele Birindelli",
+      "Jay Robinson",
+      "Gustavo Varela",
+      "Idrissa Touré",
+      "Jan Ziólkowski",
+      "Lorenzo Lucchesi",
+      "Manga Foe Ondoa",
+      "Dany Mota"
+     ]
+    },
+    {
+     "team": "Fiorentina",
+     "names": [
+      "David de Gea",
+      "Viery",
+      "Radu Dragusin",
+      "Joao Victor",
+      "Álex Jiménez",
+      "Pedro Gonçalves",
+      "Christ Inao Oulaï",
+      "Cher Ndour",
+      "Mateo Pellegrino",
+      "Wilfried Gnonto",
+      "Franco Mastantuono",
+      "Alieu Njie",
+      "Luca Ranieri",
+      "Víctor Valdepeñas",
+      "Beto"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-24T02:14:48Z"
+  },
+  {
+   "match_id": "espn:401879237",
+   "date": "2026-11-23",
+   "kickoff": "Mon 23 Nov 2026, 8:00pm",
+   "competition": "Premier League",
+   "home": "Brentford",
+   "away": "Everton",
+   "home_score": 4,
+   "away_score": 0,
+   "goals": [
+    {
+     "min": 23,
+     "team": "Brentford",
+     "scorer": "Keane Lewis-Potter",
+     "assist": "Jaidon Anthony"
+    },
+    {
+     "min": 25,
+     "team": "Brentford",
+     "scorer": "Keane Lewis-Potter"
+    },
+    {
+     "min": 67,
+     "team": "Brentford",
+     "scorer": "Vitaly Janelt",
+     "assist": "Jaidon Anthony"
+    },
+    {
+     "min": 90,
+     "team": "Brentford",
+     "scorer": "Fábio Carvalho",
+     "assist": "Mathias Jensen"
+    }
+   ],
+   "red_cards": [
+    {
+     "min": 40,
+     "team": "Everton",
+     "player": "James Tarkowski"
+    }
+   ],
+   "subs": [
+    {
+     "team": "Brentford",
+     "mins": [
+      66,
+      74,
+      74,
+      81,
+      82
+     ]
+    },
+    {
+     "team": "Everton",
+     "mins": [
+      45,
+      69,
+      69,
+      69,
+      85
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 45,
+     "team": "Everton",
+     "on": "Jack Grealish",
+     "off": "Tyrique George"
+    },
+    {
+     "min": 66,
+     "team": "Brentford",
+     "on": "Kevin Schade",
+     "off": "Dango Ouattara"
+    },
+    {
+     "min": 69,
+     "team": "Everton",
+     "on": "Hayden Hackney",
+     "off": "Kiernan Dewsbury-Hall"
+    },
+    {
+     "min": 69,
+     "team": "Everton",
+     "on": "Brennan Johnson",
+     "off": "Thierno Barry"
+    },
+    {
+     "min": 69,
+     "team": "Everton",
+     "on": "Michael Keane",
+     "off": "Merlin Röhl"
+    },
+    {
+     "min": 74,
+     "team": "Brentford",
+     "on": "El Hadji Malick Diouf",
+     "off": "Keane Lewis-Potter"
+    },
+    {
+     "min": 74,
+     "team": "Brentford",
+     "on": "Mathias Jensen",
+     "off": "Yehor Yarmoliuk"
+    },
+    {
+     "min": 81,
+     "team": "Brentford",
+     "on": "Fábio Carvalho",
+     "off": "Jaidon Anthony"
+    },
+    {
+     "min": 82,
+     "team": "Brentford",
+     "on": "Mamadou Sangaré",
+     "off": "Vitaly Janelt"
+    },
+    {
+     "min": 85,
+     "team": "Everton",
+     "on": "Christian Nørgaard",
+     "off": "James Garner"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 72.1,
+     "away": 27.9
+    },
+    {
+     "label": "Shots",
+     "home": 21,
+     "away": 4
+    },
+    {
+     "label": "Shots on target",
+     "home": 7,
+     "away": 2
+    },
+    {
+     "label": "Corners",
+     "home": 6,
+     "away": 3
+    },
+    {
+     "label": "Fouls",
+     "home": 8,
+     "away": 9
+    },
+    {
+     "label": "Yellow cards",
+     "home": 0,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Brentford",
+     "names": [
+      "Caoimhín Kelleher",
+      "Sepp van den Berg",
+      "Kristoffer Ajer",
+      "Keane Lewis-Potter",
+      "Michael Kayode",
+      "Mikkel Damsgaard",
+      "Vitaly Janelt",
+      "Yehor Yarmoliuk",
+      "Callum Wilson",
+      "Jaidon Anthony",
+      "Dango Ouattara",
+      "Kevin Schade",
+      "Mathias Jensen",
+      "Fábio Carvalho",
+      "El Hadji Malick Diouf",
+      "Mamadou Sangare"
+     ]
+    },
+    {
+     "team": "Everton",
+     "names": [
+      "Jordan Pickford",
+      "Jarrad Branthwaite",
+      "James Tarkowski",
+      "Vitaliy Mykolenko",
+      "Jake O'Brien",
+      "Kiernan Dewsbury-Hall",
+      "James Garner",
+      "Harrison Armstrong",
+      "Thierno Barry",
+      "Tyrique George",
+      "Merlin Röhl",
+      "Brennan Johnson",
+      "Christian Nørgaard",
+      "Jack Grealish",
+      "Hayden Hackney",
+      "Michael Keane"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-24T02:14:48Z"
+  },
   {
    "match_id": "espn:401933729",
    "date": "2026-11-23",
@@ -186,6 +584,190 @@
    ],
    "source": "ESPN public scoreboard and match summary",
    "fetched_at": "2026-11-23T08:01:49Z"
+  },
+  {
+   "match_id": "espn:401882802",
+   "date": "2026-11-23",
+   "kickoff": "Mon 23 Nov 2026, 8:00pm",
+   "competition": "La Liga",
+   "home": "Levante",
+   "away": "Elche",
+   "home_score": 1,
+   "away_score": 1,
+   "goals": [
+    {
+     "min": 62,
+     "team": "Elche",
+     "scorer": "Roy Revivo",
+     "assist": "Germán Valera"
+    },
+    {
+     "min": 88,
+     "team": "Levante",
+     "scorer": "Dani Requena",
+     "assist": "Jon Ander Olasagasti"
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "Levante",
+     "mins": [
+      22,
+      56,
+      78,
+      78
+     ]
+    },
+    {
+     "team": "Elche",
+     "mins": [
+      45,
+      66,
+      81,
+      81,
+      90
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 22,
+     "team": "Levante",
+     "on": "Nacho Pérez",
+     "off": "Jeremy Toljan"
+    },
+    {
+     "min": 45,
+     "team": "Elche",
+     "on": "Thomas Lemar",
+     "off": "Abiel Osorio"
+    },
+    {
+     "min": 56,
+     "team": "Levante",
+     "on": "Marc Santos",
+     "off": "Manu Sánchez"
+    },
+    {
+     "min": 66,
+     "team": "Elche",
+     "on": "Martim Neto",
+     "off": "Gonzalo Villar"
+    },
+    {
+     "min": 78,
+     "team": "Levante",
+     "on": "Petar Ratkov",
+     "off": "Iván Romero"
+    },
+    {
+     "min": 78,
+     "team": "Levante",
+     "on": "Karl Etta Eyong",
+     "off": "Oriol Rey"
+    },
+    {
+     "min": 81,
+     "team": "Elche",
+     "on": "Tete Morente",
+     "off": "Lucas Cepeda"
+    },
+    {
+     "min": 81,
+     "team": "Elche",
+     "on": "Matia Barzic",
+     "off": "Roy Revivo"
+    },
+    {
+     "min": 90,
+     "team": "Elche",
+     "on": "Grady Diangana",
+     "off": "Thomas Lemar"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 50.7,
+     "away": 49.3
+    },
+    {
+     "label": "Shots",
+     "home": 18,
+     "away": 4
+    },
+    {
+     "label": "Shots on target",
+     "home": 2,
+     "away": 2
+    },
+    {
+     "label": "Corners",
+     "home": 5,
+     "away": 1
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 12
+    },
+    {
+     "label": "Yellow cards",
+     "home": 4,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 2,
+     "away": 0
+    }
+   ],
+   "players": [
+    {
+     "team": "Levante",
+     "names": [
+      "Mathew Ryan",
+      "Adrián de la Fuente",
+      "Aïssa Mandi",
+      "Orio Rey",
+      "Manu Sánchez",
+      "Jeremy Toljan",
+      "Jon Ander Olasagasti",
+      "Dani Requena",
+      "Thiago Fernández",
+      "Roger Brugué",
+      "Iván Romero",
+      "Nacho Pérez",
+      "Etta Eyong",
+      "Marc Santos Gavilán",
+      "Petar Ratkov"
+     ]
+    },
+    {
+     "team": "Elche",
+     "names": [
+      "Matías Dituro",
+      "Víctor Chust",
+      "Federico Redondo",
+      "Roy Revivo",
+      "Buba Sangaré",
+      "Gonzalo Villar",
+      "Javier Morcillo",
+      "Germán Valera",
+      "Lucas Cepeda",
+      "Fer Niño",
+      "Abiel Osorio",
+      "Thomas Lemar",
+      "José Antonio Morente",
+      "Martim Neto",
+      "Grady Diangana",
+      "Matia Barzic"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-24T02:14:48Z"
   },
   {
    "match_id": "espn:401874960",
@@ -38143,6 +38725,16 @@
     },
     {
      "pos": 6,
+     "team": "Brentford",
+     "p": 11,
+     "w": 4,
+     "d": 5,
+     "l": 2,
+     "gd": 9,
+     "pts": 17
+    },
+    {
+     "pos": 7,
      "team": "Leeds United",
      "p": 11,
      "w": 4,
@@ -38150,16 +38742,6 @@
      "l": 2,
      "gd": 5,
      "pts": 17
-    },
-    {
-     "pos": 7,
-     "team": "Everton",
-     "p": 10,
-     "w": 4,
-     "d": 4,
-     "l": 2,
-     "gd": 2,
-     "pts": 16
     },
     {
      "pos": 8,
@@ -38173,6 +38755,16 @@
     },
     {
      "pos": 9,
+     "team": "Everton",
+     "p": 11,
+     "w": 4,
+     "d": 4,
+     "l": 3,
+     "gd": -2,
+     "pts": 16
+    },
+    {
+     "pos": 10,
      "team": "Tottenham Hotspur",
      "p": 11,
      "w": 4,
@@ -38180,16 +38772,6 @@
      "l": 4,
      "gd": 1,
      "pts": 15
-    },
-    {
-     "pos": 10,
-     "team": "Brentford",
-     "p": 10,
-     "w": 3,
-     "d": 5,
-     "l": 2,
-     "gd": 5,
-     "pts": 14
     },
     {
      "pos": 11,
@@ -38439,6 +39021,16 @@
     },
     {
      "pos": 15,
+     "team": "Levante",
+     "p": 13,
+     "w": 2,
+     "d": 6,
+     "l": 5,
+     "gd": -5,
+     "pts": 12
+    },
+    {
+     "pos": 16,
      "team": "Rayo Vallecano",
      "p": 12,
      "w": 3,
@@ -38448,7 +39040,7 @@
      "pts": 12
     },
     {
-     "pos": 16,
+     "pos": 17,
      "team": "Valencia",
      "p": 13,
      "w": 3,
@@ -38458,7 +39050,7 @@
      "pts": 12
     },
     {
-     "pos": 17,
+     "pos": 18,
      "team": "Getafe",
      "p": 13,
      "w": 3,
@@ -38468,24 +39060,14 @@
      "pts": 12
     },
     {
-     "pos": 18,
-     "team": "Levante",
-     "p": 12,
-     "w": 2,
-     "d": 5,
-     "l": 5,
-     "gd": -5,
-     "pts": 11
-    },
-    {
      "pos": 19,
      "team": "Elche",
-     "p": 12,
+     "p": 13,
      "w": 2,
-     "d": 4,
+     "d": 5,
      "l": 6,
      "gd": -6,
-     "pts": 10
+     "pts": 11
     },
     {
      "pos": 20,
@@ -38635,6 +39217,16 @@
     },
     {
      "pos": 14,
+     "team": "Monza",
+     "p": 12,
+     "w": 3,
+     "d": 1,
+     "l": 8,
+     "gd": -5,
+     "pts": 10
+    },
+    {
+     "pos": 15,
      "team": "Lecce",
      "p": 12,
      "w": 3,
@@ -38644,17 +39236,17 @@
      "pts": 10
     },
     {
-     "pos": 15,
+     "pos": 16,
      "team": "Fiorentina",
-     "p": 11,
+     "p": 12,
      "w": 2,
      "d": 3,
-     "l": 6,
-     "gd": -8,
+     "l": 7,
+     "gd": -11,
      "pts": 9
     },
     {
-     "pos": 16,
+     "pos": 17,
      "team": "Parma",
      "p": 12,
      "w": 2,
@@ -38664,7 +39256,7 @@
      "pts": 8
     },
     {
-     "pos": 17,
+     "pos": 18,
      "team": "Sassuolo",
      "p": 12,
      "w": 2,
@@ -38672,16 +39264,6 @@
      "l": 8,
      "gd": -15,
      "pts": 8
-    },
-    {
-     "pos": 18,
-     "team": "Monza",
-     "p": 11,
-     "w": 2,
-     "d": 1,
-     "l": 8,
-     "gd": -8,
-     "pts": 7
     },
     {
      "pos": 19,
@@ -39758,34 +40340,6 @@
  ],
  "fixtures": [
   {
-   "competition": "Serie A",
-   "date": "2026-11-23",
-   "kickoff": "Mon 23 Nov, 7:45pm",
-   "home": "Monza",
-   "away": "Fiorentina"
-  },
-  {
-   "competition": "Premier League",
-   "date": "2026-11-23",
-   "kickoff": "Mon 23 Nov, 8:00pm",
-   "home": "Brentford",
-   "away": "Everton"
-  },
-  {
-   "competition": "La Liga",
-   "date": "2026-11-23",
-   "kickoff": "Mon 23 Nov, 8:00pm",
-   "home": "Levante",
-   "away": "Elche"
-  },
-  {
-   "competition": "MLS",
-   "date": "2026-11-24",
-   "kickoff": "Tue 24 Nov, 1:00am",
-   "home": "St. Louis CITY SC",
-   "away": "LAFC"
-  },
-  {
    "competition": "Champions League",
    "date": "2026-11-24",
    "kickoff": "Tue 24 Nov, 5:45pm",
@@ -40449,6 +41003,34 @@
    "kickoff": "Thu 3 Dec, 8:00pm",
    "home": "Tottenham Hotspur",
    "away": "Fulham"
+  },
+  {
+   "competition": "Bundesliga",
+   "date": "2026-12-04",
+   "kickoff": "Fri 4 Dec, 7:30pm",
+   "home": "Bayern Munich",
+   "away": "SC Paderborn 07"
+  },
+  {
+   "competition": "Serie A",
+   "date": "2026-12-04",
+   "kickoff": "Fri 4 Dec, 7:45pm",
+   "home": "Bologna",
+   "away": "AS Roma"
+  },
+  {
+   "competition": "Ligue 1",
+   "date": "2026-12-04",
+   "kickoff": "Fri 4 Dec, 7:45pm",
+   "home": "Toulouse",
+   "away": "Paris Saint-Germain"
+  },
+  {
+   "competition": "La Liga",
+   "date": "2026-12-04",
+   "kickoff": "Fri 4 Dec, 8:00pm",
+   "home": "Alaves",
+   "away": "Espanyol"
   }
  ]
 }
