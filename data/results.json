@@ -1,8 +1,194 @@
 {
- "updated_at": "2026-11-24T02:14:48Z",
+ "updated_at": "2026-11-24T07:20:39Z",
  "tables_at": "2026-11-24",
- "count": 207,
+ "count": 208,
  "results": [
+  {
+   "match_id": "espn:401933728",
+   "date": "2026-11-24",
+   "kickoff": "Tue 24 Nov 2026, 1:15am",
+   "competition": "MLS",
+   "home": "St. Louis CITY SC",
+   "away": "LAFC",
+   "home_score": 3,
+   "away_score": 2,
+   "goals": [
+    {
+     "min": 34,
+     "team": "St. Louis CITY SC",
+     "scorer": "Daniel Edelman",
+     "assist": "Rafael Navarro"
+    },
+    {
+     "min": 51,
+     "team": "St. Louis CITY SC",
+     "scorer": "Jeong Sang-Bin",
+     "assist": "Chris Durkin"
+    },
+    {
+     "min": 62,
+     "team": "LAFC",
+     "scorer": "Sergi Palencia",
+     "assist": "Ryan Porteous"
+    },
+    {
+     "min": 78,
+     "team": "St. Louis CITY SC",
+     "scorer": "Simon Becher",
+     "assist": "Chris Durkin"
+    },
+    {
+     "min": 85,
+     "team": "LAFC",
+     "scorer": "Denis Bouanga",
+     "penalty": true
+    }
+   ],
+   "red_cards": [],
+   "subs": [
+    {
+     "team": "St. Louis CITY SC",
+     "mins": [
+      76,
+      76,
+      90
+     ]
+    },
+    {
+     "team": "LAFC",
+     "mins": [
+      60,
+      61,
+      79,
+      79
+     ]
+    }
+   ],
+   "subs_detail": [
+    {
+     "min": 60,
+     "team": "LAFC",
+     "on": "Igor Jesus",
+     "off": "Mark Delgado"
+    },
+    {
+     "min": 61,
+     "team": "LAFC",
+     "on": "Sergio Vasquez",
+     "off": "Leo Walta"
+    },
+    {
+     "min": 76,
+     "team": "St. Louis CITY SC",
+     "on": "Louis City SC. Simon Becher",
+     "off": "Jeong Sang-Bin"
+    },
+    {
+     "min": 76,
+     "team": "St. Louis CITY SC",
+     "on": "Louis City SC. Tomás Ostrák",
+     "off": "Alexandru Matan"
+    },
+    {
+     "min": 79,
+     "team": "LAFC",
+     "on": "Tommy Mihalic",
+     "off": "Mathieu Choinière"
+    },
+    {
+     "min": 79,
+     "team": "LAFC",
+     "on": "Ryan Hollingshead",
+     "off": "Yevhen Cheberko"
+    },
+    {
+     "min": 90,
+     "team": "St. Louis CITY SC",
+     "on": "Louis City SC. Jaziel Orozco",
+     "off": "Conrad Wallem"
+    }
+   ],
+   "stats": [
+    {
+     "label": "Possession (%)",
+     "home": 55,
+     "away": 45
+    },
+    {
+     "label": "Shots",
+     "home": 10,
+     "away": 17
+    },
+    {
+     "label": "Shots on target",
+     "home": 6,
+     "away": 4
+    },
+    {
+     "label": "Corners",
+     "home": 7,
+     "away": 2
+    },
+    {
+     "label": "Fouls",
+     "home": 14,
+     "away": 11
+    },
+    {
+     "label": "Yellow cards",
+     "home": 1,
+     "away": 1
+    },
+    {
+     "label": "Offsides",
+     "home": 0,
+     "away": 1
+    }
+   ],
+   "players": [
+    {
+     "team": "St. Louis CITY SC",
+     "names": [
+      "Roman Bürki",
+      "Timo Baumgartl",
+      "Dante Polvara",
+      "Lukas MacNaughton",
+      "Daniel Edelman",
+      "Christopher Durkin",
+      "Tomas Totland",
+      "Conrad Wallem",
+      "Rafael Navarro",
+      "Alexandru Matan",
+      "Jeong Sang-Bin",
+      "Tomas Ostrak",
+      "Simon Becher",
+      "Jaziel Orozco"
+     ]
+    },
+    {
+     "team": "LAFC",
+     "names": [
+      "Hugo Lloris",
+      "Eddie Segura",
+      "Ryan Porteous",
+      "Yevhen Cheberko",
+      "Sergi Palencia",
+      "Son Heung-Min",
+      "Mark Delgado",
+      "Mathieu Choinière",
+      "Armindo Sieb",
+      "Denis Bouanga",
+      "Leo Walta",
+      "Igor Jesus",
+      "Tommy Mihalic",
+      "Ryan Hollingshead",
+      "Sergio Vásquez"
+     ]
+    }
+   ],
+   "source": "ESPN public scoreboard and match summary",
+   "fetched_at": "2026-11-24T07:20:39Z"
+  },
   {
    "match_id": "espn:401875009",
    "date": "2026-11-23",
