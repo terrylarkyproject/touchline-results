@@ -180,7 +180,7 @@ ol.titles{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px
 .ru-row .fx-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ru-row .fx-t.r{text-align:right}
 .ru-row b{font-family:var(--f-display);font-size:1.05rem;font-variant-numeric:tabular-nums}
 .ru-row small{grid-column:2/-1;color:var(--muted);font-size:.72rem;text-align:center}
-.ru-row.off{opacity:.5}
+.ru-row.off{opacity:.5}.ru-main{display:contents}.ru-row .sh{grid-column:2/-1;justify-self:center;display:flex;gap:5px;align-items:center;font-size:.74rem;color:var(--muted);cursor:pointer}
 .match-tag{display:inline-block;font-family:var(--f-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 input[type=search],input[type=password],input[type=date]{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px;width:100%}
 .pill{background:var(--amber-soft);color:var(--amber)}
@@ -518,6 +518,7 @@ function curResult(){ return RESULTS.find(x=>x._id===S.cur)||null; }
 function isRU(){ return String(S.cur||"").startsWith("roundup|"); }
 function byId(id){ return RESULTS.find(x=>x._id===id)||null; }
 function ruMatches(){ return isRU()&&S.ru ? (S.ru.ids||[]).map(byId).filter(Boolean) : []; }
+function ruShortWanted(){ const ru=S.ru||{}, ms=ruMatches(); return Array.isArray(ru.shortIds)?ms.filter(m=>ru.shortIds.includes(m._id)):ms; }
 function segResult(seg){ if(seg&&seg.match){ const m=byId(seg.match); if(m) return m; } return isRU()?null:curResult(); }
 function surname(n){
   const p=String(n||"").trim().split(/\s+/).filter(Boolean); if(p.length<2) return p[0]||"";
@@ -573,7 +574,7 @@ function gfxTimeline(r){
   const lay=(list,home)=>{ let px=-999, lv=0; list.slice().sort((a,b)=>a.min-b.min).forEach(g=>{
     const x=X(g.min); lv = (x-px<250) ? (lv?0:1) : 0; px=x;
     const cy = home ? AY-78 : AY+78, ly = home ? cy-52-lv*64 : cy+86+lv*64;
-    const tag = (g.scorer?surname(g.scorer):"Goal")+(g.own_goal?" (og)":g.penalty?" (pen)":"")+` ${g.min}'`;
+    const tag = (g.own_goal?"Own goal":(g.scorer?surname(g.scorer):"Goal")+(g.penalty?" (pen)":""))+` ${g.min}'`;
     o+=`<line x1="${x}" y1="${AY}" x2="${x}" y2="${cy}" stroke="${home?G.red:G.grey}" stroke-width="4"/><circle cx="${x}" cy="${cy}" r="26" fill="${home?G.red:G.grey}"/><text x="${x}" y="${ly}" text-anchor="middle" ${GH} font-weight="700" font-size="50" fill="${G.chalk}">${esc(tag)}</text>`;
   }); };
   lay(goals.filter(g=>g.team===r.home),true); lay(goals.filter(g=>g.team!==r.home),false);
@@ -757,7 +758,7 @@ async function buildPack(){
 async function buildShortPack(k){
   const res=S.result, sh=res&&res.shorts[k], r=sh&&sh.match?byId(sh.match):curResult();
   if(!sh) throw new Error("Write the script first."); if(!r) throw new Error(isRU()?"This Short's match isn't in the results list any more.":"Pick a match and write the script first.");
-  const parts=[["Hook",sh.hook,sh.title],["Main point",sh.body,(sh.body.split(/(?<=[.!?])\s+/)[0]||"").slice(0,70)],["Close",sh.close,"Full breakdown on the channel"]].filter(x=>x[1].trim());
+  const parts=[["Hook",sh.hook,sh.hook.split(/\s+/).slice(0,10).join(" ")],["Main point",sh.body,(sh.body.split(/(?<=[.!?])\s+/)[0]||"").slice(0,70)],["Close",sh.close,"Full breakdown on the channel"]].filter(x=>x[1].trim());
   const segs=[];
   for(let i=0;i<parts.length;i++){ const [label,vo,top]=parts[i];
     segs.push({label,voiceover:vo,layout:"vertical",take:`${String(i+1).padStart(2,"0")}-${label.toLowerCase().replace(/[^a-z0-9]+/g,"-")}`,
@@ -798,7 +799,6 @@ function takeName(i){ const s=S.result&&S.result.segments[i]; const slug=String(
 function gfxFile(seg){ const r=segResult(seg); return `${r?r.date+"-"+(r.home+"-v-"+r.away).toLowerCase().replace(/[^a-z0-9]+/g,"-"):isRU()?ruSlug():"graphic"}-${seg.layout}.svg`; }
 
 /* ---------- Prompt ---------- */
-/* ---------- Prompt ---------- */
 const RULES = `EDITORIAL RULES (non-negotiable):
 1. Never say or imply anything negative about an identifiable person: player, manager, coach, referee, owner, director, pundit or fan. This includes identifying someone by name, shirt number or position (for example "the left-back was at fault").
 2. Criticism is allowed only of team-level patterns, shapes, spaces and numbers ("the press", "the defensive line", "the team's shape after 60 minutes").
@@ -812,6 +812,7 @@ const SECTION_RULES = `VOICEOVER IS RECORDED ONE SECTION AT A TIME. Each segment
 - talk only about what this segment's picture shows; never point to another section's picture ("as we saw earlier", "on the next board", "in a moment");
 - end on a complete sentence that closes the thought, with no hand-off to the next section;
 - list on_screen items in the order the voiceover reaches them.`;
+const SHORTS_RULES = `SHORTS RULES (a Short is often watched with the sound off and is judged in the first 2 seconds): the hook is ONE spoken line of under 12 words that opens on the most surprising fact or question in the facts, with no greeting, no channel name and no "In this video". The body makes ONE point, with ONE number or ONE board, in short sentences. The close ends on a line that leads straight back into the hook so the Short loops, or asks one simple question. Each Short is 45-85 words in total (about 20-35 seconds). A hook never pairs a person with a negative word.`;
 function buildPrompt(){
   const t = tplById(S.template); const L = +S.length; const W = Math.round(L*wpm());
   const lenTxt = L<1 ? `${Math.round(L*60)} seconds` : `${L} minutes`;
@@ -825,6 +826,7 @@ Sections in order (adapt the labels to the content, keep the order):
 ${t.sections.map((s,i)=>`${i+1}. ${s}`).join("\n")}
 Shape the whole script as Problem → Tension → Payoff: open on the question, build the evidence, land a clear answer.
 ${SECTION_RULES}
+${SHORTS_RULES}
 If a section would run past about 90 seconds of speech, split it into two segments, each with its own picture.
 Visuals are original only: tactics boards with numbered dots, charts and tables. Never broadcast footage, photos or club crests.
 For each segment choose ONE layout id from: ${LAYOUT_IDS.filter(x=>x!=="vertical"&&x!=="results-grid").join(", ")}${t.id==="short"?", vertical (use vertical for every segment of a Short)":""}.
@@ -837,13 +839,13 @@ FACTS AND STATS PROVIDED (the only numbers you may use):
 ${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
 Reply with only a JSON object, no other text, in exactly this shape:
 {"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with chapters and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs"],"hashtags":["exactly 3, each starting with #, no spaces"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
-JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles use question, single-mechanism, numbers-versus-perception or "explained" structures; ${shortsRule}, each 60-110 words in total; self_check is an empty array when nothing is borderline.`;
+JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles use question, single-mechanism, numbers-versus-perception or "explained" structures; ${shortsRule}, each 45-85 words in total, following the SHORTS RULES; self_check is an empty array when nothing is borderline.`;
 }
 
 function promptNow(){ return isRU() ? buildRoundupPrompt() : buildPrompt(); }
 function buildRoundupPrompt(){
   const ru=S.ru||{}, n=ruMatches().length, L=+S.length, W=Math.round(L*wpm());
-  const hasTable=TABLES.some(x=>x.competition===ru.comp&&x.rows.length);
+  const sw=ruShortWanted().map(m=>"M"+(ruMatches().indexOf(m)+1)); const hasTable=TABLES.some(x=>x.competition===ru.comp&&x.rows.length);
   const per=Math.max(50,Math.round(W*0.66/Math.max(n,1)));
   const secs=[
     `Hook: the headline story of the round (layout title-card; match "").`,
@@ -863,6 +865,7 @@ Segments in order:
 ${secs.map((s,i)=>`${i+1}. ${s}`).join("\n")}
 Every match in the facts gets its own segment. Never mention a match, score, scorer or number that isn't in the facts.
 ${SECTION_RULES}
+${SHORTS_RULES}
 Visuals are original only: charts, tables and boards drawn from data. Never broadcast footage, photos or club crests.
 Layout ids allowed: title-card, results-grid, timeline, stat-panel, bars, table, numeral, end-screen.
 
@@ -874,7 +877,7 @@ FACTS AND STATS PROVIDED (the only numbers you may use; each match is tagged wit
 ${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
 Reply with only a JSON object, no other text, in exactly this shape:
 {"working_title":"string","titles":["5 strings"],"thumbnail":{"text":"2-4 words","concept":"one sentence","layout":"layout id"},"segments":[{"label":"string","match":"M-number, or empty string","start":"m:ss","end":"m:ss","voiceover":"the exact words to read aloud","layout":"layout id","on_screen":["1-4 short instructions for what appears"],"stats":["numbers this segment shows, from the facts or as [STAT: ...] placeholders"]}],"shorts":[{"match":"M-number","title":"string","hook":"string","body":"string","close":"string"}],"description":"YouTube description with a chapter for every segment and a Sources line","pinned_comment":"string","tags":["12-15 YouTube tags, most specific first, plain words, no # signs"],"hashtags":["exactly 3, each starting with #, no spaces"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
-JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles suit a round-up (for example "${ru.comp} round-up: ..." or a question about the round's biggest story) and never pair a person with a negative word; shorts = exactly ${n}, one per match in M-number order starting with M1, each about that match alone and using only its facts, with a hook under 12 words, a body, and a close that asks a question or points to the full round-up, 60-110 words in total, each standing on its own; self_check is an empty array when nothing is borderline.`;
+JSON rules: voiceover word counts add up to about ${W}; start/end times run consecutively from 0:00 to about ${mmss(L*60)}; titles suit a round-up (for example "${ru.comp} round-up: ..." or a question about the round's biggest story) and never pair a person with a negative word; shorts = ${sw.length?`exactly ${sw.length}, one for each of ${sw.join(", ")} only, in that order`:"an empty array (the creator chose no Shorts)"}, each about that match alone and using only its facts, following the SHORTS RULES, each standing on its own; self_check is an empty array when nothing is borderline.`;
 }
 
 /* ---------- Claude (direct from this page, using your own key) ---------- */
@@ -936,7 +939,7 @@ function applyReply(text){
   const r = normalise(raw);
   if(!r.segments.length) throw {code:"invalid_json"};
   S.result=r; save(); tab="board"; renderAll();
-  if(isRU()){ const n=ruMatches().length, got=new Set(r.shorts.map(s=>s.match).filter(Boolean)).size;
+  if(isRU()){ const n=ruShortWanted().length, got=new Set(r.shorts.map(s=>s.match).filter(Boolean)).size;
     setStatus(`Done: ${r.segments.length} sections and ${got} of ${n} Shorts.${got<n?" Press Write the script again to get the rest.":""} Edit any line below; changes save in this browser.`, got<n); }
   else setStatus(`Done: ${r.segments.length} sections. Edit any line below; changes save in this browser.`);
 }
@@ -1039,7 +1042,7 @@ function renderBoard(){
   p.querySelectorAll(".seg").forEach(card=>{
     const i=+card.dataset.i, ta=card.querySelector(".vo");
     const fit=()=>{ ta.style.height="auto"; ta.style.height=ta.scrollHeight+"px"; }; fit();
-    ta.addEventListener("input",()=>{ S.result.segments[i].voiceover=ta.value; S.example=false; save(); fit(); renderBoardTimes(); renderSummary();
+    ta.addEventListener("input",()=>{ S.result.segments[i].voiceover=ta.value; save(); fit(); renderBoardTimes(); renderSummary();
       const hits=scanAll(ta.value); card.classList.toggle("flagged",hits.length>0); card.querySelector(".flags").innerHTML=hits.map(h=>`<div class="flag"><b>“${esc(h.word)}”</b> · ${esc(h.why)}</div>`).join(""); });
     card.querySelector(".lay").addEventListener("change",e=>{ S.result.segments[i].layout=e.target.value; save(); renderBoard(); });
     card.querySelector(".rw").addEventListener("click",e=>rewriteSeg(i, card.querySelector(".instr").value, e.currentTarget));
@@ -1084,8 +1087,8 @@ function renderShorts(){
   const shortRes=s=>s.match?byId(s.match):(isRU()?null:curResult());
   const canSend=s=>{ const sr=shortRes(s); return !!sr && (!!s.match || !sr.stats_pending); };
   let top="";
-  if(isRU()){ const ms=ruMatches(), have=new Set(r.shorts.map(s=>s.match)), miss=ms.filter(m=>!have.has(m._id)), ok=r.shorts.filter(canSend).length;
-    top=`<div class="card"><h3>A Short for every game</h3><p class="spec" style="margin:4px 0 10px">${r.shorts.length} Shorts, one per match, each written only from that match's facts. Each downloads as its own video pack for Match Studio. Your browser may ask once to allow several downloads.</p>${miss.length?`<p class="flag" style="margin:0 0 10px">No Short came back for ${esc(miss.map(score).join(", "))}. Press Write the script again to redo them.</p>`:""}<div class="actions" style="align-items:center"><button class="btn sm" type="button" id="spAll" ${ok?"":"disabled"}>Download all ${ok} Short packs</button><span class="spec" id="spAllMsg"></span></div></div>`; }
+  if(isRU()){ const ms=ruMatches(), have=new Set(r.shorts.map(s=>s.match)), miss=ruShortWanted().filter(m=>!have.has(m._id)), ok=r.shorts.filter(canSend).length;
+    top=`<div class="card"><h3>Shorts for the games you chose</h3><p class="spec" style="margin:4px 0 10px">${r.shorts.length} Shorts, one per match, each written only from that match's facts. Each downloads as its own video pack for Match Studio. Your browser may ask once to allow several downloads.</p>${miss.length?`<p class="flag" style="margin:0 0 10px">No Short came back for ${esc(miss.map(score).join(", "))}. Press Write the script again to redo them.</p>`:""}<div class="actions" style="align-items:center"><button class="btn sm" type="button" id="spAll" ${ok?"":"disabled"}>Download all ${ok} Short packs</button><span class="spec" id="spAllMsg"></span></div></div>`; }
   p.innerHTML = top + `<div class="cards">${r.shorts.map((s,i)=>{ const txt=`${s.hook}\n\n${s.body}\n\n${s.close}`; const w=words(txt); const hits=scanAll(txt), sr=shortRes(s);
     return `<div class="card"><div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start"><div>${layoutSVG("vertical",s.hook.split(" ").slice(0,4).join(" "))}</div><div style="min-width:0">${isRU()&&sr?`<span class="match-tag">${esc(score(sr))}</span>`:""}<h3>${esc(s.title)}</h3><span class="time">${w} words · ≈ ${mmss(w/wpm()*60)}</span></div></div>
     <p><span class="k">Hook</span><br>${esc(s.hook)}</p><p><span class="k">Body</span><br>${esc(s.body)}</p><p><span class="k">Close</span><br>${esc(s.close)}</p>
@@ -1231,12 +1234,15 @@ function renderSheet(){
     <button class="btn primary" type="button" id="useMatch">${r._id===S.cur?"Open this match again":"Open this match now"}</button>`;
   $("useMatch").onclick=()=>{ clearTimeout(autoT); openMatch(r._id); };
 }
+const ARCH={};
+async function loadArchive(a){ const out=[]; await Promise.all(Object.keys(a||{}).map(async m=>{ const k=m+":"+a[m]; if(!ARCH[k]){ try{ const r=await fetch("data/archive/"+m+".json?n="+a[m]); if(r.ok) ARCH[k]=(await r.json()).results||[]; }catch(e){} } if(ARCH[k]) out.push(ARCH[k]); })); return out; }
 async function loadResults(quiet){
   try{
     const res=await fetch("data/results.json?ts="+Date.now(),{cache:"no-store"});
     if(!res.ok) throw new Error("HTTP "+res.status);
     const d=await res.json();
-    RESULTS=(d.results||[]).map(r=>Object.assign({_id:r.date+"|"+r.home+"|"+r.away},r)).filter(r=>r.date&&r.home&&r.away);
+    const arch=await loadArchive(d.archive), seen=new Set(); RESULTS=[];
+    [].concat(d.results||[],...arch).forEach(r=>{ const id=r.date+"|"+r.home+"|"+r.away; if(r.date&&r.home&&r.away&&!seen.has(id)){ seen.add(id); RESULTS.push(Object.assign({_id:id},r)); } });
     TABLES=d.tables||[]; FIXTURES=d.fixtures||[]; TABLES_AT=d.tables_at||"";
     const u=d.updated_at?new Date(d.updated_at):null;
     $("upd").textContent=`${RESULTS.length} matches`+(u&&!isNaN(u)?` · newest result saved ${u.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"})}`:"");
@@ -1256,7 +1262,7 @@ async function loadResults(quiet){
   }
 }
 /* ---------- Round-up picker: a weekend (Fri–Mon), a midweek (Tue–Thu) or any dates ---------- */
-const RU_UI = {comp:"", wk:"", kind:"weekend", from:"", to:"", off:new Set()};
+const RU_UI = {comp:"", wk:"", kind:"weekend", from:"", to:"", off:new Set(), noShort:new Set()};
 function compactFacts(r){
   const goals=(r.goals||[]).slice().sort((a,b)=>a.min-b.min);
   const L=[`${score(r)} · ${dayShort(r.date)}${koTime(r.kickoff)?", "+koTime(r.kickoff):""} (home team: ${r.home})`];
@@ -1280,7 +1286,7 @@ function ruFacts(){
   return parts.join("\n\n");
 }
 function hashIds(a){ let h=5381; for(const c of a.join(",")) h=((h<<5)+h+c.charCodeAt(0))|0; return (h>>>0).toString(36); }
-function ruKey(ru){ return `roundup|${ru.comp}|${ru.from}|${ru.to}|${hashIds(ru.ids||[])}`; }
+function ruKey(ru){ return `roundup|${ru.comp}|${ru.from}|${ru.to}|${hashIds((ru.ids||[]).concat(ru.shortIds&&ru.shortIds.length!==(ru.ids||[]).length?["|"].concat(ru.shortIds):[]))}`; }
 function dow(d){ return new Date(d+"T12:00:00Z").getUTCDay(); }
 function addDays(d,n){ const x=new Date(d+"T12:00:00Z"); x.setUTCDate(x.getUTCDate()+n); return x.toISOString().slice(0,10); }
 function roundOf(d){ const w=dow(d); if(w>=2&&w<=4){ const s=addDays(d,2-w); return {kind:"midweek",from:s,to:addDays(s,2)}; } const s=addDays(d,-((w+2)%7)); return {kind:"weekend",from:s,to:addDays(s,3)}; }
@@ -1294,10 +1300,11 @@ function syncRUUI(ru){
   if(!ru) return; RU_UI.comp=ru.comp; RU_UI.from=ru.from; RU_UI.to=ru.to; RU_UI.kind=ru.kind;
   RU_UI.wk = ru.kind==="custom" ? "custom" : ru.from;
   const on=new Set(ru.ids||[]); RU_UI.off=new Set(ruPool().map(r=>r._id).filter(id=>!on.has(id)));
+  RU_UI.noShort=new Set(Array.isArray(ru.shortIds)?(ru.ids||[]).filter(id=>!ru.shortIds.includes(id)):[]);
 }
 function ruCount(){
   const pool=ruPool(), on=pool.filter(r=>!RU_UI.off.has(r._id)).length;
-  $("ruCount").textContent = pool.length ? `${on} of ${pool.length} ticked · about ${ruLen(on)} minutes` : "";
+  $("ruCount").textContent = pool.length ? `${on} of ${pool.length} ticked · about ${ruLen(on)} minutes · ${pool.filter(r=>!RU_UI.off.has(r._id)&&!RU_UI.noShort.has(r._id)).length} Shorts` : "";
   $("ruGo").disabled=!on;
   $("ruList").querySelectorAll(".ru-row").forEach(l=>l.classList.toggle("off",!l.querySelector("input").checked));
 }
@@ -1313,8 +1320,8 @@ function renderRU(){
   else{ RU_UI.kind="custom"; if(!RU_UI.from||!RU_UI.to){ const d=RESULTS.filter(r=>r.competition===RU_UI.comp).map(r=>r.date).sort().pop()||""; RU_UI.from=RU_UI.from||d; RU_UI.to=RU_UI.to||d; } }
   $("ruCustom").hidden = RU_UI.wk!=="custom"; $("ruFrom").value=RU_UI.from; $("ruTo").value=RU_UI.to;
   const pool=ruPool();
-  $("ruList").innerHTML = pool.length ? pool.map(r=>`<label class="ru-row"><input type="checkbox" data-id="${esc(r._id)}" ${RU_UI.off.has(r._id)?"":"checked"} aria-label="Include ${esc(score(r))}"><span class="fx-t r">${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span class="fx-t">${esc(r.away)}</span><small>${esc(dayShort(r.date))}${koTime(r.kickoff)?" · "+esc(koTime(r.kickoff)):""}${r.stats_pending?" · score only":needsDetails(r)?" · no scorers yet":""}</small></label>`).join("") : `<p class="hint">No ${esc(RU_UI.comp)} matches between these dates.</p>`;
-  $("ruList").querySelectorAll("input").forEach(c=>c.addEventListener("change",()=>{ if(c.checked) RU_UI.off.delete(c.dataset.id); else RU_UI.off.add(c.dataset.id); ruCount(); }));
+  $("ruList").innerHTML = pool.length ? pool.map(r=>`<div class="ru-row"><label class="ru-main"><input type="checkbox" data-id="${esc(r._id)}" ${RU_UI.off.has(r._id)?"":"checked"} aria-label="Include ${esc(score(r))}"><span class="fx-t r">${esc(r.home)}</span><b>${r.home_score}–${r.away_score}</b><span class="fx-t">${esc(r.away)}</span><small>${esc(dayShort(r.date))}${koTime(r.kickoff)?" · "+esc(koTime(r.kickoff)):""}${r.stats_pending?" · score only":needsDetails(r)?" · no scorers yet":""}</small></label><label class="sh"><input type="checkbox" data-sh="${esc(r._id)}" ${RU_UI.noShort.has(r._id)?"":"checked"} aria-label="Make a Short for ${esc(score(r))}"> Short</label></div>`).join("") : `<p class="hint">No ${esc(RU_UI.comp)} matches between these dates.</p>`;
+  $("ruList").querySelectorAll("input").forEach(c=>c.addEventListener("change",()=>{ if(c.dataset.sh){ if(c.checked) RU_UI.noShort.delete(c.dataset.sh); else RU_UI.noShort.add(c.dataset.sh); } else if(c.checked) RU_UI.off.delete(c.dataset.id); else RU_UI.off.add(c.dataset.id); ruCount(); }));
   ruCount();
 }
 function openRoundup(ru, opts){
@@ -1358,7 +1365,7 @@ function initRU(){
   $("ruNone").addEventListener("click",()=>{ ruPool().forEach(r=>RU_UI.off.add(r._id)); renderRU(); });
   $("ruGo").addEventListener("click",()=>{
     const ids=ruPool().filter(r=>!RU_UI.off.has(r._id)).map(r=>r._id); if(!ids.length) return;
-    openRoundup({comp:RU_UI.comp, kind:RU_UI.kind, from:RU_UI.from, to:RU_UI.to, ids});
+    openRoundup({comp:RU_UI.comp, kind:RU_UI.kind, from:RU_UI.from, to:RU_UI.to, ids, shortIds:ids.filter(id=>!RU_UI.noShort.has(id))});
   });
   if(isRU()) syncRUUI(S.ru);
   renderMode();
