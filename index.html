@@ -217,6 +217,7 @@ input[type=search],input[type=password],input[type=date]{font:inherit;color:var(
         </div>
         <div class="actions" style="align-items:center"><span class="hint" id="ruCount" style="margin:0;flex:1"></span><button class="btn sm" type="button" id="ruAll">Tick all</button><button class="btn sm" type="button" id="ruNone">Untick all</button></div>
         <div class="ru-list" id="ruList"></div>
+        <label class="chk" style="padding:0"><input type="checkbox" id="ruOnly"> Shorts only: skip the long video and write just the Shorts (only matches with Short ticked)</label>
         <button class="btn primary" type="button" id="ruGo">Open the round-up</button>
         <p class="hint" id="ruNote" style="margin:0">One script covers every ticked match, plus a Short for each game, all written from the same facts so the numbers match.</p>
       </div>
@@ -648,7 +649,7 @@ function segSVG(seg,i,n){
 /* ---------- Round-up graphics ---------- */
 function dayShort(d){ return dayLabel(d).replace(/,? \d{4}$/,"").replace(",",""); }
 function rangeLabel(a,b){ if(a===b) return dayShort(a); const x=dayShort(a), y=dayShort(b); return `${a.slice(0,7)===b.slice(0,7)?x.replace(/ \S+$/,""):x} – ${y}`; }
-function ruName(ru){ ru=ru||S.ru||{}; return `${ru.comp||""} ${ru.kind==="midweek"?"midweek round-up":ru.kind==="custom"?"round-up":"weekend round-up"}`; }
+function ruName(ru){ ru=ru||S.ru||{}; if(ru.only) return `${ru.comp||""} Shorts`; return `${ru.comp||""} ${ru.kind==="midweek"?"midweek round-up":ru.kind==="custom"?"round-up":"weekend round-up"}`; }
 function ruLabel(ru){ ru=ru||S.ru; return ru ? rangeLabel(ru.from,ru.to) : ""; }
 function ruSlug(){ const ru=S.ru||{}; return `${ru.from}-to-${ru.to}-${String(ru.comp||"").toLowerCase().replace(/[^a-z0-9]+/g,"-")}-round-up`; }
 function ruWrap(inner,label){
@@ -844,7 +845,28 @@ JSON rules: voiceover word counts add up to about ${W}; start/end times run cons
 }
 
 function promptNow(){ return isRU() ? buildRoundupPrompt() : buildPrompt(); }
+function buildShortsOnlyPrompt(){
+  const ms=ruMatches(), sw=ruShortWanted().map(m=>"M"+(ms.indexOf(m)+1));
+  return `You are the scriptwriter for "The Touchline Notebook", a faceless football analysis YouTube channel. It covers any club or league. You are writing ONLY YouTube Shorts, never a long video, and you never mention, tag or favour any club that isn't in the facts. The creator narrates in his own voice. Write in UK English: calm, clear, spoken, no hype.
+
+${RULES}
+
+${SHORTS_RULES}
+
+Write exactly ${sw.length} Shorts, one for each of ${sw.join(", ")}, in that order. Each is about that match alone, uses only that match's facts, and stands on its own. Find the single most surprising thing in each match's facts and open on it.
+
+BRIEF FROM THE CREATOR:
+"""${((S.brief||"").trim()||"No angle given.").slice(0,2000)}"""
+
+FACTS AND STATS PROVIDED (the only numbers you may use; each match is tagged with its M-number):
+"""${(S.facts||"none").slice(0,24000)}"""
+${S.extra?`\nEXTRA INSTRUCTIONS: ${S.extra.slice(0,600)}\n`:""}
+Reply with only a JSON object, no other text, in exactly this shape:
+{"working_title":"string","shorts":[{"match":"M-number","title":"string","hook":"string","body":"string","close":"string"}],"tags":["12-15 YouTube tags, plain words, no # signs, starting with the competition and the clubs; never a club that isn't in the facts"],"hashtags":["exactly 3, each starting with #, no spaces: the competition first, then #Shorts, then the club with the biggest story. Never a club that isn't in the facts"],"self_check":[{"line":"text you were unsure about","issue":"which rule","rewrite":"safer version"}],"missing_facts":["facts the creator should gather"]}
+Each Short is 45-85 words in total, following the SHORTS RULES. self_check is an empty array when nothing is borderline.`;
+}
 function buildRoundupPrompt(){
+  if((S.ru||{}).only) return buildShortsOnlyPrompt();
   const ru=S.ru||{}, n=ruMatches().length, L=+S.length, W=Math.round(L*wpm());
   const sw=ruShortWanted().map(m=>"M"+(ruMatches().indexOf(m)+1)); const hasTable=TABLES.some(x=>x.competition===ru.comp&&x.rows.length);
   const per=Math.max(50,Math.round(W*0.66/Math.max(n,1)));
@@ -943,10 +965,10 @@ function applyReply(text){
     if(!isRU()){ const ct=[clubTag(pool[0].home),clubTag(pool[0].away)]; r.hashtags=ct.concat(r.hashtags.filter(h=>!bad(h)&&!ct.some(x=>x.toLowerCase()===h.toLowerCase()))).slice(0,3); }
     else r.hashtags=r.hashtags.filter(h=>!bad(h));
     r.tags=r.tags.filter(t=>!bad(t)); }
-  if(!r.segments.length) throw {code:"invalid_json"};
-  S.result=r; save(); tab="board"; renderAll();
+  if(!r.segments.length&&!(isRU()&&(S.ru||{}).only&&r.shorts.length)) throw {code:"invalid_json"};
+  S.result=r; save(); tab=(isRU()&&S.ru&&S.ru.only)?"shorts":"board"; renderAll();
   if(isRU()){ const n=ruShortWanted().length, got=new Set(r.shorts.map(s=>s.match).filter(Boolean)).size;
-    setStatus(`Done: ${r.segments.length} sections and ${got} of ${n} Shorts.${got<n?" Press Write the script again to get the rest.":""} Edit any line below; changes save in this browser.`, got<n); }
+    setStatus(`Done: ${(isRU()&&S.ru.only)?"":r.segments.length+" sections and "}${got} of ${n} Shorts.${got<n?" Press Write the script again to get the rest.":""} Edit any line below; changes save in this browser.`, got<n); }
   else setStatus(`Done: ${r.segments.length} sections. Edit any line below; changes save in this browser.`);
 }
 async function generate(){
@@ -1003,6 +1025,7 @@ function totals(){
 function renderSummary(){
   const r=S.result, el=$("summary");
   if(!r){ el.innerHTML=`<div><h2>No script yet</h2><p class="empty">Write a paragraph in the brief and press Write the script.</p></div>`; return; }
+  if(isRU()&&S.ru&&S.ru.only){ const fl=(r.shorts||[]).reduce((a,x)=>a+scanAll(x.hook+" "+x.body+" "+x.close).length,0); el.innerHTML=`<div style="min-width:0"><span class="tag">${esc(ruName())} · ${esc(ruLabel())}</span><h2>${esc(r.working_title)}</h2></div><div class="meters"><div class="meter"><b>${r.shorts.length}</b><span>Shorts</span></div><div class="meter ${fl?"warn":"good"}"><b>${fl}</b><span>Wording flags</span></div></div>`; return; }
   const T=totals(), target=+S.length*60, ratio=T.sec/target;
   const timeCls = ratio<0.85||ratio>1.15 ? "warn" : "good";
   const max=Math.max(target,T.sec)*1.1;
@@ -1039,6 +1062,7 @@ function segHTML(s,i){
 function renderBoard(){
   const p=$("p-board"), r=S.result;
   if(!r){ p.innerHTML=`<p class="empty">Your storyboard appears here.</p>`; return; }
+  if(isRU()&&S.ru&&S.ru.only){ p.innerHTML=`<p class="empty">Shorts only: there is no long video here. Your Shorts are on the Shorts tab.</p>`; return; }
   const sc = r.self_check.length ? `<div class="card"><h3>Lines Claude wasn't sure about</h3>${r.self_check.map(x=>`<p><b>${esc(x.line)}</b><br><span class="spec">${esc(x.issue)}</span><br>Safer: ${esc(x.rewrite)}</p>`).join("")}</div>` : "";
   const canPack = isRU() ? ruMatches().length>0 : !!(curResult() && !curResult().stats_pending);
   const vp = canPack ? `<div class="card"><h3>Make the video</h3><p class="spec" style="margin:4px 0 10px">Every section gets a picture drawn from ${isRU()?"the round's":"this match's"} data. Download the pack, then record each section as its own file, named as shown on each section (01-…, 02-…), all in one folder. In Match Studio, open the pack and choose that folder: every picture then lasts exactly as long as its recording. The Read-through tab shows one section at a time to read from.</p><button class="btn sm" type="button" id="sendPack">Send to Match Studio (download video pack)</button> <span class="spec" id="packMsg"></span></div>` : "";
@@ -1292,7 +1316,7 @@ function ruFacts(){
   return parts.join("\n\n");
 }
 function hashIds(a){ let h=5381; for(const c of a.join(",")) h=((h<<5)+h+c.charCodeAt(0))|0; return (h>>>0).toString(36); }
-function ruKey(ru){ return `roundup|${ru.comp}|${ru.from}|${ru.to}|${hashIds((ru.ids||[]).concat(ru.shortIds&&ru.shortIds.length!==(ru.ids||[]).length?["|"].concat(ru.shortIds):[]))}`; }
+function ruKey(ru){ return `roundup|${ru.comp}|${ru.from}|${ru.to}|${hashIds((ru.ids||[]).concat(ru.shortIds&&ru.shortIds.length!==(ru.ids||[]).length?["|"].concat(ru.shortIds):[]).concat(ru.only?["#only"]:[]))}`; }
 function dow(d){ return new Date(d+"T12:00:00Z").getUTCDay(); }
 function addDays(d,n){ const x=new Date(d+"T12:00:00Z"); x.setUTCDate(x.getUTCDate()+n); return x.toISOString().slice(0,10); }
 function roundOf(d){ const w=dow(d); if(w>=2&&w<=4){ const s=addDays(d,2-w); return {kind:"midweek",from:s,to:addDays(s,2)}; } const s=addDays(d,-((w+2)%7)); return {kind:"weekend",from:s,to:addDays(s,3)}; }
@@ -1307,6 +1331,7 @@ function syncRUUI(ru){
   RU_UI.wk = ru.kind==="custom" ? "custom" : ru.from;
   const on=new Set(ru.ids||[]); RU_UI.off=new Set(ruPool().map(r=>r._id).filter(id=>!on.has(id)));
   RU_UI.noShort=new Set(Array.isArray(ru.shortIds)?(ru.ids||[]).filter(id=>!ru.shortIds.includes(id)):[]);
+  $("ruOnly").checked=!!ru.only;
 }
 function ruCount(){
   const pool=ruPool(), on=pool.filter(r=>!RU_UI.off.has(r._id)).length;
@@ -1370,8 +1395,8 @@ function initRU(){
   $("ruAll").addEventListener("click",()=>{ RU_UI.off.clear(); renderRU(); });
   $("ruNone").addEventListener("click",()=>{ ruPool().forEach(r=>RU_UI.off.add(r._id)); renderRU(); });
   $("ruGo").addEventListener("click",()=>{
-    const ids=ruPool().filter(r=>!RU_UI.off.has(r._id)).map(r=>r._id); if(!ids.length) return;
-    openRoundup({comp:RU_UI.comp, kind:RU_UI.kind, from:RU_UI.from, to:RU_UI.to, ids, shortIds:ids.filter(id=>!RU_UI.noShort.has(id))});
+    const only=$("ruOnly").checked, ids=ruPool().filter(r=>!RU_UI.off.has(r._id)&&(!only||!RU_UI.noShort.has(r._id))).map(r=>r._id); if(!ids.length) return;
+    openRoundup({comp:RU_UI.comp, kind:RU_UI.kind, from:RU_UI.from, to:RU_UI.to, ids, shortIds:ids.filter(id=>!RU_UI.noShort.has(id)), only});
   });
   if(isRU()) syncRUUI(S.ru);
   renderMode();
