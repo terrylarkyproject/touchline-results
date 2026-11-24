@@ -16,6 +16,8 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "results.json"
+ARCH_DIR = ROOT / "data" / "archive"   # one file per month for older matches
+RECENT_DAYS = 14                       # results.json keeps only this many days in full
 UK = ZoneInfo("Europe/London")
 BASE = "https://site.api.espn.com/apis/site/v2/sports/soccer"
 STAND = "https://site.api.espn.com/apis/v2/sports/soccer"
@@ -357,7 +359,10 @@ def fetch_fixtures(lg, comp, today):
 def main():
     now = datetime.now(timezone.utc)
     store = json.loads(DATA.read_text()) if DATA.exists() else {"results": []}
-    results = {doc_id(r): r for r in store.get("results", [])}
+    rows = list(store.get("results", []))
+    for f in sorted(ARCH_DIR.glob("*.json")) if ARCH_DIR.exists() else []:
+        rows += json.loads(f.read_text()).get("results", [])
+    results = {doc_id(r): r for r in rows}
     start = os.environ.get("BACKFILL_FROM", "").strip()
     start_d = datetime.strptime(start, "%Y-%m-%d").date() if start else (now - timedelta(days=int(os.environ.get("LOOKBACK_DAYS", "4")))).date()
     end_d = now.date()
@@ -410,12 +415,24 @@ def main():
     log(f"Tables: {len(tables)}; upcoming fixtures: {len(fixtures)}")
 
     ordered = sorted(results.values(), key=lambda r: (r.get("date", ""), r.get("competition", ""), r.get("home", "")), reverse=True)
+    cutoff = str((now - timedelta(days=RECENT_DAYS)).date())
+    recent = [r for r in ordered if r.get("date", "") >= cutoff]
+    months = {}
+    for r in ordered:
+        if r.get("date", "") < cutoff:
+            months.setdefault(r["date"][:7], []).append(r)
+    ARCH_DIR.mkdir(parents=True, exist_ok=True)
+    for m, mrows in months.items():
+        p = ARCH_DIR / f"{m}.json"
+        txt = json.dumps({"month": m, "results": mrows}, ensure_ascii=False, separators=(",", ":")) + "\n"
+        if not p.exists() or p.read_text() != txt:
+            p.write_text(txt)
     changed = bool(added or updated) or tables != old_tables or fixtures != old_fixtures
     stamp = now.strftime("%Y-%m-%dT%H:%M:%SZ") if changed else store.get("updated_at", now.strftime("%Y-%m-%dT%H:%M:%SZ"))
     store = {"updated_at": stamp, "tables_at": now.strftime("%Y-%m-%d") if tables != old_tables or not store.get("tables_at") else store["tables_at"],
-             "count": len(ordered), "results": ordered, "tables": tables, "fixtures": fixtures}
+             "count": len(ordered), "archive": {m: len(v) for m, v in sorted(months.items())}, "results": recent, "tables": tables, "fixtures": fixtures}
     DATA.parent.mkdir(parents=True, exist_ok=True)
-    DATA.write_text(json.dumps(store, ensure_ascii=False, indent=1) + "\n")
+    DATA.write_text(json.dumps(store, ensure_ascii=False, separators=(",", ":")) + "\n")
     log(f"Done: {added} added, {updated} updated, {len(ordered)} total.")
     if failures:
         log(f"Leagues that could not be fetched: {', '.join(failures)}")
